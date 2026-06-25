@@ -1,0 +1,11 @@
+/* ── RESOURCES PAGE (ported from resources.html <style>) ── */
+.resource-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid var(--gray-mid); }
+.resource-feature:last-of-type { border-bottom: none; }
+.book-cover { aspect-ratio: 3/4; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+.free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.free-card { padding: 28px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius-lg); background: var(--white); text-align: center; transition: all 0.2s; }
+.free-card:hover { border-color: var(--navy-mid); box-shadow: var(--shadow-sm); }
+.free-card-icon { font-size: 2rem; display: block; margin-bottom: 14px; }
+.free-card h4 { color: var(--navy); margin-bottom: 8px; }
+.free-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
+@media (max-width: 700px) { .resource-feature { grid-template-columns: 1fr; gap: 32px; } .free-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,40 @@
+/* ── SHOWS PAGE (ported from shows.html <style>) ── */
+.show-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 72px 0;
+  border-bottom: 1px solid var(--gray-mid);
+}
+.show-feature:last-of-type { border-bottom: none; }
+.show-visual {
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+.show-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.platform-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--gray-mid);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: all 0.18s;
+  background: var(--white);
+}
+.platform-link:hover {
+  border-color: var(--navy-mid);
+  color: var(--navy);
+  box-shadow: var(--shadow-sm);
+}
+@media (max-width: 700px) {
+  .show-feature { grid-template-columns: 1fr; gap: 32px; }
+}

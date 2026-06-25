@@ -1,0 +1,20 @@
+/* ── PRESS PAGE (ported from press.html <style>) ── */
+.press-grid { display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: start; }
+.press-sidebar { position: sticky; top: 100px; }
+.bio-tabs { display: flex; gap: 0; margin-bottom: 16px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius); overflow: hidden; }
+.bio-tab { flex: 1; padding: 10px; text-align: center; font-size: 0.82rem; font-weight: 600; cursor: pointer; background: var(--white); color: var(--text-light); border: none; transition: all 0.18s; }
+.bio-tab.active { background: var(--navy); color: var(--white); }
+.bio-content { display: none; padding: 20px; background: var(--gray-light); border-radius: var(--radius); font-size: 0.9rem; line-height: 1.7; color: var(--text-mid); }
+.bio-content.active { display: block; }
+.copy-btn { font-size: 0.75rem; padding: 6px 14px; margin-top: 12px; }
+.photo-download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.photo-download-item { border: 1.5px solid var(--gray-mid); border-radius: var(--radius); overflow: hidden; }
+.photo-thumb { aspect-ratio: 1; background: var(--gray-light); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--text-light); }
+.photo-download-meta { padding: 10px 12px; }
+.photo-download-meta strong { font-size: 0.8rem; color: var(--navy); display: block; }
+.photo-download-meta span { font-size: 0.72rem; color: var(--text-light); }
+.photo-download-meta a { font-size: 0.75rem; color: var(--gold); font-weight: 600; display: block; margin-top: 6px; }
+.hook-card { padding: 20px 24px; border-left: 4px solid var(--gold); background: var(--gold-faint); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 14px; }
+.hook-card h4 { color: var(--navy); margin-bottom: 6px; font-size: 0.95rem; }
+.hook-card p { font-size: 0.85rem; color: var(--text-mid); margin: 0; }
+@media (max-width: 860px) { .press-grid { grid-template-columns: 1fr; } .press-sidebar { position: static; } .photo-download-grid { grid-template-columns: 1fr; } }

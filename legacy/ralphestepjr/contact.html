@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Ralph Estep Jr.</title>
+  <meta name="description" content="Get in touch with Ralph Estep Jr. for coaching, speaking, accounting, or general inquiries. Ralph and his team respond within 2 business days.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
+    .contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    .contact-option { padding: 20px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius-lg); cursor: pointer; transition: all 0.18s; text-align: left; background: var(--white); width: 100%; position: relative; }
+    .contact-option:hover, .contact-option.selected { border-color: var(--navy-mid); background: var(--gold-faint); }
+    .contact-option.selected { border-color: var(--navy); }
+    .contact-option.selected::after { content: '✓'; position: absolute; top: 12px; right: 14px; color: var(--navy); font-weight: 700; font-size: 0.88rem; }
+    .contact-option-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+    .contact-option h4 { color: var(--navy); margin-bottom: 4px; font-size: 0.88rem; }
+    .contact-option p { font-size: 0.78rem; color: var(--text-light); margin: 0; line-height: 1.4; }
+    .info-card { padding: 24px; background: var(--gray-light); border-radius: var(--radius-lg); margin-bottom: 20px; }
+    .info-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 0.95rem; }
+    .info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--text-mid); }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-icon { flex-shrink: 0; color: var(--gold); font-size: 0.9rem; margin-top: 2px; }
+    @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } .contact-options { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-inner"><a href="index.html" class="nav-logo">Ralph Estep <span class="accent">Jr.</span></a><ul class="nav-links" role="list"><li><a href="about.html">About</a></li><li><a href="shows.html">Shows</a></li><li><a href="coaching.html">Coaching</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="resources.html">Resources</a></li><li><a href="press.html">Press</a></li><li><a href="contact.html" class="btn btn-primary">Work With Ralph</a></li></ul><button class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div></nav>
+<nav class="mobile-menu"><a href="about.html">About Ralph</a><a href="shows.html">Shows &amp; Content</a><a href="coaching.html">Coaching</a><a href="speaking.html">Speaking</a><a href="resources.html">Books &amp; Resources</a><a href="press.html">Media Kit / Press</a><a href="contact.html">Contact</a></nav>
+
+<header class="page-hero">
+  <div class="container-narrow">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>Let's start a conversation.</h1>
+    <span class="gold-rule"></span>
+    <p>Whether you're interested in coaching, speaking, accounting services, or just have a question — Ralph and his team respond within 2 business days.</p>
+  </div>
+</header>
+
+<section class="section-lg">
+  <div class="container">
+    <div class="contact-layout">
+      <div>
+        <span class="eyebrow">What Can We Help With?</span>
+        <h2>Tell us what you're looking for.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <p class="mt-2 mb-4">Select the type of inquiry below and the form will adjust accordingly.</p>
+
+        <div class="contact-options" role="group" aria-label="Inquiry type">
+          <button class="contact-option" onclick="selectType('coaching', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">🤝</span>
+            <h4>Coaching</h4>
+            <p>One-on-one financial coaching or creator business coaching</p>
+          </button>
+          <button class="contact-option" onclick="selectType('speaking', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">🎤</span>
+            <h4>Speaking</h4>
+            <p>Book Ralph for your event, conference, or podcast</p>
+          </button>
+          <button class="contact-option" onclick="selectType('press', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">📰</span>
+            <h4>Press / Media</h4>
+            <p>Interviews, guest appearances, and journalist inquiries</p>
+          </button>
+          <button class="contact-option" onclick="selectType('accounting', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">📊</span>
+            <h4>Accounting Services</h4>
+            <p>Work with Saggio Management Group</p>
+          </button>
+          <button class="contact-option" onclick="selectType('podcasting', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">🎙</span>
+            <h4>Podcasting / Shows</h4>
+            <p>Show questions, listener mail, or collaboration</p>
+          </button>
+          <button class="contact-option" onclick="selectType('general', this)" aria-pressed="false">
+            <span class="contact-option-icon" aria-hidden="true">✉️</span>
+            <h4>General Inquiry</h4>
+            <p>Something else — Ralph's team will route it correctly</p>
+          </button>
+        </div>
+
+        <div id="routing-note" style="display:none;" class="notice-banner mb-4">
+          <strong id="routing-text"></strong>
+        </div>
+
+        <form class="contact-form" aria-label="Contact form" id="main-contact-form">
+          <input type="hidden" name="inquiry_type" id="inquiry-type-field" value="general">
+          <div class="grid-2" style="gap:16px;">
+            <div class="form-group">
+              <label for="contact-name">Your name</label>
+              <input type="text" id="contact-name" name="name" placeholder="First and last name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email address</label>
+              <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-org">Organization (optional)</label>
+            <input type="text" id="contact-org" name="org" placeholder="Company, church, podcast, or event name">
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" name="subject" placeholder="Brief subject line" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Tell Ralph and his team what's on your mind. The more context, the better the response." required style="min-height:160px;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="padding:14px 32px;">Send Message</button>
+          <p style="font-size:0.78rem; color:var(--text-light); margin-top:10px;">Ralph's team responds within 2 business days. For accounting services, you can also reach Saggio Management Group directly at <a href="https://saggioaccounting.com" target="_blank" style="color:var(--navy);">saggioaccounting.com</a>.</p>
+        </form>
+      </div>
+
+      <div>
+        <div class="info-card">
+          <h4>Contact Information</h4>
+          <div class="info-row"><span class="info-icon" aria-hidden="true">📧</span><div><strong>Email</strong><br><a href="mailto:ralph@askralph.com" style="color:var(--navy);">ralph@askralph.com</a></div></div>
+          <div class="info-row"><span class="info-icon" aria-hidden="true">📍</span><div><strong>Office</strong><br>Saggio Management Group<br>1100 Dutch Neck Road<br>Middletown, Delaware</div></div>
+          <div class="info-row"><span class="info-icon" aria-hidden="true">🌐</span><div><strong>Accounting Practice</strong><br><a href="https://saggioaccounting.com" target="_blank" rel="noopener" style="color:var(--navy);">saggioaccounting.com</a></div></div>
+        </div>
+
+        <div class="info-card">
+          <h4>Quicker paths</h4>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px;">
+            <a href="coaching.html" class="btn btn-outline-navy" style="justify-content:center; font-size:0.85rem;">Coaching inquiry →</a>
+            <a href="speaking.html#booking-form" class="btn btn-outline-navy" style="justify-content:center; font-size:0.85rem;">Speaking / booking form →</a>
+            <a href="press.html" class="btn btn-outline-navy" style="justify-content:center; font-size:0.85rem;">Press &amp; media kit →</a>
+            <a href="https://saggioaccounting.com" class="btn btn-outline-navy" style="justify-content:center; font-size:0.85rem;" target="_blank" rel="noopener">Accounting services ↗</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 style="color:var(--navy); margin-bottom:8px;">Response time</h4>
+            <p style="font-size:0.85rem; color:var(--text-mid);">Ralph and his team typically respond within <strong>2 business days</strong>. For speaking inquiries with upcoming dates, please note your event date in the message so the team can prioritize accordingly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="nav-logo" style="font-size:1.15rem; margin-bottom:4px;">Ralph Estep <span style="color:var(--gold);">Jr.</span></div><p>Licensed Public Accountant (LPA), business coach, author, and podcaster.</p><p style="margin-top:12px; font-size:0.8rem; color:rgba(255,255,255,0.4);">Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE<br><a href="mailto:ralph@askralph.com" style="color:rgba(255,255,255,0.5);">ralph@askralph.com</a></p></div><div class="footer-col"><h4>Shows</h4><ul><li><a href="shows.html#bfc">Becoming Financially Confident</a></li><li><a href="shows.html#fcc">Financially Confident Christian</a></li><li><a href="shows.html#truth">Truth Unveiled with Ralph</a></li><li><a href="shows.html#content-creator">The Content Creator's Accountant</a></li></ul></div><div class="footer-col"><h4>Work Together</h4><ul><li><a href="coaching.html">Coaching</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="resources.html">Books &amp; Resources</a></li><li><a href="https://saggioaccounting.com" target="_blank" rel="noopener">Accounting Services ↗</a></li></ul></div><div class="footer-col"><h4>More</h4><ul><li><a href="about.html">About Ralph</a></li><li><a href="press.html">Media Kit / Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://contentcreatorsaccountant.com/audit" target="_blank" rel="noopener">Free Creator Audit ↗</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Ralph Estep Jr. · All rights reserved.</p><div style="display:flex; gap:20px;"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div></div></div></footer>
+<script src="main.js"></script>
+<script>
+const routingMessages = {
+  coaching: 'For coaching inquiries, you can also use the dedicated form on the <a href="coaching.html" style="color:var(--navy);">Coaching page</a>.',
+  speaking: 'For speaking inquiries, you can also use the booking form on the <a href="speaking.html#booking-form" style="color:var(--navy);">Speaking page</a> which captures event-specific details.',
+  press: 'For press and media inquiries, please also see the <a href="press.html" style="color:var(--navy);">Media Kit page</a> for bios, photos, and interview angles.',
+  accounting: 'For accounting services, you can also contact Saggio Management Group directly at <a href="https://saggioaccounting.com" style="color:var(--navy);" target="_blank">saggioaccounting.com</a>.',
+  podcasting: 'Show questions and listener mail can also be sent to ralph@askralph.com with the show name in the subject line.',
+  general: ''
+};
+function selectType(type, btn) {
+  document.querySelectorAll('.contact-option').forEach(el => { el.classList.remove('selected'); el.setAttribute('aria-pressed', 'false'); });
+  btn.classList.add('selected');
+  btn.setAttribute('aria-pressed', 'true');
+  document.getElementById('inquiry-type-field').value = type;
+  const note = document.getElementById('routing-note');
+  const text = routingMessages[type];
+  if (text) { document.getElementById('routing-text').innerHTML = text; note.style.display = 'block'; }
+  else { note.style.display = 'none'; }
+  const subjectMap = { coaching:'Coaching Inquiry', speaking:'Speaking / Event Inquiry', press:'Press / Media Inquiry', accounting:'Accounting Services Inquiry', podcasting:'Podcast / Show Question', general:'' };
+  const subjectField = document.getElementById('contact-subject');
+  if (subjectMap[type]) subjectField.placeholder = subjectMap[type];
+}
+</script>
+</body>
+</html>

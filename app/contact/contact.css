@@ -1,0 +1,16 @@
+/* ── CONTACT PAGE (ported from contact.html <style>) ── */
+.contact-layout { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
+.contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+.contact-option { padding: 20px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius-lg); cursor: pointer; transition: all 0.18s; text-align: left; background: var(--white); width: 100%; position: relative; }
+.contact-option:hover, .contact-option.selected { border-color: var(--navy-mid); background: var(--gold-faint); }
+.contact-option.selected { border-color: var(--navy); }
+.contact-option.selected::after { content: '✓'; position: absolute; top: 12px; right: 14px; color: var(--navy); font-weight: 700; font-size: 0.88rem; }
+.contact-option-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+.contact-option h4 { color: var(--navy); margin-bottom: 4px; font-size: 0.88rem; }
+.contact-option p { font-size: 0.78rem; color: var(--text-light); margin: 0; line-height: 1.4; }
+.info-card { padding: 24px; background: var(--gray-light); border-radius: var(--radius-lg); margin-bottom: 20px; }
+.info-card h4 { color: var(--navy); margin-bottom: 12px; font-size: 0.95rem; }
+.info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--text-mid); }
+.info-row:last-child { margin-bottom: 0; }
+.info-icon { flex-shrink: 0; color: var(--gold); font-size: 0.9rem; margin-top: 2px; }
+@media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } .contact-options { grid-template-columns: 1fr; } }

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Kit &amp; Press — Ralph Estep Jr.</title>
+  <meta name="description" content="Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .press-grid { display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: start; }
+    .press-sidebar { position: sticky; top: 100px; }
+    .bio-tabs { display: flex; gap: 0; margin-bottom: 16px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius); overflow: hidden; }
+    .bio-tab { flex: 1; padding: 10px; text-align: center; font-size: 0.82rem; font-weight: 600; cursor: pointer; background: var(--white); color: var(--text-light); border: none; transition: all 0.18s; }
+    .bio-tab.active { background: var(--navy); color: var(--white); }
+    .bio-content { display: none; padding: 20px; background: var(--gray-light); border-radius: var(--radius); font-size: 0.9rem; line-height: 1.7; color: var(--text-mid); }
+    .bio-content.active { display: block; }
+    .copy-btn { font-size: 0.75rem; padding: 6px 14px; margin-top: 12px; }
+    .photo-download-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .photo-download-item { border: 1.5px solid var(--gray-mid); border-radius: var(--radius); overflow: hidden; }
+    .photo-thumb { aspect-ratio: 1; background: var(--gray-light); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--text-light); }
+    .photo-download-meta { padding: 10px 12px; }
+    .photo-download-meta strong { font-size: 0.8rem; color: var(--navy); display: block; }
+    .photo-download-meta span { font-size: 0.72rem; color: var(--text-light); }
+    .photo-download-meta a { font-size: 0.75rem; color: var(--gold); font-weight: 600; display: block; margin-top: 6px; }
+    .hook-card { padding: 20px 24px; border-left: 4px solid var(--gold); background: var(--gold-faint); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 14px; }
+    .hook-card h4 { color: var(--navy); margin-bottom: 6px; font-size: 0.95rem; }
+    .hook-card p { font-size: 0.85rem; color: var(--text-mid); margin: 0; }
+    @media (max-width: 860px) { .press-grid { grid-template-columns: 1fr; } .press-sidebar { position: static; } .photo-download-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-inner"><a href="index.html" class="nav-logo">Ralph Estep <span class="accent">Jr.</span></a><ul class="nav-links" role="list"><li><a href="about.html">About</a></li><li><a href="shows.html">Shows</a></li><li><a href="coaching.html">Coaching</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="resources.html">Resources</a></li><li><a href="press.html">Press</a></li><li><a href="contact.html" class="btn btn-primary">Work With Ralph</a></li></ul><button class="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div></nav>
+<nav class="mobile-menu"><a href="about.html">About Ralph</a><a href="shows.html">Shows &amp; Content</a><a href="coaching.html">Coaching</a><a href="speaking.html">Speaking</a><a href="resources.html">Books &amp; Resources</a><a href="press.html">Media Kit / Press</a><a href="contact.html">Contact</a></nav>
+
+<header class="page-hero" id="onesheet">
+  <div class="container-narrow">
+    <span class="eyebrow">Media Kit &amp; Press</span>
+    <h1>Everything you need — right here, no email required.</h1>
+    <span class="gold-rule"></span>
+    <p>Bios in three lengths, high-res photos, interview hooks, and contact information. Download what you need and reach out when you're ready.</p>
+  </div>
+</header>
+
+<section class="section-lg">
+  <div class="container">
+    <div class="press-grid">
+      <div>
+
+        <!-- BIOS -->
+        <span class="eyebrow">Press Bios</span>
+        <h2>Speaker bios — three lengths.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <p class="mt-2 mb-4">Choose the length that fits your format. All three are ready to paste.</p>
+        <div class="bio-tabs" role="tablist">
+          <button class="bio-tab active" role="tab" aria-selected="true" onclick="switchBio('short', this)">Short (50 words)</button>
+          <button class="bio-tab" role="tab" aria-selected="false" onclick="switchBio('medium', this)">Medium (150 words)</button>
+          <button class="bio-tab" role="tab" aria-selected="false" onclick="switchBio('long', this)">Full Bio</button>
+        </div>
+        <div class="bio-content active" id="bio-short" role="tabpanel">
+          Ralph Estep Jr. is a Licensed Public Accountant (LPA) with 30+ years of experience, the host of four podcasts reaching hundreds of thousands of listeners, and a business coach dedicated to helping everyday people build real financial confidence. His mission: not just informed — equipped.
+          <br><button class="btn btn-outline-navy copy-btn" onclick="copyBio('bio-short')">Copy This Bio</button>
+        </div>
+        <div class="bio-content" id="bio-medium" role="tabpanel">
+          Ralph Estep Jr. is a Licensed Public Accountant (LPA), business coach, author, and podcaster with over 30 years of experience helping individuals and small businesses in Middletown, Delaware and beyond. He is the host of four active shows — including Becoming Financially Confident, Truth Unveiled with Ralph (400K+ YouTube subscribers), Financially Confident Christian, and The Content Creator's Accountant — reaching hundreds of thousands of listeners across personal finance, faith, and creator business topics.
+          <br><br>Ralph's origin in finance traces to age 8, when family circumstances placed him in a position of significant financial responsibility. That experience shaped his core mission: to be the person who puts an arm around someone, tells them the truth about their situation, and equips them with the real tools to change it. His approach is warm, non-judgmental, and built around the conviction that everyone deserves financial confidence — not just information.
+          <br><button class="btn btn-outline-navy copy-btn" onclick="copyBio('bio-medium')">Copy This Bio</button>
+        </div>
+        <div class="bio-content" id="bio-long" role="tabpanel">
+          Ralph Estep Jr. is a Licensed Public Accountant (LPA), business coach, author, and podcaster headquartered in Middletown, Delaware, where he has operated Saggio Management Group for over three decades.
+          <br><br>His work spans accounting, coaching, and media. As the host of four active shows — Becoming Financially Confident (launching September 2026), Truth Unveiled with Ralph (400,000+ YouTube subscribers), Financially Confident Christian, and The Content Creator's Accountant — Ralph reaches hundreds of thousands of listeners with practical, judgment-free financial guidance.
+          <br><br>Ralph's origin in finance is as personal as it gets. At age 8, family circumstances placed him in a position of financial responsibility that most adults never face. Rather than letting that experience leave him bitter or avoidant, it ignited a lifelong mission: to be the person who puts an arm around someone in a difficult financial moment and says, "It's going to be okay — and here's how we're going to get there."
+          <br><br>His approach is a deliberate counterpoint to shame-based financial media. Where others lecture, Ralph listens. Where others judge, Ralph equips. His upcoming budgeting book and 10-part audio/video course, launching alongside Becoming Financially Confident in September 2026, reflect the same philosophy: not just informed, but equipped.
+          <br><br>Ralph lives on a compound in Delaware with his wife, rides motorcycles, exercises daily, and recently became a grandfather for the first time. He is available for podcast guest appearances, conference speaking, and media interviews on personal finance, creator economics, and faith-based stewardship.
+          <br><button class="btn btn-outline-navy copy-btn" onclick="copyBio('bio-long')">Copy This Bio</button>
+        </div>
+
+        <!-- INTERVIEW HOOKS -->
+        <span class="eyebrow mt-5" style="display:block; margin-top:48px;">Interview Angles</span>
+        <h2>Story hooks for producers.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <p class="mt-2 mb-4">Five ready-to-use angles for pitching Ralph as a guest, interview subject, or expert source.</p>
+
+        <div class="hook-card">
+          <h4>"The person who says it's going to be okay" — the empathy gap in personal finance media</h4>
+          <p>In a landscape dominated by shame-based financial advice, Ralph has built a following by doing the opposite — leading with empathy and equipping people instead of judging them. How does that approach actually change outcomes?</p>
+        </div>
+        <div class="hook-card">
+          <h4>Managing your family's finances at age 8 — and what it taught a 30-year accountant</h4>
+          <p>Ralph's origin story is deeply personal and immediately compelling. What does it feel like to take on adult financial responsibility as a child — and how does that experience inform the way he works with clients today?</p>
+        </div>
+        <div class="hook-card">
+          <h4>What podcasters get wrong about the money side of their business</h4>
+          <p>Ralph has built an entire show around this question — and the answers often surprise creators who think they understand their own revenue. The Audience Economics framework changes how creators think about their business model.</p>
+        </div>
+        <div class="hook-card">
+          <h4>From accounting practice to 400K YouTube subscribers — building a media business at 50+</h4>
+          <p>Ralph didn't grow up as a media personality. He built four shows from his accounting practice, and the journey offers real lessons for anyone considering a pivot from professional services to content creation.</p>
+        </div>
+        <div class="hook-card">
+          <h4>Faith and money — why the conversation doesn't have to be preachy to be powerful</h4>
+          <p>Ralph has built a large faith-based audience without alienating non-religious listeners. How do you speak honestly about faith-based stewardship without driving people away? And what does the Bible actually say that's financially useful?</p>
+        </div>
+
+        <!-- PRESS MENTIONS -->
+        <span class="eyebrow mt-5" style="display:block; margin-top:48px;">Press &amp; Appearances</span>
+        <h2>Media appearances.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <div class="notice-banner mt-3">
+          <strong>For Abby / team:</strong> Replace the items below with real appearances, guest spots, and press mentions as they accumulate. Include logo, name, and link where possible.
+        </div>
+        <div class="appearance-list" style="margin-top:16px;">
+          <div style="padding:16px; border:1px solid var(--gray-mid); border-radius:var(--radius); display:flex; align-items:center; gap:14px; background:var(--white);">
+            <div style="width:44px; height:44px; background:var(--gray-light); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">🎤</div>
+            <div><strong style="color:var(--navy); font-size:0.88rem;">[Podcast / Media Outlet Name]</strong><p style="font-size:0.82rem; color:var(--text-light); margin:2px 0 0;">[Episode or article title] · [Year] · <a href="#" style="color:var(--gold);">Listen / Read →</a></p></div>
+          </div>
+          <div style="padding:16px; border:1px solid var(--gray-mid); border-radius:var(--radius); display:flex; align-items:center; gap:14px; background:var(--white);">
+            <div style="width:44px; height:44px; background:var(--gray-light); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0;">📰</div>
+            <div><strong style="color:var(--navy); font-size:0.88rem;">[Publication Name]</strong><p style="font-size:0.82rem; color:var(--text-light); margin:2px 0 0;">[Article headline] · [Year] · <a href="#" style="color:var(--gold);">Read →</a></p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="press-sidebar">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 style="color:var(--navy); margin-bottom:8px;">Media Contact</h4>
+            <p style="font-size:0.85rem; margin-bottom:16px;">For interview requests, guest bookings, and press inquiries:</p>
+            <p style="font-size:0.88rem; color:var(--navy); font-weight:600;">Cyndee Harrison</p>
+            <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:4px;">Publicist</p>
+            <p style="font-size:0.82rem; color:var(--text-light); margin-bottom:16px;">[Cyndee's email — add here]</p>
+            <p style="font-size:0.88rem; color:var(--navy); font-weight:600;">Ralph Estep Jr.</p>
+            <p style="font-size:0.82rem; color:var(--text-light);"><a href="mailto:ralph@askralph.com" style="color:var(--navy);">ralph@askralph.com</a></p>
+            <div style="margin-top:20px;">
+              <a href="contact.html" class="btn btn-primary" style="width:100%; justify-content:center;">Send Press Inquiry</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <h4 style="color:var(--navy); margin-bottom:14px;" id="photos">Photo Downloads</h4>
+            <div class="photo-download-grid">
+              <div class="photo-download-item">
+                <div class="photo-thumb" aria-hidden="true">📷</div>
+                <div class="photo-download-meta">
+                  <strong>Headshot — Square</strong>
+                  <span>1000×1000px · PNG</span>
+                  <a href="#">Download ↓</a>
+                </div>
+              </div>
+              <div class="photo-download-item">
+                <div class="photo-thumb" aria-hidden="true">📷</div>
+                <div class="photo-download-meta">
+                  <strong>Headshot — Horizontal</strong>
+                  <span>1200×800px · PNG</span>
+                  <a href="#">Download ↓</a>
+                </div>
+              </div>
+              <div class="photo-download-item">
+                <div class="photo-thumb" aria-hidden="true">📷</div>
+                <div class="photo-download-meta">
+                  <strong>Headshot — Vertical</strong>
+                  <span>800×1200px · PNG</span>
+                  <a href="#">Download ↓</a>
+                </div>
+              </div>
+              <div class="photo-download-item">
+                <div class="photo-thumb" aria-hidden="true">🖼</div>
+                <div class="photo-download-meta">
+                  <strong>Show Logos Pack</strong>
+                  <span>All 4 shows · ZIP</span>
+                  <a href="#">Download ↓</a>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:0.72rem; color:var(--text-light); margin-top:12px;">Replace # links above with real file download URLs. Host on Google Drive, Dropbox, or your web host.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h4 style="color:var(--navy); margin-bottom:10px;">Speaker One-Sheet</h4>
+            <p style="font-size:0.85rem; margin-bottom:16px;">One-page PDF with bio, topics, headshot, and contact details — ready for event committees.</p>
+            <a href="#" class="btn btn-outline-navy" style="width:100%; justify-content:center;">Download One-Sheet PDF</a>
+            <p style="font-size:0.72rem; color:var(--text-light); margin-top:10px;">Replace # with your PDF file URL. Create the PDF once branding is finalized.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="nav-logo" style="font-size:1.15rem; margin-bottom:4px;">Ralph Estep <span style="color:var(--gold);">Jr.</span></div><p>Licensed Public Accountant (LPA), business coach, author, and podcaster.</p><p style="margin-top:12px; font-size:0.8rem; color:rgba(255,255,255,0.4);">Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE<br><a href="mailto:ralph@askralph.com" style="color:rgba(255,255,255,0.5);">ralph@askralph.com</a></p></div><div class="footer-col"><h4>Shows</h4><ul><li><a href="shows.html#bfc">Becoming Financially Confident</a></li><li><a href="shows.html#fcc">Financially Confident Christian</a></li><li><a href="shows.html#truth">Truth Unveiled with Ralph</a></li><li><a href="shows.html#content-creator">The Content Creator's Accountant</a></li></ul></div><div class="footer-col"><h4>Work Together</h4><ul><li><a href="coaching.html">Coaching</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="resources.html">Books &amp; Resources</a></li><li><a href="https://saggioaccounting.com" target="_blank" rel="noopener">Accounting Services ↗</a></li></ul></div><div class="footer-col"><h4>More</h4><ul><li><a href="about.html">About Ralph</a></li><li><a href="press.html">Media Kit / Press</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://contentcreatorsaccountant.com/audit" target="_blank" rel="noopener">Free Creator Audit ↗</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Ralph Estep Jr. · All rights reserved.</p><div style="display:flex; gap:20px;"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div></div></div></footer>
+<script src="main.js"></script>
+<script>
+function switchBio(type, btn) {
+  document.querySelectorAll('.bio-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.bio-tab').forEach(el => { el.classList.remove('active'); el.setAttribute('aria-selected', 'false'); });
+  document.getElementById('bio-' + type).classList.add('active');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+}
+function copyBio(id) {
+  const text = document.getElementById(id).innerText.replace('Copy This Bio', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('#' + id + ' .copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'Copied! ✓';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+</script>
+</body>
+</html>

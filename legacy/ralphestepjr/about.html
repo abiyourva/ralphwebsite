@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Ralph Estep Jr. — LPA, Podcaster, Business Coach</title>
+  <meta name="description" content="Meet Ralph Estep Jr. — a Licensed Public Accountant with 30+ years of experience whose childhood shaped a lifelong mission to help everyday people build real financial confidence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-story {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 72px;
+      align-items: start;
+    }
+    .about-photo {
+      position: sticky;
+      top: 100px;
+    }
+    .about-photo-main {
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 16px;
+    }
+    .cred-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .cred-pill {
+      padding: 7px 16px;
+      background: var(--gold-faint);
+      border: 1.5px solid var(--gold-pale);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .what-ralph-does { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .does-card {
+      padding: 24px;
+      border: 1.5px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .does-card:hover { border-color: var(--navy-mid); box-shadow: var(--shadow-sm); }
+    .does-card-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
+    .does-card h4 { color: var(--navy); margin-bottom: 6px; font-size: 1rem; }
+    .does-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; }
+    .does-card a { font-size: 0.8rem; color: var(--gold); font-weight: 600; }
+    .personal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+    .personal-item { text-align: center; padding: 24px 16px; background: var(--gray-light); border-radius: var(--radius-lg); }
+    .personal-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+    .personal-item p { font-size: 0.85rem; color: var(--text-mid); margin: 0; }
+    @media (max-width: 860px) {
+      .about-story { grid-template-columns: 1fr; }
+      .about-photo { position: static; }
+      .what-ralph-does { grid-template-columns: 1fr; }
+      .personal-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 500px) {
+      .personal-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Ralph Estep <span class="accent">Jr.</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="about.html">About</a></li>
+      <li><a href="shows.html">Shows</a></li>
+      <li><a href="coaching.html">Coaching</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="press.html">Press</a></li>
+      <li><a href="contact.html" class="btn btn-primary">Work With Ralph</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  <a href="about.html">About Ralph</a>
+  <a href="shows.html">Shows &amp; Content</a>
+  <a href="coaching.html">Coaching</a>
+  <a href="speaking.html">Speaking</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <a href="press.html">Media Kit / Press</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<header class="page-hero" aria-labelledby="about-heading">
+  <div class="container-narrow">
+    <span class="eyebrow">Meet Ralph</span>
+    <h1 id="about-heading">Thirty years of helping people realize it's going to be okay.</h1>
+    <span class="gold-rule"></span>
+    <p>Licensed Public Accountant. Business Coach. Author. Podcaster. And the person who wants to sit across the table from you and say: "We can figure this out."</p>
+  </div>
+</header>
+
+<!-- ── MAIN STORY ── -->
+<section class="section-lg">
+  <div class="container">
+    <div class="about-story">
+      <div class="about-content">
+
+        <!-- CREDIBILITY BAR -->
+        <div class="cred-pills mb-5" role="list" aria-label="Credentials">
+          <span class="cred-pill" role="listitem">Licensed Public Accountant (LPA)</span>
+          <span class="cred-pill" role="listitem">30+ Years in Practice</span>
+          <span class="cred-pill" role="listitem">400K+ YouTube Subscribers</span>
+          <span class="cred-pill" role="listitem">Author &amp; Podcaster</span>
+          <span class="cred-pill" role="listitem">Business Coach</span>
+        </div>
+
+        <!-- ORIGIN STORY -->
+        <span class="eyebrow">The Origin Story</span>
+        <h2>It started when I was eight years old.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+
+        <p class="mt-3">
+          When I was eight, family circumstances shifted in ways that most kids never have to think about. I found myself stepping into a role that no child should have to fill — helping manage our family's financial situation, making decisions and navigating pressures that were far beyond my years.
+        </p>
+
+        <p class="mt-3">
+          Most people would have let that experience leave them bitter, or anxious, or just avoiding money conversations altogether. For me, it did the opposite. It lit something. It made me understand from the inside out what it feels like to sit at a table where the stakes are real and the information feels overwhelming — and to desperately need someone who would just look at you and say, "It's going to be okay. Here's what we're going to do."
+        </p>
+
+        <p class="mt-3">
+          I became a Licensed Public Accountant because I wanted to be that person. Not the one who makes you feel small for not knowing. Not the one who lectures you about what you should have done differently. The one who puts an arm around you, tells you the truth, and walks with you toward something better.
+        </p>
+
+        <div class="pullquote mt-4">
+          <p>"I'm not here to make you feel ashamed about where you are. I'm here to help you build real confidence — the kind that comes from actually understanding your money and having a plan."</p>
+          <cite>— Ralph Estep Jr., LPA</cite>
+        </div>
+
+        <p class="mt-3">
+          After more than thirty years in accounting and financial coaching, that mission has never changed. The formats have evolved — from the desk to the microphone, from one client at a time to hundreds of thousands of listeners — but the core of it is still the same. You deserve to feel confident about your finances. And you can get there.
+        </p>
+
+        <!-- WHAT RALPH DOES -->
+        <span class="eyebrow mt-5" style="display:block; margin-top:48px;">What Ralph Does</span>
+        <h2>More than accounting. A whole ecosystem.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <p class="mt-2 mb-4">Ralph works across four connected areas — each designed to meet people where they are.</p>
+
+        <div class="what-ralph-does">
+          <div class="does-card">
+            <span class="does-card-icon" aria-hidden="true">🎙</span>
+            <h4>Podcasting &amp; Media</h4>
+            <p>Four active shows reaching listeners across personal finance, faith, and creator business topics.</p>
+            <a href="shows.html">See all shows →</a>
+          </div>
+          <div class="does-card">
+            <span class="does-card-icon" aria-hidden="true">🤝</span>
+            <h4>Coaching</h4>
+            <p>One-on-one work with individuals and content creators who want real clarity and a real plan.</p>
+            <a href="coaching.html">Learn about coaching →</a>
+          </div>
+          <div class="does-card">
+            <span class="does-card-icon" aria-hidden="true">🎤</span>
+            <h4>Speaking</h4>
+            <p>Events, conferences, and guest appearances on personal finance, creator economics, and entrepreneurship.</p>
+            <a href="speaking.html">Book Ralph to speak →</a>
+          </div>
+          <div class="does-card">
+            <span class="does-card-icon" aria-hidden="true">📊</span>
+            <h4>Accounting Practice</h4>
+            <p>Saggio Management Group has served individuals and small businesses in Middletown, Delaware for over 30 years.</p>
+            <a href="https://saggioaccounting.com" target="_blank" rel="noopener">Visit Saggio →</a>
+          </div>
+        </div>
+
+        <!-- PERSONAL SECTION -->
+        <span class="eyebrow mt-5" style="display:block; margin-top:48px;">The Person Behind the Work</span>
+        <h2>Beyond the microphone.</h2>
+        <span class="gold-rule gold-rule-left"></span>
+        <p class="mt-2">Ralph lives on what he calls his "compound" in Delaware — home, office, and farm all in one place, with Black Angus cattle managed by a neighboring farmer. He starts every day with exercise, rides motorcycles, and recently became a grandfather for the first time.</p>
+
+        <div class="personal-grid" aria-label="Personal details">
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">👨‍👩‍👦‍👦</span>
+            <p>Married with two adult sons — one serving in the U.S. Coast Guard, one a barber</p>
+          </div>
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">🐄</span>
+            <p>Lives on his "compound" in Delaware — home, office, and farm co-located</p>
+          </div>
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">👶</span>
+            <p>Newly minted grandfather — first grandchild recently arrived</p>
+          </div>
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">🏍</span>
+            <p>Avid motorcyclist and daily exerciser — 7 days a week, no exceptions</p>
+          </div>
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">📍</span>
+            <p>Based in Middletown, Delaware — born and rooted in the community</p>
+          </div>
+          <div class="personal-item">
+            <span class="personal-icon" aria-hidden="true">✝️</span>
+            <p>Faith-driven — his values inform his work without overshadowing it</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR PHOTO -->
+      <div class="about-photo">
+        <div class="about-photo-main" aria-hidden="true">
+          <div class="photo-placeholder" style="height:100%; border-radius:var(--radius-lg);">
+            <span class="photo-placeholder-icon">📷</span>
+            Professional headshot<br>
+            <small>Recommended: 800×1000px</small>
+          </div>
+        </div>
+        <div class="card" style="margin-top:24px;">
+          <div class="card-body">
+            <h4 style="color:var(--navy); margin-bottom:12px;">Ready to get started?</h4>
+            <p style="font-size:0.85rem; margin-bottom:16px;">Whether you want to work together directly or just tune in and learn, there's a place for you here.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <a href="coaching.html" class="btn btn-primary" style="justify-content:center;">Explore Coaching</a>
+              <a href="shows.html" class="btn btn-outline-navy" style="justify-content:center;">Browse the Shows</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION STATEMENT ── -->
+<section class="section bg-navy text-center" aria-labelledby="mission-heading">
+  <div class="container-narrow">
+    <span class="eyebrow" style="color:var(--gold-light);">The Mission</span>
+    <h2 id="mission-heading" style="color:var(--white);">Not just informed. Equipped.</h2>
+    <span class="gold-rule"></span>
+    <p style="color:rgba(255,255,255,0.75); font-size:1.1rem; margin-top:24px;">
+      Real tools. Real confidence. Real change. That's what every show, every coaching session, every conversation is built around. Because knowing something and being able to act on it are two very different things — and you deserve both.
+    </p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:36px;">
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      <a href="press.html" class="btn btn-outline">Media Kit →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.15rem; margin-bottom:4px;">Ralph Estep <span style="color:var(--gold);">Jr.</span></div>
+        <p>Licensed Public Accountant (LPA), business coach, author, and podcaster. Helping everyday people build real financial confidence.</p>
+        <p style="margin-top:12px; font-size:0.8rem; color:rgba(255,255,255,0.4);">Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE<br><a href="mailto:ralph@askralph.com" style="color:rgba(255,255,255,0.5);">ralph@askralph.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Shows</h4>
+        <ul>
+          <li><a href="shows.html#bfc">Becoming Financially Confident</a></li>
+          <li><a href="shows.html#fcc">Financially Confident Christian</a></li>
+          <li><a href="shows.html#truth">Truth Unveiled with Ralph</a></li>
+          <li><a href="shows.html#content-creator">The Content Creator's Accountant</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Work Together</h4>
+        <ul>
+          <li><a href="coaching.html">Coaching</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="resources.html">Books &amp; Resources</a></li>
+          <li><a href="https://saggioaccounting.com" target="_blank" rel="noopener">Accounting Services ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="about.html">About Ralph</a></li>
+          <li><a href="press.html">Media Kit / Press</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://contentcreatorsaccountant.com/audit" target="_blank" rel="noopener">Free Creator Audit ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ralph Estep Jr. · Saggio Management Group · All rights reserved.</p>
+      <div style="display:flex; gap:20px;"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
