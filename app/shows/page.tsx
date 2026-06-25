@@ -52,12 +52,13 @@ export default function ShowsPage() {
                 starting September 2026.
               </p>
               <div className="show-links mt-4">
-                <a href="#" className="platform-link">🔔 Get Launch Notification</a>
+                <a href="#bfc-notify" className="platform-link">🔔 Get Launch Notification</a>
                 <a href="https://saggioaccounting.com" className="platform-link" target="_blank" rel="noopener">
                   🌐 Visit Main Site
                 </a>
               </div>
               <EmailCaptureForm
+                id="bfc-notify"
                 className="email-form-left email-capture-form mt-4"
                 formStyle={{ maxWidth: "460px" }}
                 formAriaLabel="BFC launch notification signup"
@@ -91,13 +92,15 @@ export default function ShowsPage() {
                 give generously, there&apos;s an episode for where you are.
               </p>
               <div className="show-links mt-4">
-                <a href="#" className="platform-link">🍎 Apple Podcasts</a>
-                <a href="#" className="platform-link">🟢 Spotify</a>
-                <a href="#" className="platform-link">🌐 All Platforms</a>
+                <a
+                  href="https://www.financiallyconfidentchristian.com/"
+                  className="platform-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  🌐 Visit Website
+                </a>
               </div>
-              <p style={{ fontSize: "0.78rem", color: "var(--text-light)", marginTop: "12px" }}>
-                Replace # links above with your actual podcast URLs.
-              </p>
             </div>
           </div>
 
@@ -119,13 +122,15 @@ export default function ShowsPage() {
                 and helps you think more clearly about your life, this is the show.
               </p>
               <div className="show-links mt-4">
-                <a href="#" className="platform-link">▶️ Watch on YouTube</a>
-                <a href="#" className="platform-link">🍎 Apple Podcasts</a>
-                <a href="#" className="platform-link">🟢 Spotify</a>
+                <a
+                  href="https://www.truthunveiledwithralph.com/"
+                  className="platform-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  🌐 Visit Website
+                </a>
               </div>
-              <p style={{ fontSize: "0.78rem", color: "var(--text-light)", marginTop: "12px" }}>
-                Replace # links above with your actual channel/podcast URLs.
-              </p>
             </div>
             <div className="show-visual" style={{ background: "linear-gradient(135deg, #5A1A1A 0%, #C0392B 100%)", color: "#FFAAAA" }}>
               ▶️
@@ -162,12 +167,15 @@ export default function ShowsPage() {
                 >
                   Get Your Free Creator Audit →
                 </a>
-                <a href="#" className="platform-link">🍎 Apple Podcasts</a>
-                <a href="#" className="platform-link">🟢 Spotify</a>
+                <a
+                  href="https://contentcreatorsaccountant.com/"
+                  className="platform-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  🌐 Visit Website
+                </a>
               </div>
-              <p style={{ fontSize: "0.78rem", color: "var(--text-light)", marginTop: "12px" }}>
-                Replace # links above with your actual podcast URLs.
-              </p>
             </div>
           </div>
         </div>

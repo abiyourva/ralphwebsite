@@ -3,6 +3,8 @@
 import { useState, type CSSProperties } from "react";
 
 type EmailCaptureFormProps = {
+  /** id on the <form>, e.g. for anchor-linking to it from elsewhere on the page. */
+  id?: string;
   /** Class on the <form> — e.g. "email-form email-capture-form" or "email-form-left email-capture-form". */
   className?: string;
   formStyle?: CSSProperties;
@@ -23,6 +25,7 @@ type EmailCaptureFormProps = {
 // same behavior as the original main.js handler. Used on the homepage, the
 // shows page, and the resources page.
 export default function EmailCaptureForm({
+  id,
   className = "email-form email-capture-form",
   formStyle,
   inputClassName,
@@ -47,7 +50,7 @@ export default function EmailCaptureForm({
   }
 
   return (
-    <form className={className} style={formStyle} aria-label={formAriaLabel} onSubmit={handleSubmit}>
+    <form id={id} className={className} style={formStyle} aria-label={formAriaLabel} onSubmit={handleSubmit}>
       <input
         type="email"
         className={inputClassName}
