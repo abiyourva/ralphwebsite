@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import "./about.css";
 
 export const metadata: Metadata = {
@@ -166,13 +167,14 @@ export default function AboutPage() {
 
             {/* SIDEBAR PHOTO */}
             <div className="about-photo">
-              <div className="about-photo-main" aria-hidden="true">
-                <div className="photo-placeholder" style={{ height: "100%", borderRadius: "var(--radius-lg)" }}>
-                  <span className="photo-placeholder-icon">📷</span>
-                  Professional headshot
-                  <br />
-                  <small>Recommended: 800×1000px</small>
-                </div>
+              <div className="about-photo-main">
+                <Image
+                  src="/images/ralph-headshot.png"
+                  alt="Ralph Estep Jr., LPA"
+                  width={1122}
+                  height={1402}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
               <div className="card" style={{ marginTop: "24px" }}>
                 <div className="card-body">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import "./home.css";
 
@@ -47,13 +48,15 @@ export default function HomePage() {
               </div>
             </div>
             <div className="hero-photo-wrap">
-              <div className="hero-photo" aria-hidden="true">
-                <div className="photo-placeholder">
-                  <span className="photo-placeholder-icon">📷</span>
-                  Replace with professional headshot
-                  <br />
-                  <small>Recommended: 800×1000px</small>
-                </div>
+              <div className="hero-photo">
+                <Image
+                  src="/images/ralph-headshot.png"
+                  alt="Ralph Estep Jr., LPA"
+                  width={1122}
+                  height={1402}
+                  priority
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
               </div>
               <span className="hero-photo-tag">Ralph Estep Jr., LPA</span>
             </div>
