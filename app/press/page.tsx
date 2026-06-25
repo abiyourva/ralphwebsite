@@ -9,6 +9,67 @@ export const metadata: Metadata = {
     "Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.",
 };
 
+// Curated selection of podcast/media appearances. Full, continually-updated
+// list lives at askralph.com/ralphs-appearances — linked below the list.
+const APPEARANCES = [
+  {
+    icon: "🎤",
+    show: "Bartelle's Money Talk",
+    title: "Faith, Finances & Freedom: How to Get Your House in Order",
+    url: "https://podcasts.apple.com/us/podcast/faith-finances-freedom-how-to-get-your-house-in-order/id1732123565?i=1000738663309",
+    verb: "Listen",
+  },
+  {
+    icon: "🎤",
+    show: "New Media Show Audio",
+    title: "Digital Creator 2026 Money Playbook",
+    url: "https://podcasts.apple.com/us/podcast/digital-creator-2026-money-playbook-ralph-estep-jr/id392545649?i=1000746403885",
+    verb: "Listen",
+  },
+  {
+    icon: "🎤",
+    show: "The Thrive Within Podcast",
+    title: "Breaking the Silence of Financial Shame",
+    url: "https://www.buzzsprout.com/2506417/episodes/18089210",
+    verb: "Listen",
+  },
+  {
+    icon: "🎤",
+    show: "Pastors and Money",
+    title: "Retire with Confidence: Expert Tips for Pastors' Retirement Planning",
+    url: "https://pastorsandmoney.com/pastors-retirement-planning/",
+    verb: "Listen",
+  },
+  {
+    icon: "🎤",
+    show: "Halfway to Sunday",
+    title: "Scarcity Shouts. Gratitude Whispers. (Ep. 76)",
+    url: "https://halfwaytosunday.simplecast.com/episodes/scarcity-shouts-gratitude-whispers-w-ralph-estep-jr-ep-76-5ta0mhFe",
+    verb: "Listen",
+  },
+  {
+    icon: "▶️",
+    show: "Financial Freedom for Physicians",
+    title: "Balancing Acts: Finance and Faith",
+    url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
+    verb: "Watch",
+  },
+  {
+    icon: "🎤",
+    show: "Walk in Victory",
+    title: "Break Free from Financial Stress with 7 Life-Changing Principles",
+    url: "https://podcasts.apple.com/us/podcast/break-free-from-financial-stress-with-7-life-changing/id1459142845?i=1000678635401",
+    verb: "Listen",
+  },
+  {
+    icon: "🎤",
+    show: "Building the Premier Accounting Firm",
+    title: "Get Lifelong Accounting Clients: Relationship-Based Secrets",
+    url: "https://podcasts.apple.com/us/podcast/get-lifelong-accounting-clients-relationship-based/id1506023469?i=1000699139789",
+    verb: "Listen",
+  },
+];
+
 export default function PressPage() {
   return (
     <>
@@ -94,30 +155,40 @@ export default function PressPage() {
               <span className="eyebrow mt-5" style={{ display: "block", marginTop: "48px" }}>Press &amp; Appearances</span>
               <h2>Media appearances.</h2>
               <span className="gold-rule gold-rule-left"></span>
-              <div className="notice-banner mt-3">
-                <strong>For Abby / team:</strong> Replace the items below with real
-                appearances, guest spots, and press mentions as they accumulate. Include
-                logo, name, and link where possible.
+              <p className="mt-2 mb-4">
+                A selection of recent podcast and media appearances. See the full,
+                continually-updated list on Ralph&apos;s site.
+              </p>
+              <div className="appearance-list" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {APPEARANCES.map((item) => (
+                  <div
+                    key={item.url}
+                    style={{ padding: "16px", border: "1px solid var(--gray-mid)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", gap: "14px", background: "var(--white)" }}
+                  >
+                    <div style={{ width: "44px", height: "44px", background: "var(--gray-light)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>
+                      {item.icon}
+                    </div>
+                    <div>
+                      <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>{item.show}</strong>
+                      <p style={{ fontSize: "0.82rem", color: "var(--text-light)", margin: "2px 0 0" }}>
+                        {item.title} ·{" "}
+                        <a href={item.url} target="_blank" rel="noopener" style={{ color: "var(--gold)" }}>
+                          {item.verb} →
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="appearance-list" style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                <div style={{ padding: "16px", border: "1px solid var(--gray-mid)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", gap: "14px", background: "var(--white)" }}>
-                  <div style={{ width: "44px", height: "44px", background: "var(--gray-light)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>🎤</div>
-                  <div>
-                    <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>[Podcast / Media Outlet Name]</strong>
-                    <p style={{ fontSize: "0.82rem", color: "var(--text-light)", margin: "2px 0 0" }}>
-                      [Episode or article title] · [Year] · <a href="#" style={{ color: "var(--gold)" }}>Listen / Read →</a>
-                    </p>
-                  </div>
-                </div>
-                <div style={{ padding: "16px", border: "1px solid var(--gray-mid)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", gap: "14px", background: "var(--white)" }}>
-                  <div style={{ width: "44px", height: "44px", background: "var(--gray-light)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>📰</div>
-                  <div>
-                    <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>[Publication Name]</strong>
-                    <p style={{ fontSize: "0.82rem", color: "var(--text-light)", margin: "2px 0 0" }}>
-                      [Article headline] · [Year] · <a href="#" style={{ color: "var(--gold)" }}>Read →</a>
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-4">
+                <a
+                  href="https://www.askralph.com/ralphs-appearances/"
+                  target="_blank"
+                  rel="noopener"
+                  className="btn btn-outline-navy"
+                >
+                  View All of Ralph&apos;s Appearances →
+                </a>
               </div>
             </div>
 
