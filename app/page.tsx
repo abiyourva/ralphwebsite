@@ -89,6 +89,24 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* ── MONEY ARCHETYPE QUIZ PROMO ── */}
+      <section className="section text-center" aria-labelledby="quiz-promo-heading">
+        <div className="container-narrow">
+          <span className="eyebrow">Free Quiz</span>
+          <h2 id="quiz-promo-heading">What&apos;s your Money Archetype?</h2>
+          <span className="gold-rule"></span>
+          <p>
+            Take the free 2-minute quiz to discover how you&apos;re wired to relate to
+            wealth, work, and legacy — plus get a personalized 7-day email sequence.
+          </p>
+          <div className="mt-4">
+            <Link href="/money-archetype" className="btn btn-primary">
+              Take the Free Quiz →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── AUDIENCE SELF-SELECT ── */}
       <section className="section bg-cream" aria-labelledby="audience-heading">
         <div className="container">
