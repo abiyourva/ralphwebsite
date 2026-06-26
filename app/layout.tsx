@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cormorant, dmSans } from "./fonts";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -33,6 +34,7 @@ export default function RootLayout({
         <CookieBanner />
         <InteractionEffects />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
