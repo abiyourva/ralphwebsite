@@ -23,10 +23,12 @@ type EmailCaptureFormProps = {
 // Reusable email-capture form. On submit it prevents the default, swaps the
 // button into a disabled green success state, and disables the input — the
 // same behavior as the original main.js handler. Used on the homepage, the
-// shows page, and the resources page.
+// shows page, and the resources page. Default styling targets dark/navy
+// backgrounds (.email-form) — pass className="email-form-light" on light
+// backgrounds instead.
 export default function EmailCaptureForm({
   id,
-  className = "email-form email-capture-form",
+  className = "email-form",
   formStyle,
   inputClassName,
   inputStyle,
@@ -34,7 +36,7 @@ export default function EmailCaptureForm({
   inputAriaLabel = "Email address",
   formAriaLabel = "Email signup",
   buttonLabel = "I'm In",
-  buttonClassName = "btn btn-primary",
+  buttonClassName,
   buttonStyle,
   successLabel = "You're in! ✓",
 }: EmailCaptureFormProps) {

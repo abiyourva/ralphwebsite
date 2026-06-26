@@ -13,7 +13,8 @@ export default function ContactPage() {
   return (
     <>
       <header className="page-hero">
-        <div className="container-narrow">
+        <div className="page-hero-radial" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative" }}>
           <span className="eyebrow">Get in Touch</span>
           <h1>Let&apos;s start a conversation.</h1>
           <span className="gold-rule"></span>
@@ -24,7 +25,7 @@ export default function ContactPage() {
         </div>
       </header>
 
-      <section className="section-lg">
+      <section className="section">
         <div className="container">
           <div className="contact-layout">
             <div>
@@ -46,7 +47,7 @@ export default function ContactPage() {
                   <div>
                     <strong>Email</strong>
                     <br />
-                    <a href="mailto:ralph@askralph.com" style={{ color: "var(--navy)" }}>ralph@askralph.com</a>
+                    <a href="mailto:ralph@askralph.com" style={{ color: "var(--h)" }}>ralph@askralph.com</a>
                   </div>
                 </div>
                 <div className="info-row">
@@ -66,7 +67,7 @@ export default function ContactPage() {
                   <div>
                     <strong>Accounting Practice</strong>
                     <br />
-                    <a href="https://saggioaccounting.com" target="_blank" rel="noopener" style={{ color: "var(--navy)" }}>
+                    <a href="https://saggioaccounting.com" target="_blank" rel="noopener" style={{ color: "var(--h)" }}>
                       saggioaccounting.com
                     </a>
                   </div>
@@ -76,18 +77,18 @@ export default function ContactPage() {
               <div className="info-card">
                 <h4>Quicker paths</h4>
                 <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "4px" }}>
-                  <Link href="/coaching" className="btn btn-outline-navy" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
+                  <Link href="/coaching" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
                     Coaching inquiry →
                   </Link>
-                  <Link href="/speaking#booking-form" className="btn btn-outline-navy" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
+                  <Link href="/speaking#booking-form" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
                     Speaking / booking form →
                   </Link>
-                  <Link href="/press" className="btn btn-outline-navy" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
+                  <Link href="/press" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
                     Press &amp; media kit →
                   </Link>
                   <a
                     href="https://saggioaccounting.com"
-                    className="btn btn-outline-navy"
+                    className="btn btn-ghost"
                     style={{ justifyContent: "center", fontSize: "0.85rem" }}
                     target="_blank"
                     rel="noopener"
@@ -97,15 +98,13 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="card">
-                <div className="card-body">
-                  <h4 style={{ color: "var(--navy)", marginBottom: "8px" }}>Response time</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--text-mid)" }}>
-                    Ralph and his team typically respond within <strong>2 business days</strong>.
-                    For speaking inquiries with upcoming dates, please note your event date
-                    in the message so the team can prioritize accordingly.
-                  </p>
-                </div>
+              <div className="card card-pad">
+                <h4 style={{ color: "var(--h)", marginBottom: "8px" }}>Response time</h4>
+                <p style={{ fontSize: "0.85rem" }}>
+                  Ralph and his team typically respond within <strong style={{ color: "var(--h)" }}>2 business days</strong>.
+                  For speaking inquiries with upcoming dates, please note your event date
+                  in the message so the team can prioritize accordingly.
+                </p>
               </div>
             </div>
           </div>

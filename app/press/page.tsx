@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import PressBios from "./PressBios";
 import "./press.css";
 
@@ -8,6 +8,33 @@ export const metadata: Metadata = {
   description:
     "Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.",
 };
+
+const TALKING_POINTS = [
+  {
+    title: "Breaking the shame cycle around money",
+    description: "Why financial shame keeps people stuck — and how empathy-first conversations create real change.",
+  },
+  {
+    title: "Faith & money: a conversation the church avoids",
+    description: "Biblical stewardship in modern financial terms — why faith and personal finance belong in the same conversation.",
+  },
+  {
+    title: "The financial blind spots of content creators",
+    description: "What podcasters and creators get wrong about taxes, structure, and revenue — and how to fix it.",
+  },
+  {
+    title: "Building financial confidence vs. financial information",
+    description: "Why the internet has too much financial advice and not enough financial action — and how to bridge that gap.",
+  },
+  {
+    title: "Small business financial health in uncertain times",
+    description: "Practical frameworks for small business owners navigating cash flow, taxes, and long-term planning.",
+  },
+  {
+    title: "The arc from crisis to confidence",
+    description: "Personal story: navigating financial pressure as a child, and how that shaped 30 years of work with clients in their own crises.",
+  },
+];
 
 // Curated selection of podcast/media appearances. Full, continually-updated
 // list lives at askralph.com/ralphs-appearances — linked below the list.
@@ -73,209 +100,211 @@ const APPEARANCES = [
 export default function PressPage() {
   return (
     <>
-      <header className="page-hero" id="onesheet">
-        <div className="container-narrow">
-          <span className="eyebrow">Media Kit &amp; Press</span>
-          <h1>Everything you need — right here, no email required.</h1>
-          <span className="gold-rule"></span>
-          <p>
-            Bios in three lengths, high-res photos, interview hooks, and contact
-            information. Download what you need and reach out when you&apos;re ready.
-          </p>
+      {/* ── HERO ── */}
+      <header className="press-hero">
+        <div className="press-hero-radial" aria-hidden="true" />
+        <div className="press-hero-grid">
+          <div className="press-hero-text">
+            <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Media Kit &amp; Press</p>
+            <h1 className="hero-in" style={{ animationDelay: "0.25s" }}>
+              Everything you need to cover Ralph&apos;s story.
+            </h1>
+            <p className="hero-in" style={{ animationDelay: "0.38s" }}>
+              Official bios, headshots, brand assets, talking points, and contact
+              details — all in one place for journalists, producers, and podcast
+              hosts.
+            </p>
+            <div className="hero-cta hero-in" style={{ animationDelay: "0.48s" }}>
+              <a href="#assets" className="btn btn-navy">Download Assets</a>
+              <a href="mailto:ralph@askralph.com" className="btn btn-ghost">Email Ralph&apos;s Team</a>
+            </div>
+          </div>
+
+          <div className="facts-card rv d1">
+            <div className="facts-card-circle" aria-hidden="true" />
+            <p className="facts-card-label">At a Glance</p>
+            <div className="facts-row">
+              <span>Title</span>
+              <span>Licensed Public Accountant (LPA)</span>
+            </div>
+            <div className="facts-row">
+              <span>Location</span>
+              <span>Middletown, Delaware</span>
+            </div>
+            <div className="facts-row">
+              <span>Experience</span>
+              <span>30+ Years in Practice</span>
+            </div>
+            <div className="facts-row">
+              <span>YouTube</span>
+              <span className="gold-value">400K+ Subscribers</span>
+            </div>
+            <div className="facts-row">
+              <span>Active Shows</span>
+              <span>4</span>
+            </div>
+            <div className="facts-row">
+              <span>Media Contact</span>
+              <a href="mailto:ralph@askralph.com">ralph@askralph.com</a>
+            </div>
+          </div>
         </div>
       </header>
 
-      <section className="section-lg">
+      {/* ── BIOS ── */}
+      <section className="section-sm bg-alt">
         <div className="container">
-          <div className="press-grid">
-            <div>
-              {/* BIOS */}
-              <span className="eyebrow">Press Bios</span>
-              <h2>Speaker bios — three lengths.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-2 mb-4">
-                Choose the length that fits your format. All three are ready to paste.
-              </p>
-              <PressBios />
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Official Bios</p>
+          <h2 className="rv d1" style={{ marginBottom: "48px" }}>Ready to copy and use.</h2>
+          <PressBios />
+        </div>
+      </section>
 
-              {/* INTERVIEW HOOKS */}
-              <span className="eyebrow mt-5" style={{ display: "block", marginTop: "48px" }}>Interview Angles</span>
-              <h2>Story hooks for producers.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-2 mb-4">
-                Five ready-to-use angles for pitching Ralph as a guest, interview subject,
-                or expert source.
-              </p>
+      {/* ── TALKING POINTS ── */}
+      <section className="section">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Interview Topics</p>
+          <h2 className="rv d1" style={{ marginBottom: "48px" }}>What Ralph loves to talk about.</h2>
+          <div className="grid-3">
+            {TALKING_POINTS.map((point, i) => (
+              <div key={point.title} className={`card card-hover topic-num-card rv${i > 0 ? ` d${i % 4}` : ""}`}>
+                <div className="topic-num">{String(i + 1).padStart(2, "0")}</div>
+                <h3>{point.title}</h3>
+                <p>{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="hook-card">
-                <h4>&quot;The person who says it&apos;s going to be okay&quot; — the empathy gap in personal finance media</h4>
-                <p>
-                  In a landscape dominated by shame-based financial advice, Ralph has built
-                  a following by doing the opposite — leading with empathy and equipping
-                  people instead of judging them. How does that approach actually change
-                  outcomes?
-                </p>
+      {/* ── PRESS & APPEARANCES ── */}
+      <section className="section bg-alt">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Press &amp; Appearances</p>
+          <h2 className="rv d1" style={{ marginBottom: "12px" }}>Recent media appearances.</h2>
+          <p className="rv d2" style={{ marginBottom: "40px" }}>
+            A selection of recent podcast and media appearances. See the full,
+            continually-updated list on Ralph&apos;s site.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {APPEARANCES.map((item, i) => (
+              <div key={item.url} className={`card appearance-row rv${i > 0 ? ` d${i % 4}` : ""}`}>
+                <div className="appearance-icon" aria-hidden="true">{item.icon}</div>
+                <div>
+                  <strong>{item.show}</strong>
+                  <p>
+                    {item.title} ·{" "}
+                    <a href={item.url} target="_blank" rel="noopener">
+                      {item.verb} →
+                    </a>
+                  </p>
+                </div>
               </div>
-              <div className="hook-card">
-                <h4>Managing your family&apos;s finances at age 8 — and what it taught a 30-year accountant</h4>
-                <p>
-                  Ralph&apos;s origin story is deeply personal and immediately compelling. What
-                  does it feel like to take on adult financial responsibility as a child —
-                  and how does that experience inform the way he works with clients today?
-                </p>
-              </div>
-              <div className="hook-card">
-                <h4>What podcasters get wrong about the money side of their business</h4>
-                <p>
-                  Ralph has built an entire show around this question — and the answers
-                  often surprise creators who think they understand their own revenue. The
-                  Audience Economics framework changes how creators think about their
-                  business model.
-                </p>
-              </div>
-              <div className="hook-card">
-                <h4>From accounting practice to 400K YouTube subscribers — building a media business at 50+</h4>
-                <p>
-                  Ralph didn&apos;t grow up as a media personality. He built four shows from his
-                  accounting practice, and the journey offers real lessons for anyone
-                  considering a pivot from professional services to content creation.
-                </p>
-              </div>
-              <div className="hook-card">
-                <h4>Faith and money — why the conversation doesn&apos;t have to be preachy to be powerful</h4>
-                <p>
-                  Ralph has built a large faith-based audience without alienating
-                  non-religious listeners. How do you speak honestly about faith-based
-                  stewardship without driving people away? And what does the Bible actually
-                  say that&apos;s financially useful?
-                </p>
-              </div>
+            ))}
+          </div>
+          <div className="mt-4 rv">
+            <a href="https://www.askralph.com/ralphs-appearances/" target="_blank" rel="noopener" className="btn btn-ghost">
+              View All of Ralph&apos;s Appearances →
+            </a>
+          </div>
+        </div>
+      </section>
 
-              {/* PRESS MENTIONS */}
-              <span className="eyebrow mt-5" style={{ display: "block", marginTop: "48px" }}>Press &amp; Appearances</span>
-              <h2>Media appearances.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-2 mb-4">
-                A selection of recent podcast and media appearances. See the full,
-                continually-updated list on Ralph&apos;s site.
-              </p>
-              <div className="appearance-list" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {APPEARANCES.map((item) => (
-                  <div
-                    key={item.url}
-                    style={{ padding: "16px", border: "1px solid var(--gray-mid)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", gap: "14px", background: "var(--white)" }}
-                  >
-                    <div style={{ width: "44px", height: "44px", background: "var(--gray-light)", borderRadius: "var(--radius)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>
-                      {item.icon}
-                    </div>
-                    <div>
-                      <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>{item.show}</strong>
-                      <p style={{ fontSize: "0.82rem", color: "var(--text-light)", margin: "2px 0 0" }}>
-                        {item.title} ·{" "}
-                        <a href={item.url} target="_blank" rel="noopener" style={{ color: "var(--gold)" }}>
-                          {item.verb} →
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                ))}
+      {/* ── HEADSHOTS & ASSETS ── */}
+      <section id="assets" className="section bg-alt">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Brand Assets</p>
+          <h2 className="rv d1" style={{ marginBottom: "12px" }}>Headshots &amp; Logos</h2>
+          <p className="assets-note rv d2">
+            For editorial and promotional use only. Please do not alter, crop, or
+            recolor without written permission.
+          </p>
+          <div className="grid-3" style={{ marginBottom: "32px" }}>
+            <div className="card card-hover asset-card rv">
+              <div className="asset-thumb">
+                <Image
+                  src="/images/ralph-headshot.png"
+                  alt="Ralph Estep Jr. headshot"
+                  width={1122}
+                  height={1402}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+                />
               </div>
-              <div className="mt-4">
-                <a
-                  href="https://www.askralph.com/ralphs-appearances/"
-                  target="_blank"
-                  rel="noopener"
-                  className="btn btn-outline-navy"
-                >
-                  View All of Ralph&apos;s Appearances →
+              <div className="asset-meta">
+                <div>
+                  <p>Headshot — Square</p>
+                  <p>High resolution PNG</p>
+                </div>
+                <a href="/images/ralph-headshot.png" target="_blank" rel="noopener" className="asset-download">
+                  Download
                 </a>
               </div>
             </div>
 
-            {/* SIDEBAR */}
-            <div className="press-sidebar">
-              <div className="card mb-4">
-                <div className="card-body">
-                  <h4 style={{ color: "var(--navy)", marginBottom: "8px" }}>Media Contact</h4>
-                  <p style={{ fontSize: "0.85rem", marginBottom: "16px" }}>
-                    For interview requests, guest bookings, and press inquiries:
-                  </p>
-                  <p style={{ fontSize: "0.88rem", color: "var(--navy)", fontWeight: 600 }}>Cyndee Harrison</p>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-light)", marginBottom: "4px" }}>Publicist</p>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-light)", marginBottom: "16px" }}>[Cyndee&apos;s email — add here]</p>
-                  <p style={{ fontSize: "0.88rem", color: "var(--navy)", fontWeight: 600 }}>Ralph Estep Jr.</p>
-                  <p style={{ fontSize: "0.82rem", color: "var(--text-light)" }}>
-                    <a href="mailto:ralph@askralph.com" style={{ color: "var(--navy)" }}>ralph@askralph.com</a>
-                  </p>
-                  <div style={{ marginTop: "20px" }}>
-                    <Link href="/contact" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                      Send Press Inquiry
-                    </Link>
-                  </div>
-                </div>
+            <div className="card card-hover asset-card rv d1">
+              <div className="asset-thumb asset-thumb-dark">
+                <div className="asset-logo-name" style={{ color: "var(--on-dark)" }}>Ralph Estep Jr.</div>
+                <div className="asset-logo-rule" />
+                <div className="asset-logo-tag">LPA · Author · Podcaster</div>
               </div>
-
-              <div className="card mb-4">
-                <div className="card-body">
-                  <h4 style={{ color: "var(--navy)", marginBottom: "14px" }} id="photos">Photo Downloads</h4>
-                  <div className="photo-download-grid">
-                    <div className="photo-download-item">
-                      <div className="photo-thumb" aria-hidden="true">📷</div>
-                      <div className="photo-download-meta">
-                        <strong>Headshot — Square</strong>
-                        <span>1000×1000px · PNG</span>
-                        <a href="#">Download ↓</a>
-                      </div>
-                    </div>
-                    <div className="photo-download-item">
-                      <div className="photo-thumb" aria-hidden="true">📷</div>
-                      <div className="photo-download-meta">
-                        <strong>Headshot — Horizontal</strong>
-                        <span>1200×800px · PNG</span>
-                        <a href="#">Download ↓</a>
-                      </div>
-                    </div>
-                    <div className="photo-download-item">
-                      <div className="photo-thumb" aria-hidden="true">📷</div>
-                      <div className="photo-download-meta">
-                        <strong>Headshot — Vertical</strong>
-                        <span>800×1200px · PNG</span>
-                        <a href="#">Download ↓</a>
-                      </div>
-                    </div>
-                    <div className="photo-download-item">
-                      <div className="photo-thumb" aria-hidden="true">🖼</div>
-                      <div className="photo-download-meta">
-                        <strong>Show Logos Pack</strong>
-                        <span>All 4 shows · ZIP</span>
-                        <a href="#">Download ↓</a>
-                      </div>
-                    </div>
-                  </div>
-                  <p style={{ fontSize: "0.72rem", color: "var(--text-light)", marginTop: "12px" }}>
-                    Replace # links above with real file download URLs. Host on Google
-                    Drive, Dropbox, or your web host.
-                  </p>
+              <div className="asset-meta">
+                <div>
+                  <p>Logo — Dark</p>
+                  <p>PNG + SVG available</p>
                 </div>
-              </div>
-
-              <div className="card">
-                <div className="card-body">
-                  <h4 style={{ color: "var(--navy)", marginBottom: "10px" }}>Speaker One-Sheet</h4>
-                  <p style={{ fontSize: "0.85rem", marginBottom: "16px" }}>
-                    One-page PDF with bio, topics, headshot, and contact details — ready for
-                    event committees.
-                  </p>
-                  <a href="#" className="btn btn-outline-navy" style={{ width: "100%", justifyContent: "center" }}>
-                    Download One-Sheet PDF
-                  </a>
-                  <p style={{ fontSize: "0.72rem", color: "var(--text-light)", marginTop: "10px" }}>
-                    Replace # with your PDF file URL. Create the PDF once branding is
-                    finalized.
-                  </p>
-                </div>
+                <a href="mailto:ralph@askralph.com?subject=Logo%20Request" className="asset-download">
+                  Download
+                </a>
               </div>
             </div>
+
+            <div className="card card-hover asset-card rv d2">
+              <div className="asset-thumb asset-thumb-light">
+                <div className="asset-logo-name" style={{ color: "var(--bg-navy)" }}>Ralph Estep Jr.</div>
+                <div className="asset-logo-rule" />
+                <div className="asset-logo-tag">LPA · Author · Podcaster</div>
+              </div>
+              <div className="asset-meta">
+                <div>
+                  <p>Logo — Light</p>
+                  <p>PNG + SVG available</p>
+                </div>
+                <a href="mailto:ralph@askralph.com?subject=Logo%20Request" className="asset-download">
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="card kit-request rv d3">
+            <div>
+              <p>Need a full press kit?</p>
+              <p>Email Ralph&apos;s team for a complete press kit including additional headshots, show artwork, and brand guidelines.</p>
+            </div>
+            <a href="mailto:ralph@askralph.com?subject=Press%20Kit%20Request" className="btn btn-navy">
+              Request Full Kit →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEDIA CONTACT ── */}
+      <section className="section-sm bg-navy text-center" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="radial-soft radial-quiz" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative", maxWidth: "560px" }}>
+          <h2 className="rv" style={{ marginBottom: "14px" }}>Get in touch with Ralph&apos;s team.</h2>
+          <p className="rv d1" style={{ marginBottom: "28px" }}>
+            For media inquiries, interview requests, and press opportunities — Ralph&apos;s
+            team responds within two business days.
+          </p>
+          <div className="media-contact-cta rv d2">
+            <a href="mailto:ralph@askralph.com?subject=Media%20Inquiry" className="btn btn-gold">
+              ralph@askralph.com
+            </a>
+            <p>Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE</p>
           </div>
         </div>
       </section>

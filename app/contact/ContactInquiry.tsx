@@ -27,27 +27,27 @@ const routingMessages: Partial<Record<InquiryType, ReactNode>> = {
   coaching: (
     <>
       For coaching inquiries, you can also use the dedicated form on the{" "}
-      <Link href="/coaching" style={{ color: "var(--navy)" }}>Coaching page</Link>.
+      <Link href="/coaching" style={{ color: "var(--h)" }}>Coaching page</Link>.
     </>
   ),
   speaking: (
     <>
       For speaking inquiries, you can also use the booking form on the{" "}
-      <Link href="/speaking#booking-form" style={{ color: "var(--navy)" }}>Speaking page</Link>{" "}
+      <Link href="/speaking#booking-form" style={{ color: "var(--h)" }}>Speaking page</Link>{" "}
       which captures event-specific details.
     </>
   ),
   press: (
     <>
       For press and media inquiries, please also see the{" "}
-      <Link href="/press" style={{ color: "var(--navy)" }}>Media Kit page</Link> for bios,
+      <Link href="/press" style={{ color: "var(--h)" }}>Media Kit page</Link> for bios,
       photos, and interview angles.
     </>
   ),
   accounting: (
     <>
       For accounting services, you can also contact Saggio Management Group directly at{" "}
-      <a href="https://saggioaccounting.com" style={{ color: "var(--navy)" }} target="_blank" rel="noopener">
+      <a href="https://saggioaccounting.com" style={{ color: "var(--h)" }} target="_blank" rel="noopener">
         saggioaccounting.com
       </a>
       .
@@ -107,10 +107,10 @@ export default function ContactInquiry() {
         submitLabel="Send Message"
         submitStyle={{ padding: "14px 32px" }}
         footer={
-          <p style={{ fontSize: "0.78rem", color: "var(--text-light)", marginTop: "10px" }}>
+          <p style={{ fontSize: "0.78rem", color: "var(--muted2)", marginTop: "10px" }}>
             Ralph&apos;s team responds within 2 business days. For accounting services, you can
             also reach Saggio Management Group directly at{" "}
-            <a href="https://saggioaccounting.com" target="_blank" rel="noopener" style={{ color: "var(--navy)" }}>
+            <a href="https://saggioaccounting.com" target="_blank" rel="noopener" style={{ color: "var(--h)" }}>
               saggioaccounting.com
             </a>
             .

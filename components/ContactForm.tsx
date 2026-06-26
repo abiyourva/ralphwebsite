@@ -27,7 +27,7 @@ export default function ContactForm({
   id,
   submitLabel = "Send Message",
   successLabel = "Message sent! ✓",
-  submitClassName = "btn btn-primary",
+  submitClassName = "btn btn-navy",
   submitStyle,
   footer,
 }: ContactFormProps) {

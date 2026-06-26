@@ -1,40 +1,79 @@
-/* ── SHOWS PAGE (ported from shows.html <style>) ── */
-.show-feature {
+/* ── SHOWS PAGE (2026 redesign) ── */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.shows-hero { padding: 140px 56px 80px; background: var(--bg-navy); position: relative; overflow: hidden; }
+.shows-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(200,151,61,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.shows-hero h1 { color: var(--on-dark); margin-bottom: 24px; }
+.shows-hero h1 em { color: var(--gold); font-style: italic; }
+.shows-hero p { color: var(--on-dark-m); font-size: 17px; max-width: 520px; }
+
+.show-feature { padding: 96px 56px; }
+.show-feature-grid {
+  max-width: 1060px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 80px;
   align-items: center;
-  padding: 72px 0;
-  border-bottom: 1px solid var(--gray-mid);
 }
-.show-feature:last-of-type { border-bottom: none; }
-.show-visual {
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-}
-.show-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-.platform-link {
+
+.live-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border: 1.5px solid var(--gray-mid);
-  border-radius: var(--radius);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-  transition: all 0.18s;
-  background: var(--white);
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(200,151,61,0.12);
+  border: 1px solid rgba(200,151,61,0.25);
+  border-radius: 2px;
+  margin-bottom: 24px;
 }
-.platform-link:hover {
-  border-color: var(--navy-mid);
-  color: var(--navy);
-  box-shadow: var(--shadow-sm);
+.live-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s ease infinite; }
+.live-badge span { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+
+.plain-badge {
+  display: inline-flex;
+  padding: 5px 14px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-bottom: 24px;
 }
-@media (max-width: 700px) {
-  .show-feature { grid-template-columns: 1fr; gap: 32px; }
+.plain-badge span { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+.show-feature h2 { font-size: clamp(30px, 3.5vw, 46px); margin-bottom: 16px; }
+.show-feature-desc { font-size: 17px; font-weight: 300; line-height: 1.78; color: var(--muted); margin-bottom: 24px; }
+
+.arrow-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.arrow-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; font-weight: 300; color: var(--muted); }
+.arrow-list li::before { content: "→"; color: var(--gold); font-weight: 600; flex-shrink: 0; }
+
+.show-cover { aspect-ratio: 1/1; border-radius: 4px; overflow: hidden; position: relative; }
+.show-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+.show-cover-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #0F1D34, #1B2D4F);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: 12px; padding: 32px;
+}
+.show-cover-placeholder-text { font-family: var(--font-cormorant), serif; font-size: 52px; font-weight: 700; color: var(--gold); line-height: 1; text-align: center; }
+.show-cover-placeholder-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,250,247,0.4); text-align: center; }
+
+.show-cover-banner {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--gold);
+  padding: 11px;
+  text-align: center;
+}
+.show-cover-banner span { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0A0C10; }
+
+@media (max-width: 860px) {
+  .show-feature-grid { grid-template-columns: 1fr; gap: 32px; }
 }
