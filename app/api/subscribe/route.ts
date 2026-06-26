@@ -23,11 +23,13 @@ export async function POST(request: Request) {
     body: JSON.stringify({ email_address: email }),
   });
 
+  const detail = await kitRes.text();
+
   if (!kitRes.ok) {
-    const detail = await kitRes.text();
     console.error("Kit subscribe failed:", kitRes.status, detail);
     return NextResponse.json({ error: "Subscription failed" }, { status: 502 });
   }
 
+  console.log("Kit subscribe response:", kitRes.status, detail);
   return NextResponse.json({ ok: true });
 }
