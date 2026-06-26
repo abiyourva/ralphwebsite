@@ -41,37 +41,54 @@ export default function EmailCaptureForm({
   successLabel = "You're in! ✓",
 }: EmailCaptureFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
-    // TODO: wire to email provider (Kit/ConvertKit, MailerLite, etc.)
-    console.log("Email captured:", email);
+    setError(false);
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("subscribe failed");
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    }
   }
 
   return (
-    <form id={id} className={className} style={formStyle} aria-label={formAriaLabel} onSubmit={handleSubmit}>
-      <input
-        type="email"
-        className={inputClassName}
-        style={inputStyle}
-        placeholder={placeholder}
-        required
-        aria-label={inputAriaLabel}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        disabled={submitted}
-      />
-      <button
-        type="submit"
-        className={buttonClassName}
-        style={submitted ? { ...buttonStyle, background: "#2A6049" } : buttonStyle}
-        disabled={submitted}
-      >
-        {submitted ? successLabel : buttonLabel}
-      </button>
-    </form>
+    <>
+      <form id={id} className={className} style={formStyle} aria-label={formAriaLabel} onSubmit={handleSubmit}>
+        <input
+          type="email"
+          className={inputClassName}
+          style={inputStyle}
+          placeholder={placeholder}
+          required
+          aria-label={inputAriaLabel}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          disabled={submitted}
+        />
+        <button
+          type="submit"
+          className={buttonClassName}
+          style={submitted ? { ...buttonStyle, background: "#2A6049" } : buttonStyle}
+          disabled={submitted}
+        >
+          {submitted ? successLabel : buttonLabel}
+        </button>
+      </form>
+      {error && (
+        <p role="alert" style={{ color: "#C0392B", fontSize: "0.85rem", marginTop: "8px" }}>
+          Something went wrong — please try again.
+        </p>
+      )}
+    </>
   );
 }
