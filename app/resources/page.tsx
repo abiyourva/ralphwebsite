@@ -6,202 +6,191 @@ import "./resources.css";
 export const metadata: Metadata = {
   title: "Books & Resources — Ralph Estep Jr.",
   description:
-    "Books, courses, and free financial tools from Ralph Estep Jr. — including the upcoming budgeting book and 10-part audio/video course bundle.",
+    "Books, courses, and free financial tools from Ralph Estep Jr. — including the upcoming budgeting book and the free Money Archetype Quiz.",
 };
 
-// Shared inline input styling for the free-resource email forms.
-const freeCardInputStyle = {
-  padding: "10px 14px",
-  border: "1.5px solid var(--gray-mid)",
-  borderRadius: "var(--radius)",
-  fontFamily: "inherit",
-  fontSize: "0.85rem",
-} as const;
+const TOOLS = [
+  {
+    icon: "📊",
+    title: "Monthly Budget Template",
+    description:
+      "A simple, no-frills spreadsheet for tracking income, expenses, and savings goals — used by Ralph's coaching clients.",
+    linkLabel: "Free Download →",
+    href: "#",
+    internal: false,
+  },
+  {
+    icon: "🧾",
+    title: "Debt Payoff Tracker",
+    description: "Visualize your debt payoff progress and stay motivated with this straightforward tracking tool.",
+    linkLabel: "Free Download →",
+    href: "#",
+    internal: false,
+  },
+  {
+    icon: "🎙",
+    title: "Free Creator Financial Audit",
+    description:
+      "Get a personalized review of your creator business finances — where you're leaving money on the table and how to fix it.",
+    linkLabel: "Get Free Audit →",
+    href: "https://contentcreatorsaccountant.com/audit",
+    internal: false,
+  },
+  {
+    icon: "🧠",
+    title: "Money Archetype Quiz",
+    description: "2 minutes. Discover how you're wired around money — and get a 7-day personalized email series.",
+    linkLabel: "Take the Quiz →",
+    href: "/money-archetype",
+    internal: true,
+  },
+];
 
 export default function ResourcesPage() {
   return (
     <>
-      <header className="page-hero">
-        <div className="container-narrow">
-          <span className="eyebrow">Books &amp; Resources</span>
-          <h1>Real tools you can use today.</h1>
-          <span className="gold-rule"></span>
-          <p>
-            The book, the course, and free resources built around the same mission as
-            everything Ralph does — equipping you with practical financial confidence.
+      {/* ── HERO ── */}
+      <header className="resources-hero">
+        <div className="resources-hero-radial" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative" }}>
+          <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Books &amp; Resources</p>
+          <h1 className="hero-in" style={{ animationDelay: "0.25s" }}>
+            Tools that go beyond
+            <br />
+            <em>just information.</em>
+          </h1>
+          <p className="hero-in" style={{ animationDelay: "0.38s" }}>
+            Books, free downloads, quizzes, and practical tools — everything Ralph has
+            built to help you move from knowing to doing.
           </p>
         </div>
       </header>
 
-      <section className="section-lg">
-        <div className="container">
-          {/* BOOK */}
-          <div className="resource-feature">
-            <div className="book-cover">
-              <div className="photo-placeholder" style={{ height: "100%", borderRadius: "var(--radius-lg)" }}>
-                <span className="photo-placeholder-icon">📖</span>
-                Add book cover image here
-                <br />
-                <small>Recommended: 600×800px</small>
-              </div>
+      {/* ── FREE QUIZ PROMO ── */}
+      <section className="section-sm bg-alt" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="radial-soft radial-quiz" aria-hidden="true" />
+        <div className="container quiz-promo-grid" style={{ position: "relative" }}>
+          <div>
+            <div className="quiz-promo-badge rv">
+              <span>Free · 2 Minutes</span>
             </div>
-            <div>
-              <span className="show-badge">Coming Soon</span>
-              <span className="eyebrow" style={{ marginTop: "16px" }}>The Book</span>
-              <h2>Give Every Dollar a Job</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                After 30+ years of sitting across from people who feel overwhelmed by their
-                finances, Ralph wrote the book he wishes everyone had access to from the
-                beginning. Not a theory book. Not a shame spiral in print. A real,
-                practical guide to taking control of your money — one dollar at a time.
-              </p>
-              <p className="mt-3">
-                Built around the principle of giving every dollar a job — knowing exactly
-                where your money is going and making intentional decisions about all of it
-                — this book is the companion to the Becoming Financially Confident show and
-                the foundation of everything Ralph teaches.
-              </p>
-              <ul className="check-list mt-4">
-                <li>~200 pages of practical, actionable financial guidance</li>
-                <li>No jargon, no judgment — written for real people in real situations</li>
-                <li>Built around Ralph&apos;s 30+ years of real-world client experience</li>
-                <li>Designed to work alongside the audio/video course bundle</li>
-              </ul>
-              <div className="mt-4">
-                <p style={{ fontSize: "0.88rem", color: "var(--text-light)", marginBottom: "14px" }}>
-                  Be the first to know when it&apos;s available:
-                </p>
-                <EmailCaptureForm
-                  className="email-form-left email-capture-form"
-                  formAriaLabel="Book launch notification"
-                  placeholder="Your email address"
-                  inputAriaLabel="Email for book notification"
-                  buttonLabel="Notify Me at Launch"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* COURSE */}
-          <div className="resource-feature">
-            <div>
-              <span className="show-badge">Coming Soon</span>
-              <span className="eyebrow" style={{ marginTop: "16px" }}>The Course</span>
-              <h2>Becoming Financially Confident: The 10-Part Course</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                The book in your hands, the course in your ears and eyes. Ralph&apos;s 10-part
-                audio and video course bundle takes the core content from the budgeting
-                book and walks you through it step by step — at your own pace, in your own
-                time.
-              </p>
-              <p className="mt-3">
-                Each module builds on the last. By the end, you won&apos;t just have a budget —
-                you&apos;ll have a financial system that runs itself, and the confidence that
-                comes from actually understanding your money.
-              </p>
-              <div className="grid-2 mt-4" style={{ gap: "16px" }}>
-                <div style={{ padding: "16px", background: "var(--gold-faint)", borderRadius: "var(--radius)", border: "1px solid var(--gold-pale)" }}>
-                  <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>10 Modules</strong>
-                  <p style={{ fontSize: "0.82rem", margin: "4px 0 0" }}>Complete financial curriculum from foundation to confidence</p>
-                </div>
-                <div style={{ padding: "16px", background: "var(--gold-faint)", borderRadius: "var(--radius)", border: "1px solid var(--gold-pale)" }}>
-                  <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>Audio + Video</strong>
-                  <p style={{ fontSize: "0.82rem", margin: "4px 0 0" }}>Learn your way — listen on the go or watch at your desk</p>
-                </div>
-                <div style={{ padding: "16px", background: "var(--gold-faint)", borderRadius: "var(--radius)", border: "1px solid var(--gold-pale)" }}>
-                  <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>Self-Paced</strong>
-                  <p style={{ fontSize: "0.82rem", margin: "4px 0 0" }}>No deadline, no pressure — go at the pace that works for your life</p>
-                </div>
-                <div style={{ padding: "16px", background: "var(--gold-faint)", borderRadius: "var(--radius)", border: "1px solid var(--gold-pale)" }}>
-                  <strong style={{ color: "var(--navy)", fontSize: "0.88rem" }}>Works with the Book</strong>
-                  <p style={{ fontSize: "0.82rem", margin: "4px 0 0" }}>Built to complement the book — use together for maximum impact</p>
-                </div>
-              </div>
-              <div className="mt-4">
-                <Link href="/contact" className="btn btn-primary">Join the Waitlist</Link>
-              </div>
-            </div>
-            <div style={{ aspectRatio: "1", background: "linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%)", borderRadius: "var(--radius-lg)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem", boxShadow: "var(--shadow-lg)" }}>
-              🎓
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FREE RESOURCES */}
-      <section className="section bg-cream">
-        <div className="container">
-          <div className="text-center mb-5">
-            <span className="eyebrow">No Cost, No Catch</span>
-            <h2>Free resources to get you started.</h2>
-            <span className="gold-rule"></span>
-            <p style={{ maxWidth: "560px", margin: "0 auto" }}>
-              Not ready for the book or course yet? Start here. These free tools are built
-              on the same foundation — practical, actionable, and judgment-free.
+            <h2 className="rv d1" style={{ marginBottom: "16px" }}>What&apos;s your Money Archetype?</h2>
+            <p className="rv d2" style={{ marginBottom: "28px" }}>
+              Discover how you&apos;re wired to relate to wealth, work, and legacy — then
+              get a personalized 7-day email sequence built around your archetype.
             </p>
+            <ul className="arrow-list-simple rv d3" style={{ marginBottom: "32px" }}>
+              <li>Takes about 2 minutes</li>
+              <li>Completely free, no credit card</li>
+              <li>Personalized 7-day follow-up sequence</li>
+            </ul>
+            <Link href="/money-archetype" className="btn btn-gold rv d4">Take the Free Quiz →</Link>
           </div>
-          <div className="free-grid">
-            <div className="free-card">
-              <span className="free-card-icon" aria-hidden="true">📋</span>
-              <h4>Monthly Budget Worksheet</h4>
-              <p>The same worksheet Ralph uses with coaching clients. Give every dollar a job — starting this month.</p>
-              <EmailCaptureForm
-                className="email-capture-form"
-                formStyle={{ display: "flex", flexDirection: "column", gap: "10px" }}
-                formAriaLabel="Monthly budget worksheet signup"
-                placeholder="Email for free download"
-                inputStyle={freeCardInputStyle}
-                buttonLabel="Get the Worksheet"
-                buttonStyle={{ justifyContent: "center", padding: "10px 20px", fontSize: "0.82rem" }}
-              />
+          <div className="card quiz-promo-card rv d1">
+            <div className="quiz-promo-card-circle" aria-hidden="true" />
+            <div className="quiz-promo-card-emoji">🧠</div>
+            <h3>Know your Money Archetype</h3>
+            <p>Understanding how you relate to money is the first step toward changing your relationship with it.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── BOOKS ── */}
+      <section className="section">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Books</p>
+          <h2 className="rv d1" style={{ marginBottom: "48px" }}>Written by Ralph.</h2>
+          <div className="book-cover-grid">
+            <div className="card card-hover book-card rv">
+              <span className="book-badge">Coming Soon 2027</span>
+              <div className="book-cover book-cover-bfc">
+                <div className="book-cover-title">Becoming<br />Financially<br />Confident</div>
+                <div className="book-cover-rule" />
+                <div className="book-cover-author">Ralph Estep Jr.</div>
+              </div>
+              <div className="book-card-body">
+                <h3>Becoming Financially Confident</h3>
+                <p>
+                  The companion book to the show — practical steps to build lasting
+                  financial confidence, from someone who&apos;s spent 30 years helping real
+                  people with real money problems. Coming 2027.
+                </p>
+                <span className="book-card-notify">Notify Me When Available</span>
+              </div>
             </div>
-            <div className="free-card">
-              <span className="free-card-icon" aria-hidden="true">🎙</span>
-              <h4>Creator Revenue Audit</h4>
-              <p>A free assessment of your creator business finances. Are your numbers actually working for you?</p>
-              <a
-                href="https://contentcreatorsaccountant.com/audit"
-                className="btn btn-primary"
-                style={{ justifyContent: "center", padding: "10px 20px", fontSize: "0.82rem", width: "100%" }}
-                target="_blank"
-                rel="noopener"
-              >
-                Take the Free Audit →
-              </a>
-            </div>
-            <div className="free-card">
-              <span className="free-card-icon" aria-hidden="true">📧</span>
-              <h4>Weekly Financial Tips</h4>
-              <p>Short, practical financial guidance delivered to your inbox every week. No fluff, just tools.</p>
-              <EmailCaptureForm
-                className="email-capture-form"
-                formStyle={{ display: "flex", flexDirection: "column", gap: "10px" }}
-                formAriaLabel="Weekly financial tips signup"
-                placeholder="Email for weekly tips"
-                inputStyle={freeCardInputStyle}
-                buttonLabel="Subscribe Free"
-                buttonStyle={{ justifyContent: "center", padding: "10px 20px", fontSize: "0.82rem" }}
-              />
+
+            <div className="card card-hover book-card rv d1">
+              <span className="book-badge">Coming Soon 2027</span>
+              <div className="book-cover book-cover-cca">
+                <div style={{ fontSize: "36px", lineHeight: 1, marginBottom: "4px" }}>🎙</div>
+                <div className="book-cover-title">The Content<br />Creator&apos;s<br />Accountant</div>
+                <div className="book-cover-author">Ralph Estep Jr.</div>
+              </div>
+              <div className="book-card-body">
+                <h3>The Content Creator&apos;s Accountant</h3>
+                <p>
+                  Everything podcasters and content creators need to know about
+                  running a financially healthy creative business — taxes, structure,
+                  revenue, and more. Coming 2027.
+                </p>
+                <span className="book-card-notify">Notify Me When Available</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section bg-navy text-center">
-        <div className="container-narrow">
-          <span className="eyebrow" style={{ color: "var(--gold-light)" }}>Not Just Informed</span>
-          <h2 style={{ color: "var(--white)" }}>Equipped.</h2>
-          <span className="gold-rule"></span>
-          <p style={{ marginTop: "24px" }}>
-            Every book, course, and free resource exists to give you what most financial
-            content leaves out: not just the information, but the confidence and tools to
-            actually act on it.
+      {/* ── FREE TOOLS ── */}
+      <section className="section bg-alt">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Free Downloads &amp; Tools</p>
+          <h2 className="rv d1" style={{ marginBottom: "48px" }}>Practical tools, no cost.</h2>
+          <div className="grid-2">
+            {TOOLS.map((tool, i) =>
+              tool.internal ? (
+                <Link key={tool.title} href={tool.href} className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}>
+                  <div className="tool-card-icon">{tool.icon}</div>
+                  <div>
+                    <h3>{tool.title}</h3>
+                    <p>{tool.description}</p>
+                    <span className="tool-card-link">{tool.linkLabel}</span>
+                  </div>
+                </Link>
+              ) : (
+                <a
+                  key={tool.title}
+                  href={tool.href}
+                  target={tool.href.startsWith("http") ? "_blank" : undefined}
+                  rel={tool.href.startsWith("http") ? "noopener" : undefined}
+                  className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}
+                >
+                  <div className="tool-card-icon">{tool.icon}</div>
+                  <div>
+                    <h3>{tool.title}</h3>
+                    <p>{tool.description}</p>
+                    <span className="tool-card-link">{tool.linkLabel}</span>
+                  </div>
+                </a>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ── EMAIL CTA ── */}
+      <section className="section-sm bg-navy text-center" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="radial-soft radial-quiz" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative", maxWidth: "520px" }}>
+          <h2 className="rv" style={{ marginBottom: "14px" }}>Get new resources delivered free.</h2>
+          <p className="rv d1" style={{ marginBottom: "28px" }}>
+            Join the Becoming Financially Confident community and be first to get new
+            tools, templates, and episodes.
           </p>
-          <Link href="/coaching" className="btn btn-primary" style={{ marginTop: "28px" }}>
-            Work With Ralph Directly →
-          </Link>
+          <div className="rv d2">
+            <EmailCaptureForm placeholder="Your email address" buttonLabel="Join Free" />
+          </div>
         </div>
       </section>
     </>

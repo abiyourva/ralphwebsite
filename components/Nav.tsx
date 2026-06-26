@@ -1,21 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { desktopLinks } from "./navLinks";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 
-// Fixed navy nav bar. Holds the mobile-menu open state (ported from the
-// hamburger toggle in legacy main.js) and animates the three bars into an X
-// when open. Active link highlighting uses usePathname() instead of reading
-// location.pathname.
+// Fixed nav bar — transparent over the hero, frosted glass once scrolled.
+// Holds the mobile-menu open state and animates the hamburger into an X.
+// Active link highlighting uses usePathname().
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Inline transforms applied to the three hamburger bars when open — same
-  // values used in the original main.js.
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 50);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const barStyles: React.CSSProperties[] = open
     ? [
         { transform: "translateY(7px) rotate(45deg)" },
@@ -26,39 +34,37 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="site-nav" aria-label="Main navigation">
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            Ralph Estep <span className="accent">Jr.</span>
+      <nav className={`site-nav${scrolled ? " scrolled" : ""}`} aria-label="Main navigation">
+        <Link href="/" className="nav-logo">
+          Ralph Estep Jr.
+        </Link>
+
+        <div className="nav-links">
+          {desktopLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`nav-link${pathname === link.href ? " active" : ""}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <ThemeToggle />
+          <Link href="/contact" className="nav-cta">
+            Work With Ralph
           </Link>
-          <ul className="nav-links" role="list">
-            {desktopLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={pathname === link.href ? "active" : undefined}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/contact" className="btn btn-primary">
-                Work With Ralph
-              </Link>
-            </li>
-          </ul>
-          <button
-            className="nav-hamburger"
-            aria-label="Open menu"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span style={barStyles[0]}></span>
-            <span style={barStyles[1]}></span>
-            <span style={barStyles[2]}></span>
-          </button>
         </div>
+
+        <button
+          className="nav-hamburger"
+          aria-label="Open menu"
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span style={barStyles[0]}></span>
+          <span style={barStyles[1]}></span>
+          <span style={barStyles[2]}></span>
+        </button>
       </nav>
 
       <MobileMenu open={open} onNavigate={() => setOpen(false)} />

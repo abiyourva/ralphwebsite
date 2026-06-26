@@ -31,7 +31,7 @@ export default function CookieBanner() {
         This site uses cookies for analytics and to improve your experience. See our{" "}
         <Link href="/privacy">Privacy Policy</Link> for details.
       </p>
-      <button type="button" className="btn btn-primary" onClick={handleAccept}>
+      <button type="button" className="btn btn-gold" onClick={handleAccept}>
         Accept
       </button>
     </div>

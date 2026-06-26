@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
+import Link from "next/link";
 
 type Screen = "welcome" | "quiz" | "results";
 type ArchetypeType = "believer" | "builder" | "steward";
@@ -188,7 +189,6 @@ function calculateArchetype(answers: Record<number, string>): ArchetypeType {
     steward: 0,
   };
 
-  // Score multiple choice answers (questions 0-3)
   for (let i = 0; i < 4; i++) {
     const answer = answers[i];
     if (!answer) continue;
@@ -198,7 +198,6 @@ function calculateArchetype(answers: Record<number, string>): ArchetypeType {
     }
   }
 
-  // Score open-ended answer (question 4) with keyword matching
   const openText = (answers[4] ?? "").toLowerCase().trim();
   if (openText) {
     (Object.keys(KEYWORDS) as ArchetypeType[]).forEach((archetype) => {
@@ -210,7 +209,6 @@ function calculateArchetype(answers: Record<number, string>): ArchetypeType {
     });
   }
 
-  // Determine winner (ties resolve to first in order: believer > builder > steward)
   let result: ArchetypeType = "believer";
   let maxScore = -1;
   (Object.keys(scores) as ArchetypeType[]).forEach((key) => {
@@ -250,7 +248,7 @@ export default function MoneyArchetypeQuiz() {
     const trimmedEmail = userEmail.trim();
 
     if (!trimmedName) {
-      setWelcomeError("Please enter your name.");
+      setWelcomeError("Please enter your first name.");
       return;
     }
     if (!trimmedEmail || !isValidEmail(trimmedEmail)) {
@@ -311,228 +309,205 @@ export default function MoneyArchetypeQuiz() {
   const question = QUESTIONS[currentQuestion];
 
   return (
-    <div className="quiz-wrap">
-      {/* Progress bar — visible during quiz and results */}
-      {(screen === "quiz" || screen === "results") && (
-        <div className="mb-4">
-          <div className="quiz-progress-label">
-            <span>Progress</span>
-            <span>{progress}%</span>
-          </div>
-          <div className="quiz-progress-track">
-            <div className="quiz-progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-        </div>
-      )}
-
-      {/* Welcome Screen */}
+    <main className="quiz-main">
+      {/* ══ WELCOME SCREEN ══ */}
       {screen === "welcome" && (
-        <div className="card">
-          <div className="card-body">
-            <div className="text-center mb-4">
-              <div className="quiz-icon-circle" aria-hidden="true">🎯</div>
-              <h2>Discover Your Money Archetype</h2>
-              <p>
-                Take this 2-minute quiz to uncover how you&apos;re wired to relate to wealth,
-                work, and legacy.
-              </p>
-            </div>
-
-            <div className="photo-placeholder quiz-video-placeholder">
-              <span className="photo-placeholder-icon">▶️</span>
-              Ralph&apos;s 90-second intro video
+        <div className="quiz-screen welcome-grid">
+          <div className="welcome-hero">
+            <div className="welcome-hero-glow-1" aria-hidden="true" />
+            <div className="welcome-hero-glow-2" aria-hidden="true" />
+            <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Free Quiz · 2 Minutes</p>
+            <h1 className="hero-in" style={{ animationDelay: "0.25s" }}>
+              Discover Your
               <br />
-              <small>Video placeholder</small>
+              <em>Money Archetype</em>
+            </h1>
+            <p className="hero-in" style={{ animationDelay: "0.4s" }}>
+              Uncover how you&apos;re wired to relate to wealth, work, and legacy — then
+              get a personalized 7-day email sequence built just for you.
+            </p>
+            <div className="welcome-video hero-in" style={{ animationDelay: "0.5s" }}>
+              <div className="welcome-video-play">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--gold)">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </div>
+              <p>Ralph&apos;s 90-second intro video</p>
+            </div>
+          </div>
+
+          <div className="welcome-form">
+            <p className="eyebrow">Get started</p>
+            <h2>Enter your details</h2>
+            <p className="welcome-form-sub">
+              We&apos;ll send your results and a personalized 7-day email sequence.
+            </p>
+
+            <div className="welcome-fields">
+              <div>
+                <label htmlFor="quiz-name">First Name</label>
+                <input
+                  id="quiz-name"
+                  type="text"
+                  className="quiz-input"
+                  placeholder="Your first name"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="quiz-email">Email Address</label>
+                <input
+                  id="quiz-email"
+                  type="email"
+                  className="quiz-input"
+                  placeholder="you@example.com"
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                />
+              </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="quiz-name">First Name</label>
-              <input
-                id="quiz-name"
-                type="text"
-                placeholder="Enter your first name"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            </div>
+            {welcomeError && <p className="quiz-error" role="alert">{welcomeError}</p>}
 
-            <div className="form-group">
-              <label htmlFor="quiz-email">Email Address</label>
-              <input
-                id="quiz-email"
-                type="email"
-                placeholder="you@example.com"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-              />
-            </div>
-
-            {welcomeError && (
-              <p className="quiz-error" role="alert">{welcomeError}</p>
-            )}
-
-            <button
-              type="button"
-              onClick={handleStartQuiz}
-              className="btn btn-primary"
-              style={{ width: "100%", justifyContent: "center" }}
-            >
-              Start the Quiz →
+            <button type="button" onClick={handleStartQuiz} className="btn-primary gold btn-block">
+              Start the Quiz &nbsp;→
             </button>
 
-            <p className="quiz-disclaimer">
-              Your information is secure. We&apos;ll send your results and a personalized
-              7-day email sequence.
-            </p>
+            <p className="welcome-disclaimer">Your information is secure and never sold.</p>
           </div>
         </div>
       )}
 
-      {/* Quiz Screen */}
+      {/* ══ QUIZ SCREEN ══ */}
       {screen === "quiz" && question && (
-        <div className="card">
-          <div className="card-body">
-            <p className="eyebrow" style={{ marginBottom: "8px" }}>
-              Question {currentQuestion + 1} of {QUESTIONS.length}
-            </p>
-            <h3>{question.question}</h3>
-            {question.subtitle && (
-              <p className="mb-3" style={{ fontSize: "0.9rem" }}>{question.subtitle}</p>
-            )}
-
-            {question.type === "multiple-choice" && question.options && (
-              <div className="quiz-options mt-3">
-                {question.options.map((option) => {
-                  const isSelected = currentAnswer === option.value;
-                  return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => handleSelectOption(option.value)}
-                      className={`quiz-option${isSelected ? " selected" : ""}`}
-                    >
-                      <span className="quiz-option-dot" aria-hidden="true">
-                        {isSelected ? "✓" : ""}
-                      </span>
-                      <span className="quiz-option-label">{option.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-
-            {question.type === "open-ended" && (
-              <div className="form-group mt-3">
-                <textarea
-                  value={currentAnswer}
-                  onChange={(e) => handleOpenEndedChange(e.target.value)}
-                  placeholder={question.placeholder}
-                  style={{ minHeight: "120px" }}
-                />
-                <p className="quiz-textarea-hint">
-                  This helps us personalize your 7-day email sequence.
-                </p>
-              </div>
-            )}
-
-            <div className="quiz-actions">
-              <button
-                type="button"
-                onClick={handleBack}
-                disabled={currentQuestion === 0}
-                className="btn btn-outline-navy"
-                style={{ opacity: currentQuestion === 0 ? 0.5 : 1 }}
-              >
-                ← Back
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={!canProceed}
-                className="btn btn-primary"
-                style={{ opacity: canProceed ? 1 : 0.5 }}
-              >
-                {currentQuestion === QUESTIONS.length - 1 ? "See My Results" : "Next"} →
-              </button>
+        <div className="quiz-screen quiz-body">
+          <div>
+            <div className="quiz-progress-row">
+              <span className="quiz-progress-label">Question {currentQuestion + 1} of {QUESTIONS.length}</span>
+              <span className="quiz-progress-pct">{progress}%</span>
             </div>
+            <div className="progress-track">
+              <div className="progress-fill" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
+
+          <div className="quiz-question">
+            <h2>{question.question}</h2>
+            {question.subtitle && <p>{question.subtitle}</p>}
+          </div>
+
+          {question.type === "multiple-choice" && question.options && (
+            <div className="opt-list">
+              {question.options.map((option) => {
+                const isSelected = currentAnswer === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => handleSelectOption(option.value)}
+                    className={`opt-card${isSelected ? " selected" : ""}`}
+                  >
+                    <span className="opt-radio" aria-hidden="true" />
+                    <span className="opt-label">{option.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {question.type === "open-ended" && (
+            <div style={{ marginBottom: "48px" }}>
+              <textarea
+                className="quiz-input"
+                value={currentAnswer}
+                onChange={(e) => handleOpenEndedChange(e.target.value)}
+                placeholder={question.placeholder}
+              />
+              <p className="open-ended-hint">This helps personalize your 7-day email sequence.</p>
+            </div>
+          )}
+
+          <div className="quiz-nav-row">
+            <button type="button" onClick={handleBack} disabled={currentQuestion === 0} className="btn-outline">
+              ← Back
+            </button>
+            <button type="button" onClick={handleNext} disabled={!canProceed} className="btn-primary">
+              {currentQuestion === QUESTIONS.length - 1 ? "See My Results" : "Next"} →
+            </button>
           </div>
         </div>
       )}
 
-      {/* Results Screen */}
+      {/* ══ RESULTS SCREEN ══ */}
       {screen === "results" && archetype && (
-        <div>
-          {/* Archetype Hero */}
-          <div className="card quiz-result-hero">
-            <div className="card-body">
-              <div className="quiz-archetype-emoji" aria-hidden="true">
-                {ARCHETYPES[archetype].emoji}
-              </div>
-              <p className="quiz-result-kicker">You are...</p>
-              <h2>{ARCHETYPES[archetype].name}</h2>
-              <p className="quiz-result-tagline">{ARCHETYPES[archetype].tagline}</p>
-              <p className="mt-3">{ARCHETYPES[archetype].description}</p>
+        <div className="quiz-screen">
+          <div className="result-hero-section">
+            <div className="result-hero-glow" aria-hidden="true" />
+            <div className="result-hero">
+              <p className="result-kicker">{userName || "You"}, you are…</p>
+              <div className="result-emoji">{ARCHETYPES[archetype].emoji}</div>
+              <h1>{ARCHETYPES[archetype].name}</h1>
+              <p className="result-tagline">{ARCHETYPES[archetype].tagline}</p>
+              <p className="result-description">{ARCHETYPES[archetype].description}</p>
             </div>
           </div>
 
-          {/* Strengths */}
-          <div className="card quiz-section">
-            <div className="card-body">
-              <h3>Your Money Strengths</h3>
-              <ul className="check-list">
+          <div className="result-details">
+            <div className="result-detail-grid">
+              <div className="result-card result-card-surface">
+                <span className="gold-rule-left gold-rule" style={{ width: "32px", margin: "0 0 16px" }} />
+                <h3>Your Money Strengths</h3>
                 {ARCHETYPES[archetype].strengths.map((strength, index) => (
-                  <li key={index}>{strength}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Growth Path */}
-          <div className="card quiz-section">
-            <div className="card-body">
-              <h3>Your Growth Path</h3>
-              <p>{ARCHETYPES[archetype].growthPath}</p>
-            </div>
-          </div>
-
-          {/* Email Confirmation */}
-          <div className="notice-banner quiz-section quiz-email-confirm">
-            <span className="quiz-email-confirm-icon" aria-hidden="true">✓</span>
-            <div>
-              <strong>Email confirmed</strong>
-              <span>Your personalized results will be sent to {userEmail || "your email"}.</span>
-            </div>
-          </div>
-
-          {/* 7-Day Email Sequence */}
-          <div className="card quiz-section">
-            <div className="card-body">
-              <h3>Your 7-Day Email Sequence</h3>
-              <p className="mb-3" style={{ fontSize: "0.88rem" }}>
-                A personalized message delivered each day leading up to the BFC launch.
-              </p>
-              <div className="quiz-day-list">
-                {SEQUENCES[archetype].map((day) => (
-                  <div key={day.day} className="quiz-day-item">
-                    <span className="quiz-day-num" aria-hidden="true">{day.day}</span>
-                    <span className="quiz-day-subject">{day.subject}</span>
+                  <div key={index} className="strength-item">
+                    <span className="strength-check" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span>{strength}</span>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
 
-          {/* Retake CTA */}
-          <div className="quiz-actions quiz-section">
-            <button type="button" onClick={handleRetake} className="btn btn-outline-navy">
-              ↺ Take Quiz Again
-            </button>
-            <a href="/shows#bfc" className="btn btn-primary">
-              Join the BFC Launch →
-            </a>
+              <div className="result-card result-card-alt">
+                <span className="gold-rule-left gold-rule" style={{ width: "32px", margin: "0 0 16px" }} />
+                <h3>Your Growth Path</h3>
+                <p style={{ fontSize: "16px", lineHeight: 1.82 }}>{ARCHETYPES[archetype].growthPath}</p>
+              </div>
+            </div>
+
+            <div className="sequence-card">
+              <div className="sequence-header">
+                <div>
+                  <span className="gold-rule-left gold-rule" style={{ width: "32px", margin: "0 0 14px" }} />
+                  <h3>Your 7-Day Email Sequence</h3>
+                </div>
+                <div className="sequence-sent-badge">
+                  <span>Sent to {userEmail || "your email"}</span>
+                </div>
+              </div>
+              {SEQUENCES[archetype].map((day) => (
+                <div key={day.day} className="seq-item">
+                  <span className="seq-num">
+                    <span>{day.day}</span>
+                  </span>
+                  <p>{day.subject}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="result-cta-row">
+              <button type="button" onClick={handleRetake} className="btn-outline">
+                ↺ Retake Quiz
+              </button>
+              <Link href="/shows#bfc" className="btn-primary gold">
+                Join the BFC Community →
+              </Link>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }

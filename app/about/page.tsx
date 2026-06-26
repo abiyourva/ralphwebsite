@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import HobbyPhotos from "@/components/HobbyPhotos";
 import "./about.css";
 
 export const metadata: Metadata = {
@@ -9,210 +10,226 @@ export const metadata: Metadata = {
     "Meet Ralph Estep Jr. — a Licensed Public Accountant with 30+ years of experience whose childhood shaped a lifelong mission to help everyday people build real financial confidence.",
 };
 
+const CREDENTIALS = [
+  {
+    title: "Licensed Public Accountant",
+    description:
+      "Pennsylvania LPA with 30+ years of hands-on accounting, tax, and financial planning experience for individuals and businesses.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Business Coach",
+    description:
+      "Helping entrepreneurs and everyday people build real financial confidence — with accountability, clarity, and a plan that actually works.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    title: "Author & Podcaster",
+    description:
+      "Host of 4 active shows and author of multiple titles on personal finance, faith, and creator economics — reaching hundreds of thousands of listeners.",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  },
+];
+
+const VALUES = [
+  {
+    title: "Empathy before everything",
+    description:
+      "You can't teach someone who feels ashamed or judged. Every conversation starts with meeting you where you are — not where you \"should\" be.",
+  },
+  {
+    title: "Real tools, not just information",
+    description:
+      "The internet is full of financial information. What's missing is the translation — turning knowledge into action. That's what I focus on.",
+  },
+  {
+    title: "Faith-informed, not faith-exclusive",
+    description:
+      "My faith informs how I approach stewardship and purpose. Whether or not you share that foundation, you're welcome at this table.",
+  },
+  {
+    title: "Long-term thinking",
+    description:
+      "Quick fixes create fragile situations. Everything I teach is built for durability — decisions and habits that compound over years, not just weeks.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
-      <header className="page-hero" aria-labelledby="about-heading">
-        <div className="container-narrow">
-          <span className="eyebrow">Meet Ralph</span>
-          <h1 id="about-heading">Thirty years of helping people realize it&apos;s going to be okay.</h1>
-          <span className="gold-rule"></span>
-          <p>
-            Licensed Public Accountant. Business Coach. Author. Podcaster. And the person
-            who wants to sit across the table from you and say: &quot;We can figure this out.&quot;
-          </p>
-        </div>
-      </header>
-
-      {/* ── MAIN STORY ── */}
-      <section className="section-lg">
-        <div className="container">
-          <div className="about-story">
-            <div className="about-content">
-              {/* CREDIBILITY BAR */}
-              <div className="cred-pills mb-5" role="list" aria-label="Credentials">
-                <span className="cred-pill" role="listitem">Licensed Public Accountant (LPA)</span>
-                <span className="cred-pill" role="listitem">30+ Years in Practice</span>
-                <span className="cred-pill" role="listitem">400K+ YouTube Subscribers</span>
-                <span className="cred-pill" role="listitem">Author &amp; Podcaster</span>
-                <span className="cred-pill" role="listitem">Business Coach</span>
-              </div>
-
-              {/* ORIGIN STORY */}
-              <span className="eyebrow">The Origin Story</span>
-              <h2>It started when I was eight years old.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-
-              <p className="mt-3">
-                When I was eight, family circumstances shifted in ways that most kids
-                never have to think about. I found myself stepping into a role that no
-                child should have to fill — helping manage our family&apos;s financial
-                situation, making decisions and navigating pressures that were far beyond
-                my years.
-              </p>
-
-              <p className="mt-3">
-                Most people would have let that experience leave them bitter, or anxious,
-                or just avoiding money conversations altogether. For me, it did the
-                opposite. It lit something. It made me understand from the inside out what
-                it feels like to sit at a table where the stakes are real and the
-                information feels overwhelming — and to desperately need someone who would
-                just look at you and say, &quot;It&apos;s going to be okay. Here&apos;s what we&apos;re going
-                to do.&quot;
-              </p>
-
-              <p className="mt-3">
-                I became a Licensed Public Accountant because I wanted to be that person.
-                Not the one who makes you feel small for not knowing. Not the one who
-                lectures you about what you should have done differently. The one who puts
-                an arm around you, tells you the truth, and walks with you toward
-                something better.
-              </p>
-
-              <div className="pullquote mt-4">
-                <p>
-                  &quot;I&apos;m not here to make you feel ashamed about where you are. I&apos;m here to
-                  help you build real confidence — the kind that comes from actually
-                  understanding your money and having a plan.&quot;
-                </p>
-                <cite>— Ralph Estep Jr., LPA</cite>
-              </div>
-
-              <p className="mt-3">
-                After more than thirty years in accounting and financial coaching, that
-                mission has never changed. The formats have evolved — from the desk to the
-                microphone, from one client at a time to hundreds of thousands of
-                listeners — but the core of it is still the same. You deserve to feel
-                confident about your finances. And you can get there.
-              </p>
-
-              {/* WHAT RALPH DOES */}
-              <span className="eyebrow mt-5" style={{ display: "block", marginTop: "48px" }}>
-                What Ralph Does
-              </span>
-              <h2>More than accounting. A whole ecosystem.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-2 mb-4">
-                Ralph works across four connected areas — each designed to meet people
-                where they are.
-              </p>
-
-              <div className="what-ralph-does">
-                <div className="does-card">
-                  <span className="does-card-icon" aria-hidden="true">🎙</span>
-                  <h4>Podcasting &amp; Media</h4>
-                  <p>Four active shows reaching listeners across personal finance, faith, and creator business topics.</p>
-                  <Link href="/shows">See all shows →</Link>
-                </div>
-                <div className="does-card">
-                  <span className="does-card-icon" aria-hidden="true">🤝</span>
-                  <h4>Coaching</h4>
-                  <p>One-on-one work with individuals and content creators who want real clarity and a real plan.</p>
-                  <Link href="/coaching">Learn about coaching →</Link>
-                </div>
-                <div className="does-card">
-                  <span className="does-card-icon" aria-hidden="true">🎤</span>
-                  <h4>Speaking</h4>
-                  <p>Events, conferences, and guest appearances on personal finance, creator economics, and entrepreneurship.</p>
-                  <Link href="/speaking">Book Ralph to speak →</Link>
-                </div>
-                <div className="does-card">
-                  <span className="does-card-icon" aria-hidden="true">📊</span>
-                  <h4>Accounting Practice</h4>
-                  <p>Saggio Management Group has served individuals and small businesses in Middletown, Delaware for over 30 years.</p>
-                  <a href="https://saggioaccounting.com" target="_blank" rel="noopener">Visit Saggio →</a>
-                </div>
-              </div>
-
-              {/* PERSONAL SECTION */}
-              <span className="eyebrow mt-5" style={{ display: "block", marginTop: "48px" }}>
-                The Person Behind the Work
-              </span>
-              <h2>Beyond the microphone.</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-2">
-                Ralph lives on what he calls his &quot;compound&quot; in Delaware — home, office,
-                and farm all in one place, with Black Angus cattle managed by a
-                neighboring farmer. He starts every day with exercise, rides motorcycles,
-                and recently became a grandfather for the first time.
-              </p>
-
-              <div className="personal-grid" aria-label="Personal details">
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">👨‍👩‍👦‍👦</span>
-                  <p>Married with two adult sons — one serving in the U.S. Coast Guard, one a barber</p>
-                </div>
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">🐄</span>
-                  <p>Lives on his &quot;compound&quot; in Delaware — home, office, and farm co-located</p>
-                </div>
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">👶</span>
-                  <p>Newly minted grandfather — first grandchild recently arrived</p>
-                </div>
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">🏍</span>
-                  <p>Avid motorcyclist and daily exerciser — 7 days a week, no exceptions</p>
-                </div>
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">📍</span>
-                  <p>Based in Middletown, Delaware — born and rooted in the community</p>
-                </div>
-                <div className="personal-item">
-                  <span className="personal-icon" aria-hidden="true">✝️</span>
-                  <p>Faith-driven — his values inform his work without overshadowing it</p>
-                </div>
-              </div>
+      {/* ── HERO ── */}
+      <section className="page-hero" aria-labelledby="about-heading">
+        <div className="page-hero-radial" aria-hidden="true" />
+        <div className="about-hero-grid">
+          <div>
+            <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>About Ralph</p>
+            <h1 id="about-heading" className="hero-in" style={{ animationDelay: "0.25s", marginBottom: "24px" }}>
+              Thirty years of sitting across the table.
+            </h1>
+            <p className="hero-sub hero-in" style={{ animationDelay: "0.38s", marginBottom: "32px" }}>
+              I&apos;m Ralph Estep Jr. — Licensed Public Accountant, business coach, author,
+              and podcaster. But more than any title, I&apos;m the person who puts an arm
+              around you and says: <em style={{ color: "var(--h)" }}>&quot;It&apos;s going to be okay.&quot;</em>
+            </p>
+            <div className="hero-cta hero-in" style={{ animationDelay: "0.48s" }}>
+              <Link href="/shows" className="btn btn-navy">Explore Shows</Link>
+              <Link href="/coaching" className="btn btn-ghost">Work Together</Link>
             </div>
-
-            {/* SIDEBAR PHOTO */}
-            <div className="about-photo">
-              <div className="about-photo-main">
-                <Image
-                  src="/images/ralph-headshot.png"
-                  alt="Ralph Estep Jr., LPA"
-                  width={1122}
-                  height={1402}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div>
-              <div className="card" style={{ marginTop: "24px" }}>
-                <div className="card-body">
-                  <h4 style={{ color: "var(--navy)", marginBottom: "12px" }}>Ready to get started?</h4>
-                  <p style={{ fontSize: "0.85rem", marginBottom: "16px" }}>
-                    Whether you want to work together directly or just tune in and learn,
-                    there&apos;s a place for you here.
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                    <Link href="/coaching" className="btn btn-primary" style={{ justifyContent: "center" }}>
-                      Explore Coaching
-                    </Link>
-                    <Link href="/shows" className="btn btn-outline-navy" style={{ justifyContent: "center" }}>
-                      Browse the Shows
-                    </Link>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div className="about-hero-photo">
+            <div className="about-hero-frame" aria-hidden="true" />
+            <div className="about-hero-photo-img">
+              <Image
+                src="/images/ralph-headshot.png"
+                alt="Ralph Estep Jr., LPA"
+                width={1122}
+                height={1402}
+                priority
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── MISSION STATEMENT ── */}
-      <section className="section bg-navy text-center" aria-labelledby="mission-heading">
+      {/* ── STATS ── */}
+      <section className="stats-bar" aria-label="By the numbers">
+        <div className="stats-grid">
+          <div className="stat-item rv">
+            <div className="stat-number">30+</div>
+            <div className="stat-label">Years in Practice</div>
+          </div>
+          <div className="stat-item rv d1">
+            <div className="stat-number">400K+</div>
+            <div className="stat-label">YouTube Subscribers</div>
+          </div>
+          <div className="stat-item rv d2">
+            <div className="stat-number">4</div>
+            <div className="stat-label">Active Shows</div>
+          </div>
+          <div className="stat-item rv d3">
+            <div className="stat-number">LPA</div>
+            <div className="stat-label">Licensed Public Accountant</div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STORY ── */}
+      <section className="section">
         <div className="container-narrow">
-          <span className="eyebrow" style={{ color: "var(--gold-light)" }}>The Mission</span>
-          <h2 id="mission-heading" style={{ color: "var(--white)" }}>Not just informed. Equipped.</h2>
-          <span className="gold-rule"></span>
-          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.1rem", marginTop: "24px" }}>
-            Real tools. Real confidence. Real change. That&apos;s what every show, every
-            coaching session, every conversation is built around. Because knowing
-            something and being able to act on it are two very different things — and you
-            deserve both.
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">The Origin Story</p>
+          <h2 className="rv d1" style={{ marginBottom: "32px" }}>It started when I was eight years old.</h2>
+          <div className="story-prose">
+            <p className="rv d1">
+              When family circumstances shifted unexpectedly, I found myself navigating
+              financial responsibilities that most kids never encounter. Before I could
+              drive, I was learning what it meant to stretch a dollar, to make hard
+              choices, and to carry the weight of money stress.
+            </p>
+            <p className="rv d2">
+              That experience never left me. It became the reason I pursued accounting,
+              the reason I started coaching, and the reason every piece of content I
+              create is rooted in empathy first — not judgment.
+            </p>
+            <p className="rv d3">
+              Over the last 30 years, I&apos;ve sat across the table from business owners,
+              families, and individuals at every financial stage — from
+              first-generation wealth builders to people in crisis. The thread running
+              through every conversation is the same:{" "}
+              <em>people need to feel seen before they can be helped.</em>
+            </p>
+            <p className="rv d4">
+              I&apos;m not here to lecture. I&apos;m here to put an arm around you and say:{" "}
+              <em>&quot;It&apos;s going to be okay — and here&apos;s how we&apos;re going to get there.&quot;</em>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CREDENTIALS ── */}
+      <section className="section-sm bg-alt">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Expertise &amp; Credentials</p>
+          <h2 className="rv d1" style={{ marginBottom: "48px" }}>What Ralph brings to the table</h2>
+          <div className="grid-3">
+            {CREDENTIALS.map((c, i) => (
+              <div key={c.title} className={`card card-pad card-hover rv${i > 0 ? ` d${i}` : ""}`}>
+                <div className="card-icon">{c.icon}</div>
+                <h3 style={{ marginBottom: "10px" }}>{c.title}</h3>
+                <p style={{ fontSize: "14px" }}>{c.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── VALUES ── */}
+      <section className="section">
+        <div className="container-narrow">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">How I Work</p>
+          <h2 className="rv d1" style={{ marginBottom: "44px" }}>The principles behind everything.</h2>
+          <div className="numbered-list">
+            {VALUES.map((v, i) => (
+              <div key={v.title} className={`numbered-item rv${i > 0 ? ` d${i}` : ""}`}>
+                <div className="numbered-index">{String(i + 1).padStart(2, "0")}</div>
+                <div>
+                  <h3 style={{ marginBottom: "8px" }}>{v.title}</h3>
+                  <p style={{ fontSize: "15px" }}>{v.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOBBIES ── */}
+      <section className="section bg-alt">
+        <div className="container">
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Beyond the Numbers</p>
+          <h2 className="rv d1" style={{ marginBottom: "12px" }}>The man off the clock.</h2>
+          <p className="rv d2" style={{ maxWidth: "560px", marginBottom: "48px" }}>
+            When Ralph isn&apos;t coaching clients or recording, you&apos;ll find him out on the
+            open road or on the softball field — where the same discipline and love of
+            community show up in a different uniform.
           </p>
-          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "36px" }}>
-            <Link href="/contact" className="btn btn-primary">Get in Touch</Link>
-            <Link href="/press" className="btn btn-outline">Media Kit →</Link>
+          <HobbyPhotos />
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="section-sm bg-navy text-center" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="radial-soft radial-quiz" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative", maxWidth: "560px" }}>
+          <h2 className="rv" style={{ marginBottom: "16px" }}>Ready to take the next step?</h2>
+          <p className="rv d1" style={{ marginBottom: "32px" }}>
+            Explore the shows, book Ralph to speak, or start a coaching conversation.
+            Whatever brings you here — there&apos;s a path forward.
+          </p>
+          <div className="rv d2" style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/coaching" className="btn btn-gold">Start Coaching</Link>
+            <Link href="/shows" className="btn btn-ghost-dark">Explore Shows</Link>
           </div>
         </div>
       </section>

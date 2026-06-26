@@ -1,11 +1,12 @@
-import { Lora, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 
-// Lora — serif display. Weights 400/600/700, plus italic 400/600.
-export const lora = Lora({
+// Cormorant Garamond — serif display (2026 redesign). Weights 400/500/600/700,
+// plus italic 400/600.
+export const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-lora",
+  variable: "--font-cormorant",
   display: "swap",
 });
 

@@ -1,11 +1,77 @@
-/* ── RESOURCES PAGE (ported from resources.html <style>) ── */
-.resource-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid var(--gray-mid); }
-.resource-feature:last-of-type { border-bottom: none; }
-.book-cover { aspect-ratio: 3/4; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
-.free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.free-card { padding: 28px; border: 1.5px solid var(--gray-mid); border-radius: var(--radius-lg); background: var(--white); text-align: center; transition: all 0.2s; }
-.free-card:hover { border-color: var(--navy-mid); box-shadow: var(--shadow-sm); }
-.free-card-icon { font-size: 2rem; display: block; margin-bottom: 14px; }
-.free-card h4 { color: var(--navy); margin-bottom: 8px; }
-.free-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
-@media (max-width: 700px) { .resource-feature { grid-template-columns: 1fr; gap: 32px; } .free-grid { grid-template-columns: 1fr; } }
+/* ── RESOURCES PAGE (2026 redesign) ── */
+
+.resources-hero { padding: 140px 56px 80px; background: var(--bg-navy); position: relative; overflow: hidden; }
+.resources-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 80% 50%, rgba(200,151,61,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.resources-hero h1 { color: var(--on-dark); margin-bottom: 24px; }
+.resources-hero h1 em { color: var(--gold); font-style: italic; }
+.resources-hero p { color: var(--on-dark-m); font-size: 17px; max-width: 520px; }
+
+.quiz-promo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.quiz-promo-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 14px;
+  background: rgba(200,151,61,0.15);
+  border: 1px solid rgba(200,151,61,0.3);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+.quiz-promo-badge span { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.quiz-promo-card {
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-promo-card-circle { position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(200,151,61,0.07); border-radius: 50%; pointer-events: none; }
+.quiz-promo-card-emoji { font-size: 56px; margin-bottom: 16px; }
+.quiz-promo-card h3 { margin-bottom: 10px; }
+.quiz-promo-card p { font-size: 14px; }
+
+.book-cover-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 720px; }
+.book-card { overflow: hidden; position: relative; }
+.book-badge {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #FAFAF7; background: var(--gold); padding: 4px 10px; border-radius: 2px;
+}
+.book-cover {
+  aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: 10px; padding: 32px;
+}
+.book-cover-bfc { background: linear-gradient(160deg, var(--bg-navy), #0F1D34); }
+.book-cover-cca { background: linear-gradient(160deg, #1A2A1A, #0F200F); }
+.book-cover-title { font-family: var(--font-cormorant), serif; font-size: 22px; font-weight: 700; color: var(--gold); text-align: center; line-height: 1.3; }
+.book-cover-rule { width: 32px; height: 1px; background: rgba(200,151,61,0.4); }
+.book-cover-author { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,250,247,0.35); }
+.book-card-body { padding: 24px; }
+.book-card-body h3 { margin-bottom: 8px; }
+.book-card-body p { font-size: 14px; margin-bottom: 18px; }
+.book-card-notify { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); }
+
+.tool-card { padding: 32px; display: flex; gap: 20px; align-items: flex-start; }
+.tool-card-icon {
+  width: 48px; height: 48px;
+  background: rgba(200,151,61,0.12);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 22px;
+}
+.tool-card h3 { margin-bottom: 8px; }
+.tool-card p { font-size: 14px; margin-bottom: 14px; }
+.tool-card-link { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+.arrow-list-simple { display: flex; flex-direction: column; gap: 9px; }
+.arrow-list-simple li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 300; color: var(--muted); }
+.arrow-list-simple li::before { content: "→"; color: var(--gold); font-weight: 600; }
+
+@media (max-width: 860px) {
+  .quiz-promo-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 700px) {
+  .book-cover-grid { grid-template-columns: 1fr; max-width: 360px; }
+}

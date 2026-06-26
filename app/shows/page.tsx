@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import EmailCaptureForm from "@/components/EmailCaptureForm";
+import Image from "next/image";
 import "./shows.css";
 
 export const metadata: Metadata = {
@@ -12,188 +11,170 @@ export const metadata: Metadata = {
 export default function ShowsPage() {
   return (
     <>
-      <header className="page-hero" aria-labelledby="shows-heading">
-        <div className="container-narrow">
-          <span className="eyebrow">Tune In</span>
-          <h1 id="shows-heading">Shows &amp; Content</h1>
-          <span className="gold-rule"></span>
-          <p>
-            Four shows. One mission. Find the right show for where you are — and the tools
-            to get where you want to be.
+      <header className="shows-hero" aria-labelledby="shows-heading">
+        <div className="shows-hero-radial" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative" }}>
+          <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Shows &amp; Content</p>
+          <h1 id="shows-heading" className="hero-in" style={{ animationDelay: "0.25s" }}>
+            A show for where
+            <br />
+            <em>you are right now.</em>
+          </h1>
+          <p className="hero-in" style={{ animationDelay: "0.38s" }}>
+            Whether you&apos;re building financial confidence, growing in faith, creating
+            content, or just looking for inspiration — there&apos;s a show made for your
+            moment.
           </p>
         </div>
       </header>
 
-      <section className="section-lg">
-        <div className="container">
-          {/* BFC */}
-          <div className="show-feature" id="bfc">
-            <div>
-              <div className="notice-banner">
-                <strong>Launching September 2026</strong> — Becoming Financially Confident
-                is Ralph&apos;s flagship daily show. Sign up below to be notified the moment it
-                drops.
-              </div>
-              <span className="eyebrow">Daily Show · Launching Sept 2026</span>
-              <h2>Becoming Financially Confident</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                This is the show that changes how you think about — and act on — your
-                money. Every episode gives you real tools, real strategies, and the
-                reassurance that no matter where you&apos;re starting from, you can build
-                genuine financial confidence.
-              </p>
-              <p className="mt-3" style={{ fontFamily: "var(--font-lora), serif", fontStyle: "italic", color: "var(--navy)" }}>
-                &quot;Real tools. Real confidence. Real change.&quot;
-              </p>
-              <p className="mt-3">
-                Not just information — the practical steps and the mindset shifts that turn
-                knowledge into action. Available daily across all major podcast platforms
-                starting September 2026.
-              </p>
-              <div className="show-links mt-4">
-                <a href="#bfc-notify" className="platform-link">🔔 Get Launch Notification</a>
-                <a href="https://saggioaccounting.com" className="platform-link" target="_blank" rel="noopener">
-                  🌐 Visit Main Site
-                </a>
-              </div>
-              <EmailCaptureForm
-                id="bfc-notify"
-                className="email-form-left email-capture-form mt-4"
-                formStyle={{ maxWidth: "460px" }}
-                formAriaLabel="BFC launch notification signup"
-                placeholder="Your email — notify me at launch"
-                buttonLabel="Notify Me"
-              />
+      {/* BFC */}
+      <section id="bfc" className="show-feature">
+        <div className="show-feature-grid">
+          <div>
+            <div className="live-badge rv">
+              <span className="live-dot" aria-hidden="true" />
+              <span>Launching September 2026</span>
             </div>
-            <div className="show-visual" style={{ background: "linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%)", color: "var(--gold)" }}>
-              🎙
-            </div>
+            <h2 className="rv d1">Becoming Financially Confident</h2>
+            <p className="show-feature-desc rv d2">
+              The daily show that gives you real tools and real confidence — not just
+              information. Every episode is built around one practical takeaway you can
+              apply the same day.
+            </p>
+            <ul className="arrow-list rv d3">
+              <li>Daily episodes, Monday through Friday</li>
+              <li>Practical finance tools for everyday people</li>
+              <li>No shame, no jargon — real talk about real money</li>
+            </ul>
+            <a href="#bfc" className="btn btn-navy rv d4">Get Notified at Launch →</a>
           </div>
-
-          {/* FCC */}
-          <div className="show-feature" id="fcc">
-            <div className="show-visual" style={{ background: "linear-gradient(135deg, #1A3A2A 0%, #2A5A40 100%)", color: "#7EC8A0" }}>
-              ✝️
+          <div className="show-cover rv">
+            <div className="show-cover-placeholder">
+              <div className="show-cover-placeholder-text">BFC</div>
+              <p className="show-cover-placeholder-label">Becoming Financially Confident</p>
             </div>
-            <div>
-              <span className="eyebrow">Podcast · Faith &amp; Finance</span>
-              <h2>Financially Confident Christian</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                Managing money well and living out your faith aren&apos;t separate things —
-                they&apos;re deeply connected. Financially Confident Christian explores the
-                intersection of biblical wisdom and practical financial tools for
-                Christians who want to steward what God has given them.
-              </p>
-              <p className="mt-3">
-                Every episode combines scripture with actionable steps you can take this
-                week. Whether you&apos;re getting out of debt, building savings, or learning to
-                give generously, there&apos;s an episode for where you are.
-              </p>
-              <div className="show-links mt-4">
-                <a
-                  href="https://www.financiallyconfidentchristian.com/"
-                  className="platform-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  🌐 Visit Website
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* TRUTH UNVEILED */}
-          <div className="show-feature" id="truth">
-            <div>
-              <span className="eyebrow">YouTube · 400K+ Subscribers</span>
-              <h2>Truth Unveiled with Ralph</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                With over 400,000 YouTube subscribers, Truth Unveiled with Ralph is one of
-                the most-watched inspirational shows in its category. Each episode
-                approaches everyday challenges — relationships, purpose, finances, and
-                faith — with honesty, depth, and practical wisdom.
-              </p>
-              <p className="mt-3">
-                Ralph&apos;s approach is accessible without being shallow, and grounded without
-                being preachy. If you&apos;re looking for content that meets you where you are
-                and helps you think more clearly about your life, this is the show.
-              </p>
-              <div className="show-links mt-4">
-                <a
-                  href="https://www.truthunveiledwithralph.com/"
-                  className="platform-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  🌐 Visit Website
-                </a>
-              </div>
-            </div>
-            <div className="show-visual" style={{ background: "linear-gradient(135deg, #5A1A1A 0%, #C0392B 100%)", color: "#FFAAAA" }}>
-              ▶️
-            </div>
-          </div>
-
-          {/* CONTENT CREATOR'S ACCOUNTANT */}
-          <div className="show-feature" id="content-creator">
-            <div className="show-visual" style={{ background: "linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%)", color: "#A0C0F0" }}>
-              🎧
-            </div>
-            <div>
-              <span className="eyebrow">Podcast · Creator Business</span>
-              <h2>The Content Creator&apos;s Accountant</h2>
-              <span className="gold-rule gold-rule-left"></span>
-              <p className="mt-3">
-                You built an audience. Now you need to understand the business side. The
-                Content Creator&apos;s Accountant is built specifically for podcasters and
-                content creators who are generating revenue and need to manage it smarter.
-              </p>
-              <p className="mt-3">
-                Ralph brings his 30+ years of accounting experience to the unique financial
-                world of creator businesses — sponsorships, royalties, self-employment
-                taxes, equipment deductions, LLC structure, and the Audience Economics
-                framework for understanding what your audience is actually worth.
-              </p>
-              <div className="show-links mt-4">
-                <a
-                  href="https://contentcreatorsaccountant.com/audit"
-                  className="btn btn-primary"
-                  target="_blank"
-                  rel="noopener"
-                  style={{ padding: "10px 20px", fontSize: "0.85rem" }}
-                >
-                  Get Your Free Creator Audit →
-                </a>
-                <a
-                  href="https://contentcreatorsaccountant.com/"
-                  className="platform-link"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  🌐 Visit Website
-                </a>
-              </div>
+            <div className="show-cover-banner">
+              <span>Coming September 2026</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section bg-cream text-center">
-        <div className="container-narrow">
-          <span className="eyebrow">Go Deeper</span>
-          <h2>Want more than just a podcast?</h2>
-          <span className="gold-rule"></span>
-          <p className="mt-3">
-            Coaching, speaking, the budgeting book, and the audio/video course bundle —
-            there are more ways to work with Ralph and build real confidence.
-          </p>
-          <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginTop: "32px" }}>
-            <Link href="/coaching" className="btn btn-primary">Explore Coaching</Link>
-            <Link href="/resources" className="btn btn-outline-navy">Books &amp; Resources</Link>
+      {/* FCC */}
+      <section id="fcc" className="show-feature bg-alt">
+        <div className="show-feature-grid">
+          <div className="show-cover rv">
+            <Image
+              src="/images/cover-fcc.png"
+              alt="Financially Confident Christian podcast cover"
+              width={1080}
+              height={1080}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+          <div>
+            <div className="plain-badge rv">
+              <span>Podcast · Available Now</span>
+            </div>
+            <h2 className="rv d1">Financially Confident Christian</h2>
+            <p className="show-feature-desc rv d2">
+              Faith-based personal finance for Christians who want to steward their
+              resources well. Money and faith aren&apos;t separate conversations — this show
+              brings them together with integrity and practicality.
+            </p>
+            <ul className="arrow-list rv d3">
+              <li>Biblical principles applied to modern finance</li>
+              <li>Tithing, generosity, debt, and wealth building</li>
+              <li>Welcoming to listeners of all backgrounds</li>
+            </ul>
+            <a
+              href="https://www.financiallyconfidentchristian.com/"
+              target="_blank"
+              rel="noopener"
+              className="btn btn-navy rv d4"
+            >
+              Listen Now →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* TRUTH UNVEILED */}
+      <section id="truth" className="show-feature">
+        <div className="show-feature-grid">
+          <div>
+            <div className="live-badge rv" style={{ animationDelay: "0s" }}>
+              <span>400K+ YouTube Subscribers</span>
+            </div>
+            <h2 className="rv d1">Truth Unveiled with Ralph</h2>
+            <p className="show-feature-desc rv d2">
+              Inspirational, practical content for everyday life. With over 400,000
+              YouTube subscribers, Truth Unveiled has become one of Ralph&apos;s
+              most-watched platforms — mixing financial wisdom with real-life
+              perspective and encouragement.
+            </p>
+            <ul className="arrow-list rv d3">
+              <li>YouTube-first video content</li>
+              <li>Life, money, mindset, and purpose</li>
+              <li>400,000+ subscribers and growing</li>
+            </ul>
+            <a
+              href="https://www.truthunveiledwithralph.com/"
+              target="_blank"
+              rel="noopener"
+              className="btn btn-navy rv d4"
+            >
+              Watch on YouTube →
+            </a>
+          </div>
+          <div className="show-cover rv">
+            <Image
+              src="/images/cover-truth-unveiled.jpg"
+              alt="Truth Unveiled with Ralph podcast cover"
+              width={1080}
+              height={1080}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CONTENT CREATOR'S ACCOUNTANT */}
+      <section id="content-creator" className="show-feature bg-alt">
+        <div className="show-feature-grid">
+          <div className="show-cover rv">
+            <Image
+              src="/images/cover-content-creator.jpg"
+              alt="The Content Creator's Accountant podcast cover"
+              width={1080}
+              height={1080}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
+          <div>
+            <div className="plain-badge rv">
+              <span>For Creators</span>
+            </div>
+            <h2 className="rv d1">The Content Creator&apos;s Accountant</h2>
+            <p className="show-feature-desc rv d2">
+              Financial education built specifically for podcasters and content
+              creators. Taxes, LLCs, audience economics, revenue streams — the
+              financial side of building a creator business, explained clearly.
+            </p>
+            <ul className="arrow-list rv d3">
+              <li>Tax strategies for creators and podcasters</li>
+              <li>Business structure, expenses, and revenue</li>
+              <li>Free creator financial audit available</li>
+            </ul>
+            <a
+              href="https://contentcreatorsaccountant.com/audit"
+              target="_blank"
+              rel="noopener"
+              className="btn btn-navy rv d4"
+            >
+              Get Your Free Audit →
+            </a>
           </div>
         </div>
       </section>

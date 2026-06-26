@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { lora, dmSans } from "./fonts";
+import { Analytics } from "@vercel/analytics/next";
+import { cormorant, dmSans } from "./fonts";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
-import { Analytics } from "@vercel/analytics/next";
+import ThemeScript from "@/components/ThemeScript";
+import InteractionEffects from "@/components/InteractionEffects";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,12 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <ThemeScript />
         <Nav />
         {children}
         <Footer />
         <CookieBanner />
+        <InteractionEffects />
         <Analytics />
       </body>
     </html>

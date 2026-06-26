@@ -1,22 +1,103 @@
-/* ── COACHING PAGE (ported from coaching.html <style>) ── */
-.coaching-grid { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
-.coaching-sidebar { position: sticky; top: 100px; }
-.inquiry-card { background: var(--white); border: 1.5px solid var(--gray-mid); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); }
-.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.who-card { padding: 24px; background: var(--gold-faint); border: 1.5px solid var(--gold-pale); border-radius: var(--radius-lg); }
-.who-card h4 { color: var(--navy); margin-bottom: 8px; }
-.who-card p { font-size: 0.88rem; color: var(--text-mid); margin: 0; }
-.process-steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
-.process-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--gray-light); }
-.process-step:last-child { border-bottom: none; }
-.step-num { width: 40px; height: 40px; background: var(--navy); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-lora), serif; font-weight: 700; font-size: 1rem; flex-shrink: 0; }
-.step-content h4 { color: var(--navy); margin-bottom: 4px; }
-.step-content p { font-size: 0.88rem; color: var(--text-mid); margin: 0; }
-.testimonial-card { background: var(--navy); border-radius: var(--radius-lg); padding: 32px; }
-.testimonial-card p { color: rgba(255,255,255,0.85); font-family: var(--font-lora), serif; font-style: italic; font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px; }
-.testimonial-author { color: var(--gold-light); font-size: 0.82rem; font-weight: 600; }
+/* ── COACHING PAGE (2026 redesign) ── */
+
+.coaching-hero { padding: 140px 56px 80px; background: var(--bg-page); position: relative; overflow: hidden; }
+.coaching-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(200,151,61,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.coaching-hero h1 em { color: var(--gold); font-style: italic; }
+
+.who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.who-card-icon { font-size: 28px; margin-bottom: 16px; }
+.who-card h3 { margin-bottom: 10px; }
+.who-card p { font-size: 14px; }
+
+/* Process steps with connecting line */
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+.process-connector {
+  position: absolute; top: 28px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+  pointer-events: none;
+}
+.process-step { position: relative; padding: 0 24px; }
+.process-step:first-child { padding-left: 0; }
+.process-step:last-child { padding-right: 0; }
+.process-circle {
+  width: 56px; height: 56px;
+  background: var(--bg-navy);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+.process-circle.gold { background: var(--gold); }
+.process-circle span { font-family: var(--font-cormorant), serif; font-size: 22px; font-weight: 600; color: var(--gold); }
+.process-circle.gold span { color: #FAFAF7; }
+.process-step h3 { margin-bottom: 10px; }
+.process-step p { font-size: 14px; }
+
 @media (max-width: 860px) {
-  .coaching-grid { grid-template-columns: 1fr; }
-  .coaching-sidebar { position: static; }
-  .who-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; gap: 32px; }
+  .process-connector { display: none; }
+  .process-step { padding: 0; }
+}
+
+/* What's included */
+.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.included-list { display: flex; flex-direction: column; }
+.included-item { padding: 20px 0; border-top: 1px solid var(--border); display: flex; gap: 16px; align-items: flex-start; }
+.included-item:last-child { border-bottom: 1px solid var(--border); }
+.included-check {
+  width: 24px; height: 24px;
+  background: rgba(200,151,61,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.included-item strong { font-size: 15px; font-weight: 500; color: var(--h); display: block; }
+.included-item p { font-size: 14px; margin-top: 3px; }
+
+.quote-card { padding: 48px; background: var(--bg-navy); border-radius: 4px; position: sticky; top: 96px; }
+.quote-card blockquote {
+  font-family: var(--font-cormorant), serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--on-dark);
+  margin-bottom: 24px;
+}
+.quote-card-author { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+.quote-card-footer { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(250,250,247,0.1); }
+.quote-card-footer p { font-size: 14px; color: var(--on-dark-m); margin-bottom: 20px; }
+
+@media (max-width: 860px) {
+  .included-grid { grid-template-columns: 1fr; gap: 40px; }
+  .quote-card { position: static; }
+}
+
+.booking-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.booking-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.booking-form button { align-self: flex-start; }
+.booking-form input,
+.booking-form textarea {
+  padding: 14px 18px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--body);
+  outline: none;
+  font-family: var(--font-dm-sans), sans-serif;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.booking-form input:focus,
+.booking-form textarea:focus { border-color: rgba(200,151,61,0.6); }
+.booking-form textarea { resize: vertical; min-height: 100px; }
+
+@media (max-width: 600px) {
+  .booking-form-row { grid-template-columns: 1fr; }
 }
