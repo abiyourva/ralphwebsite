@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 const KIT_TAG_ID = "20665717";
 
 export async function POST(request: Request) {
-  const apiSecret = process.env.KIT_API_SECRET;
-  if (!apiSecret) {
+  const apiKey = process.env.KIT_API_SECRET;
+  if (!apiKey) {
     console.error("KIT_API_SECRET is not set");
     return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
   }
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${apiSecret}`,
+      "X-Kit-Api-Key": apiKey,
     },
     body: JSON.stringify({ email_address: email }),
   });
