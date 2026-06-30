@@ -196,13 +196,14 @@ export default function CoachingPage() {
               ariaLabel="Coaching inquiry form"
               submitLabel="Send Message →"
               className="booking-form"
+              inquiryType="coaching"
             >
               <div className="booking-form-row">
-                <input type="text" placeholder="First name" required />
-                <input type="text" placeholder="Last name" required />
+                <input type="text" name="first_name" placeholder="First name" required />
+                <input type="text" name="last_name" placeholder="Last name" required />
               </div>
-              <input type="email" placeholder="Email address" required />
-              <textarea placeholder="Tell Ralph briefly what you're working through…" rows={4} />
+              <input type="email" name="email" placeholder="Email address" required />
+              <textarea name="message" placeholder="Tell Ralph briefly what you're working through…" rows={4} />
             </ContactForm>
           </div>
           <p className="rv d4" style={{ fontSize: "12px", color: "var(--muted2)", marginTop: "14px" }}>

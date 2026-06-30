@@ -80,7 +80,7 @@ export default function ContactPage() {
                   <Link href="/coaching" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
                     Coaching inquiry →
                   </Link>
-                  <Link href="/speaking#booking-form" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
+                  <Link href="/speaking#book" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>
                     Speaking / booking form →
                   </Link>
                   <Link href="/press" className="btn btn-ghost" style={{ justifyContent: "center", fontSize: "0.85rem" }}>

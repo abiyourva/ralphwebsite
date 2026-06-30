@@ -33,7 +33,7 @@ const routingMessages: Partial<Record<InquiryType, ReactNode>> = {
   speaking: (
     <>
       For speaking inquiries, you can also use the booking form on the{" "}
-      <Link href="/speaking#booking-form" style={{ color: "var(--h)" }}>Speaking page</Link>{" "}
+      <Link href="/speaking#book" style={{ color: "var(--h)" }}>Speaking page</Link>{" "}
       which captures event-specific details.
     </>
   ),
@@ -106,6 +106,7 @@ export default function ContactInquiry() {
         id="main-contact-form"
         submitLabel="Send Message"
         submitStyle={{ padding: "14px 32px" }}
+        inquiryType={selected}
         footer={
           <p style={{ fontSize: "0.78rem", color: "var(--muted2)", marginTop: "10px" }}>
             Ralph&apos;s team responds within 2 business days. For accounting services, you can
