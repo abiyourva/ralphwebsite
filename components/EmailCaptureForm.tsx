@@ -18,6 +18,8 @@ type EmailCaptureFormProps = {
   buttonStyle?: CSSProperties;
   /** Success label shown on the button after submit. */
   successLabel?: string;
+  /** API route to POST { email } to. Defaults to the general signup endpoint. */
+  endpoint?: string;
 };
 
 // Reusable email-capture form. On submit it prevents the default, swaps the
@@ -39,6 +41,7 @@ export default function EmailCaptureForm({
   buttonClassName,
   buttonStyle,
   successLabel = "You're in! ✓",
+  endpoint = "/api/subscribe",
 }: EmailCaptureFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
@@ -49,7 +52,7 @@ export default function EmailCaptureForm({
     if (!email) return;
     setError(false);
     try {
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
