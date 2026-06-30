@@ -47,7 +47,7 @@ export default function ShowsPage() {
               <li>Practical finance tools for everyday people</li>
               <li>No shame, no jargon — real talk about real money</li>
             </ul>
-            <a href="#bfc" className="btn btn-navy rv d4">Get Notified at Launch →</a>
+            <a href="/becoming-financially-confident" className="btn btn-navy rv d4">Get Notified at Launch →</a>
           </div>
           <div className="show-cover rv">
             <div className="show-cover-placeholder">
