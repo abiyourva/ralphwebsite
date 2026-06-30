@@ -212,7 +212,7 @@ export default function SpeakingPage() {
             </div>
             <div className="media-contact-box rv d4">
               <p>Media inquiries</p>
-              <a href="mailto:ralph@askralph.com">ralph@askralph.com</a>
+              <a href="mailto:ralph@ralphestepjr.com">ralph@ralphestepjr.com</a>
             </div>
           </div>
 

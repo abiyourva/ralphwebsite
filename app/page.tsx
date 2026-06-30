@@ -28,7 +28,7 @@ export default function HomePage() {
               </em>
             </h1>
             <p className="hero-sub hero-in" style={{ animationDelay: "0.38s" }}>
-              For over 30 years, I&apos;ve sat across the table from people who feel
+              For over 30 years, I&apos;ve helped people who feel
               overwhelmed, ashamed, or just plain stuck about money. My job is to put
               an arm around you — and then give you the real tools to change your
               situation.
@@ -73,7 +73,7 @@ export default function HomePage() {
             <div className="stat-label">Years in Practice</div>
           </div>
           <div className="stat-item rv d1">
-            <div className="stat-number">400K+</div>
+            <div className="stat-number">540K+</div>
             <div className="stat-label">YouTube Subscribers</div>
           </div>
           <div className="stat-item rv d2">

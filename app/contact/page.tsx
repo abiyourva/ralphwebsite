@@ -47,7 +47,7 @@ export default function ContactPage() {
                   <div>
                     <strong>Email</strong>
                     <br />
-                    <a href="mailto:ralph@askralph.com" style={{ color: "var(--h)" }}>ralph@askralph.com</a>
+                    <a href="mailto:ralph@ralphestepjr.com" style={{ color: "var(--h)" }}>ralph@ralphestepjr.com</a>
                   </div>
                 </div>
                 <div className="info-row">

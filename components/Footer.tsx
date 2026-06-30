@@ -17,7 +17,7 @@ export default function Footer() {
               <br />
               1100 Dutch Neck Road, Middletown, DE
               <br />
-              <a href="mailto:ralph@askralph.com">ralph@askralph.com</a>
+              <a href="mailto:ralph@ralphestepjr.com">ralph@ralphestepjr.com</a>
             </p>
           </div>
           <div>
