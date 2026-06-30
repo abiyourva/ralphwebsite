@@ -55,6 +55,7 @@ export default function HomePage() {
                 width={1122}
                 height={1402}
                 priority
+                sizes="(max-width: 480px) 260px, (max-width: 860px) 320px, 38vw"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
               />
             </HeroParallax>
@@ -205,6 +206,7 @@ export default function HomePage() {
                 alt="Ralph Estep Jr. in the studio"
                 width={1600}
                 height={2000}
+                sizes="(max-width: 860px) 100vw, 50vw"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "65% center" }}
               />
             </div>

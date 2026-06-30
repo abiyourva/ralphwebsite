@@ -70,6 +70,7 @@ export default function ShowsPage() {
               alt="Financially Confident Christian podcast cover"
               width={1080}
               height={1080}
+              sizes="(max-width: 860px) 100vw, 50vw"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
@@ -134,6 +135,7 @@ export default function ShowsPage() {
               alt="Truth Unveiled with Ralph podcast cover"
               width={1080}
               height={1080}
+              sizes="(max-width: 860px) 100vw, 50vw"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
@@ -149,6 +151,7 @@ export default function ShowsPage() {
               alt="The Content Creator's Accountant podcast cover"
               width={1080}
               height={1080}
+              sizes="(max-width: 860px) 100vw, 50vw"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>

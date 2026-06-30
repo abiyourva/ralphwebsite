@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import ThemeScript from "@/components/ThemeScript";
 import InteractionEffects from "@/components/InteractionEffects";
+import HomeButton from "@/components/HomeButton";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <HomeButton />
         <CookieBanner />
         <InteractionEffects />
         <Analytics />

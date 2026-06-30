@@ -82,7 +82,7 @@ export default function AboutPage() {
           <div>
             <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>About Ralph</p>
             <h1 id="about-heading" className="hero-in" style={{ animationDelay: "0.25s", marginBottom: "24px" }}>
-              Thirty years of sitting across the table.
+              Thirty years of helping people.
             </h1>
             <p className="hero-sub hero-in" style={{ animationDelay: "0.38s", marginBottom: "32px" }}>
               I&apos;m Ralph Estep Jr. — Licensed Public Accountant, business coach, author,
@@ -103,6 +103,7 @@ export default function AboutPage() {
                 width={1122}
                 height={1402}
                 priority
+                sizes="(max-width: 860px) 100vw, 50vw"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
               />
             </div>
@@ -151,7 +152,7 @@ export default function AboutPage() {
               create is rooted in empathy first — not judgment.
             </p>
             <p className="rv d3">
-              Over the last 30 years, I&apos;ve sat across the table from business owners,
+              Over the last 30 years, I&apos;ve helped business owners,
               families, and individuals at every financial stage — from
               first-generation wealth builders to people in crisis. The thread running
               through every conversation is the same:{" "}

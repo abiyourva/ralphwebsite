@@ -231,6 +231,7 @@ export default function PressPage() {
                   alt="Ralph Estep Jr. headshot"
                   width={1122}
                   height={1402}
+                  sizes="(max-width: 700px) 100vw, (max-width: 860px) 50vw, 33vw"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
                 />
               </div>
