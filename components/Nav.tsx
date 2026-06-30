@@ -7,6 +7,10 @@ import { desktopLinks } from "./navLinks";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
 
+// Pages whose hero section sits on a navy/dark background — the nav needs
+// light-colored links here while it's still transparent (pre-scroll).
+const DARK_HERO_PATHS = ["/shows", "/speaking", "/resources", "/becoming-financially-confident"];
+
 // Fixed nav bar — transparent over the hero, frosted glass once scrolled.
 // Holds the mobile-menu open state and animates the hamburger into an X.
 // Active link highlighting uses usePathname().
@@ -14,6 +18,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const onDarkHero = DARK_HERO_PATHS.includes(pathname);
 
   useEffect(() => {
     function onScroll() {
@@ -34,7 +39,10 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`site-nav${scrolled ? " scrolled" : ""}`} aria-label="Main navigation">
+      <nav
+        className={`site-nav${scrolled ? " scrolled" : ""}${onDarkHero && !scrolled ? " nav-on-dark" : ""}`}
+        aria-label="Main navigation"
+      >
         <Link href="/" className="nav-logo">
           Ralph Estep Jr.
         </Link>

@@ -186,6 +186,13 @@ em { font-style: italic; }
   box-shadow: 0 1px 0 var(--border);
 }
 
+.site-nav.nav-on-dark .nav-logo,
+.site-nav.nav-on-dark .nav-cta { color: var(--on-dark); }
+.site-nav.nav-on-dark .nav-cta { border-color: var(--on-dark-m); }
+.site-nav.nav-on-dark .nav-link { color: var(--on-dark-m); }
+.site-nav.nav-on-dark .nav-link:hover,
+.site-nav.nav-on-dark .nav-link.active { color: var(--gold); }
+
 .nav-logo {
   font-family: var(--font-cormorant), serif;
   font-weight: 600;

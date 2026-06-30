@@ -264,24 +264,34 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid-3">
-            <Link href="/shows#bfc" className="card card-hover episode-card rv">
+            <Link href="/becoming-financially-confident" className="card card-hover episode-card rv">
               <div className="episode-card-icon">🎙</div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Becoming Financially Confident</p>
-              <h4>Latest Episode Title</h4>
-              <p>Update with your most recent episode when the show launches in September 2026.</p>
+              <h4>Coming Soon</h4>
+              <p>A new show is on the way. Sign up to be the first to know when it drops.</p>
             </Link>
-            <Link href="/shows#truth" className="card card-hover episode-card rv d1">
+            <a
+              href="https://www.truthunveiledwithralph.com/"
+              target="_blank"
+              rel="noopener"
+              className="card card-hover episode-card rv d1"
+            >
               <div className="episode-card-icon">▶️</div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Truth Unveiled with Ralph</p>
-              <h4>Latest Episode Title</h4>
-              <p>Link to your most recent Truth Unveiled video from your YouTube channel.</p>
-            </Link>
-            <Link href="/shows#fcc" className="card card-hover episode-card rv d2">
+              <h4>Watch on YouTube</h4>
+              <p>Inspirational, practical content for everyday life — over 400,000 subscribers.</p>
+            </a>
+            <a
+              href="https://www.financiallyconfidentchristian.com/"
+              target="_blank"
+              rel="noopener"
+              className="card card-hover episode-card rv d2"
+            >
               <div className="episode-card-icon">✝️</div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Financially Confident Christian</p>
-              <h4>Latest Episode Title</h4>
-              <p>Your most recent faith-based financial episode.</p>
-            </Link>
+              <h4>Listen Now</h4>
+              <p>Faith-based personal finance for Christians who want to steward their resources well.</p>
+            </a>
           </div>
         </div>
       </section>
