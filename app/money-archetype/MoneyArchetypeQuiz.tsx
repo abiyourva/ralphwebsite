@@ -256,9 +256,11 @@ export default function MoneyArchetypeQuiz() {
       return;
     }
 
-    // TODO: wire to email provider / CRM to capture the partial lead
-    // immediately (name + email) so abandoned quizzes can still be followed up.
-    console.log("Lead captured (quiz started):", { name: trimmedName, email: trimmedEmail });
+    fetch("/api/quiz", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ stage: "started", name: trimmedName, email: trimmedEmail }),
+    }).catch((err) => console.error("Quiz lead capture failed:", err));
 
     setScreen("quiz");
   }, [userName, userEmail]);
@@ -279,15 +281,16 @@ export default function MoneyArchetypeQuiz() {
       const result = calculateArchetype(answers);
       setArchetype(result);
       setScreen("results");
-      // TODO: wire to email provider / CRM to send the full lead (name,
-      // email, archetype, answers) and trigger the personalized 7-day
-      // sequence from SEQUENCES[result].
-      console.log("Quiz completed:", {
-        name: userName.trim(),
-        email: userEmail.trim(),
-        archetype: result,
-        answers,
-      });
+      fetch("/api/quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          stage: "completed",
+          name: userName.trim(),
+          email: userEmail.trim(),
+          archetype: result,
+        }),
+      }).catch((err) => console.error("Quiz completion sync failed:", err));
     }
   }, [currentAnswer, currentQuestion, answers, userName, userEmail]);
 

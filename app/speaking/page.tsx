@@ -221,6 +221,7 @@ export default function SpeakingPage() {
               ariaLabel="Speaking inquiry form"
               submitLabel="Submit Inquiry →"
               className="booking-form speaking-form"
+              inquiryType="speaking"
               footer={
                 <p style={{ fontSize: "12px", color: "var(--muted2)" }}>
                   Your information is never shared or sold.
@@ -228,12 +229,12 @@ export default function SpeakingPage() {
               }
             >
               <div className="booking-form-row">
-                <input type="text" placeholder="First name" required />
-                <input type="text" placeholder="Last name" required />
+                <input type="text" name="first_name" placeholder="First name" required />
+                <input type="text" name="last_name" placeholder="Last name" required />
               </div>
-              <input type="email" placeholder="Email address" required />
-              <input type="text" placeholder="Organization / Event name" required />
-              <select defaultValue="">
+              <input type="email" name="email" placeholder="Email address" required />
+              <input type="text" name="org" placeholder="Organization / Event name" required />
+              <select name="format" defaultValue="">
                 <option value="" disabled>Event format</option>
                 <option>Keynote</option>
                 <option>Workshop / Breakout</option>
@@ -241,7 +242,7 @@ export default function SpeakingPage() {
                 <option>Virtual Event</option>
                 <option>Other</option>
               </select>
-              <textarea placeholder="Tell Ralph about your event, audience, and date…" rows={4} />
+              <textarea name="message" placeholder="Tell Ralph about your event, audience, and date…" rows={4} />
             </ContactForm>
           </div>
         </div>
