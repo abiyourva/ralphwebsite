@@ -54,7 +54,7 @@ const routingMessages: Partial<Record<InquiryType, ReactNode>> = {
     </>
   ),
   podcasting: (
-    <>Show questions and listener mail can also be sent to ralph@askralph.com with the show name in the subject line.</>
+    <>Show questions and listener mail can also be sent to ralph@ralphestepjr.com with the show name in the subject line.</>
   ),
 };
 

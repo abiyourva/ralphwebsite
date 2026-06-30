@@ -49,7 +49,7 @@ export default function PrivacyPage() {
           <h2 className="mt-4">Contact</h2>
           <p className="mt-2">
             For privacy-related questions, contact{" "}
-            <a href="mailto:ralph@askralph.com" style={{ color: "var(--h)" }}>ralph@askralph.com</a>.
+            <a href="mailto:ralph@ralphestepjr.com" style={{ color: "var(--h)" }}>ralph@ralphestepjr.com</a>.
           </p>
           <div className="mt-4">
             <Link href="/" className="btn btn-ghost">← Back to Home</Link>

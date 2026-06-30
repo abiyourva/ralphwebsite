@@ -116,7 +116,7 @@ export default function PressPage() {
             </p>
             <div className="hero-cta hero-in" style={{ animationDelay: "0.48s" }}>
               <a href="#assets" className="btn btn-navy">Download Assets</a>
-              <a href="mailto:ralph@askralph.com" className="btn btn-ghost">Email Ralph&apos;s Team</a>
+              <a href="mailto:ralph@ralphestepjr.com" className="btn btn-ghost">Email Ralph&apos;s Team</a>
             </div>
           </div>
 
@@ -137,7 +137,7 @@ export default function PressPage() {
             </div>
             <div className="facts-row">
               <span>YouTube</span>
-              <span className="gold-value">400K+ Subscribers</span>
+              <span className="gold-value">540K+ Subscribers</span>
             </div>
             <div className="facts-row">
               <span>Active Shows</span>
@@ -145,7 +145,7 @@ export default function PressPage() {
             </div>
             <div className="facts-row">
               <span>Media Contact</span>
-              <a href="mailto:ralph@askralph.com">ralph@askralph.com</a>
+              <a href="mailto:ralph@ralphestepjr.com">ralph@ralphestepjr.com</a>
             </div>
           </div>
         </div>
@@ -256,7 +256,7 @@ export default function PressPage() {
                   <p>Logo — Dark</p>
                   <p>PNG + SVG available</p>
                 </div>
-                <a href="mailto:ralph@askralph.com?subject=Logo%20Request" className="asset-download">
+                <a href="mailto:ralph@ralphestepjr.com?subject=Logo%20Request" className="asset-download">
                   Download
                 </a>
               </div>
@@ -273,7 +273,7 @@ export default function PressPage() {
                   <p>Logo — Light</p>
                   <p>PNG + SVG available</p>
                 </div>
-                <a href="mailto:ralph@askralph.com?subject=Logo%20Request" className="asset-download">
+                <a href="mailto:ralph@ralphestepjr.com?subject=Logo%20Request" className="asset-download">
                   Download
                 </a>
               </div>
@@ -284,7 +284,7 @@ export default function PressPage() {
               <p>Need a full press kit?</p>
               <p>Email Ralph&apos;s team for a complete press kit including additional headshots, show artwork, and brand guidelines.</p>
             </div>
-            <a href="mailto:ralph@askralph.com?subject=Press%20Kit%20Request" className="btn btn-navy">
+            <a href="mailto:ralph@ralphestepjr.com?subject=Press%20Kit%20Request" className="btn btn-navy">
               Request Full Kit →
             </a>
           </div>
@@ -301,8 +301,8 @@ export default function PressPage() {
             team responds within two business days.
           </p>
           <div className="media-contact-cta rv d2">
-            <a href="mailto:ralph@askralph.com?subject=Media%20Inquiry" className="btn btn-gold">
-              ralph@askralph.com
+            <a href="mailto:ralph@ralphestepjr.com?subject=Media%20Inquiry" className="btn btn-gold">
+              ralph@ralphestepjr.com
             </a>
             <p>Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE</p>
           </div>
