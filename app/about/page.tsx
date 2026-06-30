@@ -103,6 +103,7 @@ export default function AboutPage() {
                 width={1122}
                 height={1402}
                 priority
+                sizes="(max-width: 860px) 100vw, 50vw"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
               />
             </div>

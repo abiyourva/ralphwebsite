@@ -91,8 +91,12 @@
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-photo-col { display: none; }
+  .hero-photo-col { width: 100%; max-width: 320px; margin: 8px auto 0; }
   .story-grid { grid-template-columns: 1fr; gap: 40px; }
   .section-heading-row { flex-direction: column; align-items: flex-start; }
   .section-heading-row p { text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .hero-photo-col { max-width: 260px; }
 }
