@@ -125,34 +125,6 @@ export default function HomeScrollFX() {
         // Standard GSAP recipe: pin the viewport and translate the track
         // left by exactly its overflow width as the user scrolls, so each
         // numbered panel steps through in turn.
-        const panelsViewport = document.querySelector<HTMLElement>(".path-panels-viewport");
-        const panelsTrack = document.querySelector<HTMLElement>(".path-panels-track");
-        if (panelsViewport && panelsTrack) {
-          panelsViewport.classList.add("pv-enhanced");
-          enhancedPanelsEl = panelsViewport;
-
-          const cards = Array.from(panelsTrack.querySelectorAll<HTMLElement>(".path-card"));
-          const count = cards.length;
-
-          // Stack cards; first card sits on top
-          cards.forEach((card, i) => gsap.set(card, { zIndex: count - i }));
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: panelsViewport,
-              start: "top top",
-              end: `+=${(count - 1) * window.innerHeight}`,
-              scrub: 1,
-              pin: true,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          // Each card flips away (pivot on right edge) to reveal the one beneath
-          cards.slice(0, -1).forEach((card, i) => {
-            tl.to(card, { rotateY: -180, ease: "power2.inOut", duration: 1 }, i);
-          });
-        }
 
         ScrollTrigger.refresh();
       });

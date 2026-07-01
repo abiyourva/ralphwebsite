@@ -21,9 +21,7 @@ export default function InteractionEffects() {
     );
     revealEls.forEach((el) => observer.observe(el));
 
-    const cards = Array.from(document.querySelectorAll<HTMLElement>(".card-hover")).filter(
-      (c) => !c.closest(".pv-enhanced")
-    );
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".card-hover"));
     const cleanups: (() => void)[] = [];
     cards.forEach((card) => {
       function handleMove(e: MouseEvent) {
