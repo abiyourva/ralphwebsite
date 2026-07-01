@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 // Homepage-only premium scroll experience: eased smooth scroll (Lenis) +
-// a pinned hero that fades/blurs/scales down in place before the next
-// section scrolls up naturally beneath it, plus a touch of scroll-linked
-// parallax on the story photo.
+// a pinned hero whose headline scales up while the rest fades before the
+// next section scrolls up naturally beneath it, a scroll-linked parallax
+// on the story photo, and a pinned horizontal step-through of the "What
+// brings you here today?" panels (numbered, one at a time).
 //
 // Disabled on touch devices, narrow viewports, and prefers-reduced-motion —
 // scroll-jacking and pinning are a real UX hazard on mobile, so those users
@@ -26,6 +27,7 @@ export default function HomeScrollFX() {
     let rafId = 0;
     let lenisInstance: import("lenis").default | null = null;
     let gsapContext: gsap.Context | null = null;
+    let enhancedPanelsEl: HTMLElement | null = null;
     let cancelled = false;
 
     (async () => {
@@ -61,40 +63,44 @@ export default function HomeScrollFX() {
 
       gsapContext = gsap.context(() => {
         const heroEl = document.querySelector<HTMLElement>(".hero");
-        const heroGrid = document.querySelector<HTMLElement>(".hero-grid");
+        const heroHeading = document.getElementById("hero-heading");
+        const heroFadeEls = document.querySelectorAll<HTMLElement>(
+          ".hero-eyebrow, .hero-sub, .hero-tagline, .hero-cta, .hero-photo-col"
+        );
 
-        if (heroEl && heroGrid) {
-          // Standard pin-and-dissolve: ScrollTrigger reserves a spacer for
-          // the pin duration (default pinSpacing) so the rest of the page's
-          // layout/scroll math stays correct. The hero fades/blurs/scales
-          // down while pinned, then the next section scrolls up naturally
-          // once the pin range ends.
-          const pinTrigger = ScrollTrigger.create({
-            trigger: heroEl,
-            start: "top top",
-            end: "+=100%",
-            pin: true,
+        if (heroEl && heroHeading) {
+          // Pinned hero: headline scales up dramatically while the rest of
+          // the hero content fades out, then the next section scrolls up
+          // naturally once the pin range ends (default pinSpacing keeps
+          // the page's scroll math correct).
+          //
+          // Important: pin + the scrubbed animations must share ONE
+          // ScrollTrigger (via a timeline) rather than separate
+          // ScrollTrigger.create() calls on the same element — creating
+          // the pin first and additional triggers on the same trigger
+          // afterward makes GSAP recompute their start/end against the
+          // already-pinned (spacer-adjusted) layout, offsetting them to
+          // start only after the pin ends instead of during it.
+          const heroTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: heroEl,
+              start: "top top",
+              end: "+=100%",
+              scrub: true,
+              pin: true,
+            },
           });
 
-          gsap.fromTo(
-            heroGrid,
-            { opacity: 1, scale: 1, filter: "blur(0px)" },
-            {
-              opacity: 0.1,
-              scale: 0.94,
-              filter: "blur(6px)",
-              ease: "none",
-              scrollTrigger: {
-                trigger: heroEl,
-                start: "top top",
-                end: "+=100%",
-                scrub: true,
-              },
-            }
+          heroTl.fromTo(
+            heroHeading,
+            { scale: 1 },
+            { scale: 1.35, transformOrigin: "0% 50%", ease: "none" },
+            0
           );
 
-          ScrollTrigger.refresh();
-          void pinTrigger;
+          if (heroFadeEls.length) {
+            heroTl.fromTo(heroFadeEls, { opacity: 1 }, { opacity: 0, ease: "none" }, 0);
+          }
         }
 
         const storyPhoto = document.querySelector<HTMLElement>(".story-photo-img");
@@ -114,6 +120,32 @@ export default function HomeScrollFX() {
             }
           );
         }
+
+        // "What brings you here today?" — horizontal scroll-through panels.
+        // Standard GSAP recipe: pin the viewport and translate the track
+        // left by exactly its overflow width as the user scrolls, so each
+        // numbered panel steps through in turn.
+        const panelsViewport = document.querySelector<HTMLElement>(".path-panels-viewport");
+        const panelsTrack = document.querySelector<HTMLElement>(".path-panels-track");
+        if (panelsViewport && panelsTrack) {
+          panelsViewport.classList.add("pv-enhanced");
+          enhancedPanelsEl = panelsViewport;
+
+          gsap.to(panelsTrack, {
+            x: () => -(panelsTrack.scrollWidth - panelsViewport.clientWidth),
+            ease: "none",
+            scrollTrigger: {
+              trigger: panelsViewport,
+              start: "top top",
+              end: () => "+=" + (panelsTrack.scrollWidth - panelsViewport.clientWidth),
+              scrub: 1,
+              pin: true,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+
+        ScrollTrigger.refresh();
       });
     })();
 
@@ -122,6 +154,7 @@ export default function HomeScrollFX() {
       cancelAnimationFrame(rafId);
       lenisInstance?.destroy();
       gsapContext?.revert();
+      enhancedPanelsEl?.classList.remove("pv-enhanced");
     };
   }, [pathname]);
 
