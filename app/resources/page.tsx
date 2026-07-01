@@ -18,6 +18,7 @@ const TOOLS = [
     linkLabel: "Free Download →",
     href: "#",
     internal: false,
+    comingSoon: true,
   },
   {
     icon: "🧾",
@@ -26,6 +27,7 @@ const TOOLS = [
     linkLabel: "Free Download →",
     href: "#",
     internal: false,
+    comingSoon: true,
   },
   {
     icon: "🎙",
@@ -149,7 +151,20 @@ export default function ResourcesPage() {
           <h2 className="rv d1" style={{ marginBottom: "48px" }}>Practical tools, no cost.</h2>
           <div className="grid-2">
             {TOOLS.map((tool, i) =>
-              tool.internal ? (
+              tool.comingSoon ? (
+                <div
+                  key={tool.title}
+                  className={`card tool-card tool-card-disabled rv${i > 0 ? ` d${i}` : ""}`}
+                  aria-disabled="true"
+                >
+                  <span className="badge badge-gold tool-card-badge">Coming Soon</span>
+                  <div className="tool-card-icon">{tool.icon}</div>
+                  <div>
+                    <h3>{tool.title}</h3>
+                    <p>{tool.description}</p>
+                  </div>
+                </div>
+              ) : tool.internal ? (
                 <Link key={tool.title} href={tool.href} className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}>
                   <div className="tool-card-icon">{tool.icon}</div>
                   <div>
