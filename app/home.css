@@ -83,24 +83,33 @@
    "What brings you here today?" panels — .pv-enhanced is only added by
    HomeScrollFX when GSAP/ScrollTrigger is active. Without it, this stays
    the plain accessible 2-column grid defined by .grid-2 elsewhere. */
-.path-panels-viewport.pv-enhanced { overflow: hidden; height: 100vh; }
+.path-panels-viewport.pv-enhanced {
+  overflow: hidden;
+  height: 100vh;
+  perspective: 1400px;
+  perspective-origin: center center;
+}
 .path-panels-viewport.pv-enhanced .path-panels-track {
-  display: flex;
-  flex-wrap: nowrap;
+  position: relative;
+  display: block;
   height: 100%;
-  width: 400%;
-  gap: 0;
+  width: 100%;
 }
 .path-panels-viewport.pv-enhanced .path-panels-track .path-card {
-  width: 25%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 60px 9%;
   border-radius: 0;
   border: none;
+  transform-origin: right center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: inset -4px 0 24px rgba(0,0,0,0.12);
 }
 .pv-enhanced .path-card-num { font-size: 18px; }
 .pv-enhanced .path-card-icon { font-size: 48px; margin-bottom: 24px; }

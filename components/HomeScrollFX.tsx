@@ -131,17 +131,26 @@ export default function HomeScrollFX() {
           panelsViewport.classList.add("pv-enhanced");
           enhancedPanelsEl = panelsViewport;
 
-          gsap.to(panelsTrack, {
-            x: () => -(panelsTrack.scrollWidth - panelsViewport.clientWidth),
-            ease: "none",
+          const cards = Array.from(panelsTrack.querySelectorAll<HTMLElement>(".path-card"));
+          const count = cards.length;
+
+          // Stack cards; first card sits on top
+          cards.forEach((card, i) => gsap.set(card, { zIndex: count - i }));
+
+          const tl = gsap.timeline({
             scrollTrigger: {
               trigger: panelsViewport,
               start: "top top",
-              end: () => "+=" + (panelsTrack.scrollWidth - panelsViewport.clientWidth),
+              end: `+=${(count - 1) * window.innerHeight}`,
               scrub: 1,
               pin: true,
               invalidateOnRefresh: true,
             },
+          });
+
+          // Each card flips away (pivot on right edge) to reveal the one beneath
+          cards.slice(0, -1).forEach((card, i) => {
+            tl.to(card, { rotateY: -180, ease: "power2.inOut", duration: 1 }, i);
           });
         }
 
