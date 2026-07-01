@@ -566,6 +566,9 @@ em { font-style: italic; }
 .footer-brand p { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--on-dark-m); margin-bottom: 20px; max-width: 280px; }
 .footer-brand .footer-address { font-size: 13px; font-weight: 300; color: var(--on-dark-d); line-height: 1.7; }
 .footer-address a { color: var(--gold); }
+.footer-social { display: flex; gap: 16px; margin-top: 20px; }
+.footer-social-link { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 300; color: var(--on-dark-m); transition: color 0.2s; }
+.footer-social-link:hover { color: var(--gold); }
 
 .footer-col-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-d); margin-bottom: 16px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
