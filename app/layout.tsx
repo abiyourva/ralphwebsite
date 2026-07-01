@@ -8,6 +8,8 @@ import CookieBanner from "@/components/CookieBanner";
 import ThemeScript from "@/components/ThemeScript";
 import InteractionEffects from "@/components/InteractionEffects";
 import HomeButton from "@/components/HomeButton";
+import HomeScrollFX from "@/components/HomeScrollFX";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,6 +37,7 @@ export default function RootLayout({
         <HomeButton />
         <CookieBanner />
         <InteractionEffects />
+        <HomeScrollFX />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -110,36 +110,42 @@ export default function HomePage() {
           <span className="gold-rule-left gold-rule rv" />
           <p className="eyebrow rv">Find Your Path</p>
           <h2 className="rv d1" style={{ marginBottom: "48px" }}>What brings you here today?</h2>
-          <div className="grid-2">
-            <Link href="/shows#bfc" className="card card-hover path-card rv">
-              <div className="path-card-icon">💰</div>
-              <h3>I want financial confidence</h3>
-              <p>Practical tools, real strategies, and the reassurance that it&apos;s going to be okay.</p>
-              <span className="path-card-link">Explore →</span>
-            </Link>
-            <Link href="/coaching" className="card card-hover path-card rv d1">
-              <div className="path-card-icon">🤝</div>
-              <h3>I want to work with Ralph directly</h3>
-              <p>One-on-one coaching to get clarity, a plan, and the confidence to follow through.</p>
-              <span className="path-card-link">Learn More →</span>
-            </Link>
-            <Link href="/speaking" className="card card-hover path-card rv d2">
-              <div className="path-card-icon">🎤</div>
-              <h3>I want to book Ralph to speak</h3>
-              <p>Events, conferences, and podcast guest appearances on personal finance and creator economics.</p>
-              <span className="path-card-link">Book Ralph →</span>
-            </Link>
-            <a
-              href="https://contentcreatorsaccountant.com/audit"
-              target="_blank"
-              rel="noopener"
-              className="card card-hover path-card rv d3"
-            >
-              <div className="path-card-icon">🎙</div>
-              <h3>I&apos;m a content creator</h3>
-              <p>The financial side of running a podcast or creator business — taxes, audience economics, and more.</p>
-              <span className="path-card-link">Free Audit →</span>
-            </a>
+          <div className="path-panels-viewport">
+            <div className="grid-2 path-panels-track">
+              <Link href="/shows#bfc" className="card card-hover path-card rv">
+                <span className="path-card-num">01</span>
+                <div className="path-card-icon">💰</div>
+                <h3>I want financial confidence</h3>
+                <p>Practical tools, real strategies, and the reassurance that it&apos;s going to be okay.</p>
+                <span className="path-card-link">Explore →</span>
+              </Link>
+              <Link href="/coaching" className="card card-hover path-card rv d1">
+                <span className="path-card-num">02</span>
+                <div className="path-card-icon">🤝</div>
+                <h3>I want to work with Ralph directly</h3>
+                <p>One-on-one coaching to get clarity, a plan, and the confidence to follow through.</p>
+                <span className="path-card-link">Learn More →</span>
+              </Link>
+              <Link href="/speaking" className="card card-hover path-card rv d2">
+                <span className="path-card-num">03</span>
+                <div className="path-card-icon">🎤</div>
+                <h3>I want to book Ralph to speak</h3>
+                <p>Events, conferences, and podcast guest appearances on personal finance and creator economics.</p>
+                <span className="path-card-link">Book Ralph →</span>
+              </Link>
+              <a
+                href="https://contentcreatorsaccountant.com/audit"
+                target="_blank"
+                rel="noopener"
+                className="card card-hover path-card rv d3"
+              >
+                <span className="path-card-num">04</span>
+                <div className="path-card-icon">🎙</div>
+                <h3>I&apos;m a content creator</h3>
+                <p>The financial side of running a podcast or creator business — taxes, audience economics, and more.</p>
+                <span className="path-card-link">Free Audit →</span>
+              </a>
+            </div>
           </div>
           <p className="rv mt-3 text-center" style={{ fontSize: "14px", color: "var(--muted2)" }}>
             Looking for accounting services?{" "}
