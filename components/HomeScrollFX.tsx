@@ -27,7 +27,6 @@ export default function HomeScrollFX() {
     let rafId = 0;
     let lenisInstance: import("lenis").default | null = null;
     let gsapContext: gsap.Context | null = null;
-    let enhancedPanelsEl: HTMLElement | null = null;
     let cancelled = false;
 
     (async () => {
@@ -135,7 +134,6 @@ export default function HomeScrollFX() {
       cancelAnimationFrame(rafId);
       lenisInstance?.destroy();
       gsapContext?.revert();
-      enhancedPanelsEl?.classList.remove("pv-enhanced");
     };
   }, [pathname]);
 
