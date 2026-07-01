@@ -14,7 +14,7 @@ const CREDENTIALS = [
   {
     title: "Licensed Public Accountant",
     description:
-      "Pennsylvania LPA with 30+ years of hands-on accounting, tax, and financial planning experience for individuals and businesses.",
+      "Delaware-based LPA with 30+ years of hands-on accounting, tax, and financial planning experience for individuals and businesses.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round">
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
