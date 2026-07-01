@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="#1B2D4F"/>
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#C8973D" stroke-width="1.2"/>
+  <text
+    x="50"
+    y="62"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    font-weight="400"
+    fill="#C8973D"
+    text-anchor="middle"
+    letter-spacing="1"
+  >RE</text>
+</svg>
