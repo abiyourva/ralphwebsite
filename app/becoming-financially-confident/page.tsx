@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import "./bfc-teaser.css";
 
@@ -36,6 +37,12 @@ export default function BfcTeaserPage() {
         <p className="bfc-teaser-disclaimer hero-in" style={{ animationDelay: "0.6s" }}>
           No spam. Just updates as we get closer.
         </p>
+        <div className="bfc-teaser-cohost hero-in" style={{ animationDelay: "0.72s" }}>
+          <p>Want to be part of the show, not just watch it?</p>
+          <Link href="/cohost" className="bfc-teaser-cohost-link">
+            We&rsquo;re looking for a co-host — apply here →
+          </Link>
+        </div>
       </div>
     </section>
   );
