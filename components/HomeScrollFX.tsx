@@ -28,6 +28,35 @@ export default function HomeScrollFX() {
     let lenisInstance: import("lenis").default | null = null;
     let gsapContext: gsap.Context | null = null;
     let cancelled = false;
+    let reverted = false;
+
+    function revertAll() {
+      if (reverted) return;
+      reverted = true;
+      cancelAnimationFrame(rafId);
+      lenisInstance?.destroy();
+      gsapContext?.revert();
+    }
+
+    // GSAP's ScrollTrigger pin reparents the hero section into a
+    // "pin-spacer" wrapper div it inserts directly into the DOM, outside
+    // React's knowledge. If the user then navigates to another page, React
+    // tries to remove the hero node from what it thinks is its original
+    // parent — but the pin-spacer is now the real parent, so removeChild
+    // throws NotFoundError and crashes the whole tree. Reverting on the
+    // capture-phase click (before Next's router touches the DOM) undoes
+    // the pin-spacer in time, instead of in the effect cleanup, which
+    // fires only after React has already tried and failed to remove it.
+    function onDocumentClickCapture(e: MouseEvent) {
+      const anchor = (e.target as HTMLElement)?.closest?.("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      if (anchor.target === "_blank") return;
+      revertAll();
+    }
+    document.addEventListener("click", onDocumentClickCapture, true);
+    window.addEventListener("popstate", revertAll);
 
     (async () => {
       const [{ default: Lenis }, gsapModule, scrollTriggerModule] = await Promise.all([
@@ -131,9 +160,9 @@ export default function HomeScrollFX() {
 
     return () => {
       cancelled = true;
-      cancelAnimationFrame(rafId);
-      lenisInstance?.destroy();
-      gsapContext?.revert();
+      document.removeEventListener("click", onDocumentClickCapture, true);
+      window.removeEventListener("popstate", revertAll);
+      revertAll();
     };
   }, [pathname]);
 
