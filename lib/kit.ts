@@ -43,15 +43,24 @@ export type KitSubscriber = {
   fields: KitFields;
 };
 
-export async function getKitSubscribersByTag(tagId: string): Promise<KitSubscriber[]> {
+// Kit's `/tags/{id}/subscribers` list endpoint has a real indexing lag for
+// recently-tagged subscribers — a subscriber's own tag list reflects a new
+// tag instantly, but the reverse tag->subscribers lookup can take a long
+// time to catch up. Custom field values don't have this lag, so this scans
+// all subscribers and filters by a non-empty field instead of relying on
+// the tag index.
+export async function getKitSubscribersWithField(fieldKey: string): Promise<KitSubscriber[]> {
   const apiKey = getApiKey();
-  const subscribers: KitSubscriber[] = [];
+  const matches: KitSubscriber[] = [];
   let cursor: string | null = null;
 
   do {
-    const url = new URL(`${KIT_API_BASE}/tags/${tagId}/subscribers`);
+    const url = new URL(`${KIT_API_BASE}/subscribers`);
     url.searchParams.set("include", "fields");
     url.searchParams.set("per_page", "100");
+    url.searchParams.set("status", "all");
+    url.searchParams.set("sort_field", "created_at");
+    url.searchParams.set("sort_order", "desc");
     if (cursor) url.searchParams.set("after", cursor);
 
     const res = await fetch(url, {
@@ -59,14 +68,16 @@ export async function getKitSubscribersByTag(tagId: string): Promise<KitSubscrib
     });
     const detail = await res.text();
     if (!res.ok) {
-      throw new Error(`Kit list subscribers by tag failed: ${res.status} ${detail}`);
+      throw new Error(`Kit list subscribers failed: ${res.status} ${detail}`);
     }
     const json = JSON.parse(detail);
-    subscribers.push(...(json.subscribers ?? []));
+    for (const sub of json.subscribers ?? []) {
+      if (sub.fields?.[fieldKey]) matches.push(sub);
+    }
     cursor = json.pagination?.has_next_page ? json.pagination.end_cursor : null;
   } while (cursor);
 
-  return subscribers;
+  return matches;
 }
 
 export async function tagKitSubscriber(email: string, tagId: string) {

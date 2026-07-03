@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getKitSubscribersByTag } from "@/lib/kit";
+import { getKitSubscribersWithField } from "@/lib/kit";
 import { parseApplication } from "./parseApplication";
 import "./applications.css";
 
@@ -8,12 +8,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const COHOST_APPLICANT_TAG_ID = "20864766";
-
 export const dynamic = "force-dynamic";
 
 export default async function ApplicationsAdminPage() {
-  const subscribers = await getKitSubscribersByTag(COHOST_APPLICANT_TAG_ID).catch(() => null);
+  const subscribers = await getKitSubscribersWithField("cohost_application").catch(() => null);
 
   if (!subscribers) {
     return (
