@@ -1,0 +1,58 @@
+.admin-apps { min-height: 100vh; padding: 56px 24px 100px; background: var(--bg-page); }
+.admin-apps-wrap { max-width: 820px; margin: 0 auto; }
+.admin-apps h1 { font-size: 30px; margin-bottom: 6px; }
+.admin-apps-count { color: var(--muted); font-size: 14px; font-weight: 300; margin-bottom: 28px; }
+.admin-apps-error { color: #C0392B; font-size: 15px; }
+.admin-apps-empty { color: var(--muted); font-size: 15px; }
+
+.applicant-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.applicant-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.applicant-summary::-webkit-details-marker { display: none; }
+.applicant-summary::before {
+  content: "▸";
+  color: var(--gold);
+  font-size: 13px;
+  transition: transform 0.15s;
+}
+details[open] > .applicant-summary::before { transform: rotate(90deg); }
+
+.applicant-name { font-weight: 600; color: var(--h); font-size: 15px; }
+.applicant-email { color: var(--muted); font-size: 13px; font-weight: 300; }
+.applicant-date { color: var(--muted2); font-size: 12px; font-weight: 300; margin-left: auto; }
+.applicant-state {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
+}
+.applicant-state-active { background: rgba(46,160,67,0.12); color: #2EA043; }
+.applicant-state-cancelled { background: rgba(192,57,43,0.1); color: #C0392B; }
+
+.applicant-body { padding: 4px 20px 24px; border-top: 1px solid var(--border); }
+.applicant-section { margin-top: 22px; }
+.applicant-section h3 {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.applicant-qa { margin-bottom: 14px; }
+.applicant-qa:last-child { margin-bottom: 0; }
+.applicant-q { font-size: 14px; font-weight: 600; color: var(--h); margin: 0 0 4px; }
+.applicant-a { font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.65; margin: 0; white-space: pre-wrap; }
+
+@media (max-width: 600px) {
+  .admin-apps { padding: 40px 16px 80px; }
+  .applicant-date { margin-left: 0; }
+}

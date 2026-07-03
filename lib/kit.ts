@@ -6,7 +6,7 @@ function getApiKey() {
   return apiKey;
 }
 
-type KitFields = Record<string, string>;
+type KitFields = Record<string, string | null>;
 
 export async function createOrUpdateKitSubscriber(params: {
   email: string;
@@ -32,6 +32,41 @@ export async function createOrUpdateKitSubscriber(params: {
     throw new Error(`Kit create/update subscriber failed: ${res.status} ${detail}`);
   }
   return detail;
+}
+
+export type KitSubscriber = {
+  id: number;
+  email_address: string;
+  first_name: string | null;
+  state: string;
+  created_at: string;
+  fields: KitFields;
+};
+
+export async function getKitSubscribersByTag(tagId: string): Promise<KitSubscriber[]> {
+  const apiKey = getApiKey();
+  const subscribers: KitSubscriber[] = [];
+  let cursor: string | null = null;
+
+  do {
+    const url = new URL(`${KIT_API_BASE}/tags/${tagId}/subscribers`);
+    url.searchParams.set("include", "fields");
+    url.searchParams.set("per_page", "100");
+    if (cursor) url.searchParams.set("after", cursor);
+
+    const res = await fetch(url, {
+      headers: { "X-Kit-Api-Key": apiKey },
+    });
+    const detail = await res.text();
+    if (!res.ok) {
+      throw new Error(`Kit list subscribers by tag failed: ${res.status} ${detail}`);
+    }
+    const json = JSON.parse(detail);
+    subscribers.push(...(json.subscribers ?? []));
+    cursor = json.pagination?.has_next_page ? json.pagination.end_cursor : null;
+  } while (cursor);
+
+  return subscribers;
 }
 
 export async function tagKitSubscriber(email: string, tagId: string) {
