@@ -2,7 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 
-const RECIPIENT = "rvejrpa@gmail.com";
+const RECIPIENT = "ralph@ralphestepjr.com";
 const SUBJECT = "Podcast Co-Host Application";
 
 const SOUNDS_LIKE_YOU = [
