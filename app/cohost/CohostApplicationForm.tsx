@@ -185,7 +185,7 @@ export default function CohostApplicationForm() {
     return lines.join("\n");
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const firstBad = validate();
     if (firstBad) {
@@ -197,6 +197,17 @@ export default function CohostApplicationForm() {
 
     const body = buildBody();
     bodyRef.current = body;
+
+    try {
+      await fetch("/api/cohost", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: form.email, firstName: form.fullName.split(" ")[0], application: body }),
+      });
+    } catch (err) {
+      console.error("Cohost application submit failed:", err);
+    }
+
     const subject = SUBJECT + (form.fullName ? " — " + form.fullName : "");
     const mailto = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
