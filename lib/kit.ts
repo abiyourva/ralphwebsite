@@ -64,7 +64,6 @@ export async function getKitSubscribersWithField(fieldKey: string, maxPages = 8)
 
   do {
     const url = new URL(`${KIT_API_BASE}/subscribers`);
-    url.searchParams.set("include", "fields");
     url.searchParams.set("per_page", "100");
     url.searchParams.set("status", "all");
     url.searchParams.set("sort_field", "created_at");
