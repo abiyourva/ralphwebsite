@@ -47,12 +47,20 @@ export type KitSubscriber = {
 // recently-tagged subscribers — a subscriber's own tag list reflects a new
 // tag instantly, but the reverse tag->subscribers lookup can take a long
 // time to catch up. Custom field values don't have this lag, so this scans
-// all subscribers and filters by a non-empty field instead of relying on
-// the tag index.
-export async function getKitSubscribersWithField(fieldKey: string): Promise<KitSubscriber[]> {
+// subscribers (newest first) and filters by a non-empty field instead of
+// relying on the tag index.
+//
+// The account has 1000+ total subscribers, so scanning everyone would mean
+// a dozen-plus sequential Kit API calls per page load — slow, and prone to
+// hitting Kit's rate limit (which is what was causing "couldn't load").
+// Capped to the most recent maxPages instead: since this field is only
+// ever set by a brand-new, low-volume feature, matches are always near the
+// top of a newest-first list.
+export async function getKitSubscribersWithField(fieldKey: string, maxPages = 8): Promise<KitSubscriber[]> {
   const apiKey = getApiKey();
   const matches: KitSubscriber[] = [];
   let cursor: string | null = null;
+  let page = 0;
 
   do {
     const url = new URL(`${KIT_API_BASE}/subscribers`);
@@ -74,8 +82,9 @@ export async function getKitSubscribersWithField(fieldKey: string): Promise<KitS
     for (const sub of json.subscribers ?? []) {
       if (sub.fields?.[fieldKey]) matches.push(sub);
     }
+    page += 1;
     cursor = json.pagination?.has_next_page ? json.pagination.end_cursor : null;
-  } while (cursor);
+  } while (cursor && page < maxPages);
 
   return matches;
 }
