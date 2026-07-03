@@ -9,6 +9,13 @@ import "./home.css";
 export default function HomePage() {
   return (
     <>
+      {/* ── ANNOUNCEMENT BAR ── */}
+      <div className="home-announce-bar">
+        <Link href="/cohost" className="hero-announce">
+          🎙 Now hiring a podcast co-host <span>Apply →</span>
+        </Link>
+      </div>
+
       {/* ── HERO ── */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="hero-radial" aria-hidden="true" />
