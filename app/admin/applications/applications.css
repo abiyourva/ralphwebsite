@@ -3,6 +3,11 @@
 .admin-apps h1 { font-size: 30px; margin-bottom: 6px; }
 .admin-apps-count { color: var(--muted); font-size: 14px; font-weight: 300; margin-bottom: 28px; }
 .admin-apps-error { color: #C0392B; font-size: 15px; }
+.admin-apps-error-detail {
+  margin-top: 12px; padding: 14px 16px; background: rgba(192,57,43,0.06);
+  border: 1px solid rgba(192,57,43,0.2); border-radius: 4px;
+  font-size: 12px; color: #C0392B; white-space: pre-wrap; word-break: break-word;
+}
 .admin-apps-empty { color: var(--muted); font-size: 15px; }
 
 .applicant-card {

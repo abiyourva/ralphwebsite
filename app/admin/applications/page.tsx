@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getKitSubscribersWithField } from "@/lib/kit";
+import { getKitSubscribersWithField, type KitSubscriber } from "@/lib/kit";
 import { parseApplication } from "./parseApplication";
 import "./applications.css";
 
@@ -11,14 +11,17 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function ApplicationsAdminPage() {
-  const subscribers = await getKitSubscribersWithField("cohost_application").catch(() => null);
-
-  if (!subscribers) {
+  let subscribers: KitSubscriber[];
+  try {
+    subscribers = await getKitSubscribersWithField("cohost_application");
+  } catch (err) {
+    const loadError = err instanceof Error ? err.message : String(err);
     return (
       <main className="admin-apps">
         <div className="admin-apps-wrap">
           <h1>Co-Host Applications</h1>
-          <p className="admin-apps-error">Couldn&apos;t load applications from Kit. Check the server logs.</p>
+          <p className="admin-apps-error">Couldn&apos;t load applications from Kit.</p>
+          <pre className="admin-apps-error-detail">{loadError}</pre>
         </div>
       </main>
     );
