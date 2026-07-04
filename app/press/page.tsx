@@ -137,7 +137,7 @@ export default function PressPage() {
             </div>
             <div className="facts-row">
               <span>YouTube</span>
-              <span className="gold-value">540K+ Subscribers</span>
+              <span className="gold-value">770K+ Subscribers</span>
             </div>
             <div className="facts-row">
               <span>Active Shows</span>

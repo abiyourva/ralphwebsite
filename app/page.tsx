@@ -81,7 +81,7 @@ export default function HomePage() {
             <div className="stat-label">Years in Practice</div>
           </div>
           <div className="stat-item rv d1">
-            <div className="stat-number">540K+</div>
+            <div className="stat-number">770K+</div>
             <div className="stat-label">YouTube Subscribers</div>
           </div>
           <div className="stat-item rv d2">
