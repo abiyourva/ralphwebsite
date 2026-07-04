@@ -329,14 +329,6 @@ export default function MoneyArchetypeQuiz() {
               Uncover how you&apos;re wired to relate to wealth, work, and legacy — then
               get a personalized 7-day email sequence built just for you.
             </p>
-            <div className="welcome-video hero-in" style={{ animationDelay: "0.5s" }}>
-              <div className="welcome-video-play">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--gold)">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-              </div>
-              <p>Ralph&apos;s 90-second intro video</p>
-            </div>
           </div>
 
           <div className="welcome-form">

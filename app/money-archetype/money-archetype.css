@@ -22,25 +22,6 @@
 .welcome-hero h1 em { color: var(--gold); font-style: italic; }
 .welcome-hero p { color: var(--on-dark-m); max-width: 380px; margin-bottom: 36px; }
 
-.welcome-video {
-  aspect-ratio: 16/9;
-  background: rgba(250,250,247,0.04);
-  border: 1px solid rgba(250,250,247,0.1);
-  border-radius: 4px;
-  display: flex; align-items: center; justify-content: center; flex-direction: column;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
-}
-.welcome-video-play {
-  width: 56px; height: 56px;
-  background: rgba(200,151,61,0.15);
-  border: 1px solid rgba(200,151,61,0.3);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.welcome-video p { font-size: 13px; font-weight: 400; color: var(--on-dark-m); margin: 0; max-width: none; }
-
 .welcome-form { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; background: var(--bg-alt); }
 .welcome-form h2 { font-size: 32px; margin-bottom: 8px; }
 .welcome-form-sub { font-size: 15px; font-weight: 300; color: var(--muted); margin-bottom: 36px; }
