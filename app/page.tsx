@@ -6,6 +6,30 @@ import "./home.css";
 
 // Home page metadata uses the site default from layout.tsx.
 
+const PRESS_MENTIONS = [
+  {
+    icon: "🎤",
+    outlet: "How to Pitch a Podcast",
+    title: "There Is Only One Issue — I Do a Solo Show",
+    url: "https://podcasts.apple.com/us/podcast/how-to-pitch-a-podcast/id6784521587",
+    verb: "Listen to the episode",
+  },
+  {
+    icon: "📰",
+    outlet: "AOL",
+    title: "The Mid-Year Budget Reset That Can Save You $500+ Before Fall",
+    url: "https://www.aol.com/articles/mid-budget-reset-save-500-130309000.html",
+    verb: "Read the article",
+  },
+  {
+    icon: "📰",
+    outlet: "MoneyLion",
+    title: "I'm a Money Expert: How To Use Summer Income To Get $1K Ahead This Year",
+    url: "https://www.moneylion.com/trending/money/im-a-money-expert-how-use-summer-income-get-1k-ahead",
+    verb: "Read the article",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
@@ -307,6 +331,38 @@ export default function HomePage() {
               <h4>Listen Now</h4>
               <p>Faith-based personal finance for Christians who want to steward their resources well.</p>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── IN THE PRESS ── */}
+      <section className="section bg-alt">
+        <div className="container">
+          <div className="flex-between mb-4" style={{ alignItems: "baseline", flexWrap: "wrap", gap: "16px" }}>
+            <div>
+              <span className="gold-rule-left gold-rule rv" />
+              <p className="eyebrow rv">In the Press</p>
+              <h2 className="rv d1">Recent media appearances</h2>
+            </div>
+            <Link href="/press" className="btn btn-ghost rv">
+              All Appearances →
+            </Link>
+          </div>
+          <div className="grid-3">
+            {PRESS_MENTIONS.map((item, i) => (
+              <a
+                key={item.url}
+                href={item.url}
+                target="_blank"
+                rel="noopener"
+                className={`card card-hover episode-card rv${i > 0 ? ` d${i}` : ""}`}
+              >
+                <div className="episode-card-icon">{item.icon}</div>
+                <p className="eyebrow" style={{ marginBottom: "8px" }}>{item.outlet}</p>
+                <h4>{item.title}</h4>
+                <p>{item.verb} →</p>
+              </a>
+            ))}
           </div>
         </div>
       </section>

@@ -41,6 +41,27 @@ const TALKING_POINTS = [
 const APPEARANCES = [
   {
     icon: "🎤",
+    show: "How to Pitch a Podcast",
+    title: "There Is Only One Issue — I Do a Solo Show",
+    url: "https://podcasts.apple.com/us/podcast/how-to-pitch-a-podcast/id6784521587",
+    verb: "Listen",
+  },
+  {
+    icon: "📰",
+    show: "AOL",
+    title: "The Mid-Year Budget Reset That Can Save You $500+ Before Fall",
+    url: "https://www.aol.com/articles/mid-budget-reset-save-500-130309000.html",
+    verb: "Read",
+  },
+  {
+    icon: "📰",
+    show: "MoneyLion",
+    title: "I'm a Money Expert: How To Use Summer Income To Get $1K Ahead This Year",
+    url: "https://www.moneylion.com/trending/money/im-a-money-expert-how-use-summer-income-get-1k-ahead",
+    verb: "Read",
+  },
+  {
+    icon: "🎤",
     show: "Bartelle's Money Talk",
     title: "Faith, Finances & Freedom: How to Get Your House in Order",
     url: "https://podcasts.apple.com/us/podcast/faith-finances-freedom-how-to-get-your-house-in-order/id1732123565?i=1000738663309",
