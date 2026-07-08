@@ -22,6 +22,48 @@
 .schedule-crumbs span[aria-hidden] { color: var(--muted2); }
 .schedule-crumbs span[aria-current] { color: var(--h); }
 
+/* ── DECISION TREE (hub page) ── */
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.decision-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 36px 32px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.decision-card:hover {
+  border-color: rgba(200,151,61,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 44px rgba(19,42,74,0.12);
+}
+[data-dark="1"] .decision-card:hover { box-shadow: 0 20px 44px rgba(0,0,0,0.4); }
+
+.decision-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(200,151,61,0.14);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+.decision-card h3 { font-size: 19px; margin-bottom: 8px; }
+.decision-card p { font-size: 14px; margin-bottom: 20px; }
+.decision-arrow { font-size: 13px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); margin-top: auto; }
+
+@media (max-width: 700px) {
+  .decision-grid { grid-template-columns: 1fr; }
+}
+
 /* ── APPOINTMENT PICKER ── */
 
 .appt-picker {

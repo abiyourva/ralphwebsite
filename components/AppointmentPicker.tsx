@@ -72,7 +72,7 @@ export default function AppointmentPicker({ options, groups, icon }: Appointment
         <a className="btn btn-gold appt-picker-cta" href={directUrl(selected.scheduleId)} target="_blank" rel="noopener noreferrer">
           Book This Appointment →
         </a>
-        <p className="appt-picker-fine">Opens Ralph&apos;s secure Google Calendar booking page in a new tab.</p>
+        <p className="appt-picker-fine">Opens a secure Google Calendar booking page in a new tab.</p>
       </div>
     </div>
   );

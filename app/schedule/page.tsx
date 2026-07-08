@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import AppointmentPicker from "@/components/AppointmentPicker";
+import Link from "next/link";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
-import { TAX_OPTIONS, DISCOVERY_OPTIONS, MONTHLY_OPTIONS, RENEE_OPTIONS } from "./appointmentSchedules";
 import "./schedule.css";
 
 export const metadata: Metadata = {
@@ -9,6 +8,37 @@ export const metadata: Metadata = {
   description:
     "Schedule a tax appointment, a free discovery call, a monthly client check-in, or QuickBooks and payroll support with Ralph Estep Jr., LPA and Renee Poole — Saggio Management Group.",
 };
+
+const CATEGORIES = [
+  {
+    icon: "🧾",
+    title: "Tax Preparation",
+    description:
+      "Get your taxes prepared and filed — virtually or in person.",
+    href: "/schedule/tax",
+  },
+  {
+    icon: "💬",
+    title: "Discovery Call or Consultation",
+    description:
+      "New here? Start with a free call, or book a strategy session.",
+    href: "/schedule/discovery",
+  },
+  {
+    icon: "📊",
+    title: "I'm a Monthly Client",
+    description:
+      "Already on an ongoing plan? Book your regular check-in.",
+    href: "/schedule/monthly",
+  },
+  {
+    icon: "🧮",
+    title: "QuickBooks & Payroll",
+    description:
+      "QuickBooks help and payroll support with Renee Poole.",
+    href: "/schedule/bookkeeping",
+  },
+];
 
 export default function SchedulePage() {
   return (
@@ -19,24 +49,31 @@ export default function SchedulePage() {
           <ScheduleBreadcrumbs />
           <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Scheduling</p>
           <h1 id="schedule-heading" className="hero-in" style={{ animationDelay: "0.25s", marginBottom: "14px" }}>
-            Let&apos;s find a time.
+            What can we help you with?
           </h1>
           <p className="hero-sub hero-in" style={{ animationDelay: "0.38s", marginBottom: 0 }}>
-            Choose your appointment type below, then book — no extra clicks.
+            Pick the option that fits you best. We&apos;ll walk you through the details,
+            then you&apos;ll choose a time on the calendar.
           </p>
         </div>
       </header>
 
       <section className="section" style={{ paddingTop: "20px" }}>
-        <div className="container-narrow" style={{ maxWidth: "760px" }}>
-          <AppointmentPicker
-            groups={[
-              { label: "Tax Appointments", icon: "🧾", options: TAX_OPTIONS },
-              { label: "Discovery & Consultations", icon: "💬", options: DISCOVERY_OPTIONS },
-              { label: "Monthly Clients", icon: "📊", options: MONTHLY_OPTIONS },
-              { label: "QuickBooks & Payroll (Renee Poole)", icon: "🧮", options: RENEE_OPTIONS },
-            ]}
-          />
+        <div className="container" style={{ maxWidth: "900px" }}>
+          <div className="decision-grid">
+            {CATEGORIES.map((cat, i) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className={`decision-card rv${i > 0 ? ` d${i}` : ""}`}
+              >
+                <div className="decision-icon">{cat.icon}</div>
+                <h3>{cat.title}</h3>
+                <p>{cat.description}</p>
+                <span className="decision-arrow">Choose a time →</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </>
