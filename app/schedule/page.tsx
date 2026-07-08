@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
+import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { TAX_OPTIONS, DISCOVERY_OPTIONS, MONTHLY_OPTIONS } from "./appointmentSchedules";
 import "./schedule.css";
 
@@ -15,6 +16,7 @@ export default function SchedulePage() {
       <header className="schedule-hero" aria-labelledby="schedule-heading" style={{ paddingBottom: "40px" }}>
         <div className="schedule-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative", maxWidth: "680px" }}>
+          <ScheduleBreadcrumbs />
           <p className="eyebrow hero-in" style={{ animationDelay: "0.1s" }}>Scheduling</p>
           <h1 id="schedule-heading" className="hero-in" style={{ animationDelay: "0.25s", marginBottom: "14px" }}>
             Let&apos;s find a time.

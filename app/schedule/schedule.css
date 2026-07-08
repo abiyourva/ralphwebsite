@@ -7,8 +7,20 @@
   pointer-events: none;
 }
 
-.schedule-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: var(--muted); }
-.schedule-back:hover { color: var(--gold); }
+.schedule-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.schedule-crumbs a { color: var(--muted); transition: color 0.2s; }
+.schedule-crumbs a:hover { color: var(--gold); }
+.schedule-crumbs span[aria-hidden] { color: var(--muted2); }
+.schedule-crumbs span[aria-current] { color: var(--h); }
 
 /* ── APPOINTMENT PICKER ── */
 
