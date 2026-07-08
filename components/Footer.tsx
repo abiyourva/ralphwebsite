@@ -56,6 +56,7 @@ export default function Footer() {
           <div>
             <p className="footer-col-label">Work Together</p>
             <div className="footer-links">
+              <Link href="/schedule" className="footer-link">Schedule an Appointment</Link>
               <Link href="/coaching" className="footer-link">Coaching</Link>
               <Link href="/speaking" className="footer-link">Speaking</Link>
               <Link href="/resources" className="footer-link">Books &amp; Resources</Link>

@@ -10,6 +10,7 @@ export const desktopLinks: NavLink[] = [
   { href: "/speaking", label: "Speaking" },
   { href: "/resources", label: "Resources" },
   { href: "/press", label: "Press" },
+  { href: "/schedule", label: "Schedule" },
 ];
 
 // Slide-down mobile menu links (mirrors the original mobile-menu markup).
@@ -20,5 +21,6 @@ export const mobileLinks: NavLink[] = [
   { href: "/speaking", label: "Speaking" },
   { href: "/resources", label: "Books & Resources" },
   { href: "/press", label: "Media Kit / Press" },
+  { href: "/schedule", label: "Schedule an Appointment" },
   { href: "/contact", label: "Contact" },
 ];

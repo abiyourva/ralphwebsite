@@ -1,0 +1,53 @@
+/* ── SCHEDULING PAGES (hub + 3 category pages) ── */
+
+.schedule-hero { padding: 140px 56px 80px; background: var(--bg-page); position: relative; overflow: hidden; }
+.schedule-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 85% 50%, rgba(200,151,61,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Category picker cards on the hub page */
+.category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.category-card {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.category-card .category-icon { font-size: 28px; margin-bottom: 18px; }
+.category-card h3 { margin-bottom: 10px; }
+.category-card p { font-size: 14px; margin-bottom: 24px; flex-grow: 1; }
+.category-card .btn { width: 100%; justify-content: center; }
+
+@media (max-width: 860px) {
+  .category-grid { grid-template-columns: 1fr; }
+}
+
+/* Steps list re-used on the hub + each category page */
+.schedule-steps { margin-top: 26px; display: grid; gap: 18px; }
+.schedule-step { display: flex; gap: 16px; align-items: flex-start; }
+.schedule-step .num {
+  width: 30px; height: 30px; flex: none; border-radius: 50%;
+  background: var(--bg-navy); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-cormorant), serif; font-weight: 600; font-size: 14px;
+}
+.schedule-step strong { display: block; font-size: 15px; font-weight: 500; color: var(--h); }
+.schedule-step p { font-size: 14px; margin-top: 2px; }
+
+/* Single-CTA booking card on each category page */
+.booking-card {
+  padding: 48px;
+  background: var(--bg-navy);
+  border-radius: 4px;
+  text-align: center;
+}
+.booking-card .eyebrow { color: var(--gold); }
+.booking-card h2 { color: var(--on-dark); margin-bottom: 12px; }
+.booking-card p { color: var(--on-dark-m); margin-bottom: 28px; }
+.booking-card .fine { margin-top: 16px; font-size: 12.5px; color: var(--on-dark-d); }
+
+.schedule-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: var(--muted); }
+.schedule-back:hover { color: var(--gold); }
