@@ -548,6 +548,7 @@ em { font-style: italic; }
   .press-hero-radial,
   .coaching-hero-radial,
   .resources-hero-radial,
+  .schedule-hero-radial,
   .welcome-hero-glow-1,
   .welcome-hero-glow-2 {
     animation: glowDrift 16s ease-in-out infinite;

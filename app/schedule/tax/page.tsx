@@ -29,7 +29,7 @@ export default function TaxSchedulePage() {
 
       <section className="section" style={{ paddingTop: "20px" }}>
         <div className="container-narrow" style={{ maxWidth: "760px" }}>
-          <AppointmentPicker options={TAX_OPTIONS} />
+          <AppointmentPicker options={TAX_OPTIONS} icon="🧾" />
         </div>
       </section>
     </>

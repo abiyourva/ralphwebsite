@@ -29,7 +29,7 @@ export default function DiscoverySchedulePage() {
 
       <section className="section" style={{ paddingTop: "20px" }}>
         <div className="container-narrow" style={{ maxWidth: "760px" }}>
-          <AppointmentPicker options={DISCOVERY_OPTIONS} />
+          <AppointmentPicker options={DISCOVERY_OPTIONS} icon="💬" />
         </div>
       </section>
     </>

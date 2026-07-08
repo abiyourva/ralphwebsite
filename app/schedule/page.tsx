@@ -29,9 +29,9 @@ export default function SchedulePage() {
         <div className="container-narrow" style={{ maxWidth: "760px" }}>
           <AppointmentPicker
             groups={[
-              { label: "Tax Appointments", options: TAX_OPTIONS },
-              { label: "Discovery & Consultations", options: DISCOVERY_OPTIONS },
-              { label: "Monthly Clients", options: MONTHLY_OPTIONS },
+              { label: "Tax Appointments", icon: "🧾", options: TAX_OPTIONS },
+              { label: "Discovery & Consultations", icon: "💬", options: DISCOVERY_OPTIONS },
+              { label: "Monthly Clients", icon: "📊", options: MONTHLY_OPTIONS },
             ]}
           />
         </div>
