@@ -10,7 +10,6 @@ export type AppointmentOption = {
   id: string;
   label: string;
   duration: string;
-  price?: string;
   location: string;
   scheduleId: string;
 };
@@ -24,7 +23,6 @@ export const TAX_OPTIONS: AppointmentOption[] = [
     id: "tax-virtual",
     label: "Virtual Tax Preparation and Filing",
     duration: "60 min",
-    price: "$100 deposit",
     location: "Google Meet",
     scheduleId: "AcZssZ3FQFB7u1rhSki5cE4qGVuDBfTDB_DWS7WYb_HFg63Ho4QuKlIaBjSSfYVULLdY5BEplGe7CJvj",
   },
@@ -32,7 +30,6 @@ export const TAX_OPTIONS: AppointmentOption[] = [
     id: "tax-in-person",
     label: "In-Person Tax Preparation and Filing",
     duration: "60 min",
-    price: "$100 deposit",
     location: "1100 Dutch Neck Rd, Middletown, DE",
     scheduleId: "AcZssZ30QVJxEMlNmZxRZwdRvxSKFDxSLWQZuc5KGyOXNK6laCELmGS9xabqvSu1FiSUj_R1JVj3g2Z9",
   },
@@ -43,7 +40,6 @@ export const DISCOVERY_OPTIONS: AppointmentOption[] = [
     id: "discovery-free",
     label: "Free 15-Minute Discovery Call",
     duration: "15 min",
-    price: "Free",
     location: "Google Meet",
     scheduleId: "AcZssZ3mUhn49mLENQPYLl5TSKBqclDwbD0M5f1X1hbmVfjBl5TJDyvSg6jw9btFOGSNGi0vnJG5WszM",
   },
@@ -51,7 +47,6 @@ export const DISCOVERY_OPTIONS: AppointmentOption[] = [
     id: "discovery-remote-30",
     label: "Remote 30-Minute Strategy Session",
     duration: "30 min",
-    price: "$99",
     location: "Google Meet",
     scheduleId: "AcZssZ0WxISiPDF_eP0dUEt9MeSROnXuuzG1vK_ATtiQ-ndJ8zO2-kALw6QrDkSgkL_Ld_ZOY0hQnr71",
   },
@@ -59,7 +54,6 @@ export const DISCOVERY_OPTIONS: AppointmentOption[] = [
     id: "discovery-remote-50",
     label: "Remote 50-Minute Strategy Session",
     duration: "60 min",
-    price: "$199",
     location: "Google Meet",
     scheduleId: "AcZssZ0KWR9q1iVCEe58OfS9InlT4fLMVriydAXiom22gxsZnauj4hda_Lklj9oqgi-hLgmYkL6VF8LC",
   },
@@ -67,7 +61,6 @@ export const DISCOVERY_OPTIONS: AppointmentOption[] = [
     id: "discovery-in-person",
     label: "In-Person Consultation",
     duration: "60 min",
-    price: "$199",
     location: "1100 Dutch Neck Rd, Middletown, DE",
     scheduleId: "AcZssZ2QPq_KGpLwY_1hWvJ1O5NSaY1wbC3ytncOrOew-R0Yt0mcoZO-2WLAB3wlU0egHWEYsCD6tI8E",
   },

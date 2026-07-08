@@ -23,7 +23,7 @@ export default function AppointmentPicker({ options, groups }: AppointmentPicker
   const [selectedId, setSelectedId] = useState(allOptions[0].id);
   const selected = allOptions.find((o) => o.id === selectedId) ?? allOptions[0];
 
-  const optionLabel = (o: AppointmentOption) => `${o.label} — ${o.duration}${o.price ? ` · ${o.price}` : ""}`;
+  const optionLabel = (o: AppointmentOption) => `${o.label} — ${o.duration}`;
 
   return (
     <div className="appt-picker">
@@ -55,8 +55,7 @@ export default function AppointmentPicker({ options, groups }: AppointmentPicker
       <div className="appt-picker-summary">
         <h3>{selected.label}</h3>
         <p>
-          {selected.duration}
-          {selected.price ? ` · ${selected.price}` : ""} · {selected.location}
+          {selected.duration} · {selected.location}
         </p>
       </div>
 
