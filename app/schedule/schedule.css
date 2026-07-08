@@ -108,7 +108,7 @@
 
 .appt-picker-panel {
   position: relative;
-  padding: 44px 40px;
+  padding: 56px 48px;
   background: var(--bg-navy);
   display: flex;
   flex-direction: column;
@@ -125,19 +125,19 @@
   pointer-events: none;
 }
 .appt-picker-icon {
-  width: 52px; height: 52px;
+  width: 58px; height: 58px;
   border-radius: 50%;
   background: rgba(200,151,61,0.16);
   display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-  margin-bottom: 18px;
+  font-size: 24px;
+  margin-bottom: 26px;
   position: relative;
 }
-.appt-picker-panel h3 { color: var(--on-dark); font-size: 20px; margin-bottom: 6px; position: relative; }
-.appt-picker-meta { color: var(--gold); font-size: 13px; font-weight: 600; margin-bottom: 14px; position: relative; }
-.appt-picker-description { color: var(--on-dark-m); font-size: 14px; line-height: 1.65; margin-bottom: 24px; position: relative; }
+.appt-picker-panel h3 { color: var(--on-dark); font-size: 21px; line-height: 1.35; margin-bottom: 12px; position: relative; }
+.appt-picker-meta { color: var(--gold); font-size: 13px; font-weight: 600; margin-bottom: 20px; position: relative; }
+.appt-picker-description { color: var(--on-dark-m); font-size: 14.5px; line-height: 1.75; margin-bottom: 32px; position: relative; }
 .appt-picker-cta { position: relative; }
-.appt-picker-fine { font-size: 12px; color: var(--on-dark-d); margin-top: 16px; position: relative; }
+.appt-picker-fine { font-size: 12px; color: var(--on-dark-d); margin-top: 20px; position: relative; }
 
 @media (max-width: 780px) {
   .appt-picker { grid-template-columns: 1fr; }
