@@ -176,6 +176,15 @@ export default function HomePage() {
                 <p>The financial side of running a podcast or creator business — taxes, audience economics, and more.</p>
                 <span className="path-card-link">Free Audit →</span>
               </a>
+              <Link href="/schedule" className="card card-hover path-card path-card-gold rv d4">
+                <div className="path-card-icon">📅</div>
+                <div className="path-card-gold-body">
+                  <span className="path-card-num">05</span>
+                  <h3>I need to book an appointment</h3>
+                  <p>Tax appointments, discovery calls, or your monthly check-in — pick a time that works for you.</p>
+                </div>
+                <span className="path-card-link">Book Now →</span>
+              </Link>
             </div>
           </div>
           <p className="rv mt-3 text-center" style={{ fontSize: "14px", color: "var(--muted2)" }}>

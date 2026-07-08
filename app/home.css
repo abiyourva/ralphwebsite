@@ -100,6 +100,27 @@
 .path-card p { font-size: 15px; line-height: 1.68; }
 .path-card-link { display: inline-block; margin-top: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
+.path-card-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.path-card-gold .path-card-icon { margin-bottom: 0; flex-shrink: 0; }
+.path-card-gold-body { flex: 1; }
+.path-card-gold .path-card-num { color: #FAFAF7; margin-bottom: 4px; }
+.path-card-gold h3 { color: #FAFAF7; margin-bottom: 4px; }
+.path-card-gold p { color: rgba(250,250,247,0.85); }
+.path-card-gold .path-card-link { color: #FAFAF7; margin-top: 0; flex-shrink: 0; }
+.path-card-gold:hover { border-color: var(--gold); box-shadow: 0 16px 44px rgba(200,151,61,0.35); }
+
+@media (max-width: 700px) {
+  .path-card-gold { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .path-card-gold .path-card-link { margin-top: 4px; }
+}
+
 /* Enhanced (desktop, JS-driven) horizontal scroll-through state for the
    "What brings you here today?" panels — .pv-enhanced is only added by
    HomeScrollFX when GSAP/ScrollTrigger is active. Without it, this stays

@@ -58,6 +58,9 @@ export default function Nav() {
             </Link>
           ))}
           <ThemeToggle />
+          <Link href="/schedule" className="nav-cta nav-cta-gold">
+            Book Now
+          </Link>
           <Link href="/contact" className="nav-cta">
             Work With Ralph
           </Link>

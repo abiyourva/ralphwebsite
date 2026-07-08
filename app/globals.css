@@ -230,6 +230,25 @@ em { font-style: italic; }
 }
 .nav-cta:hover { background: var(--bg-navy); color: var(--on-dark); border-color: var(--bg-navy); }
 
+.nav-cta-gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #FAFAF7;
+}
+.nav-cta-gold:hover { background: var(--accent-dark, #a9863f); border-color: var(--accent-dark, #a9863f); color: #FAFAF7; }
+.site-nav.nav-on-dark .nav-cta-gold { color: #FAFAF7; border-color: var(--gold); }
+
+.mobile-menu a.book-now {
+  color: #FAFAF7;
+  background: var(--gold);
+  font-weight: 700;
+  text-align: center;
+  border-radius: 2px;
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+.mobile-menu a.book-now:hover { color: #FAFAF7; }
+
 .nav-hamburger {
   display: none;
   flex-direction: column;

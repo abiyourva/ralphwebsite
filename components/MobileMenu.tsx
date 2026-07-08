@@ -21,16 +21,20 @@ export default function MobileMenu({ open, onNavigate }: MobileMenuProps) {
       className={`mobile-menu${open ? " open" : ""}`}
       aria-label="Mobile navigation"
     >
-      {mobileLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={pathname === link.href ? "active" : undefined}
-          onClick={onNavigate}
-        >
-          {link.label}
-        </Link>
-      ))}
+      {mobileLinks.map((link) => {
+        const isBookNow = link.href === "/schedule";
+        const classNames = [
+          isBookNow ? "book-now" : undefined,
+          pathname === link.href ? "active" : undefined,
+        ]
+          .filter(Boolean)
+          .join(" ") || undefined;
+        return (
+          <Link key={link.href} href={link.href} className={classNames} onClick={onNavigate}>
+            {link.label}
+          </Link>
+        );
+      })}
       <div style={{ padding: "16px 0" }}>
         <ThemeToggle />
       </div>

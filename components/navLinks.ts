@@ -10,17 +10,17 @@ export const desktopLinks: NavLink[] = [
   { href: "/speaking", label: "Speaking" },
   { href: "/resources", label: "Resources" },
   { href: "/press", label: "Press" },
-  { href: "/schedule", label: "Schedule" },
 ];
 
 // Slide-down mobile menu links (mirrors the original mobile-menu markup).
+// "/schedule" is rendered first and styled as a standout CTA — see MobileMenu.tsx.
 export const mobileLinks: NavLink[] = [
+  { href: "/schedule", label: "Book an Appointment" },
   { href: "/about", label: "About Ralph" },
   { href: "/shows", label: "Shows & Content" },
   { href: "/coaching", label: "Coaching" },
   { href: "/speaking", label: "Speaking" },
   { href: "/resources", label: "Books & Resources" },
   { href: "/press", label: "Media Kit / Press" },
-  { href: "/schedule", label: "Schedule an Appointment" },
   { href: "/contact", label: "Contact" },
 ];
