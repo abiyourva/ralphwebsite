@@ -138,3 +138,35 @@ export const MONTHLY_OPTIONS: AppointmentOption[] = [
     scheduleId: "AcZssZ199haZwQGEMht9u0998I32MohjN-bKC9DKang-xncpkBaBt_q0lrpuuGAspEFw80wM83L6Rqel",
   },
 ];
+
+// Renee Poole's own appointment schedules — QuickBooks and payroll
+// support, booked separately from Ralph's calendar.
+export const RENEE_OPTIONS: AppointmentOption[] = [
+  {
+    id: "renee-qbo-assistance",
+    label: "30 Minute QBO Assistance",
+    duration: "30 min",
+    location: "Google Meet",
+    description:
+      "Schedule a Virtual QuickBooks Technical Assistance session with Renee Poole. This meeting is designed to troubleshoot QuickBooks issues, answer questions, or provide guidance on bookkeeping tasks. Perfect for existing clients needing one-on-one help. Please have your QuickBooks Online account open and ready to share your screen.",
+    scheduleId: "AcZssZ1u1w6JiWgrMiwIBQSDoZwacTI7kty8TlEcNoAPvht94K6iST2_3s7_fKQCN4XS583nlFyuux6q",
+  },
+  {
+    id: "renee-payroll-onboarding",
+    label: "Payroll On-Boarding",
+    duration: "60 min",
+    location: "Google Meet",
+    description:
+      "Meet with Renee Poole for your Virtual Payroll On-Boarding session. This meeting will walk you through payroll setup, employee entry, and firm connection. Ideal for new clients starting payroll services. Please have your employee details, business banking info, and payroll schedule available for setup during the call.",
+    scheduleId: "AcZssZ1VyiMvKPKpiAuH5Iw1y0WJJ9tCpRzSM6dajxxlsAoSBKuDus2O1AF9XlckSkeIfQpRuYVXHn6P",
+  },
+  {
+    id: "renee-payroll-assistance",
+    label: "Virtual Payroll Assistance",
+    duration: "30 min",
+    location: "Google Meet",
+    description:
+      "Schedule a Virtual Payroll Assistance session with Renee Poole. This meeting is for troubleshooting payroll issues, updating employee details, or reviewing reports. Ideal for existing clients needing one-on-one support. Please have your payroll system open and ready to share your screen during the session.",
+    scheduleId: "AcZssZ0IT1ITw637INJxlLikpweUwEMSgILfzHTcMRcy3vC8q_cLXcuXRa8qc3SVepin_mArPnYHXOwO",
+  },
+];

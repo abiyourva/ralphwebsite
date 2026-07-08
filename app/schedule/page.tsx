@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
-import { TAX_OPTIONS, DISCOVERY_OPTIONS, MONTHLY_OPTIONS } from "./appointmentSchedules";
+import { TAX_OPTIONS, DISCOVERY_OPTIONS, MONTHLY_OPTIONS, RENEE_OPTIONS } from "./appointmentSchedules";
 import "./schedule.css";
 
 export const metadata: Metadata = {
   title: "Book an Appointment — Ralph Estep Jr., LPA",
   description:
-    "Schedule a tax appointment, a free discovery call, or a monthly client check-in with Ralph Estep Jr., LPA — Saggio Management Group.",
+    "Schedule a tax appointment, a free discovery call, a monthly client check-in, or QuickBooks and payroll support with Ralph Estep Jr., LPA and Renee Poole — Saggio Management Group.",
 };
 
 export default function SchedulePage() {
@@ -34,6 +34,7 @@ export default function SchedulePage() {
               { label: "Tax Appointments", icon: "🧾", options: TAX_OPTIONS },
               { label: "Discovery & Consultations", icon: "💬", options: DISCOVERY_OPTIONS },
               { label: "Monthly Clients", icon: "📊", options: MONTHLY_OPTIONS },
+              { label: "QuickBooks & Payroll (Renee Poole)", icon: "🧮", options: RENEE_OPTIONS },
             ]}
           />
         </div>
