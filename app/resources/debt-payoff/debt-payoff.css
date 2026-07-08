@@ -1,0 +1,129 @@
+/* ── DEBT PAYOFF CALCULATOR ── */
+
+.dp-hero { padding: 140px 56px 80px; background: var(--bg-navy); position: relative; overflow: hidden; }
+.dp-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 80% 50%, rgba(200,151,61,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.dp-hero h1 { color: var(--on-dark); margin-bottom: 24px; }
+.dp-hero h1 em { color: var(--gold); font-style: italic; }
+.dp-hero p { color: var(--on-dark-m); font-size: 17px; max-width: 540px; }
+
+.dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+/* Inputs */
+.dp-inputs { display: flex; flex-direction: column; gap: 20px; }
+.dp-card { padding: 28px; }
+.dp-card-head { margin-bottom: 18px; }
+.dp-card-head h3 { margin-bottom: 2px; }
+.dp-card-head p { font-size: 13px; color: var(--muted); }
+
+.dp-debt-list { display: flex; flex-direction: column; gap: 16px; }
+.dp-debt { border: 1px solid var(--border); border-radius: 4px; padding: 16px; margin: 0; }
+.dp-debt-toprow { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+.dp-name {
+  flex: 1; min-width: 0;
+  padding: 8px 10px;
+  background: transparent;
+  border: none; border-bottom: 1.5px solid var(--border);
+  font-size: 14px; font-weight: 500; color: var(--h);
+  outline: none;
+  font-family: var(--font-dm-sans), sans-serif;
+  transition: border-color 0.18s;
+}
+.dp-name:focus { border-color: rgba(200,151,61,0.6); }
+.dp-name::placeholder { color: var(--muted2); font-weight: 300; }
+.dp-remove {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: none; border: 1px solid var(--border); border-radius: 50%;
+  color: var(--muted); font-size: 11px; cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+.dp-remove:hover { border-color: #C0392B; color: #C0392B; }
+
+.dp-debt-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.dp-debt-fields label { display: flex; flex-direction: column; gap: 5px; }
+.dp-debt-fields label > span { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+.dp-field { display: flex; align-items: center; position: relative; }
+.dp-prefix { position: absolute; left: 12px; font-size: 14px; color: var(--muted2); pointer-events: none; }
+.dp-suffix { position: absolute; right: 12px; font-size: 14px; color: var(--muted2); pointer-events: none; }
+.dp-field input {
+  width: 100%;
+  padding: 10px 12px 10px 26px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  font-size: 15px; font-weight: 400; color: var(--body);
+  outline: none;
+  font-family: var(--font-dm-sans), sans-serif;
+  transition: border-color 0.18s;
+}
+.dp-field-pct input { padding: 10px 26px 10px 12px; }
+.dp-field input:focus { border-color: rgba(200,151,61,0.6); }
+.dp-field input::placeholder { color: var(--muted2); }
+.dp-field-extra { max-width: 200px; }
+.dp-field-extra input { font-size: 17px; padding-top: 12px; padding-bottom: 12px; }
+
+.dp-add {
+  margin-top: 16px;
+  background: none; border: 1.5px dashed var(--border); border-radius: 4px;
+  width: 100%; padding: 12px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.05em; color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font-dm-sans), sans-serif;
+  transition: border-color 0.18s, color 0.18s;
+}
+.dp-add:hover { border-color: rgba(200,151,61,0.6); color: var(--gold); }
+
+/* Results */
+.dp-results { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 20px; }
+.dp-results-card { padding: 32px; }
+.dp-empty { font-size: 14px; color: var(--muted); }
+
+.dp-headline { display: flex; flex-direction: column; gap: 2px; margin-bottom: 26px; }
+.dp-headline-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.dp-headline-date {
+  font-family: var(--font-lora), serif;
+  font-size: 40px; font-weight: 700; color: var(--h); line-height: 1.15;
+}
+.dp-headline-sub { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+.dp-strategies { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+.dp-strategy { border: 1px solid var(--border); border-radius: 4px; padding: 16px; }
+.dp-strategy h4 { font-size: 16px; margin-bottom: 2px; }
+.dp-strategy-tag { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.dp-strategy dl { display: flex; flex-direction: column; gap: 6px; margin: 0; }
+.dp-strategy dl > div { display: flex; justify-content: space-between; gap: 8px; }
+.dp-strategy dt { font-size: 12px; color: var(--muted); }
+.dp-strategy dd { font-size: 13px; font-weight: 600; color: var(--h); margin: 0; }
+
+.dp-savings {
+  font-size: 14px; color: var(--body);
+  background: rgba(200,151,61,0.1);
+  border-left: 2px solid var(--gold);
+  padding: 12px 16px; border-radius: 0 4px 4px 0;
+  margin-bottom: 18px;
+}
+.dp-savings strong { color: var(--h); }
+
+.dp-note { font-size: 13px; color: var(--muted); font-style: italic; }
+
+.dp-verdict-title { font-size: 20px; margin-bottom: 10px; }
+.dp-verdict-body { font-size: 14px; }
+.dp-neg { color: #C0392B; }
+[data-dark="1"] .dp-neg { color: #E06555; }
+
+.dp-email-card { padding: 28px; background: var(--bg-alt); }
+.dp-email-card h3 { margin-bottom: 6px; }
+.dp-email-card p { font-size: 14px; margin-bottom: 18px; }
+
+@media (max-width: 900px) {
+  .dp-grid { grid-template-columns: 1fr; }
+  .dp-results { position: static; }
+}
+@media (max-width: 560px) {
+  .dp-debt-fields { grid-template-columns: 1fr 1fr; }
+  .dp-strategies { grid-template-columns: 1fr; }
+}

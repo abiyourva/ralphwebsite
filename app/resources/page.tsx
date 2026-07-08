@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
+import BookNotifyForm from "./BookNotifyForm";
 import "./resources.css";
 
 export const metadata: Metadata = {
@@ -12,22 +13,21 @@ export const metadata: Metadata = {
 const TOOLS = [
   {
     icon: "📊",
-    title: "Monthly Budget Template",
+    title: "Monthly Budget Calculator",
     description:
-      "A simple, no-frills spreadsheet for tracking income, expenses, and savings goals — used by Ralph's coaching clients.",
-    linkLabel: "Free Download →",
-    href: "#",
-    internal: false,
-    comingSoon: true,
+      "Enter your real numbers and see exactly where you stand in under two minutes — instant results, no judgment, right in your browser.",
+    linkLabel: "Try It Free →",
+    href: "/resources/budget-calculator",
+    internal: true,
   },
   {
     icon: "🧾",
-    title: "Debt Payoff Tracker",
-    description: "Visualize your debt payoff progress and stay motivated with this straightforward tracking tool.",
-    linkLabel: "Free Download →",
-    href: "#",
-    internal: false,
-    comingSoon: true,
+    title: "Debt Payoff Calculator",
+    description:
+      "List your debts and see your debt-free date under the snowball and avalanche methods — plus what every extra dollar saves you.",
+    linkLabel: "Try It Free →",
+    href: "/resources/debt-payoff",
+    internal: true,
   },
   {
     icon: "🎙",
@@ -118,7 +118,7 @@ export default function ResourcesPage() {
                   financial confidence, from someone who&apos;s spent 30 years helping real
                   people with real money problems. Coming 2027.
                 </p>
-                <span className="book-card-notify">Notify Me When Available</span>
+                <BookNotifyForm book="bfc" />
               </div>
             </div>
 
@@ -136,7 +136,7 @@ export default function ResourcesPage() {
                   running a financially healthy creative business — taxes, structure,
                   revenue, and more. Coming 2027.
                 </p>
-                <span className="book-card-notify">Notify Me When Available</span>
+                <BookNotifyForm book="cca" />
               </div>
             </div>
           </div>
@@ -151,20 +151,7 @@ export default function ResourcesPage() {
           <h2 className="rv d1" style={{ marginBottom: "48px" }}>Practical tools, no cost.</h2>
           <div className="grid-2">
             {TOOLS.map((tool, i) =>
-              tool.comingSoon ? (
-                <div
-                  key={tool.title}
-                  className={`card tool-card tool-card-disabled rv${i > 0 ? ` d${i}` : ""}`}
-                  aria-disabled="true"
-                >
-                  <span className="badge badge-gold tool-card-badge">Coming Soon</span>
-                  <div className="tool-card-icon">{tool.icon}</div>
-                  <div>
-                    <h3>{tool.title}</h3>
-                    <p>{tool.description}</p>
-                  </div>
-                </div>
-              ) : tool.internal ? (
+              tool.internal ? (
                 <Link key={tool.title} href={tool.href} className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}>
                   <div className="tool-card-icon">{tool.icon}</div>
                   <div>

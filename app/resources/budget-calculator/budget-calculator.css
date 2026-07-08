@@ -1,0 +1,100 @@
+/* ── BUDGET CALCULATOR ── */
+
+.bc-hero { padding: 140px 56px 80px; background: var(--bg-navy); position: relative; overflow: hidden; }
+.bc-hero-radial {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 65% at 80% 50%, rgba(200,151,61,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bc-hero h1 { color: var(--on-dark); margin-bottom: 24px; }
+.bc-hero h1 em { color: var(--gold); font-style: italic; }
+.bc-hero p { color: var(--on-dark-m); font-size: 17px; max-width: 520px; }
+
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+/* Inputs */
+.bc-inputs { display: flex; flex-direction: column; gap: 20px; }
+.bc-income-card { padding: 28px; }
+.bc-income-label { display: block; font-weight: 600; color: var(--h); margin-bottom: 4px; }
+.bc-income-hint { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+
+.bc-field { display: flex; align-items: center; position: relative; }
+.bc-field-prefix {
+  position: absolute; left: 14px;
+  font-size: 15px; color: var(--muted2); pointer-events: none;
+}
+.bc-field input {
+  width: 100%;
+  padding: 12px 14px 12px 30px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  font-size: 16px; font-weight: 400; color: var(--body);
+  outline: none;
+  font-family: var(--font-dm-sans), sans-serif;
+  transition: border-color 0.18s;
+}
+.bc-field input:focus { border-color: rgba(200,151,61,0.6); }
+.bc-field input::placeholder { color: var(--muted2); }
+.bc-field-sm input { padding-top: 9px; padding-bottom: 9px; font-size: 15px; max-width: 150px; }
+
+.bc-bucket-card { padding: 28px; }
+.bc-bucket-head { margin-bottom: 18px; }
+.bc-bucket-head h3 { margin-bottom: 2px; }
+.bc-bucket-head p { font-size: 13px; color: var(--muted); }
+.bc-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 8px 0;
+}
+.bc-row + .bc-row { border-top: 1px solid var(--border); }
+.bc-row label { font-size: 14px; color: var(--body); font-weight: 300; }
+
+/* Results */
+.bc-results { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 20px; }
+.bc-results-card { padding: 32px; }
+
+.bc-leftover { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
+.bc-leftover-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.bc-leftover-num {
+  font-family: var(--font-lora), serif;
+  font-size: 44px; font-weight: 700; color: var(--h); line-height: 1.15;
+}
+.bc-neg { color: #C0392B; }
+[data-dark="1"] .bc-neg { color: #E06555; }
+
+.bc-bars { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+.bc-bar-row { display: flex; flex-direction: column; gap: 6px; }
+.bc-bar-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--body); }
+.bc-bar-meta em { font-style: normal; color: var(--muted2); }
+.bc-bar { position: relative; height: 10px; background: var(--toggle-bg); border-radius: 5px; overflow: visible; }
+.bc-bar-fill { height: 100%; border-radius: 5px; transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.bc-bar-needs { background: var(--bg-navy); }
+[data-dark="1"] .bc-bar-needs { background: #3D5A8F; }
+.bc-bar-wants { background: var(--gold); }
+.bc-bar-savings { background: #2A6049; }
+[data-dark="1"] .bc-bar-savings { background: #4C9873; }
+.bc-bar-fill.bc-bar-over, [data-dark="1"] .bc-bar-fill.bc-bar-over { background: #C0392B; }
+.bc-bar-target {
+  position: absolute; top: -3px; bottom: -3px; width: 2px;
+  background: var(--muted2); border-radius: 1px;
+}
+.bc-bars-note { font-size: 12px; color: var(--muted2); }
+
+.bc-verdict { border-top: 1px solid var(--border); padding-top: 24px; }
+.bc-verdict-title { font-size: 20px; margin-bottom: 10px; }
+.bc-tone-over { color: #C0392B; }
+[data-dark="1"] .bc-tone-over { color: #E06555; }
+.bc-tone-great, .bc-tone-good { color: #2A6049; }
+[data-dark="1"] .bc-tone-great, [data-dark="1"] .bc-tone-good { color: #6FBF95; }
+.bc-verdict p { font-size: 14px; }
+.bc-verdict-sig { margin-top: 10px; font-family: var(--font-lora), serif; font-style: italic; color: var(--muted); }
+.bc-verdict-empty { font-size: 14px; color: var(--muted); }
+
+.bc-email-card { padding: 28px; background: var(--bg-alt); }
+.bc-email-card h3 { margin-bottom: 6px; }
+.bc-email-card p { font-size: 14px; margin-bottom: 18px; }
+
+@media (max-width: 900px) {
+  .bc-grid { grid-template-columns: 1fr; }
+  .bc-results { position: static; }
+}

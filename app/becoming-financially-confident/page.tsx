@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
+import LaunchCountdown from "@/components/LaunchCountdown";
 import "./bfc-teaser.css";
 
 export const metadata: Metadata = {
@@ -26,6 +27,9 @@ export default function BfcTeaserPage() {
           you early clips, behind-the-scenes looks, and the announcement the
           moment it&apos;s live.
         </p>
+        <div className="hero-in" style={{ animationDelay: "0.45s" }}>
+          <LaunchCountdown label="The wait ends in" />
+        </div>
         <div className="bfc-teaser-form-wrap hero-in" style={{ animationDelay: "0.5s" }}>
           <EmailCaptureForm
             placeholder="Your email address"

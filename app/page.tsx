@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import "./home.css";
@@ -101,15 +102,15 @@ export default function HomePage() {
       <section className="stats-bar" aria-label="By the numbers">
         <div className="stats-grid">
           <div className="stat-item rv">
-            <div className="stat-number">30+</div>
+            <div className="stat-number"><CountUpStat value={30} suffix="+" /></div>
             <div className="stat-label">Years in Practice</div>
           </div>
           <div className="stat-item rv d1">
-            <div className="stat-number">770K+</div>
+            <div className="stat-number"><CountUpStat value={770} suffix="K+" /></div>
             <div className="stat-label">YouTube Subscribers</div>
           </div>
           <div className="stat-item rv d2">
-            <div className="stat-number">4</div>
+            <div className="stat-number"><CountUpStat value={4} durationMs={900} /></div>
             <div className="stat-label">Active Shows</div>
           </div>
           <div className="stat-item rv d3">
