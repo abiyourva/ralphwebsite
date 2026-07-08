@@ -68,6 +68,7 @@ export default function AppointmentPicker({ options, groups, icon }: Appointment
         <p className="appt-picker-meta">
           {selected.duration} · {selected.location}
         </p>
+        <p className="appt-picker-description">{selected.description}</p>
         <a className="btn btn-gold appt-picker-cta" href={directUrl(selected.scheduleId)} target="_blank" rel="noopener noreferrer">
           Book This Appointment →
         </a>
