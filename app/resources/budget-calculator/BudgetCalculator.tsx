@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
+import { CURRENCIES, DEFAULT_CURRENCY, formatCurrency, getCurrencySymbol } from "@/lib/currency";
 
 type Bucket = "needs" | "wants" | "savings";
 
@@ -32,19 +33,19 @@ const BUCKET_META: Record<Bucket, { label: string; target: number; blurb: string
   savings: { label: "Savings & extra debt", target: 20, blurb: "Future you, and getting free faster" },
 };
 
-const fmtUsd = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
-
 function parseAmount(raw: string): number {
   const n = parseFloat(raw.replace(/[^0-9.]/g, ""));
   return Number.isFinite(n) && n > 0 ? n : 0;
 }
 
 // Verdicts in Ralph's voice — warm, no shame, one practical next step.
-function getVerdict(income: number, leftover: number, savingsPct: number, biggestExpense: string | null) {
+function getVerdict(
+  income: number,
+  leftover: number,
+  savingsPct: number,
+  biggestExpense: string | null,
+  fmt: (n: number) => string
+) {
   if (leftover < 0) {
     return {
       tone: "over" as const,
@@ -60,7 +61,7 @@ function getVerdict(income: number, leftover: number, savingsPct: number, bigges
       title: "This is what financial confidence looks like.",
       body: `You're putting ${Math.round(savingsPct)}% toward savings and extra debt payments — right where I'd want you. ${
         leftover > 0
-          ? `You also have ${fmtUsd.format(leftover)} unassigned. Give every dollar a job before the month does it for you.`
+          ? `You also have ${fmt(leftover)} unassigned. Give every dollar a job before the month does it for you.`
           : "Keep going — consistency beats intensity every time."
       }`,
     };
@@ -71,8 +72,8 @@ function getVerdict(income: number, leftover: number, savingsPct: number, bigges
       title: "You're on solid ground — let's build on it.",
       body: `${Math.round(savingsPct)}% is going toward your future, and that's a real start. ${
         leftover > 0
-          ? `That ${fmtUsd.format(leftover)} left over each month? Put even half of it toward savings and you'll cross the 20% mark.`
-          : "Look at your wants for one small trim — even $50 more a month compounds."
+          ? `That ${fmt(leftover)} left over each month? Put even half of it toward savings and you'll cross the 20% mark.`
+          : "Look at your wants for one small trim — even a little more a month compounds."
       }`,
     };
   }
@@ -81,7 +82,7 @@ function getVerdict(income: number, leftover: number, savingsPct: number, bigges
     title: "You have room to breathe — now let's put it to work.",
     body: `Money is coming in, bills are getting paid — but almost nothing is going toward future you yet. ${
       leftover > 0
-        ? `Start with the ${fmtUsd.format(leftover)} that's unassigned: even a small automatic transfer on payday changes everything.`
+        ? `Start with the ${fmt(leftover)} that's unassigned: even a small automatic transfer on payday changes everything.`
         : "Pick your easiest category to trim and redirect it to savings — automatic, on payday, before you can miss it."
     }`,
   };
@@ -90,6 +91,10 @@ function getVerdict(income: number, leftover: number, savingsPct: number, bigges
 export default function BudgetCalculator() {
   const [income, setIncome] = useState("");
   const [expenses, setExpenses] = useState<Record<string, string>>({});
+  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
+
+  const fmt = useCallback((n: number) => formatCurrency(currency, n), [currency]);
+  const currencySymbol = useMemo(() => getCurrencySymbol(currency), [currency]);
 
   const incomeNum = parseAmount(income);
 
@@ -114,7 +119,7 @@ export default function BudgetCalculator() {
 
   const hasNumbers = incomeNum > 0 && totalExpenses > 0;
   const savingsPct = incomeNum > 0 ? (bucketTotals.savings / incomeNum) * 100 : 0;
-  const verdict = hasNumbers ? getVerdict(incomeNum, leftover, savingsPct, biggestExpense) : null;
+  const verdict = hasNumbers ? getVerdict(incomeNum, leftover, savingsPct, biggestExpense, fmt) : null;
 
   function setExpense(key: string, value: string) {
     setExpenses((prev) => ({ ...prev, [key]: value }));
@@ -127,12 +132,31 @@ export default function BudgetCalculator() {
       {/* ── INPUTS ── */}
       <div className="bc-inputs">
         <div className="card bc-income-card rv">
-          <label htmlFor="bc-income" className="bc-income-label">
-            Monthly take-home income
-          </label>
-          <p className="bc-income-hint">What actually lands in your account each month, after taxes.</p>
+          <div className="bc-income-head">
+            <div>
+              <label htmlFor="bc-income" className="bc-income-label">
+                Monthly take-home income
+              </label>
+              <p className="bc-income-hint">What actually lands in your account each month, after taxes.</p>
+            </div>
+            <div className="currency-select-wrap">
+              <label htmlFor="bc-currency" className="sr-only">Currency</label>
+              <select
+                id="bc-currency"
+                className="currency-select"
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+              >
+                {CURRENCIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.code} — {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
           <div className="bc-field">
-            <span className="bc-field-prefix" aria-hidden="true">$</span>
+            <span className="bc-field-prefix" aria-hidden="true">{currencySymbol}</span>
             <input
               id="bc-income"
               type="text"
@@ -154,7 +178,7 @@ export default function BudgetCalculator() {
               <div key={field.key} className="bc-row">
                 <label htmlFor={`bc-${field.key}`}>{field.label}</label>
                 <div className="bc-field bc-field-sm">
-                  <span className="bc-field-prefix" aria-hidden="true">$</span>
+                  <span className="bc-field-prefix" aria-hidden="true">{currencySymbol}</span>
                   <input
                     id={`bc-${field.key}`}
                     type="text"
@@ -181,7 +205,7 @@ export default function BudgetCalculator() {
               className={`bc-leftover-num${hasNumbers && leftover < 0 ? " bc-neg" : ""}`}
               aria-live="polite"
             >
-              {incomeNum > 0 ? fmtUsd.format(leftover) : "—"}
+              {incomeNum > 0 ? fmt(leftover) : "—"}
             </span>
           </div>
 

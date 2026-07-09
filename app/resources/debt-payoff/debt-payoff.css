@@ -18,6 +18,7 @@
 .dp-card-head { margin-bottom: 18px; }
 .dp-card-head h3 { margin-bottom: 2px; }
 .dp-card-head p { font-size: 13px; color: var(--muted); }
+.dp-card-head-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 
 .dp-debt-list { display: flex; flex-direction: column; gap: 16px; }
 .dp-debt { border: 1px solid var(--border); border-radius: 4px; padding: 16px; margin: 0; }
@@ -47,11 +48,15 @@
 .dp-debt-fields label > span { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 
 .dp-field { display: flex; align-items: center; position: relative; }
-.dp-prefix { position: absolute; left: 12px; font-size: 14px; color: var(--muted2); pointer-events: none; }
+.dp-prefix {
+  position: absolute; left: 12px;
+  font-size: 14px; color: var(--muted2); pointer-events: none;
+  max-width: 30px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 .dp-suffix { position: absolute; right: 12px; font-size: 14px; color: var(--muted2); pointer-events: none; }
 .dp-field input {
   width: 100%;
-  padding: 10px 12px 10px 26px;
+  padding: 10px 12px 10px 34px;
   background: var(--bg-surface);
   border: 1.5px solid var(--border);
   border-radius: 2px;
@@ -126,4 +131,8 @@
 @media (max-width: 560px) {
   .dp-debt-fields { grid-template-columns: 1fr 1fr; }
   .dp-strategies { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .dp-card-head-row { flex-direction: column; }
+  .currency-select { max-width: 100%; }
 }

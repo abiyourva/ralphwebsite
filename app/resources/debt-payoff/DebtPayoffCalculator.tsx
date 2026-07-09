@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
+import { CURRENCIES, DEFAULT_CURRENCY, formatCurrency, getCurrencySymbol } from "@/lib/currency";
 
 interface DebtRow {
   id: number;
@@ -26,12 +27,6 @@ interface SimResult {
 }
 
 const MAX_MONTHS = 600;
-
-const fmtUsd = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
 
 function parseAmount(raw: string): number {
   const n = parseFloat(raw.replace(/[^0-9.]/g, ""));
@@ -121,6 +116,10 @@ export default function DebtPayoffCalculator() {
     { id: 2, name: "", balance: "", apr: "", minPayment: "" },
   ]);
   const [extra, setExtra] = useState("");
+  const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
+
+  const fmt = useCallback((n: number) => formatCurrency(currency, n), [currency]);
+  const currencySymbol = useMemo(() => getCurrencySymbol(currency), [currency]);
 
   function updateDebt(id: number, field: keyof DebtRow, value: string) {
     setDebts((prev) => prev.map((d) => (d.id === id ? { ...d, [field]: value } : d)));
@@ -164,9 +163,26 @@ export default function DebtPayoffCalculator() {
       {/* ── INPUTS ── */}
       <div className="dp-inputs">
         <div className="card dp-card">
-          <div className="dp-card-head">
-            <h3>Your debts</h3>
-            <p>Credit cards, loans, car notes — whatever you&apos;re carrying. Estimates are fine.</p>
+          <div className="dp-card-head dp-card-head-row">
+            <div>
+              <h3>Your debts</h3>
+              <p>Credit cards, loans, car notes — whatever you&apos;re carrying. Estimates are fine.</p>
+            </div>
+            <div className="currency-select-wrap">
+              <label htmlFor="dp-currency" className="sr-only">Currency</label>
+              <select
+                id="dp-currency"
+                className="currency-select"
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+              >
+                {CURRENCIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.code} — {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div className="dp-debt-list">
@@ -197,7 +213,7 @@ export default function DebtPayoffCalculator() {
                   <label>
                     <span>Balance</span>
                     <div className="dp-field">
-                      <span className="dp-prefix" aria-hidden="true">$</span>
+                      <span className="dp-prefix" aria-hidden="true">{currencySymbol}</span>
                       <input
                         type="text"
                         inputMode="decimal"
@@ -223,7 +239,7 @@ export default function DebtPayoffCalculator() {
                   <label>
                     <span>Min. payment</span>
                     <div className="dp-field">
-                      <span className="dp-prefix" aria-hidden="true">$</span>
+                      <span className="dp-prefix" aria-hidden="true">{currencySymbol}</span>
                       <input
                         type="text"
                         inputMode="decimal"
@@ -249,7 +265,7 @@ export default function DebtPayoffCalculator() {
             <p>Beyond the minimums. Even $25 changes the math — try a few numbers and watch.</p>
           </div>
           <div className="dp-field dp-field-extra">
-            <span className="dp-prefix" aria-hidden="true">$</span>
+            <span className="dp-prefix" aria-hidden="true">{currencySymbol}</span>
             <input
               type="text"
               inputMode="decimal"
@@ -295,7 +311,7 @@ export default function DebtPayoffCalculator() {
                   {payoffDateLabel(results.avalanche.months)}
                 </span>
                 <span className="dp-headline-sub">
-                  {durationLabel(results.avalanche.months)} · {fmtUsd.format(results.totalBalance)} across{" "}
+                  {durationLabel(results.avalanche.months)} · {fmt(results.totalBalance)} across{" "}
                   {results.debtCount} debt{results.debtCount === 1 ? "" : "s"} · avalanche method
                 </span>
               </div>
@@ -306,7 +322,7 @@ export default function DebtPayoffCalculator() {
                   <p className="dp-strategy-tag">Highest interest rate first — saves the most money</p>
                   <dl>
                     <div><dt>Debt-free in</dt><dd>{durationLabel(results.avalanche.months)}</dd></div>
-                    <div><dt>Total interest</dt><dd>{fmtUsd.format(results.avalanche.totalInterest)}</dd></div>
+                    <div><dt>Total interest</dt><dd>{fmt(results.avalanche.totalInterest)}</dd></div>
                   </dl>
                 </div>
                 <div className="dp-strategy">
@@ -314,7 +330,7 @@ export default function DebtPayoffCalculator() {
                   <p className="dp-strategy-tag">Smallest balance first — fastest first win</p>
                   <dl>
                     <div><dt>Debt-free in</dt><dd>{durationLabel(results.snowball.months)}</dd></div>
-                    <div><dt>Total interest</dt><dd>{fmtUsd.format(results.snowball.totalInterest)}</dd></div>
+                    <div><dt>Total interest</dt><dd>{fmt(results.snowball.totalInterest)}</dd></div>
                     {results.snowball.firstWinMonth > 0 && (
                       <div><dt>First debt gone</dt><dd>{durationLabel(results.snowball.firstWinMonth)}</dd></div>
                     )}
@@ -324,8 +340,8 @@ export default function DebtPayoffCalculator() {
 
               {extraNum > 0 && !results.minimumsOnly.stalled && (
                 <p className="dp-savings">
-                  Your extra {fmtUsd.format(extraNum)}/month saves{" "}
-                  <strong>{fmtUsd.format(results.minimumsOnly.totalInterest - results.avalanche.totalInterest)}</strong>{" "}
+                  Your extra {fmt(extraNum)}/month saves{" "}
+                  <strong>{fmt(results.minimumsOnly.totalInterest - results.avalanche.totalInterest)}</strong>{" "}
                   in interest and gets you debt-free{" "}
                   <strong>{durationLabel(results.minimumsOnly.months - results.avalanche.months)}</strong> sooner
                   than minimums alone.
