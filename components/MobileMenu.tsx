@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { mobileLinks } from "./navLinks";
-import ThemeToggle from "./ThemeToggle";
 
 type MobileMenuProps = {
   open: boolean;
@@ -35,9 +34,6 @@ export default function MobileMenu({ open, onNavigate }: MobileMenuProps) {
           </Link>
         );
       })}
-      <div style={{ padding: "16px 0" }}>
-        <ThemeToggle />
-      </div>
     </nav>
   );
 }

@@ -43,9 +43,12 @@ export default function Nav() {
         className={`site-nav${scrolled ? " scrolled" : ""}${onDarkHero && !scrolled ? " nav-on-dark" : ""}`}
         aria-label="Main navigation"
       >
-        <Link href="/" className="nav-logo">
-          Ralph Estep Jr.
-        </Link>
+        <div className="nav-brand">
+          <Link href="/" className="nav-logo">
+            Ralph Estep Jr.
+          </Link>
+          <ThemeToggle />
+        </div>
 
         <div className="nav-links">
           {desktopLinks.map((link) => (
@@ -57,7 +60,6 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <ThemeToggle />
           <Link href="/schedule" className="nav-cta nav-cta-gold">
             Book Now
           </Link>
