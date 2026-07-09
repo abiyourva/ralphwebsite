@@ -137,6 +137,40 @@
 .episode-card h4 { margin-bottom: 10px; line-height: 1.35; }
 .episode-card p { font-size: 14px; line-height: 1.65; }
 
+/* ── Press carousel ── */
+.press-carousel { max-width: 560px; margin: 0 auto; }
+.press-carousel-viewport { display: flex; align-items: center; gap: 16px; }
+.press-carousel-card { flex: 1; min-height: 172px; animation: pressFadeIn 0.4s ease; }
+@keyframes pressFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.press-carousel-arrow {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--h);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.press-carousel-arrow:hover { border-color: var(--gold); color: var(--gold); }
+.press-carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
+.press-carousel-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.press-carousel-dot.is-active { background: var(--gold); transform: scale(1.3); }
+
+@media (max-width: 600px) {
+  .press-carousel-viewport { gap: 8px; }
+  .press-carousel-arrow { width: 34px; height: 34px; }
+}
+
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-photo-col { width: 100%; max-width: 320px; margin: 8px auto 0; }

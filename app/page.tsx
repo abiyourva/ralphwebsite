@@ -3,6 +3,7 @@ import Image from "next/image";
 import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
+import PressCarousel from "@/components/PressCarousel";
 import "./home.css";
 
 // Home page metadata uses the site default from layout.tsx.
@@ -28,6 +29,34 @@ const PRESS_MENTIONS = [
     title: "I'm a Money Expert: How To Use Summer Income To Get $1K Ahead This Year",
     url: "https://www.moneylion.com/trending/money/im-a-money-expert-how-use-summer-income-get-1k-ahead",
     verb: "Read the article",
+  },
+  {
+    icon: "🎤",
+    outlet: "Bartelle's Money Talk",
+    title: "Faith, Finances & Freedom: How to Get Your House in Order",
+    url: "https://podcasts.apple.com/us/podcast/faith-finances-freedom-how-to-get-your-house-in-order/id1732123565?i=1000738663309",
+    verb: "Listen to the episode",
+  },
+  {
+    icon: "🎤",
+    outlet: "New Media Show Audio",
+    title: "Digital Creator 2026 Money Playbook",
+    url: "https://podcasts.apple.com/us/podcast/digital-creator-2026-money-playbook-ralph-estep-jr/id392545649?i=1000746403885",
+    verb: "Listen to the episode",
+  },
+  {
+    icon: "🎤",
+    outlet: "The Thrive Within Podcast",
+    title: "Breaking the Silence of Financial Shame",
+    url: "https://www.buzzsprout.com/2506417/episodes/18089210",
+    verb: "Listen to the episode",
+  },
+  {
+    icon: "▶️",
+    outlet: "Financial Freedom for Physicians",
+    title: "Balancing Acts: Finance and Faith",
+    url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
+    verb: "Watch the episode",
   },
 ];
 
@@ -358,21 +387,8 @@ export default function HomePage() {
               All Appearances →
             </Link>
           </div>
-          <div className="grid-3">
-            {PRESS_MENTIONS.map((item, i) => (
-              <a
-                key={item.url}
-                href={item.url}
-                target="_blank"
-                rel="noopener"
-                className={`card card-hover episode-card rv${i > 0 ? ` d${i}` : ""}`}
-              >
-                <div className="episode-card-icon">{item.icon}</div>
-                <p className="eyebrow" style={{ marginBottom: "8px" }}>{item.outlet}</p>
-                <h4>{item.title}</h4>
-                <p>{item.verb} →</p>
-              </a>
-            ))}
+          <div className="rv d1">
+            <PressCarousel items={PRESS_MENTIONS} />
           </div>
         </div>
       </section>

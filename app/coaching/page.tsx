@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import FaqAccordion from "@/components/FaqAccordion";
 import "./coaching.css";
 
 export const metadata: Metadata = {
@@ -49,6 +50,39 @@ const PROCESS = [
     title: "Ongoing Support",
     description:
       "Regular check-ins, accountability, and adjustments as your situation evolves. You're not doing this alone.",
+  },
+];
+
+const FAQS = [
+  {
+    question: "How much does coaching cost?",
+    answer:
+      "Pricing depends on your situation and the length of engagement, and we'll walk through it on your free discovery call. There's no pressure and no pitch — just an honest conversation about fit and cost before you commit to anything.",
+  },
+  {
+    question: "How is this different from working with a financial advisor?",
+    answer:
+      "A financial advisor typically manages investments. Ralph works on the fundamentals underneath that — budgeting, debt, cash flow, business structure, and the mindset behind your money decisions. Many clients work with both.",
+  },
+  {
+    question: "Is coaching only for people in financial trouble?",
+    answer:
+      "Not at all. Some clients are in crisis, but many are doing fine and want a second set of eyes, an accountability partner, or help building a business on solid financial footing.",
+  },
+  {
+    question: "Do you work with content creators and business owners specifically?",
+    answer:
+      "Yes — a large part of Ralph's practice is creators and entrepreneurs who need to separate personal and business finances, reduce taxes, and plan for sustainable growth.",
+  },
+  {
+    question: "How often do we meet?",
+    answer:
+      "Most clients meet for a 60-minute session on a regular cadence — weekly, biweekly, or monthly depending on where you are — with email access to Ralph in between for quick questions.",
+  },
+  {
+    question: "What if I'm not ready to commit to ongoing coaching?",
+    answer:
+      "Start with the free 20-minute discovery call. It's a real conversation, not a sales pitch, and you'll leave with clarity on your next step whether or not you decide to continue.",
   },
 ];
 
@@ -181,8 +215,20 @@ export default function CoachingPage() {
         </div>
       </section>
 
+      {/* ── FAQ ── */}
+      <section className="section">
+        <div className="container-narrow" style={{ maxWidth: "760px" }}>
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Common Questions</p>
+          <h2 className="rv d1" style={{ marginBottom: "40px" }}>Before you book a call.</h2>
+          <div className="rv d2">
+            <FaqAccordion items={FAQS} />
+          </div>
+        </div>
+      </section>
+
       {/* ── BOOKING ── */}
-      <section id="book" className="section text-center">
+      <section id="book" className="section text-center bg-alt">
         <div className="container-narrow" style={{ maxWidth: "640px" }}>
           <span className="gold-rule rv" />
           <p className="eyebrow rv">Get Started</p>

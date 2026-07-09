@@ -713,6 +713,41 @@ em { font-style: italic; }
   .cookie-banner { justify-content: flex-start; text-align: left; padding: 16px 5%; }
 }
 
+/* ── FAQ ACCORDION ───────────────────────────────────── */
+
+.faq-accordion { display: flex; flex-direction: column; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-question { font-size: inherit; font-weight: inherit; margin: 0; }
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 4px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--h);
+  cursor: pointer;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, transform 0.25s;
+}
+.faq-item.is-open .faq-icon { border-color: var(--gold); transform: rotate(45deg); }
+.faq-panel { padding: 0 34px 22px 4px; }
+.faq-panel p { font-size: 15px; font-weight: 300; line-height: 1.75; color: var(--muted); max-width: 720px; }
+
 /* ── UTILITY ─────────────────────────────────────────── */
 
 .mt-1 { margin-top: 8px; }

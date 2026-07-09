@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import FaqAccordion from "@/components/FaqAccordion";
 import "./speaking.css";
 
 export const metadata: Metadata = {
@@ -73,6 +74,39 @@ const FORMATS = [
   { icon: "🏫", title: "Workshop", description: "Interactive 90-minute to half-day sessions with practical exercises and real-time Q&A." },
   { icon: "🎙", title: "Podcast Guest", description: "Long-form and conversational interview appearances on finance, faith, business, or creator podcasts." },
   { icon: "💻", title: "Virtual", description: "Online webinars, virtual summits, and remote workshop facilitation — available worldwide." },
+];
+
+const FAQS = [
+  {
+    question: "What's Ralph's speaking fee?",
+    answer:
+      "Fees vary based on event type, format, and location — submit an inquiry and Ralph's team will send a quote tailored to your event and budget.",
+  },
+  {
+    question: "Does Ralph travel, or offer virtual options?",
+    answer:
+      "Both. Ralph speaks at in-person events nationwide and is set up for polished virtual keynotes, webinars, and remote workshop facilitation worldwide.",
+  },
+  {
+    question: "How far in advance should we book?",
+    answer:
+      "As early as possible, especially for peak conference season (spring and fall). That said, reach out even for shorter timelines — Ralph's team will let you know what's realistic.",
+  },
+  {
+    question: "Can talks be customized for our audience?",
+    answer:
+      "Yes. Every talk is adapted to the audience's specific financial reality — a church group, a creator conference, and a chamber of commerce get very different framing on the same core topic.",
+  },
+  {
+    question: "Is Ralph available for podcast interviews?",
+    answer:
+      "Absolutely. Ralph is an experienced guest across long-form, conversational, and technical formats — see the Press & Appearances section for recent examples.",
+  },
+  {
+    question: "Who do we contact for media or press inquiries?",
+    answer:
+      "Email ralph@ralphestepjr.com directly for media requests, or use the booking form below for event inquiries — either way, Ralph's team responds personally.",
+  },
 ];
 
 const BOOKING_POINTS = [
@@ -189,8 +223,20 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      {/* ── FAQ ── */}
+      <section className="section">
+        <div className="container-narrow" style={{ maxWidth: "760px" }}>
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">Common Questions</p>
+          <h2 className="rv d1" style={{ marginBottom: "40px" }}>Before you submit an inquiry.</h2>
+          <div className="rv d2">
+            <FaqAccordion items={FAQS} />
+          </div>
+        </div>
+      </section>
+
       {/* ── BOOKING ── */}
-      <section id="book" className="section">
+      <section id="book" className="section bg-alt">
         <div className="container booking-grid">
           <div>
             <span className="gold-rule-left gold-rule rv" />

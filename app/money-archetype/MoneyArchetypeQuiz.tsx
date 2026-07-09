@@ -145,7 +145,7 @@ const SEQUENCES: Record<ArchetypeType, EmailDay[]> = {
     { day: 4, subject: "Your giving capacity IS your wealth capacity" },
     { day: 5, subject: "The peace that passes financial understanding" },
     { day: 6, subject: "Building a budget that honors your calling" },
-    { day: 7, subject: "Your next step: Join the BFC community" },
+    { day: 7, subject: "Your next step: Get notified when BFC launches" },
   ],
   builder: [
     { day: 1, subject: "Welcome. Let's build something that lasts." },
@@ -154,7 +154,7 @@ const SEQUENCES: Record<ArchetypeType, EmailDay[]> = {
     { day: 4, subject: "From side hustle to generational asset" },
     { day: 5, subject: "The ownership mindset that changes everything" },
     { day: 6, subject: "Your first 6-figure income blueprint" },
-    { day: 7, subject: "Your next step: Join the BFC community" },
+    { day: 7, subject: "Your next step: Get notified when BFC launches" },
   ],
   steward: [
     { day: 1, subject: "Welcome. Your legacy starts today." },
@@ -163,7 +163,7 @@ const SEQUENCES: Record<ArchetypeType, EmailDay[]> = {
     { day: 4, subject: "Teaching your children financial wisdom" },
     { day: 5, subject: "Estate planning for people of faith" },
     { day: 6, subject: "The 100-year family vision" },
-    { day: 7, subject: "Your next step: Join the BFC community" },
+    { day: 7, subject: "Your next step: Get notified when BFC launches" },
   ],
 };
 
@@ -182,7 +182,7 @@ const KEYWORDS: Record<ArchetypeType, string[]> = {
   ],
 };
 
-function calculateArchetype(answers: Record<number, string>): ArchetypeType {
+function computeScores(answers: Record<number, string>): Record<ArchetypeType, number> {
   const scores: Record<ArchetypeType, number> = {
     believer: 0,
     builder: 0,
@@ -209,6 +209,10 @@ function calculateArchetype(answers: Record<number, string>): ArchetypeType {
     });
   }
 
+  return scores;
+}
+
+function pickArchetype(scores: Record<ArchetypeType, number>): ArchetypeType {
   let result: ArchetypeType = "believer";
   let maxScore = -1;
   (Object.keys(scores) as ArchetypeType[]).forEach((key) => {
@@ -217,8 +221,23 @@ function calculateArchetype(answers: Record<number, string>): ArchetypeType {
       result = key;
     }
   });
-
   return result;
+}
+
+function toPercentages(scores: Record<ArchetypeType, number>): Record<ArchetypeType, number> {
+  const total = scores.believer + scores.builder + scores.steward;
+  if (total <= 0) return { believer: 0, builder: 0, steward: 0 };
+
+  const keys: ArchetypeType[] = ["believer", "builder", "steward"];
+  const rounded = keys.map((key) => Math.round((scores[key] / total) * 100));
+  const drift = 100 - rounded.reduce((sum, val) => sum + val, 0);
+  const topIndex = keys.reduce(
+    (best, key, i) => (scores[key] > scores[keys[best]] ? i : best),
+    0
+  );
+  rounded[topIndex] += drift;
+
+  return { believer: rounded[0], builder: rounded[1], steward: rounded[2] };
 }
 
 function isValidEmail(email: string): boolean {
@@ -232,7 +251,9 @@ export default function MoneyArchetypeQuiz() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [archetype, setArchetype] = useState<ArchetypeType | null>(null);
+  const [scorePercentages, setScorePercentages] = useState<Record<ArchetypeType, number> | null>(null);
   const [welcomeError, setWelcomeError] = useState<string | null>(null);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
 
   const progress = useMemo(() => {
     if (screen === "welcome") return 0;
@@ -278,8 +299,10 @@ export default function MoneyArchetypeQuiz() {
     if (currentQuestion < QUESTIONS.length - 1) {
       setCurrentQuestion((prev) => prev + 1);
     } else {
-      const result = calculateArchetype(answers);
+      const scores = computeScores(answers);
+      const result = pickArchetype(scores);
       setArchetype(result);
+      setScorePercentages(toPercentages(scores));
       setScreen("results");
       fetch("/api/quiz", {
         method: "POST",
@@ -305,8 +328,38 @@ export default function MoneyArchetypeQuiz() {
     setCurrentQuestion(0);
     setAnswers({});
     setArchetype(null);
+    setScorePercentages(null);
     setWelcomeError(null);
   }, []);
+
+  const shareText = archetype
+    ? `I just found out I'm ${ARCHETYPES[archetype].name} on Ralph Estep Jr.'s Money Archetype quiz. Take the free 2-minute quiz to find yours:`
+    : "";
+
+  const handleCopyLink = useCallback(() => {
+    if (typeof window === "undefined") return;
+    navigator.clipboard
+      .writeText(window.location.href)
+      .then(() => {
+        setCopyStatus("copied");
+        setTimeout(() => setCopyStatus("idle"), 2000);
+      })
+      .catch((err) => console.error("Copy link failed:", err));
+  }, []);
+
+  const handleShare = useCallback(
+    (network: "x" | "facebook") => {
+      if (typeof window === "undefined") return;
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(shareText);
+      const shareUrl =
+        network === "x"
+          ? `https://twitter.com/intent/tweet?text=${text}&url=${url}`
+          : `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
+      window.open(shareUrl, "_blank", "noopener,noreferrer,width=600,height=500");
+    },
+    [shareText]
+  );
 
   const canProceed = currentAnswer.trim().length > 0;
   const question = QUESTIONS[currentQuestion];
@@ -472,6 +525,48 @@ export default function MoneyArchetypeQuiz() {
               </div>
             </div>
 
+            {scorePercentages && (
+              <div className="result-card breakdown-card">
+                <span className="gold-rule-left gold-rule" style={{ width: "32px", margin: "0 0 16px" }} />
+                <h3>Your Full Breakdown</h3>
+                <div className="breakdown-list">
+                  {(Object.keys(ARCHETYPES) as ArchetypeType[])
+                    .sort((a, b) => scorePercentages[b] - scorePercentages[a])
+                    .map((key) => (
+                      <div key={key} className="breakdown-row">
+                        <div className="breakdown-row-label">
+                          <span>{ARCHETYPES[key].emoji} {ARCHETYPES[key].name}</span>
+                          <span className="breakdown-pct">{scorePercentages[key]}%</span>
+                        </div>
+                        <div className="breakdown-track">
+                          <div
+                            className={`breakdown-fill${key === archetype ? " is-primary" : ""}`}
+                            style={{ width: `${scorePercentages[key]}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+
+            <div className="share-card">
+              <span className="gold-rule" style={{ width: "32px" }} />
+              <h3>Share Your Results</h3>
+              <p className="share-card-sub">Know someone who&apos;d benefit from finding their archetype?</p>
+              <div className="share-buttons">
+                <button type="button" onClick={() => handleShare("x")} className="btn-outline share-btn">
+                  Share on X
+                </button>
+                <button type="button" onClick={() => handleShare("facebook")} className="btn-outline share-btn">
+                  Share on Facebook
+                </button>
+                <button type="button" onClick={handleCopyLink} className="btn-outline share-btn">
+                  {copyStatus === "copied" ? "Link Copied ✓" : "Copy Link"}
+                </button>
+              </div>
+            </div>
+
             <div className="sequence-card">
               <div className="sequence-header">
                 <div>
@@ -482,14 +577,27 @@ export default function MoneyArchetypeQuiz() {
                   <span>Sent to {userEmail || "your email"}</span>
                 </div>
               </div>
-              {SEQUENCES[archetype].map((day) => (
-                <div key={day.day} className="seq-item">
-                  <span className="seq-num">
-                    <span>{day.day}</span>
-                  </span>
-                  <p>{day.subject}</p>
+              <div className="seq-item">
+                <span className="seq-num">
+                  <span>{SEQUENCES[archetype][0].day}</span>
+                </span>
+                <div>
+                  <p>{SEQUENCES[archetype][0].subject}</p>
+                  <span className="seq-today-tag">Sending now</span>
                 </div>
-              ))}
+              </div>
+              <div className="seq-locked-row">
+                <span className="seq-lock-icon" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+                  </svg>
+                </span>
+                <p>
+                  Plus {SEQUENCES[archetype].length - 1} more emails built for{" "}
+                  {ARCHETYPES[archetype].name}, one a day for the rest of the week.
+                </p>
+              </div>
             </div>
 
             <div className="result-cta-row">
@@ -497,7 +605,7 @@ export default function MoneyArchetypeQuiz() {
                 ↺ Retake Quiz
               </button>
               <Link href="/shows#bfc" className="btn-primary gold">
-                Join the BFC Community →
+                Get Notified at Launch →
               </Link>
             </div>
           </div>
