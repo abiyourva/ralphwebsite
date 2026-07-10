@@ -1,3 +1,5 @@
+import { withBotId } from "botid/next/config";
+
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
@@ -33,4 +35,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBotId(nextConfig);
