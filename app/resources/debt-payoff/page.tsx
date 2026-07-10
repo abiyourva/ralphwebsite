@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import DebtPayoffCalculator from "./DebtPayoffCalculator";
+import { pageMetadata } from "@/lib/seo";
 import "./debt-payoff.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Free Debt Payoff Calculator — Ralph Estep Jr., LPA",
   description:
     "See your debt-free date under the snowball and avalanche methods — instantly, privately, and without judgment. A free tool from Ralph Estep Jr., LPA.",
-};
+  path: "/resources/debt-payoff",
+});
 
 export default function DebtPayoffPage() {
   return (

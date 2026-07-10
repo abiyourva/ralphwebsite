@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import ContactInquiry from "./ContactInquiry";
+import { pageMetadata } from "@/lib/seo";
 import "./contact.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact Ralph Estep Jr.",
   description:
     "Get in touch with Ralph Estep Jr. for coaching, speaking, accounting, or general inquiries. Ralph and his team respond within 2 business days.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

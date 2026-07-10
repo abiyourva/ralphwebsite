@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import BudgetCalculator from "./BudgetCalculator";
+import { pageMetadata } from "@/lib/seo";
 import "./budget-calculator.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Free Monthly Budget Calculator — Ralph Estep Jr., LPA",
   description:
     "Enter your real numbers and see exactly where you stand in under two minutes. A free, no-shame budget reset from Ralph Estep Jr., LPA — with the 50/30/20 guideline built in.",
-};
+  path: "/resources/budget-calculator",
+});
 
 export default function BudgetCalculatorPage() {
   return (

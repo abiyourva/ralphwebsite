@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { TAX_OPTIONS } from "../appointmentSchedules";
+import { pageMetadata } from "@/lib/seo";
 import "../schedule.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Book a Tax Appointment — Ralph Estep Jr., LPA",
   description:
     "Schedule your tax preparation or tax planning appointment with Ralph Estep Jr., LPA.",
-};
+  path: "/schedule/tax",
+});
 
 export default function TaxSchedulePage() {
   return (

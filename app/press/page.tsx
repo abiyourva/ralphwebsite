@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import PressBios from "./PressBios";
+import { pageMetadata } from "@/lib/seo";
 import "./press.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Media Kit & Press — Ralph Estep Jr.",
   description:
     "Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.",
-};
+  path: "/press",
+});
 
 const TALKING_POINTS = [
   {

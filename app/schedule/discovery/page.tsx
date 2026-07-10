@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { DISCOVERY_OPTIONS } from "../appointmentSchedules";
+import { pageMetadata } from "@/lib/seo";
 import "../schedule.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Book a Discovery Call — Ralph Estep Jr., LPA",
   description:
     "Schedule a free discovery call or paid strategy session with Ralph Estep Jr., LPA and Saggio Management Group.",
-};
+  path: "/schedule/discovery",
+});
 
 export default function DiscoverySchedulePage() {
   return (

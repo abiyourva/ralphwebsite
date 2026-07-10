@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import LaunchCountdown from "@/components/LaunchCountdown";
+import { pageMetadata } from "@/lib/seo";
 import "./bfc-teaser.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Becoming Financially Confident — Coming Soon",
   description:
     "Something new is coming from Ralph Estep Jr. Be the first to know when it drops, and get early clips along the way.",
-};
+  path: "/becoming-financially-confident",
+});
 
 export default function BfcTeaserPage() {
   return (

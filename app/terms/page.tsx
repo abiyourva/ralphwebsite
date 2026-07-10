@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Terms of Use — Ralph Estep Jr.",
-};
+  description: "The terms and conditions for using the Ralph Estep Jr. website and its services.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

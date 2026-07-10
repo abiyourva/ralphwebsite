@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "@/lib/seo";
 import "./shows.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Shows & Content — Ralph Estep Jr.",
   description:
     "Explore all four of Ralph Estep Jr.'s shows — Becoming Financially Confident, Financially Confident Christian, Truth Unveiled with Ralph, and The Content Creator's Accountant.",
-};
+  path: "/shows",
+});
 
 export default function ShowsPage() {
   return (

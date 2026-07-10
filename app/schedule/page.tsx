@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
+import { pageMetadata } from "@/lib/seo";
 import "./schedule.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Book an Appointment — Ralph Estep Jr., LPA",
   description:
-    "Schedule a tax appointment, a free discovery call, a monthly client check-in, or QuickBooks and payroll support with Ralph Estep Jr., LPA and Renee Poole — Saggio Management Group.",
-};
+    "Schedule a tax appointment, a free discovery call, a monthly check-in, or QuickBooks and payroll support with Ralph Estep Jr., LPA and Saggio Management Group.",
+  path: "/schedule",
+});
 
 const CATEGORIES = [
   {

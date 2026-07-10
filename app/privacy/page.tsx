@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Privacy Policy — Ralph Estep Jr.",
-};
+  description: "How Ralph Estep Jr. and Saggio Management Group collect, use, and protect your personal information.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

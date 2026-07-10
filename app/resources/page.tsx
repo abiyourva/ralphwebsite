@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import BookNotifyForm from "./BookNotifyForm";
+import { pageMetadata } from "@/lib/seo";
 import "./resources.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Books & Resources — Ralph Estep Jr.",
   description:
     "Books, courses, and free financial tools from Ralph Estep Jr. — including the upcoming budgeting book and the free Money Archetype Quiz.",
-};
+  path: "/resources",
+});
 
 const TOOLS = [
   {

@@ -9,13 +9,34 @@ import ThemeScript from "@/components/ThemeScript";
 import InteractionEffects from "@/components/InteractionEffects";
 import HomeButton from "@/components/HomeButton";
 import HomeScrollFX from "@/components/HomeScrollFX";
+import { SITE_URL, SITE_NAME, personJsonLd } from "@/lib/seo";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
+const TITLE = "Ralph Estep Jr. — LPA, Author, Podcaster, Business Coach";
+const DESCRIPTION =
+  "Ralph Estep Jr. is a Licensed Public Accountant, business coach, author, and podcaster helping everyday people build real financial confidence. Not just informed. Equipped.";
+
 export const metadata: Metadata = {
-  title: "Ralph Estep Jr. — LPA, Author, Podcaster, Business Coach",
-  description:
-    "Ralph Estep Jr. is a Licensed Public Accountant, business coach, author, and podcaster helping everyday people build real financial confidence. Not just informed. Equipped.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [{ url: "/images/ralph-headshot.png" }],
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/images/ralph-headshot.png"],
+  },
 };
 
 export default function RootLayout({
@@ -31,6 +52,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeScript />
         <Nav />
         {children}

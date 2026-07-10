@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { MONTHLY_OPTIONS } from "../appointmentSchedules";
+import { pageMetadata } from "@/lib/seo";
 import "../schedule.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Book a Monthly Client Check-In — Ralph Estep Jr., LPA",
   description:
     "Existing bookkeeping and advisory clients can schedule their regular monthly check-in with Ralph Estep Jr., LPA here.",
-};
+  path: "/schedule/monthly",
+});
 
 export default function MonthlySchedulePage() {
   return (

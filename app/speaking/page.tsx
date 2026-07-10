@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import FaqAccordion from "@/components/FaqAccordion";
+import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
 import "./speaking.css";
 
-export const metadata: Metadata = {
-  title: "Book Ralph Estep Jr. to Speak — LPA, Financial Expert, Podcaster",
+export const metadata = pageMetadata({
+  title: "Book Ralph Estep Jr. to Speak — Financial Keynote Speaker",
   description:
     "Book Ralph Estep Jr. for your event, conference, or podcast. Personal finance, creator economics, faith and money, and entrepreneurship — a speaker your audience will actually remember.",
-};
+  path: "/speaking",
+});
 
 const WHY_FEATURES = [
   {
@@ -126,6 +127,10 @@ function CheckIcon() {
 export default function SpeakingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(FAQS)) }}
+      />
       {/* ── HERO ── */}
       <header className="speaking-hero">
         <div className="speaking-hero-radial" aria-hidden="true" />

@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import HobbyPhotos from "@/components/HobbyPhotos";
+import { pageMetadata } from "@/lib/seo";
 import "./about.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About Ralph Estep Jr. — LPA, Podcaster, Business Coach",
   description:
     "Meet Ralph Estep Jr. — a Licensed Public Accountant with 30+ years of experience whose childhood shaped a lifelong mission to help everyday people build real financial confidence.",
-};
+  path: "/about",
+});
 
 const CREDENTIALS = [
   {

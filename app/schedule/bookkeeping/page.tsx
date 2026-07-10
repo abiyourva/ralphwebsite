@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { RENEE_OPTIONS } from "../appointmentSchedules";
+import { pageMetadata } from "@/lib/seo";
 import "../schedule.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Book QuickBooks or Payroll Support — Renee Poole",
   description:
     "Schedule QuickBooks assistance or payroll support with Renee Poole at Saggio Management Group.",
-};
+  path: "/schedule/bookkeeping",
+});
 
 export default function BookkeepingSchedulePage() {
   return (

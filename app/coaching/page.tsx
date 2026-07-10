@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import FaqAccordion from "@/components/FaqAccordion";
+import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
 import "./coaching.css";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Coaching with Ralph Estep Jr. — Build Real Financial Confidence",
   description:
     "Work directly with Ralph Estep Jr., LPA, to build real financial clarity and confidence. One-on-one coaching for individuals and content creators ready to make real change.",
-};
+  path: "/coaching",
+});
 
 const WHO_ITS_FOR = [
   {
@@ -116,6 +117,10 @@ function CheckIcon() {
 export default function CoachingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(FAQS)) }}
+      />
       {/* ── HERO ── */}
       <header className="coaching-hero" aria-labelledby="coaching-heading">
         <div className="coaching-hero-radial" aria-hidden="true" />
