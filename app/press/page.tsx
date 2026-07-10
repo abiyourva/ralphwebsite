@@ -40,6 +40,13 @@ const TALKING_POINTS = [
 // list lives at askralph.com/ralphs-appearances — linked below the list.
 const APPEARANCES = [
   {
+    icon: "📰",
+    show: "ECIKS.org",
+    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
+    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
+    verb: "Read",
+  },
+  {
     icon: "🎤",
     show: "How to Pitch a Podcast",
     title: "There Is Only One Issue — I Do a Solo Show",
@@ -115,13 +122,6 @@ const APPEARANCES = [
     title: "Get Lifelong Accounting Clients: Relationship-Based Secrets",
     url: "https://podcasts.apple.com/us/podcast/get-lifelong-accounting-clients-relationship-based/id1506023469?i=1000699139789",
     verb: "Listen",
-  },
-  {
-    icon: "📰",
-    show: "ECIKS.org",
-    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
-    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
-    verb: "Read",
   },
 ];
 

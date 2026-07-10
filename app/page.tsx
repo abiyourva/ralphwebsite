@@ -10,6 +10,13 @@ import "./home.css";
 
 const PRESS_MENTIONS = [
   {
+    icon: "📰",
+    outlet: "ECIKS.org",
+    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
+    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
+    verb: "Read the article",
+  },
+  {
     icon: "🎤",
     outlet: "How to Pitch a Podcast",
     title: "There Is Only One Issue — I Do a Solo Show",
@@ -57,13 +64,6 @@ const PRESS_MENTIONS = [
     title: "Balancing Acts: Finance and Faith",
     url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
     verb: "Watch the episode",
-  },
-  {
-    icon: "📰",
-    outlet: "ECIKS.org",
-    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
-    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
-    verb: "Read the article",
   },
 ];
 
