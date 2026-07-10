@@ -42,6 +42,20 @@ export default function BfcTeaserPage() {
         <p className="bfc-teaser-disclaimer hero-in" style={{ animationDelay: "0.6s" }}>
           No spam. Just updates as we get closer.
         </p>
+        <div className="bfc-teaser-cohost hero-in" style={{ animationDelay: "0.66s" }}>
+          <p>
+            In the meantime, subscribe to our YouTube channel — we&rsquo;re slowly
+            building the audience, and we want you to be one of the first to know.
+          </p>
+          <a
+            href="https://www.youtube.com/@BecomingFinanciallyConfident"
+            target="_blank"
+            rel="noopener"
+            className="bfc-teaser-cohost-link"
+          >
+            Subscribe on YouTube →
+          </a>
+        </div>
         <div className="bfc-teaser-cohost hero-in" style={{ animationDelay: "0.72s" }}>
           <p>Want to be part of the show, not just watch it?</p>
           <Link href="/cohost" className="bfc-teaser-cohost-link">
