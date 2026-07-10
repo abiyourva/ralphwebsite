@@ -51,10 +51,14 @@ export default function ShowsPage() {
             <a href="/becoming-financially-confident" className="btn btn-navy rv d4">Get Notified at Launch →</a>
           </div>
           <div className="show-cover rv">
-            <div className="show-cover-placeholder">
-              <div className="show-cover-placeholder-text">BFC</div>
-              <p className="show-cover-placeholder-label">Becoming Financially Confident</p>
-            </div>
+            <Image
+              src="/images/cover-bfc.png"
+              alt="Becoming Financially Confident — launching September 2026"
+              width={1254}
+              height={1254}
+              sizes="(max-width: 860px) 100vw, 50vw"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
             <div className="show-cover-banner">
               <span>Coming September 2026</span>
             </div>
