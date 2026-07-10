@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getKitSubscribersWithField, type KitSubscriber } from "@/lib/kit";
+import { getKitSubscribersWithField, getKitSubscriberIdsForTag, type KitSubscriber } from "@/lib/kit";
 import { parseApplication } from "./parseApplication";
 import "./applications.css";
 
@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
+
+const WAITLISTED_TAG_ID = "21048243";
 
 export default async function ApplicationsAdminPage() {
   let subscribers: KitSubscriber[];
@@ -31,6 +33,13 @@ export default async function ApplicationsAdminPage() {
     (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
   );
 
+  let waitlistedIds: Set<number>;
+  try {
+    waitlistedIds = await getKitSubscriberIdsForTag(WAITLISTED_TAG_ID);
+  } catch {
+    waitlistedIds = new Set();
+  }
+
   return (
     <main className="admin-apps">
       <div className="admin-apps-wrap">
@@ -45,13 +54,14 @@ export default async function ApplicationsAdminPage() {
           const raw = sub.fields?.cohost_application;
           if (!raw) return null;
           const { submittedAt, sections } = parseApplication(raw);
+          const status = waitlistedIds.has(sub.id) ? "waitlisted" : sub.state;
 
           return (
             <details key={sub.id} className="applicant-card">
               <summary className="applicant-summary">
                 <span className="applicant-name">{sub.first_name || sub.email_address}</span>
                 <span className="applicant-email">{sub.email_address}</span>
-                <span className={`applicant-state applicant-state-${sub.state}`}>{sub.state}</span>
+                <span className={`applicant-state applicant-state-${status}`}>{status}</span>
                 <span className="applicant-date">{submittedAt || sub.created_at}</span>
               </summary>
 

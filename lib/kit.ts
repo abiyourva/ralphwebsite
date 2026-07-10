@@ -88,6 +88,34 @@ export async function getKitSubscribersWithField(fieldKey: string, maxPages = 8)
   return matches;
 }
 
+// Kit's reverse tag->subscribers lookup lags behind writes (see the comment
+// on getKitSubscribersWithField), so a subscriber tagged moments ago may not
+// show up here yet. Fine for the admin page's read-only display purposes.
+export async function getKitSubscriberIdsForTag(tagId: string): Promise<Set<number>> {
+  const apiKey = getApiKey();
+  const ids = new Set<number>();
+  let cursor: string | null = null;
+
+  do {
+    const url = new URL(`${KIT_API_BASE}/tags/${tagId}/subscribers`);
+    url.searchParams.set("per_page", "100");
+    if (cursor) url.searchParams.set("after", cursor);
+
+    const res = await fetch(url, {
+      headers: { "X-Kit-Api-Key": apiKey },
+    });
+    const detail = await res.text();
+    if (!res.ok) {
+      throw new Error(`Kit list subscribers for tag failed: ${res.status} ${detail}`);
+    }
+    const json = JSON.parse(detail);
+    for (const sub of json.subscribers ?? []) ids.add(sub.id);
+    cursor = json.pagination?.has_next_page ? json.pagination.end_cursor : null;
+  } while (cursor);
+
+  return ids;
+}
+
 export async function tagKitSubscriber(email: string, tagId: string) {
   const apiKey = getApiKey();
   const res = await fetch(`${KIT_API_BASE}/tags/${tagId}/subscribers`, {

@@ -45,6 +45,7 @@ details[open] > .applicant-summary::before { transform: rotate(90deg); }
 }
 .applicant-state-active { background: rgba(46,160,67,0.12); color: #2EA043; }
 .applicant-state-cancelled { background: rgba(192,57,43,0.1); color: #C0392B; }
+.applicant-state-waitlisted { background: rgba(212,168,83,0.14); color: var(--gold); }
 
 .applicant-body { padding: 4px 20px 24px; border-top: 1px solid var(--border); }
 .applicant-section { margin-top: 22px; }
