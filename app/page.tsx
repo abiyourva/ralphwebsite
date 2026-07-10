@@ -58,6 +58,13 @@ const PRESS_MENTIONS = [
     url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
     verb: "Watch the episode",
   },
+  {
+    icon: "📰",
+    outlet: "ECIKS.org",
+    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
+    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
+    verb: "Read the article",
+  },
 ];
 
 export default function HomePage() {

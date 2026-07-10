@@ -116,6 +116,13 @@ const APPEARANCES = [
     url: "https://podcasts.apple.com/us/podcast/get-lifelong-accounting-clients-relationship-based/id1506023469?i=1000699139789",
     verb: "Listen",
   },
+  {
+    icon: "📰",
+    show: "ECIKS.org",
+    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
+    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
+    verb: "Read",
+  },
 ];
 
 export default function PressPage() {
