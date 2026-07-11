@@ -163,6 +163,13 @@ export default function LpaVsCpaArticle() {
               </div>
             ))}
 
+            <p>
+              Wondering what hiring one actually costs? I&apos;ve broken that down too, in{" "}
+              <Link href="/articles/how-much-does-an-accountant-cost" style={{ color: "var(--h)" }}>
+                How Much Does an Accountant Cost?
+              </Link>
+            </p>
+
             <div className="card card-pad" style={{ marginTop: "16px" }}>
               <h3 style={{ marginBottom: "8px" }}>Still not sure what you need?</h3>
               <p style={{ fontSize: "15px", marginBottom: "16px" }}>

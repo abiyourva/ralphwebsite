@@ -13,6 +13,15 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "how-much-does-an-accountant-cost",
+    title: "How Much Does an Accountant Cost? An Honest Breakdown",
+    description:
+      "What accountants actually charge, the three pricing models you'll run into, what drives your bill up or down, and the red flags that should end the conversation.",
+    category: "Choosing an Accountant",
+    datePublished: "2026-07-11",
+    readTime: "7 min read",
+  },
+  {
     slug: "lpa-vs-cpa",
     title: "LPA vs. CPA: What's the Difference — and Which One Do You Need?",
     description:
