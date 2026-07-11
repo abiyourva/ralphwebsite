@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 import "./press.css";
 
 export const metadata = pageMetadata({
-  title: "Media Kit & Press — Ralph Estep Jr.",
+  title: "Media Kit & Press — Ralph Estep Jr., Financial Speaker",
   description:
     "Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.",
   path: "/press",

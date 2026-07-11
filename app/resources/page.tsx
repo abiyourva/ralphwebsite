@@ -7,7 +7,7 @@ import "./resources.css";
 export const metadata = pageMetadata({
   title: "Books & Resources — Ralph Estep Jr.",
   description:
-    "Books, courses, and free financial tools from Ralph Estep Jr. — including the upcoming budgeting book and the free Money Archetype Quiz.",
+    "Books, courses, and free financial tools from Ralph Estep Jr., LPA — including two upcoming books, the Money Archetype Quiz, and free budget calculators.",
   path: "/resources",
 });
 

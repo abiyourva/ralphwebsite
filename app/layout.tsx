@@ -15,7 +15,7 @@ import "./globals.css";
 
 const TITLE = "Ralph Estep Jr. — LPA, Author, Podcaster, Business Coach";
 const DESCRIPTION =
-  "Ralph Estep Jr. is a Licensed Public Accountant, business coach, author, and podcaster helping everyday people build real financial confidence. Not just informed. Equipped.";
+  "Ralph Estep Jr., LPA, is a business coach, author, and podcaster helping everyday people build real financial confidence — not just informed, but equipped.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

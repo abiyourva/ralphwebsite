@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd, accountingServiceJsonLd } from "@/lib/seo";
 import "./schedule.css";
 
 export const metadata = pageMetadata({
@@ -9,6 +9,11 @@ export const metadata = pageMetadata({
     "Schedule a tax appointment, a free discovery call, a monthly check-in, or QuickBooks and payroll support with Ralph Estep Jr., LPA and Saggio Management Group.",
   path: "/schedule",
 });
+
+const BREADCRUMBS = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Scheduling", path: "/schedule" },
+]);
 
 const CATEGORIES = [
   {
@@ -44,6 +49,14 @@ const CATEGORIES = [
 export default function SchedulePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMBS) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(accountingServiceJsonLd) }}
+      />
       <header className="schedule-hero" aria-labelledby="schedule-heading" style={{ paddingBottom: "40px" }}>
         <div className="schedule-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative", maxWidth: "680px" }}>

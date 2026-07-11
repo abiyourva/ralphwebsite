@@ -1,19 +1,29 @@
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { RENEE_OPTIONS } from "../appointmentSchedules";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "../schedule.css";
 
 export const metadata = pageMetadata({
   title: "Book QuickBooks or Payroll Support — Renee Poole",
   description:
-    "Schedule QuickBooks assistance or payroll support with Renee Poole at Saggio Management Group.",
+    "Schedule QuickBooks assistance or payroll support with Renee Poole at Saggio Management Group — quick, judgment-free help keeping your books in order.",
   path: "/schedule/bookkeeping",
 });
+
+const BREADCRUMBS = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Scheduling", path: "/schedule" },
+  { name: "QuickBooks & Payroll Support", path: "/schedule/bookkeeping" },
+]);
 
 export default function BookkeepingSchedulePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMBS) }}
+      />
       <header className="schedule-hero" aria-labelledby="bookkeeping-heading" style={{ paddingBottom: "40px" }}>
         <div className="schedule-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative", maxWidth: "680px" }}>

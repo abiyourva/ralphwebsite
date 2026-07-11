@@ -1,19 +1,29 @@
 import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { DISCOVERY_OPTIONS } from "../appointmentSchedules";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "../schedule.css";
 
 export const metadata = pageMetadata({
   title: "Book a Discovery Call — Ralph Estep Jr., LPA",
   description:
-    "Schedule a free discovery call or paid strategy session with Ralph Estep Jr., LPA and Saggio Management Group.",
+    "Schedule a free discovery call or paid strategy session with Ralph Estep Jr., LPA and Saggio Management Group to talk through your financial situation.",
   path: "/schedule/discovery",
 });
+
+const BREADCRUMBS = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Scheduling", path: "/schedule" },
+  { name: "Discovery & Consultations", path: "/schedule/discovery" },
+]);
 
 export default function DiscoverySchedulePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMBS) }}
+      />
       <header className="schedule-hero" aria-labelledby="discovery-heading" style={{ paddingBottom: "40px" }}>
         <div className="schedule-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative", maxWidth: "680px" }}>

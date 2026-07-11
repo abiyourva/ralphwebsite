@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Terms of Use — Ralph Estep Jr.",
-  description: "The terms and conditions for using the Ralph Estep Jr. website and its services.",
+  description: "The terms and conditions for using the Ralph Estep Jr. website, its tools, resources, and coaching, speaking, and accounting services.",
   path: "/terms",
 });
 

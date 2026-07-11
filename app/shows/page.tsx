@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, podcastSeriesJsonLd, SITE_URL } from "@/lib/seo";
 import "./shows.css";
 
 export const metadata = pageMetadata({
@@ -9,9 +9,44 @@ export const metadata = pageMetadata({
   path: "/shows",
 });
 
+const SHOWS_JSON_LD = [
+  podcastSeriesJsonLd({
+    name: "Becoming Financially Confident",
+    description:
+      "The daily show that gives you real tools and real confidence — not just information. Every episode is built around one practical takeaway you can apply the same day. Launching September 2026.",
+    url: `${SITE_URL}/becoming-financially-confident`,
+    image: "/images/cover-bfc.png",
+  }),
+  podcastSeriesJsonLd({
+    name: "Financially Confident Christian",
+    description:
+      "Faith-based personal finance for Christians who want to steward their resources well — biblical principles applied to modern finance.",
+    url: "https://www.financiallyconfidentchristian.com/",
+    image: "/images/cover-fcc.png",
+  }),
+  podcastSeriesJsonLd({
+    name: "Truth Unveiled with Ralph",
+    description:
+      "Inspirational, practical content for everyday life — financial wisdom mixed with real-life perspective and encouragement, with over 400,000 YouTube subscribers.",
+    url: "https://www.truthunveiledwithralph.com/",
+    image: "/images/cover-truth-unveiled.jpg",
+  }),
+  podcastSeriesJsonLd({
+    name: "The Content Creator's Accountant",
+    description:
+      "Financial education built specifically for podcasters and content creators — taxes, LLCs, audience economics, and revenue streams, explained clearly.",
+    url: "https://contentcreatorsaccountant.com/",
+    image: "/images/cover-content-creator.jpg",
+  }),
+];
+
 export default function ShowsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SHOWS_JSON_LD) }}
+      />
       <header className="shows-hero" aria-labelledby="shows-heading">
         <div className="shows-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative" }}>

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import ContactInquiry from "./ContactInquiry";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, accountingServiceJsonLd } from "@/lib/seo";
 import "./contact.css";
 
 export const metadata = pageMetadata({
-  title: "Contact Ralph Estep Jr.",
+  title: "Contact Ralph Estep Jr. — Coaching, Speaking & Accounting",
   description:
     "Get in touch with Ralph Estep Jr. for coaching, speaking, accounting, or general inquiries. Ralph and his team respond within 2 business days.",
   path: "/contact",
@@ -13,6 +13,10 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(accountingServiceJsonLd) }}
+      />
       <header className="page-hero">
         <div className="page-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative" }}>
