@@ -21,6 +21,7 @@ export const mobileLinks: NavLink[] = [
   { href: "/coaching", label: "Coaching" },
   { href: "/speaking", label: "Speaking" },
   { href: "/resources", label: "Books & Resources" },
+  { href: "/articles", label: "Articles" },
   { href: "/press", label: "Media Kit / Press" },
   { href: "/contact", label: "Contact" },
 ];

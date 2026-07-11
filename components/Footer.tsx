@@ -69,6 +69,7 @@ export default function Footer() {
             <p className="footer-col-label">More</p>
             <div className="footer-links">
               <Link href="/about" className="footer-link">About Ralph</Link>
+              <Link href="/articles" className="footer-link">Articles</Link>
               <Link href="/press" className="footer-link">Media Kit / Press</Link>
               <Link href="/contact" className="footer-link">Contact</Link>
               <a href="https://contentcreatorsaccountant.com/audit" target="_blank" rel="noopener" className="footer-link">

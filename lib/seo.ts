@@ -123,6 +123,36 @@ export const accountingServiceJsonLd = {
   sameAs: ["https://saggioaccounting.com/"],
 };
 
+export function articleJsonLd({
+  title,
+  description,
+  path,
+  datePublished,
+  dateModified,
+  image = "/images/ralph-headshot.png",
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url: `${SITE_URL}${path}`,
+    mainEntityOfPage: `${SITE_URL}${path}`,
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    image: `${SITE_URL}${image}`,
+    author: { "@id": `${SITE_URL}/#ralph` },
+    publisher: { "@id": `${SITE_URL}/#ralph` },
+  };
+}
+
 export function podcastSeriesJsonLd({
   name,
   description,
