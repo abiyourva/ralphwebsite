@@ -13,6 +13,24 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "debt-snowball-vs-avalanche",
+    title: "Debt Snowball vs. Avalanche: Which One Actually Gets You Debt-Free?",
+    description:
+      "The math favors one method, your motivation favors the other. Here's how each works, which saves more interest, and how to pick the one you'll actually stick with.",
+    category: "Getting Out of Debt",
+    datePublished: "2026-07-11",
+    readTime: "6 min read",
+  },
+  {
+    slug: "do-content-creators-need-an-llc",
+    title: "Do Content Creators Need an LLC? An Accountant's Honest Answer",
+    description:
+      "An LLC won't lower your taxes by itself — and you don't need one to deduct expenses. What it actually does, when it starts to matter, and the myths costing creators money.",
+    category: "Creator Finances",
+    datePublished: "2026-07-11",
+    readTime: "6 min read",
+  },
+  {
     slug: "how-much-does-an-accountant-cost",
     title: "How Much Does an Accountant Cost? An Honest Breakdown",
     description:
