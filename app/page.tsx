@@ -92,12 +92,6 @@ const PRESS_MENTIONS = [
 export default function HomePage() {
   return (
     <>
-      {/* ── AS SEEN ON MARQUEE ── */}
-      <section className="press-marquee-section" aria-label="As seen and heard on">
-        <p className="press-marquee-eyebrow">As Seen &amp; Heard On</p>
-        <PressMarquee items={PRESS_MENTIONS} />
-      </section>
-
       {/* ── ANNOUNCEMENT BAR ── */}
       <div className="home-announce-bar">
         <Link href="/cohost" className="hero-announce">
@@ -182,6 +176,12 @@ export default function HomePage() {
             <div className="stat-label">Licensed Public Accountant</div>
           </div>
         </div>
+      </section>
+
+      {/* ── AS SEEN ON MARQUEE ── */}
+      <section className="press-marquee-section" aria-label="As seen and heard on">
+        <p className="press-marquee-eyebrow">As Seen &amp; Heard On</p>
+        <PressMarquee items={PRESS_MENTIONS} />
       </section>
 
       {/* ── QUIZ CTA ── */}
