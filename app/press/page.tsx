@@ -42,6 +42,27 @@ const TALKING_POINTS = [
 const APPEARANCES = [
   {
     icon: "📰",
+    show: "AOL",
+    title: "How Boomer and Gen Z Couples Define Retirement 'Wealth'",
+    url: "https://www.aol.com/finance/boomer-gen-z-couples-define-113005700.html",
+    verb: "Read",
+  },
+  {
+    icon: "📰",
+    show: "MoneyLion",
+    title: "Grocery Prices 'Unfair,' Americans Say as Costs Rise — 6 Ways You Can Save Right Now",
+    url: "https://moneylion.com/trending/money/grocery-prices-unfair-americans-costs-rise-save-right-now",
+    verb: "Read",
+  },
+  {
+    icon: "📰",
+    show: "Podnews",
+    title: "Featured in Podnews' Daily Newsletter — Audio? Video? Your Audience Doesn't Care",
+    url: "https://podnews.net/update/daylight-media-maher",
+    verb: "Read",
+  },
+  {
+    icon: "📰",
     show: "ECIKS.org",
     title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
     url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",

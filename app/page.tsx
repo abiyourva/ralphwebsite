@@ -4,11 +4,33 @@ import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import PressCarousel from "@/components/PressCarousel";
+import PressMarquee from "@/components/PressMarquee";
 import "./home.css";
 
 // Home page metadata uses the site default from layout.tsx.
 
 const PRESS_MENTIONS = [
+  {
+    icon: "📰",
+    outlet: "AOL",
+    title: "How Boomer and Gen Z Couples Define Retirement 'Wealth'",
+    url: "https://www.aol.com/finance/boomer-gen-z-couples-define-113005700.html",
+    verb: "Read the article",
+  },
+  {
+    icon: "📰",
+    outlet: "MoneyLion",
+    title: "Grocery Prices 'Unfair,' Americans Say as Costs Rise — 6 Ways You Can Save Right Now",
+    url: "https://moneylion.com/trending/money/grocery-prices-unfair-americans-costs-rise-save-right-now",
+    verb: "Read the article",
+  },
+  {
+    icon: "📰",
+    outlet: "Podnews",
+    title: "Featured in Podnews' Daily Newsletter — Audio? Video? Your Audience Doesn't Care",
+    url: "https://podnews.net/update/daylight-media-maher",
+    verb: "Read the mention",
+  },
   {
     icon: "📰",
     outlet: "ECIKS.org",
@@ -70,6 +92,12 @@ const PRESS_MENTIONS = [
 export default function HomePage() {
   return (
     <>
+      {/* ── AS SEEN ON MARQUEE ── */}
+      <section className="press-marquee-section" aria-label="As seen and heard on">
+        <p className="press-marquee-eyebrow">As Seen &amp; Heard On</p>
+        <PressMarquee items={PRESS_MENTIONS} />
+      </section>
+
       {/* ── ANNOUNCEMENT BAR ── */}
       <div className="home-announce-bar">
         <Link href="/cohost" className="hero-announce">

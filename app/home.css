@@ -21,7 +21,7 @@
 .home-announce-bar {
   position: relative; z-index: 2;
   background: var(--bg-page);
-  padding: 86px 24px 18px;
+  padding: 18px 24px 18px;
   text-align: center;
 }
 .hero-announce {
@@ -36,7 +36,7 @@
 .hero-announce span { color: var(--gold); font-weight: 700; }
 .hero-announce:hover { border-color: rgba(200,151,61,0.6); background: rgba(200,151,61,0.13); }
 @media (max-width: 600px) {
-  .home-announce-bar { padding: 76px 20px 16px; }
+  .home-announce-bar { padding: 14px 20px 16px; }
   .hero-announce { font-size: 12px; padding: 8px 14px; white-space: normal; }
 }
 .hero-grid {
@@ -181,4 +181,83 @@
 
 @media (max-width: 480px) {
   .hero-photo-col { max-width: 260px; }
+}
+
+/* ── AS SEEN ON MARQUEE ── */
+.press-marquee-section {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding: 86px 0 22px;
+  overflow: hidden;
+}
+
+.press-marquee-eyebrow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.press-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.press-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: press-marquee-scroll 36s linear infinite;
+}
+
+.press-marquee:hover .press-marquee-track { animation-play-state: paused; }
+
+.press-marquee-group {
+  display: flex;
+  align-items: center;
+}
+
+.press-marquee-pair {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+}
+
+.press-marquee-item {
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.press-marquee-item:hover { color: var(--gold); }
+
+.press-marquee-sep {
+  color: var(--gold);
+  opacity: 0.5;
+  font-size: 14px;
+  line-height: 1;
+}
+
+@keyframes press-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press-marquee-track { animation: none; }
+  .press-marquee { overflow-x: auto; }
+}
+
+@media (max-width: 600px) {
+  .press-marquee-section { padding: 76px 0 18px; }
 }
