@@ -5,6 +5,7 @@ import { articles } from "@/lib/articles";
 const ROUTES = [
   "",
   "/about",
+  "/appearances",
   "/articles",
   ...articles.map((article) => `/articles/${article.slug}`),
   "/becoming-financially-confident",

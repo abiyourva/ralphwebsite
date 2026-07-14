@@ -16,6 +16,11 @@ const CONTENT_SECURITY_POLICY = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: "/press/appearances", destination: "/appearances", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

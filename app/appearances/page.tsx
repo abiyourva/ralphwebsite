@@ -2,14 +2,13 @@ import { pageMetadata } from "@/lib/seo";
 import { APPEARANCES } from "@/lib/appearances";
 import AppearancesGrid from "./AppearancesGrid";
 import SmoothScroll from "./SmoothScroll";
-import "../press.css";
 import "./appearances.css";
 
 export const metadata = pageMetadata({
   title: "Ralph's Appearances — Podcasts, Videos & Press | Ralph Estep Jr.",
   description:
     "Every podcast, video, and press appearance Ralph Estep Jr. has made — from national outlets to faith and finance shows. Browse the full archive, sorted newest, oldest, or most popular.",
-  path: "/press/appearances",
+  path: "/appearances",
 });
 
 export default function AppearancesPage() {
