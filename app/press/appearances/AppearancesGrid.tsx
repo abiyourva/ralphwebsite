@@ -22,6 +22,11 @@ const FILTER_OPTIONS: { value: FilterMode; label: string }[] = [
   { value: "article", label: "Articles" },
 ];
 
+const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+function formatDate(iso: string) {
+  return DATE_FORMATTER.format(new Date(`${iso}T00:00:00Z`));
+}
+
 export default function AppearancesGrid({ items }: { items: Appearance[] }) {
   const [sort, setSort] = useState<SortMode>("newest");
   const [filter, setFilter] = useState<FilterMode>("all");
@@ -30,13 +35,13 @@ export default function AppearancesGrid({ items }: { items: Appearance[] }) {
     const filtered = filter === "all" ? items : items.filter((it) => it.type === filter);
     const sorted = [...filtered];
     if (sort === "newest") {
-      sorted.sort((a, b) => a.order - b.order);
+      sorted.sort((a, b) => b.date.localeCompare(a.date));
     } else if (sort === "oldest") {
-      sorted.sort((a, b) => b.order - a.order);
+      sorted.sort((a, b) => a.date.localeCompare(b.date));
     } else {
       sorted.sort((a, b) => {
         if (a.featured !== b.featured) return a.featured ? -1 : 1;
-        return a.order - b.order;
+        return b.date.localeCompare(a.date);
       });
     }
     return sorted;
@@ -99,9 +104,12 @@ export default function AppearancesGrid({ items }: { items: Appearance[] }) {
                 <span>{item.outlet}</span>
               </div>
               <p className="appearances-tile-title">{item.title}</p>
-              <span className="appearances-tile-link">
-                Visit <ArrowUpRight size={13} strokeWidth={2} />
-              </span>
+              <div className="appearances-tile-footer">
+                <span className="appearances-tile-date">{formatDate(item.date)}</span>
+                <span className="appearances-tile-link">
+                  Visit <ArrowUpRight size={13} strokeWidth={2} />
+                </span>
+              </div>
             </div>
           </a>
         ))}
