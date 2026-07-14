@@ -3,92 +3,31 @@ import Image from "next/image";
 import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
+import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
-import PressTypeIcon from "@/components/PressTypeIcon";
+import TrustLogos from "@/components/TrustLogos";
+import { APPEARANCES } from "@/lib/appearances";
 import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
 import "./home.css";
 
 // Home page metadata uses the site default from layout.tsx.
 
-const PRESS_MENTIONS: PressCarouselItem[] = [
-  {
-    icon: "article",
-    outlet: "AOL",
-    title: "How Boomer and Gen Z Couples Define Retirement 'Wealth'",
-    url: "https://www.aol.com/finance/boomer-gen-z-couples-define-113005700.html",
-    verb: "Read the article",
-  },
-  {
-    icon: "article",
-    outlet: "MoneyLion",
-    title: "Grocery Prices 'Unfair,' Americans Say as Costs Rise — 6 Ways You Can Save Right Now",
-    url: "https://moneylion.com/trending/money/grocery-prices-unfair-americans-costs-rise-save-right-now",
-    verb: "Read the article",
-  },
-  {
-    icon: "article",
-    outlet: "Podnews",
-    title: "Featured in Podnews' Daily Newsletter — Audio? Video? Your Audience Doesn't Care",
-    url: "https://podnews.net/update/daylight-media-maher",
-    verb: "Read the mention",
-  },
-  {
-    icon: "article",
-    outlet: "ECIKS.org",
-    title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
-    url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
-    verb: "Read the article",
-  },
-  {
-    icon: "podcast",
-    outlet: "How to Pitch a Podcast",
-    title: "There Is Only One Issue — I Do a Solo Show",
-    url: "https://podcasts.apple.com/us/podcast/how-to-pitch-a-podcast/id6784521587",
-    verb: "Listen to the episode",
-  },
-  {
-    icon: "article",
-    outlet: "AOL",
-    title: "The Mid-Year Budget Reset That Can Save You $500+ Before Fall",
-    url: "https://www.aol.com/articles/mid-budget-reset-save-500-130309000.html",
-    verb: "Read the article",
-  },
-  {
-    icon: "article",
-    outlet: "MoneyLion",
-    title: "I'm a Money Expert: How To Use Summer Income To Get $1K Ahead This Year",
-    url: "https://www.moneylion.com/trending/money/im-a-money-expert-how-use-summer-income-get-1k-ahead",
-    verb: "Read the article",
-  },
-  {
-    icon: "podcast",
-    outlet: "Bartelle's Money Talk",
-    title: "Faith, Finances & Freedom: How to Get Your House in Order",
-    url: "https://podcasts.apple.com/us/podcast/faith-finances-freedom-how-to-get-your-house-in-order/id1732123565?i=1000738663309",
-    verb: "Listen to the episode",
-  },
-  {
-    icon: "podcast",
-    outlet: "New Media Show Audio",
-    title: "Digital Creator 2026 Money Playbook",
-    url: "https://podcasts.apple.com/us/podcast/digital-creator-2026-money-playbook-ralph-estep-jr/id392545649?i=1000746403885",
-    verb: "Listen to the episode",
-  },
-  {
-    icon: "podcast",
-    outlet: "The Thrive Within Podcast",
-    title: "Breaking the Silence of Financial Shame",
-    url: "https://www.buzzsprout.com/2506417/episodes/18089210",
-    verb: "Listen to the episode",
-  },
-  {
-    icon: "video",
-    outlet: "Financial Freedom for Physicians",
-    title: "Balancing Acts: Finance and Faith",
-    url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
-    verb: "Watch the episode",
-  },
-];
+const VERB_BY_TYPE = {
+  article: "Read the article",
+  podcast: "Listen to the episode",
+  video: "Watch the episode",
+} as const;
+
+const PRESS_MENTIONS: PressCarouselItem[] = [...APPEARANCES]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 12)
+  .map((item) => ({
+    icon: item.type,
+    outlet: item.outlet,
+    title: item.title,
+    url: item.url,
+    verb: VERB_BY_TYPE[item.type],
+  }));
 
 export default function HomePage() {
   return (
@@ -156,6 +95,21 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── AS SEEN ON ── */}
+      <div className="as-seen-on">
+        <div className="as-seen-on-badge rv">
+          <Image
+            src="/images/press/as-seen-on-networks.png"
+            alt="Ralph Estep Jr. as seen on ABC, FOX News, NBC, CBS, AP, Sports Illustrated, International Business Times, and Morning News — syndicated to over 450 news sites"
+            width={2000}
+            height={1000}
+            sizes="(max-width: 700px) 92vw, 780px"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
+      </div>
+      <TrustLogos />
 
       {/* ── STATS ── */}
       <section className="stats-bar" aria-label="By the numbers">
@@ -376,7 +330,9 @@ export default function HomePage() {
               <div className="episode-card-icon"><Mic2 size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Becoming Financially Confident</p>
               <h4>Coming Soon</h4>
-              <p>A new show is on the way. Sign up to be the first to know when it drops.</p>
+              <div className="home-countdown-compact">
+                <LaunchCountdown label="Launching in" />
+              </div>
             </Link>
             <a
               href="https://www.truthunveiledwithralph.com/"
@@ -413,7 +369,7 @@ export default function HomePage() {
               <p className="eyebrow rv">In the Press</p>
               <h2 className="rv d1">Recent media appearances</h2>
             </div>
-            <Link href="/press" className="btn btn-ghost rv">
+            <Link href="/appearances" className="btn btn-ghost rv">
               All Appearances →
             </Link>
           </div>
