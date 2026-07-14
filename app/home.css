@@ -56,6 +56,24 @@
 .hero-sub { font-size: 17px; font-weight: 300; line-height: 1.78; color: var(--muted); max-width: 430px; margin-bottom: 20px; }
 .hero-tagline { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 36px; }
 .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-proof { margin-top: 18px; font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; color: var(--muted2); }
+
+/* Subtle diagonal shimmer sweep on hover — scoped to the hero CTAs only. */
+.hero-cta .btn { position: relative; overflow: hidden; }
+.hero-cta .btn::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 45%; height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+}
+.hero-cta .btn:hover::after { left: 125%; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta .btn::after { display: none; }
+}
 
 .hero-photo-col { position: relative; }
 .hero-photo-frame {

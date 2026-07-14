@@ -66,13 +66,16 @@ export default function HomePage() {
               Not just informed. Equipped.
             </p>
             <div className="hero-cta hero-in" style={{ animationDelay: "0.54s" }}>
-              <Link href="#shows" className="btn btn-navy">
-                Discover the Show
+              <Link href="/money-archetype" className="btn btn-navy">
+                Take the Free Quiz →
               </Link>
               <Link href="#about" className="btn btn-ghost">
                 Meet Ralph
               </Link>
             </div>
+            <p className="hero-proof hero-in" style={{ animationDelay: "0.6s" }}>
+              Trusted by 770K+ YouTube subscribers · 30+ years in practice
+            </p>
           </div>
 
           <div className="hero-photo-col scale-in" style={{ animationDelay: "0.35s" }}>

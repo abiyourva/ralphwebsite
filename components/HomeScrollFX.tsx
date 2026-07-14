@@ -93,7 +93,7 @@ export default function HomeScrollFX() {
         const heroEl = document.querySelector<HTMLElement>(".hero");
         const heroHeading = document.getElementById("hero-heading");
         const heroFadeEls = document.querySelectorAll<HTMLElement>(
-          ".hero-eyebrow, .hero-sub, .hero-tagline, .hero-cta, .hero-photo-col"
+          ".hero-eyebrow, .hero-sub, .hero-tagline, .hero-cta, .hero-proof, .hero-photo-col"
         );
 
         if (heroEl && heroHeading) {
