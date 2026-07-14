@@ -5,7 +5,6 @@ import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
-import TrustLogos from "@/components/TrustLogos";
 import { APPEARANCES } from "@/lib/appearances";
 import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
 import "./home.css";
@@ -95,21 +94,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── AS SEEN ON ── */}
-      <div className="as-seen-on">
-        <div className="as-seen-on-badge rv">
-          <Image
-            src="/images/press/as-seen-on-networks.png"
-            alt="Ralph Estep Jr. as seen on ABC, FOX News, NBC, CBS, AP, Sports Illustrated, International Business Times, and Morning News — syndicated to over 450 news sites"
-            width={2000}
-            height={1000}
-            sizes="(max-width: 700px) 92vw, 780px"
-            style={{ width: "100%", height: "auto", display: "block" }}
-          />
-        </div>
-      </div>
-      <TrustLogos />
 
       {/* ── STATS ── */}
       <section className="stats-bar" aria-label="By the numbers">
