@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import FaqAccordion from "@/components/FaqAccordion";
 import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
+import { HeartCrack, BarChart3, Target } from "lucide-react";
 import "./coaching.css";
 
 export const metadata = pageMetadata({
@@ -12,19 +13,19 @@ export const metadata = pageMetadata({
 
 const WHO_ITS_FOR = [
   {
-    icon: "😓",
+    icon: HeartCrack,
     title: "You feel stuck or overwhelmed",
     description:
       "You know something needs to change with your finances, but you don't know where to start — or you've started and stalled.",
   },
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "You're building a business",
     description:
       "You're an entrepreneur or creator who needs to separate personal and business finances, reduce taxes, and plan for growth.",
   },
   {
-    icon: "🎯",
+    icon: Target,
     title: "You want accountability",
     description:
       "You've read the books. You know what you should do. What you need is someone to walk alongside you and keep you honest.",
@@ -151,7 +152,7 @@ export default function CoachingPage() {
           <div className="who-grid">
             {WHO_ITS_FOR.map((item, i) => (
               <div key={item.title} className={`card card-pad card-hover rv${i > 0 ? ` d${i}` : ""}`}>
-                <div className="who-card-icon">{item.icon}</div>
+                <div className="who-card-icon"><item.icon size={28} strokeWidth={1.75} /></div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </div>

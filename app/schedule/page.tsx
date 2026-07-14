@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { pageMetadata, breadcrumbJsonLd, accountingServiceJsonLd } from "@/lib/seo";
+import { Receipt, MessageCircle, BarChart3, Calculator } from "lucide-react";
 import "./schedule.css";
 
 export const metadata = pageMetadata({
@@ -17,28 +18,28 @@ const BREADCRUMBS = breadcrumbJsonLd([
 
 const CATEGORIES = [
   {
-    icon: "🧾",
+    icon: Receipt,
     title: "Tax Preparation",
     description:
       "Get your taxes prepared and filed — virtually or in person.",
     href: "/schedule/tax",
   },
   {
-    icon: "💬",
+    icon: MessageCircle,
     title: "Discovery Call or Consultation",
     description:
       "New here? Start with a free call, or book a strategy session.",
     href: "/schedule/discovery",
   },
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "I'm a Monthly Client",
     description:
       "Already on an ongoing plan? Book your regular check-in.",
     href: "/schedule/monthly",
   },
   {
-    icon: "🧮",
+    icon: Calculator,
     title: "QuickBooks & Payroll",
     description:
       "QuickBooks help and payroll support with Renee Poole.",
@@ -81,7 +82,7 @@ export default function SchedulePage() {
                 href={cat.href}
                 className={`decision-card rv${i > 0 ? ` d${i}` : ""}`}
               >
-                <div className="decision-icon">{cat.icon}</div>
+                <div className="decision-icon"><cat.icon size={22} strokeWidth={1.75} /></div>
                 <h3>{cat.title}</h3>
                 <p>{cat.description}</p>
                 <span className="decision-arrow">Choose a time →</span>

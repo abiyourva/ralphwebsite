@@ -373,6 +373,39 @@ em { font-style: italic; }
   margin-bottom: 18px;
 }
 
+/* ── PRESS / TRUST BADGES ─────────────────────────────── */
+
+.press-badge-card {
+  width: 100%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px 24px 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.16);
+}
+.press-badge-card img { border-radius: 4px; }
+
+.press-memberships {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.press-membership-badge {
+  width: 120px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+.press-membership-badge img { border-radius: 3px; }
+.press-membership-badge-wide { width: 220px; padding: 0; }
+.press-membership-badge-wide img { border-radius: 8px; }
+
 .badge {
   display: inline-block;
   font-size: 10px;

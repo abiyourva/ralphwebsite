@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { Motorbike, Volleyball, type LucideIcon } from "lucide-react";
 
 type Hobby = {
   src: string;
   alt: string;
-  icon: string;
+  icon: LucideIcon;
   title: string;
   description: string;
 };
@@ -12,7 +13,7 @@ const HOBBIES: Hobby[] = [
   {
     src: "/images/ralph-motorcycle.jpg",
     alt: "Ralph on his motorcycle",
-    icon: "🏍️",
+    icon: Motorbike,
     title: "Riding",
     description:
       "There's something about the open road that clears the mind. Ralph rides to decompress, explore, and remind himself that the best views come after the hardest climbs.",
@@ -20,7 +21,7 @@ const HOBBIES: Hobby[] = [
   {
     src: "/images/ralph-softball.jpg",
     alt: "Ralph in his softball uniform",
-    icon: "⚾",
+    icon: Volleyball,
     title: "Softball",
     description:
       "Team player on and off the field. Softball keeps Ralph grounded in community, competition, and the joy of showing up — lessons that translate directly into how he coaches.",
@@ -46,7 +47,7 @@ export default function HobbyPhotos() {
           </div>
           <div className="hobby-card-body">
             <div className="hobby-card-header">
-              <span aria-hidden="true">{hobby.icon}</span>
+              <span aria-hidden="true"><hobby.icon size={22} strokeWidth={1.75} /></span>
               <h3>{hobby.title}</h3>
             </div>
             <p>{hobby.description}</p>

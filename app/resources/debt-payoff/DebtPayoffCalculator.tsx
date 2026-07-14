@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import { CURRENCIES, DEFAULT_CURRENCY, formatCurrency, getCurrencySymbol } from "@/lib/currency";
+import { X, Mountain, Snowflake } from "lucide-react";
 
 interface DebtRow {
   id: number;
@@ -205,7 +206,7 @@ export default function DebtPayoffCalculator() {
                       aria-label={`Remove debt ${i + 1}`}
                       onClick={() => removeDebt(debt.id)}
                     >
-                      ✕
+                      <X size={13} strokeWidth={2} />
                     </button>
                   )}
                 </div>
@@ -318,7 +319,7 @@ export default function DebtPayoffCalculator() {
 
               <div className="dp-strategies">
                 <div className="dp-strategy">
-                  <h4>🏔 Avalanche</h4>
+                  <h4 className="dp-strategy-title"><Mountain size={16} strokeWidth={1.75} /> Avalanche</h4>
                   <p className="dp-strategy-tag">Highest interest rate first — saves the most money</p>
                   <dl>
                     <div><dt>Debt-free in</dt><dd>{durationLabel(results.avalanche.months)}</dd></div>
@@ -326,7 +327,7 @@ export default function DebtPayoffCalculator() {
                   </dl>
                 </div>
                 <div className="dp-strategy">
-                  <h4>⛄️ Snowball</h4>
+                  <h4 className="dp-strategy-title"><Snowflake size={16} strokeWidth={1.75} /> Snowball</h4>
                   <p className="dp-strategy-tag">Smallest balance first — fastest first win</p>
                   <dl>
                     <div><dt>Debt-free in</dt><dd>{durationLabel(results.snowball.months)}</dd></div>

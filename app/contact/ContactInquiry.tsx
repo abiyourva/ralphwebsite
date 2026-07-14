@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import { Handshake, Mic, Newspaper, BarChart3, Mic2, Mail } from "lucide-react";
 
 type InquiryType =
   | "coaching"
@@ -12,13 +13,13 @@ type InquiryType =
   | "podcasting"
   | "general";
 
-const options: { type: InquiryType; icon: string; title: string; desc: string }[] = [
-  { type: "coaching", icon: "🤝", title: "Coaching", desc: "One-on-one financial coaching or creator business coaching" },
-  { type: "speaking", icon: "🎤", title: "Speaking", desc: "Book Ralph for your event, conference, or podcast" },
-  { type: "press", icon: "📰", title: "Press / Media", desc: "Interviews, guest appearances, and journalist inquiries" },
-  { type: "accounting", icon: "📊", title: "Accounting Services", desc: "Work with Saggio Management Group" },
-  { type: "podcasting", icon: "🎙", title: "Podcasting / Shows", desc: "Show questions, listener mail, or collaboration" },
-  { type: "general", icon: "✉️", title: "General Inquiry", desc: "Something else — Ralph's team will route it correctly" },
+const options: { type: InquiryType; icon: typeof Handshake; title: string; desc: string }[] = [
+  { type: "coaching", icon: Handshake, title: "Coaching", desc: "One-on-one financial coaching or creator business coaching" },
+  { type: "speaking", icon: Mic, title: "Speaking", desc: "Book Ralph for your event, conference, or podcast" },
+  { type: "press", icon: Newspaper, title: "Press / Media", desc: "Interviews, guest appearances, and journalist inquiries" },
+  { type: "accounting", icon: BarChart3, title: "Accounting Services", desc: "Work with Saggio Management Group" },
+  { type: "podcasting", icon: Mic2, title: "Podcasting / Shows", desc: "Show questions, listener mail, or collaboration" },
+  { type: "general", icon: Mail, title: "General Inquiry", desc: "Something else — Ralph's team will route it correctly" },
 ];
 
 // Routing notes shown after an inquiry type is selected (ported from the
@@ -88,7 +89,7 @@ export default function ContactInquiry() {
             }}
             type="button"
           >
-            <span className="contact-option-icon" aria-hidden="true">{opt.icon}</span>
+            <span className="contact-option-icon" aria-hidden="true"><opt.icon size={22} strokeWidth={1.75} /></span>
             <h4>{opt.title}</h4>
             <p>{opt.desc}</p>
           </button>

@@ -3,85 +3,86 @@ import Image from "next/image";
 import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
-import PressCarousel from "@/components/PressCarousel";
-import PressMarquee from "@/components/PressMarquee";
+import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
+import PressTypeIcon from "@/components/PressTypeIcon";
+import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
 import "./home.css";
 
 // Home page metadata uses the site default from layout.tsx.
 
-const PRESS_MENTIONS = [
+const PRESS_MENTIONS: PressCarouselItem[] = [
   {
-    icon: "📰",
+    icon: "article",
     outlet: "AOL",
     title: "How Boomer and Gen Z Couples Define Retirement 'Wealth'",
     url: "https://www.aol.com/finance/boomer-gen-z-couples-define-113005700.html",
     verb: "Read the article",
   },
   {
-    icon: "📰",
+    icon: "article",
     outlet: "MoneyLion",
     title: "Grocery Prices 'Unfair,' Americans Say as Costs Rise — 6 Ways You Can Save Right Now",
     url: "https://moneylion.com/trending/money/grocery-prices-unfair-americans-costs-rise-save-right-now",
     verb: "Read the article",
   },
   {
-    icon: "📰",
+    icon: "article",
     outlet: "Podnews",
     title: "Featured in Podnews' Daily Newsletter — Audio? Video? Your Audience Doesn't Care",
     url: "https://podnews.net/update/daylight-media-maher",
     verb: "Read the mention",
   },
   {
-    icon: "📰",
+    icon: "article",
     outlet: "ECIKS.org",
     title: "It's Mid-2026 — Here's How To Refocus Your Savings Goals and Get Back On Track Financially",
     url: "https://eciks.org/12669-28619-saving-money-mid-year-reset-2026",
     verb: "Read the article",
   },
   {
-    icon: "🎤",
+    icon: "podcast",
     outlet: "How to Pitch a Podcast",
     title: "There Is Only One Issue — I Do a Solo Show",
     url: "https://podcasts.apple.com/us/podcast/how-to-pitch-a-podcast/id6784521587",
     verb: "Listen to the episode",
   },
   {
-    icon: "📰",
+    icon: "article",
     outlet: "AOL",
     title: "The Mid-Year Budget Reset That Can Save You $500+ Before Fall",
     url: "https://www.aol.com/articles/mid-budget-reset-save-500-130309000.html",
     verb: "Read the article",
   },
   {
-    icon: "📰",
+    icon: "article",
     outlet: "MoneyLion",
     title: "I'm a Money Expert: How To Use Summer Income To Get $1K Ahead This Year",
     url: "https://www.moneylion.com/trending/money/im-a-money-expert-how-use-summer-income-get-1k-ahead",
     verb: "Read the article",
   },
   {
-    icon: "🎤",
+    icon: "podcast",
     outlet: "Bartelle's Money Talk",
     title: "Faith, Finances & Freedom: How to Get Your House in Order",
     url: "https://podcasts.apple.com/us/podcast/faith-finances-freedom-how-to-get-your-house-in-order/id1732123565?i=1000738663309",
     verb: "Listen to the episode",
   },
   {
-    icon: "🎤",
+    icon: "podcast",
     outlet: "New Media Show Audio",
     title: "Digital Creator 2026 Money Playbook",
     url: "https://podcasts.apple.com/us/podcast/digital-creator-2026-money-playbook-ralph-estep-jr/id392545649?i=1000746403885",
     verb: "Listen to the episode",
   },
   {
-    icon: "🎤",
+    icon: "podcast",
     outlet: "The Thrive Within Podcast",
     title: "Breaking the Silence of Financial Shame",
     url: "https://www.buzzsprout.com/2506417/episodes/18089210",
     verb: "Listen to the episode",
   },
   {
-    icon: "▶️",
+    icon: "video",
     outlet: "Financial Freedom for Physicians",
     title: "Balancing Acts: Finance and Faith",
     url: "https://www.youtube.com/watch?v=mqKffc-MWhU",
@@ -95,7 +96,7 @@ export default function HomePage() {
       {/* ── ANNOUNCEMENT BAR ── */}
       <div className="home-announce-bar">
         <Link href="/cohost" className="hero-announce">
-          🎙 Now hiring a podcast co-host <span>Apply →</span>
+          <Mic2 size={15} strokeWidth={2} aria-hidden="true" /> Now hiring a podcast co-host <span>Apply →</span>
         </Link>
       </div>
 
@@ -178,12 +179,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── AS SEEN ON MARQUEE ── */}
-      <section className="press-marquee-section" aria-label="As seen and heard on">
-        <p className="press-marquee-eyebrow">As Seen &amp; Heard On</p>
-        <PressMarquee items={PRESS_MENTIONS} />
-      </section>
-
       {/* ── QUIZ CTA ── */}
       <section className="section bg-alt text-center" style={{ position: "relative", overflow: "hidden" }}>
         <div className="radial-soft radial-quiz" aria-hidden="true" />
@@ -210,21 +205,21 @@ export default function HomePage() {
             <div className="grid-2 path-panels-track">
               <Link href="/shows#bfc" className="card card-hover path-card rv">
                 <span className="path-card-num">01</span>
-                <div className="path-card-icon">💰</div>
+                <div className="path-card-icon"><DollarSign size={26} strokeWidth={1.75} /></div>
                 <h3>I want financial confidence</h3>
                 <p>Practical tools, real strategies, and the reassurance that it&apos;s going to be okay.</p>
                 <span className="path-card-link">Explore →</span>
               </Link>
               <Link href="/coaching" className="card card-hover path-card rv d1">
                 <span className="path-card-num">02</span>
-                <div className="path-card-icon">🤝</div>
+                <div className="path-card-icon"><Handshake size={26} strokeWidth={1.75} /></div>
                 <h3>I want to work with Ralph directly</h3>
                 <p>One-on-one coaching to get clarity, a plan, and the confidence to follow through.</p>
                 <span className="path-card-link">Learn More →</span>
               </Link>
               <Link href="/speaking" className="card card-hover path-card rv d2">
                 <span className="path-card-num">03</span>
-                <div className="path-card-icon">🎤</div>
+                <div className="path-card-icon"><Mic size={26} strokeWidth={1.75} /></div>
                 <h3>I want to book Ralph to speak</h3>
                 <p>Events, conferences, and podcast guest appearances on personal finance and creator economics.</p>
                 <span className="path-card-link">Book Ralph →</span>
@@ -236,13 +231,13 @@ export default function HomePage() {
                 className="card card-hover path-card rv d3"
               >
                 <span className="path-card-num">04</span>
-                <div className="path-card-icon">🎙</div>
+                <div className="path-card-icon"><Mic2 size={26} strokeWidth={1.75} /></div>
                 <h3>I&apos;m a content creator</h3>
                 <p>The financial side of running a podcast or creator business — taxes, audience economics, and more.</p>
                 <span className="path-card-link">Free Audit →</span>
               </a>
               <Link href="/schedule" className="card card-hover path-card path-card-gold rv d4">
-                <div className="path-card-icon">📅</div>
+                <div className="path-card-icon"><Calendar size={26} strokeWidth={1.75} /></div>
                 <div className="path-card-gold-body">
                   <span className="path-card-num">05</span>
                   <h3>I need to book an appointment</h3>
@@ -378,7 +373,7 @@ export default function HomePage() {
           </div>
           <div className="grid-3">
             <Link href="/becoming-financially-confident" className="card card-hover episode-card rv">
-              <div className="episode-card-icon">🎙</div>
+              <div className="episode-card-icon"><Mic2 size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Becoming Financially Confident</p>
               <h4>Coming Soon</h4>
               <p>A new show is on the way. Sign up to be the first to know when it drops.</p>
@@ -389,7 +384,7 @@ export default function HomePage() {
               rel="noopener"
               className="card card-hover episode-card rv d1"
             >
-              <div className="episode-card-icon">▶️</div>
+              <div className="episode-card-icon"><PlayCircle size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Truth Unveiled with Ralph</p>
               <h4>Watch on YouTube</h4>
               <p>Inspirational, practical content for everyday life — over 400,000 subscribers.</p>
@@ -400,7 +395,7 @@ export default function HomePage() {
               rel="noopener"
               className="card card-hover episode-card rv d2"
             >
-              <div className="episode-card-icon">✝️</div>
+              <div className="episode-card-icon"><Cross size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Financially Confident Christian</p>
               <h4>Listen Now</h4>
               <p>Faith-based personal finance for Christians who want to steward their resources well.</p>

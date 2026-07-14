@@ -1,9 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import PressTypeIcon, { type PressType } from "./PressTypeIcon";
 
 export interface PressCarouselItem {
-  icon: string;
+  icon: PressType;
   outlet: string;
   title: string;
   url: string;
@@ -65,7 +66,7 @@ export default function PressCarousel({ items }: { items: PressCarouselItem[] })
           aria-roledescription="slide"
           aria-label={`${index + 1} of ${items.length}`}
         >
-          <div className="episode-card-icon">{item.icon}</div>
+          <div className="episode-card-icon"><PressTypeIcon type={item.icon} size={22} /></div>
           <p className="eyebrow" style={{ marginBottom: "8px" }}>{item.outlet}</p>
           <h4>{item.title}</h4>
           <p>{item.verb} →</p>

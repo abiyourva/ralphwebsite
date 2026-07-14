@@ -1,6 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import FaqAccordion from "@/components/FaqAccordion";
 import { pageMetadata, faqPageJsonLd } from "@/lib/seo";
+import { Mic, School, Mic2, Laptop } from "lucide-react";
 import "./speaking.css";
 
 export const metadata = pageMetadata({
@@ -71,10 +72,10 @@ const TOPICS = [
 ];
 
 const FORMATS = [
-  { icon: "🎤", title: "Keynote", description: "30–60 minute main-stage presentations for conferences, galas, and large group events." },
-  { icon: "🏫", title: "Workshop", description: "Interactive 90-minute to half-day sessions with practical exercises and real-time Q&A." },
-  { icon: "🎙", title: "Podcast Guest", description: "Long-form and conversational interview appearances on finance, faith, business, or creator podcasts." },
-  { icon: "💻", title: "Virtual", description: "Online webinars, virtual summits, and remote workshop facilitation — available worldwide." },
+  { icon: Mic, title: "Keynote", description: "30–60 minute main-stage presentations for conferences, galas, and large group events." },
+  { icon: School, title: "Workshop", description: "Interactive 90-minute to half-day sessions with practical exercises and real-time Q&A." },
+  { icon: Mic2, title: "Podcast Guest", description: "Long-form and conversational interview appearances on finance, faith, business, or creator podcasts." },
+  { icon: Laptop, title: "Virtual", description: "Online webinars, virtual summits, and remote workshop facilitation — available worldwide." },
 ];
 
 const FAQS = [
@@ -219,7 +220,7 @@ export default function SpeakingPage() {
           <div className="format-grid">
             {FORMATS.map((format, i) => (
               <div key={format.title} className={`format-card rv${i > 0 ? ` d${i}` : ""}`}>
-                <div className="format-icon">{format.icon}</div>
+                <div className="format-icon"><format.icon size={28} strokeWidth={1.75} /></div>
                 <h3>{format.title}</h3>
                 <p>{format.description}</p>
               </div>

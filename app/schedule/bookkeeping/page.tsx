@@ -2,6 +2,7 @@ import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { RENEE_OPTIONS } from "../appointmentSchedules";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { Calculator } from "lucide-react";
 import "../schedule.css";
 
 export const metadata = pageMetadata({
@@ -40,7 +41,7 @@ export default function BookkeepingSchedulePage() {
 
       <section className="section" style={{ paddingTop: "20px" }}>
         <div className="container-narrow" style={{ maxWidth: "760px" }}>
-          <AppointmentPicker options={RENEE_OPTIONS} icon="🧮" />
+          <AppointmentPicker options={RENEE_OPTIONS} icon={<Calculator size={24} strokeWidth={1.75} />} />
         </div>
       </section>
     </>

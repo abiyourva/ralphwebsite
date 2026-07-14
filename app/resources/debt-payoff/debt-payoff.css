@@ -38,10 +38,14 @@
 .dp-remove {
   width: 28px; height: 28px; flex-shrink: 0;
   background: none; border: 1px solid var(--border); border-radius: 50%;
-  color: var(--muted); font-size: 11px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); cursor: pointer;
   transition: border-color 0.18s, color 0.18s;
 }
 .dp-remove:hover { border-color: #C0392B; color: #C0392B; }
+
+.dp-strategy-title { display: flex; align-items: center; gap: 7px; }
+.dp-strategy-title svg { color: var(--gold); flex-shrink: 0; }
 
 .dp-debt-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .dp-debt-fields label { display: flex; flex-direction: column; gap: 5px; }

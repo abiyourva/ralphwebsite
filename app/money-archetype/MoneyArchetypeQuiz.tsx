@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
+import { HandHeart, HardHat, Sprout, type LucideIcon } from "lucide-react";
 
 type Screen = "welcome" | "quiz" | "results";
 type ArchetypeType = "believer" | "builder" | "steward";
@@ -23,7 +24,7 @@ interface QuizQuestion {
 
 interface ArchetypeData {
   type: ArchetypeType;
-  emoji: string;
+  icon: LucideIcon;
   name: string;
   tagline: string;
   description: string;
@@ -39,7 +40,7 @@ interface EmailDay {
 const ARCHETYPES: Record<ArchetypeType, ArchetypeData> = {
   believer: {
     type: "believer",
-    emoji: "🙏",
+    icon: HandHeart,
     name: "The Believer",
     tagline: "Faith-centered. Values-driven. Divinely provided for.",
     description:
@@ -55,7 +56,7 @@ const ARCHETYPES: Record<ArchetypeType, ArchetypeData> = {
   },
   builder: {
     type: "builder",
-    emoji: "🏗️",
+    icon: HardHat,
     name: "The Builder",
     tagline: "Action-oriented. Entrepreneurial. Wealth and freedom.",
     description:
@@ -71,7 +72,7 @@ const ARCHETYPES: Record<ArchetypeType, ArchetypeData> = {
   },
   steward: {
     type: "steward",
-    emoji: "🌱",
+    icon: Sprout,
     name: "The Steward",
     tagline: "Legacy-focused. Protective. Generational thinking.",
     description:
@@ -488,13 +489,17 @@ export default function MoneyArchetypeQuiz() {
       )}
 
       {/* ══ RESULTS SCREEN ══ */}
-      {screen === "results" && archetype && (
+      {screen === "results" && archetype && (() => {
+        const ArchetypeIcon = ARCHETYPES[archetype].icon;
+        return (
         <div className="quiz-screen">
           <div className="result-hero-section">
             <div className="result-hero-glow" aria-hidden="true" />
             <div className="result-hero">
               <p className="result-kicker">{userName || "You"}, you are…</p>
-              <div className="result-emoji">{ARCHETYPES[archetype].emoji}</div>
+              <div className="result-emoji">
+                <ArchetypeIcon size={56} strokeWidth={1.5} />
+              </div>
               <h1>{ARCHETYPES[archetype].name}</h1>
               <p className="result-tagline">{ARCHETYPES[archetype].tagline}</p>
               <p className="result-description">{ARCHETYPES[archetype].description}</p>
@@ -532,10 +537,12 @@ export default function MoneyArchetypeQuiz() {
                 <div className="breakdown-list">
                   {(Object.keys(ARCHETYPES) as ArchetypeType[])
                     .sort((a, b) => scorePercentages[b] - scorePercentages[a])
-                    .map((key) => (
+                    .map((key) => {
+                      const RowIcon = ARCHETYPES[key].icon;
+                      return (
                       <div key={key} className="breakdown-row">
                         <div className="breakdown-row-label">
-                          <span>{ARCHETYPES[key].emoji} {ARCHETYPES[key].name}</span>
+                          <span className="breakdown-row-name"><RowIcon size={15} strokeWidth={1.75} /> {ARCHETYPES[key].name}</span>
                           <span className="breakdown-pct">{scorePercentages[key]}%</span>
                         </div>
                         <div className="breakdown-track">
@@ -545,7 +552,8 @@ export default function MoneyArchetypeQuiz() {
                           />
                         </div>
                       </div>
-                    ))}
+                      );
+                    })}
                 </div>
               </div>
             )}
@@ -610,7 +618,8 @@ export default function MoneyArchetypeQuiz() {
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
     </main>
   );
 }

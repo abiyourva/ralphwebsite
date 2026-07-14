@@ -2,6 +2,7 @@ import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import BookNotifyForm from "./BookNotifyForm";
 import { pageMetadata } from "@/lib/seo";
+import { BarChart3, Receipt, Mic2, Brain } from "lucide-react";
 import "./resources.css";
 
 export const metadata = pageMetadata({
@@ -13,7 +14,7 @@ export const metadata = pageMetadata({
 
 const TOOLS = [
   {
-    icon: "📊",
+    icon: BarChart3,
     title: "Monthly Budget Calculator",
     description:
       "Enter your real numbers and see exactly where you stand in under two minutes — instant results, no judgment, right in your browser.",
@@ -22,7 +23,7 @@ const TOOLS = [
     internal: true,
   },
   {
-    icon: "🧾",
+    icon: Receipt,
     title: "Debt Payoff Calculator",
     description:
       "List your debts and see your debt-free date under the snowball and avalanche methods — plus what every extra dollar saves you.",
@@ -31,7 +32,7 @@ const TOOLS = [
     internal: true,
   },
   {
-    icon: "🎙",
+    icon: Mic2,
     title: "Free Creator Financial Audit",
     description:
       "Get a personalized review of your creator business finances — where you're leaving money on the table and how to fix it.",
@@ -40,7 +41,7 @@ const TOOLS = [
     internal: false,
   },
   {
-    icon: "🧠",
+    icon: Brain,
     title: "Money Archetype Quiz",
     description: "2 minutes. Discover how you're wired around money — and get a 7-day personalized email series.",
     linkLabel: "Take the Quiz →",
@@ -91,7 +92,7 @@ export default function ResourcesPage() {
           </div>
           <div className="card quiz-promo-card rv d1">
             <div className="quiz-promo-card-circle" aria-hidden="true" />
-            <div className="quiz-promo-card-emoji">🧠</div>
+            <div className="quiz-promo-card-emoji"><Brain size={48} strokeWidth={1.5} /></div>
             <h3>Know your Money Archetype</h3>
             <p>Understanding how you relate to money is the first step toward changing your relationship with it.</p>
           </div>
@@ -126,7 +127,9 @@ export default function ResourcesPage() {
             <div className="card card-hover book-card rv d1">
               <span className="book-badge">Coming Soon 2027</span>
               <div className="book-cover book-cover-cca">
-                <div style={{ fontSize: "36px", lineHeight: 1, marginBottom: "4px" }}>🎙</div>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "4px", color: "var(--gold)" }}>
+                  <Mic2 size={30} strokeWidth={1.5} />
+                </div>
                 <div className="book-cover-title">The Content<br />Creator&apos;s<br />Accountant</div>
                 <div className="book-cover-author">Ralph Estep Jr.</div>
               </div>
@@ -154,7 +157,7 @@ export default function ResourcesPage() {
             {TOOLS.map((tool, i) =>
               tool.internal ? (
                 <Link key={tool.title} href={tool.href} className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}>
-                  <div className="tool-card-icon">{tool.icon}</div>
+                  <div className="tool-card-icon"><tool.icon size={22} strokeWidth={1.75} /></div>
                   <div>
                     <h3>{tool.title}</h3>
                     <p>{tool.description}</p>
@@ -169,7 +172,7 @@ export default function ResourcesPage() {
                   rel={tool.href.startsWith("http") ? "noopener" : undefined}
                   className={`card card-hover tool-card rv${i > 0 ? ` d${i}` : ""}`}
                 >
-                  <div className="tool-card-icon">{tool.icon}</div>
+                  <div className="tool-card-icon"><tool.icon size={22} strokeWidth={1.75} /></div>
                   <div>
                     <h3>{tool.title}</h3>
                     <p>{tool.description}</p>

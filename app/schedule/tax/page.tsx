@@ -2,6 +2,7 @@ import AppointmentPicker from "@/components/AppointmentPicker";
 import ScheduleBreadcrumbs from "@/components/ScheduleBreadcrumbs";
 import { TAX_OPTIONS } from "../appointmentSchedules";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { Receipt } from "lucide-react";
 import "../schedule.css";
 
 export const metadata = pageMetadata({
@@ -40,7 +41,7 @@ export default function TaxSchedulePage() {
 
       <section className="section" style={{ paddingTop: "20px" }}>
         <div className="container-narrow" style={{ maxWidth: "760px" }}>
-          <AppointmentPicker options={TAX_OPTIONS} icon="🧾" />
+          <AppointmentPicker options={TAX_OPTIONS} icon={<Receipt size={24} strokeWidth={1.75} />} />
         </div>
       </section>
     </>

@@ -140,7 +140,7 @@ textarea.quiz-input { resize: vertical; min-height: 110px; }
 .result-hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,151,61,0.1) 0%, transparent 70%); pointer-events: none; }
 .result-hero { position: relative; animation: resultReveal 0.7s cubic-bezier(.22,1,.36,1) both 0.1s; }
 .result-kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--on-dark-m); margin-bottom: 20px; }
-.result-emoji { font-size: 72px; line-height: 1; margin-bottom: 20px; }
+.result-emoji { display: flex; justify-content: center; color: var(--gold); margin-bottom: 20px; }
 .result-hero h1 { font-size: clamp(44px, 5vw, 68px); color: var(--on-dark); margin-bottom: 14px; }
 .result-tagline { font-family: var(--font-cormorant), serif; font-size: 22px; font-weight: 400; font-style: italic; color: var(--gold); max-width: 520px; margin: 0 auto 28px; }
 .result-description { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--on-dark-m); max-width: 600px; margin: 0 auto; }
@@ -165,7 +165,9 @@ textarea.quiz-input { resize: vertical; min-height: 110px; }
 
 .breakdown-card { margin-bottom: 32px; }
 .breakdown-list { display: flex; flex-direction: column; gap: 18px; }
-.breakdown-row-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: var(--body); }
+.breakdown-row-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: var(--body); }
+.breakdown-row-name { display: inline-flex; align-items: center; gap: 6px; }
+.breakdown-row-name svg { color: var(--gold); flex-shrink: 0; }
 .breakdown-pct { font-family: var(--font-cormorant), serif; font-size: 17px; font-weight: 600; color: var(--gold); }
 .breakdown-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
 .breakdown-fill { height: 100%; background: var(--muted2); border-radius: 4px; transition: width 0.6s ease; }

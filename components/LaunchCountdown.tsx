@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PartyPopper } from "lucide-react";
 
 // BFC launches September 1, 2026 (Eastern). The date is public on the
 // shows page and homepage, so counting down to it is fair game.
@@ -38,7 +39,7 @@ export default function LaunchCountdown({ label = "Launching in" }: { label?: st
   if (parts === null) {
     return (
       <p className="launch-countdown-live" role="status">
-        🎉 It&apos;s here — the show is live!
+        <PartyPopper size={18} strokeWidth={1.75} aria-hidden="true" /> It&apos;s here — the show is live!
       </p>
     );
   }

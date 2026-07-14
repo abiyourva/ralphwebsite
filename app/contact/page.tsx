@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ContactInquiry from "./ContactInquiry";
 import { pageMetadata, accountingServiceJsonLd } from "@/lib/seo";
+import { Mail, MapPin, Globe } from "lucide-react";
 import "./contact.css";
 
 export const metadata = pageMetadata({
@@ -48,7 +49,7 @@ export default function ContactPage() {
               <div className="info-card">
                 <h4>Contact Information</h4>
                 <div className="info-row">
-                  <span className="info-icon" aria-hidden="true">📧</span>
+                  <span className="info-icon" aria-hidden="true"><Mail size={17} strokeWidth={1.75} /></span>
                   <div>
                     <strong>Email</strong>
                     <br />
@@ -56,7 +57,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="info-row">
-                  <span className="info-icon" aria-hidden="true">📍</span>
+                  <span className="info-icon" aria-hidden="true"><MapPin size={17} strokeWidth={1.75} /></span>
                   <div>
                     <strong>Office</strong>
                     <br />
@@ -68,7 +69,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="info-row">
-                  <span className="info-icon" aria-hidden="true">🌐</span>
+                  <span className="info-icon" aria-hidden="true"><Globe size={17} strokeWidth={1.75} /></span>
                   <div>
                     <strong>Accounting Practice</strong>
                     <br />

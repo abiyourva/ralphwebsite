@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Home } from "lucide-react";
 
 type ScheduleBreadcrumbsProps = {
   current?: string;
@@ -10,7 +11,9 @@ type ScheduleBreadcrumbsProps = {
 export default function ScheduleBreadcrumbs({ current }: ScheduleBreadcrumbsProps) {
   return (
     <nav className="schedule-crumbs rv" aria-label="Breadcrumb">
-      <Link href="/">🏠 Home</Link>
+      <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
+        <Home size={13} strokeWidth={2} /> Home
+      </Link>
       <span aria-hidden="true">/</span>
       {current ? <Link href="/schedule">Scheduling</Link> : <span aria-current="page">Scheduling</span>}
       {current && (

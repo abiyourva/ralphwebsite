@@ -28,7 +28,7 @@
 
 .hobby-card-body { padding: 28px; }
 .hobby-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.hobby-card-header span { font-size: 22px; }
+.hobby-card-header span { display: inline-flex; color: var(--gold); }
 .hobby-photo-btn { display: block; width: 100%; border: none; padding: 0; background: none; cursor: pointer; }
 
 @media (max-width: 860px) {

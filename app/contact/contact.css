@@ -5,12 +5,12 @@
 .contact-option:hover, .contact-option.selected { border-color: rgba(200,151,61,0.45); background: rgba(200,151,61,0.05); }
 .contact-option.selected { border-color: var(--gold); }
 .contact-option.selected::after { content: '✓'; position: absolute; top: 12px; right: 14px; color: var(--gold); font-weight: 700; font-size: 0.88rem; }
-.contact-option-icon { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+.contact-option-icon { display: inline-flex; color: var(--gold); margin-bottom: 8px; }
 .contact-option h4 { color: var(--h); margin-bottom: 4px; font-size: 0.88rem; }
 .contact-option p { font-size: 0.78rem; color: var(--muted); margin: 0; line-height: 1.4; }
 .info-card { padding: 24px; background: var(--bg-alt); border-radius: 4px; margin-bottom: 20px; }
 .info-card h4 { color: var(--h); margin-bottom: 12px; font-size: 0.95rem; }
 .info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.85rem; color: var(--muted); }
 .info-row:last-child { margin-bottom: 0; }
-.info-icon { flex-shrink: 0; color: var(--gold); font-size: 0.9rem; margin-top: 2px; }
+.info-icon { flex-shrink: 0; display: inline-flex; color: var(--gold); margin-top: 2px; }
 @media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } .contact-options { grid-template-columns: 1fr; } }

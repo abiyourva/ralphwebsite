@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { AppointmentOption } from "@/app/schedule/appointmentSchedules";
 import { directUrl } from "@/app/schedule/appointmentSchedules";
 
-type OptionGroup = { label?: string; icon?: string; options: AppointmentOption[] };
+type OptionGroup = { label?: string; icon?: ReactNode; options: AppointmentOption[] };
 
 type AppointmentPickerProps = {
   options?: AppointmentOption[];
   groups?: OptionGroup[];
-  icon?: string;
+  icon?: ReactNode;
 };
 
 // Google's booking pages actively block being framed (iframe requests get

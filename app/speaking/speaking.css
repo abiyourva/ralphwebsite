@@ -45,7 +45,7 @@
 
 .format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(250,250,247,0.08); }
 .format-card { padding: 36px 28px; background: var(--bg-navy); }
-.format-icon { font-size: 28px; margin-bottom: 16px; }
+.format-icon { display: inline-flex; color: var(--gold); margin-bottom: 16px; }
 .format-card h3 { color: var(--on-dark); margin-bottom: 10px; }
 .format-card p { font-size: 14px; color: var(--on-dark-m); }
 
