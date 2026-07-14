@@ -39,7 +39,7 @@ const TALKING_POINTS = [
 ];
 
 // Curated selection of podcast/media appearances. Full, continually-updated
-// list lives at askralph.com/ralphs-appearances — linked below the list.
+// list lives at /press/appearances — linked below the list.
 const APPEARANCES: { icon: PressType; show: string; title: string; url: string; verb: string }[] = [
   {
     icon: "article",
@@ -276,7 +276,7 @@ export default function PressPage() {
           <h2 className="rv d1" style={{ marginBottom: "12px" }}>Recent media appearances.</h2>
           <p className="rv d2" style={{ marginBottom: "40px" }}>
             A selection of recent podcast and media appearances. See the full,
-            continually-updated list on Ralph&apos;s site.
+            continually-updated archive below.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {APPEARANCES.map((item, i) => (
@@ -295,7 +295,7 @@ export default function PressPage() {
             ))}
           </div>
           <div className="mt-4 rv">
-            <a href="https://www.askralph.com/ralphs-appearances/" target="_blank" rel="noopener" className="btn btn-ghost">
+            <a href="/press/appearances" className="btn btn-ghost">
               View All of Ralph&apos;s Appearances →
             </a>
           </div>
