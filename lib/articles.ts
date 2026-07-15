@@ -48,13 +48,4 @@ export const articles: Article[] = [
     datePublished: "2026-07-11",
     readTime: "6 min read",
   },
-  {
-    slug: "google-search-console",
-    title: "Google Search Console: The SEO Tool Every Website Owner Needs",
-    description:
-      "Your direct communication line to Google. Learn what it is, why it matters for SEO, how to set it up, and how to use the data to actually improve your search rankings.",
-    category: "Website & SEO",
-    datePublished: "2026-07-15",
-    readTime: "8 min read",
-  },
 ];
