@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import PressBios from "./PressBios";
 import { pageMetadata } from "@/lib/seo";
 import "./press.css";
@@ -10,7 +11,12 @@ export const metadata = pageMetadata({
   path: "/press",
 });
 
-const TALKING_POINTS = [
+const TALKING_POINTS: {
+  title: string;
+  description: string;
+  link?: string;
+  linkLabel?: string;
+}[] = [
   {
     title: "Breaking the shame cycle around money",
     description: "Why financial shame keeps people stuck — and how empathy-first conversations create real change.",
@@ -22,18 +28,26 @@ const TALKING_POINTS = [
   {
     title: "The financial blind spots of content creators",
     description: "What podcasters and creators get wrong about taxes, structure, and revenue — and how to fix it.",
+    link: "/articles/do-content-creators-need-an-llc",
+    linkLabel: "Read the article",
   },
   {
     title: "Building financial confidence vs. financial information",
     description: "Why the internet has too much financial advice and not enough financial action — and how to bridge that gap.",
+    link: "/becoming-financially-confident",
+    linkLabel: "See the program",
   },
   {
     title: "Small business financial health in uncertain times",
     description: "Practical frameworks for small business owners navigating cash flow, taxes, and long-term planning.",
+    link: "/coaching",
+    linkLabel: "Explore coaching",
   },
   {
     title: "The arc from crisis to confidence",
     description: "Personal story: navigating financial pressure as a child, and how that shaped 30 years of work with clients in their own crises.",
+    link: "/about",
+    linkLabel: "Ralph's full story",
   },
 ];
 
@@ -151,6 +165,11 @@ export default function PressPage() {
                 <div className="topic-num">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{point.title}</h3>
                 <p>{point.description}</p>
+                {point.link && (
+                  <Link href={point.link} style={{ color: "var(--h)" }}>
+                    {point.linkLabel} →
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -251,6 +270,17 @@ export default function PressPage() {
             </a>
             <p>Saggio Management Group · 1100 Dutch Neck Road, Middletown, DE</p>
           </div>
+          <p className="rv d3" style={{ marginTop: "24px" }}>
+            Not press — just looking for financial guidance?{" "}
+            <Link href="/schedule/discovery" style={{ color: "var(--on-dark)", textDecoration: "underline" }}>
+              Book a free discovery call
+            </Link>{" "}
+            or browse{" "}
+            <Link href="/articles" style={{ color: "var(--on-dark)", textDecoration: "underline" }}>
+              Ralph&apos;s articles
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </>

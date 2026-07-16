@@ -174,6 +174,18 @@ export default function SnowballAvalancheArticle() {
                 Try the Debt Payoff Calculator →
               </Link>
             </div>
+
+            <div className="card card-pad" style={{ marginTop: "16px" }}>
+              <h3 style={{ marginBottom: "8px" }}>Want a plan built around your actual numbers?</h3>
+              <p style={{ fontSize: "15px", marginBottom: "16px" }}>
+                A calculator can show you the math — a discovery call can help you build
+                the plan you&apos;ll actually stick to. Bring your debts, your budget, or
+                just your questions. No pressure, no judgment.
+              </p>
+              <Link href="/schedule/discovery" className="btn btn-navy">
+                Book a Free Discovery Call →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
