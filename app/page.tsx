@@ -317,7 +317,7 @@ export default function HomePage() {
             <Link href="/becoming-financially-confident" className="card card-hover episode-card rv">
               <div className="episode-card-icon"><Mic2 size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Becoming Financially Confident</p>
-              <h4>Coming Soon</h4>
+              <h3>Coming Soon</h3>
               <div className="home-countdown-compact">
                 <LaunchCountdown label="Launching in" />
               </div>
@@ -330,7 +330,7 @@ export default function HomePage() {
             >
               <div className="episode-card-icon"><PlayCircle size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Truth Unveiled with Ralph</p>
-              <h4>Watch on YouTube</h4>
+              <h3>Watch on YouTube</h3>
               <p>Inspirational, practical content for everyday life — over 400,000 subscribers.</p>
             </a>
             <a
@@ -341,7 +341,7 @@ export default function HomePage() {
             >
               <div className="episode-card-icon"><Cross size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Financially Confident Christian</p>
-              <h4>Listen Now</h4>
+              <h3>Listen Now</h3>
               <p>Faith-based personal finance for Christians who want to steward their resources well.</p>
             </a>
           </div>

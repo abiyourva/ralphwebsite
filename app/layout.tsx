@@ -58,7 +58,7 @@ export default function RootLayout({
         />
         <ThemeScript />
         <Nav />
-        {children}
+        <main>{children}</main>
         <Footer />
         <HomeButton />
         <CookieBanner />
