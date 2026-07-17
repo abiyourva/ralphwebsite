@@ -45,9 +45,10 @@ export default function HomePage() {
         <div className="hero-grid">
           <div>
             <p className="hero-eyebrow hero-in" style={{ animationDelay: "0.1s" }}>
-              LPA · Author · Podcaster · Business Coach
+              Ralph Estep Jr. — LPA · Author · Podcaster · Business Coach
             </p>
             <h1 id="hero-heading" className="hero-in" style={{ animationDelay: "0.25s" }}>
+              <span className="sr-only">Ralph Estep Jr., </span>
               The person who says
               <br />
               <em>
