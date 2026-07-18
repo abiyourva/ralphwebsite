@@ -63,6 +63,17 @@ export default function BfcTeaserPage() {
             We&rsquo;re looking for a co-host — apply here →
           </Link>
         </div>
+        <div className="bfc-teaser-cohost hero-in" style={{ animationDelay: "0.78s" }}>
+          <p>Want to connect with others on the journey right now?</p>
+          <a
+            href="https://discord.gg/MPCpXJ5Yq"
+            target="_blank"
+            rel="noopener"
+            className="bfc-teaser-cohost-link"
+          >
+            Join the BFC Community on Discord →
+          </a>
+        </div>
       </div>
     </section>
   );
