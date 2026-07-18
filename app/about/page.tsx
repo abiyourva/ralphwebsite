@@ -1,15 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import HobbyPhotos from "@/components/HobbyPhotos";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "./about.css";
 
 export const metadata = pageMetadata({
   title: "About Ralph Estep Jr. — LPA, Podcaster, Business Coach",
   description:
-    "Meet Ralph Estep Jr. — a Licensed Public Accountant with 30+ years of experience whose childhood shaped a lifelong mission to help everyday people build real financial confidence.",
+    "Meet Ralph Estep Jr. — a Licensed Public Accountant with 30+ years of experience helping everyday people build real financial confidence.",
   path: "/about",
 });
+
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 const CREDENTIALS = [
   {
@@ -76,6 +81,10 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
       {/* ── HERO ── */}
       <section className="page-hero" aria-labelledby="about-heading">
         <div className="page-hero-radial" aria-hidden="true" />

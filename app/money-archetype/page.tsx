@@ -1,5 +1,5 @@
 import MoneyArchetypeQuiz from "./MoneyArchetypeQuiz";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "./money-archetype.css";
 
 export const metadata = pageMetadata({
@@ -9,6 +9,19 @@ export const metadata = pageMetadata({
   path: "/money-archetype",
 });
 
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Money Archetype", path: "/money-archetype" },
+]);
+
 export default function MoneyArchetypePage() {
-  return <MoneyArchetypeQuiz />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
+      <MoneyArchetypeQuiz />
+    </>
+  );
 }

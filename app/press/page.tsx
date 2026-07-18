@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PressBios from "./PressBios";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "./press.css";
 
 export const metadata = pageMetadata({
@@ -10,6 +10,11 @@ export const metadata = pageMetadata({
     "Media kit for Ralph Estep Jr. — speaker bios, high-res photos, interview angles, and press contact information for journalists, producers, and event organizers.",
   path: "/press",
 });
+
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Press", path: "/press" },
+]);
 
 const TALKING_POINTS: {
   title: string;
@@ -54,6 +59,10 @@ const TALKING_POINTS: {
 export default function PressPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
       {/* ── HERO ── */}
       <header className="press-hero">
         <div className="press-hero-radial" aria-hidden="true" />

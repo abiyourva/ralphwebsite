@@ -1,4 +1,4 @@
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { APPEARANCES } from "@/lib/appearances";
 import AppearancesGrid from "./AppearancesGrid";
 import SmoothScroll from "./SmoothScroll";
@@ -7,13 +7,22 @@ import "./appearances.css";
 export const metadata = pageMetadata({
   title: "Ralph's Appearances — Podcasts, Videos & Press | Ralph Estep Jr.",
   description:
-    "Every podcast, video, and press appearance Ralph Estep Jr. has made — from national outlets to faith and finance shows. Browse the full archive, sorted newest, oldest, or most popular.",
+    "Every podcast, video, and press appearance Ralph Estep Jr. has made — from national outlets to faith and finance shows. Browse the full archive.",
   path: "/appearances",
 });
+
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Appearances", path: "/appearances" },
+]);
 
 export default function AppearancesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
       <SmoothScroll />
       <header className="appearances-hero">
         <div className="appearances-hero-radial" aria-hidden="true" />

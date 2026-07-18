@@ -1,7 +1,7 @@
 import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import BookNotifyForm from "./BookNotifyForm";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { BarChart3, Receipt, Mic2, Brain } from "lucide-react";
 import "./resources.css";
 
@@ -11,6 +11,11 @@ export const metadata = pageMetadata({
     "Books, courses, and free financial tools from Ralph Estep Jr., LPA — including two upcoming books, the Money Archetype Quiz, and free budget calculators.",
   path: "/resources",
 });
+
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Resources", path: "/resources" },
+]);
 
 const TOOLS = [
   {
@@ -53,6 +58,10 @@ const TOOLS = [
 export default function ResourcesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
       {/* ── HERO ── */}
       <header className="resources-hero">
         <div className="resources-hero-radial" aria-hidden="true" />

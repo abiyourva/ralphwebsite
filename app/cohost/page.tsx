@@ -1,5 +1,5 @@
 import CohostApplicationForm from "./CohostApplicationForm";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "./cohost.css";
 
 export const metadata = pageMetadata({
@@ -9,6 +9,19 @@ export const metadata = pageMetadata({
   path: "/cohost",
 });
 
+const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Co-Host Application", path: "/cohost" },
+]);
+
 export default function CohostPage() {
-  return <CohostApplicationForm />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
+      <CohostApplicationForm />
+    </>
+  );
 }

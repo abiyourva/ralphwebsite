@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { pageMetadata, podcastSeriesJsonLd, SITE_URL } from "@/lib/seo";
+import { pageMetadata, podcastSeriesJsonLd, breadcrumbJsonLd, SITE_URL } from "@/lib/seo";
 import "./shows.css";
 
 export const metadata = pageMetadata({
@@ -10,6 +10,10 @@ export const metadata = pageMetadata({
 });
 
 const SHOWS_JSON_LD = [
+  breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Shows", path: "/shows" },
+  ]),
   podcastSeriesJsonLd({
     name: "Becoming Financially Confident",
     description:

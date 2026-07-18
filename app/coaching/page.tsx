@@ -7,7 +7,7 @@ import "./coaching.css";
 export const metadata = pageMetadata({
   title: "Coaching with Ralph Estep Jr. — Build Real Financial Confidence",
   description:
-    "Work directly with Ralph Estep Jr., LPA, to build real financial clarity and confidence. One-on-one coaching for individuals and content creators ready to make real change.",
+    "Work directly with Ralph Estep Jr., LPA, for one-on-one coaching — real financial clarity and confidence for individuals and content creators.",
   path: "/coaching",
 });
 
