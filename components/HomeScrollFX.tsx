@@ -119,6 +119,12 @@ export default function HomeScrollFX() {
             },
           });
 
+          // GSAP just inserted the real pin-spacer, which reserves the same
+          // scroll distance the CSS placeholder below the hero was holding
+          // (see #hero-pin-reserve in home.css) — drop the placeholder now
+          // so its space isn't double-counted.
+          document.getElementById("hero-pin-reserve")?.remove();
+
           heroTl.fromTo(
             heroHeading,
             { scale: 1 },

@@ -99,6 +99,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Reserves the scroll distance GSAP's pinned-hero effect will need,
+          so inserting the real pin-spacer on load doesn't shift the page
+          (see HomeScrollFX). Matched to the same viewport/pointer/motion
+          conditions HomeScrollFX uses to decide whether to pin at all. */}
+      <div id="hero-pin-reserve" aria-hidden="true" />
+
       {/* ── STATS ── */}
       <section className="stats-bar" aria-label="By the numbers">
         <div className="stats-grid">
