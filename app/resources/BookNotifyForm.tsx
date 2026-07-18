@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 
 // Real notify flow for the book cards (previously an inert label): click
 // reveals an inline email field, submit posts to /api/book-notify, which
@@ -27,6 +28,7 @@ export default function BookNotifyForm({ book }: { book: "bfc" | "cca" }) {
       });
       if (!res.ok) throw new Error("notify failed");
       setStatus("done");
+      track("Book Notify Signup", { book });
     } catch {
       setStatus("error");
     }

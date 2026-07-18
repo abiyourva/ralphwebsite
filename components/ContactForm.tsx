@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type CSSProperties, type ReactNode } from "react";
+import { track } from "@vercel/analytics";
 
 type ContactFormProps = {
   /** The form fields — inputs/textareas/selects must have a `name` attribute. */
@@ -49,6 +50,7 @@ export default function ContactForm({
       });
       if (!res.ok) throw new Error("contact submit failed");
       setSubmitted(true);
+      track("Contact Form Submitted", { inquiryType });
     } catch {
       setError(true);
     }

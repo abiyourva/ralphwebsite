@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
+import { track } from "@vercel/analytics";
 import RecaptchaCheckbox from "./RecaptchaCheckbox";
 
 const RECAPTCHA_ENABLED = !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -23,6 +24,8 @@ type EmailCaptureFormProps = {
   successLabel?: string;
   /** API route to POST { email } to. Defaults to the general signup endpoint. */
   endpoint?: string;
+  /** Where this form appears, e.g. "Homepage" or "Budget Calculator" — recorded on the tracked signup event. */
+  location?: string;
 };
 
 // Reusable email-capture form. On submit it prevents the default, swaps the
@@ -45,6 +48,7 @@ export default function EmailCaptureForm({
   buttonStyle,
   successLabel = "You're in! ✓",
   endpoint = "/api/subscribe",
+  location = "Unknown",
 }: EmailCaptureFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -67,6 +71,7 @@ export default function EmailCaptureForm({
       });
       if (!res.ok) throw new Error("subscribe failed");
       setSubmitted(true);
+      track("Email Signup", { location });
     } catch {
       setError("Something went wrong — please try again.");
     }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 
 const RECIPIENT = "ralph@ralphestepjr.com";
 const SUBJECT = "Podcast Co-Host Application";
@@ -212,6 +213,7 @@ export default function CohostApplicationForm() {
     const mailto = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     setSubmitted(true);
+    track("Cohost Application Submitted");
   }
 
   async function handleCopy() {

@@ -298,7 +298,7 @@ export default function HomePage() {
             practical steps you can use today.
           </p>
           <div className="rv d3">
-            <EmailCaptureForm placeholder="Your email address" buttonLabel="I'm In" />
+            <EmailCaptureForm placeholder="Your email address" buttonLabel="I'm In" location="Homepage" />
           </div>
           <p className="rv d4" style={{ fontSize: "12px", color: "var(--on-dark-d)", marginTop: "16px" }}>
             No spam. Unsubscribe anytime. Your information is never sold or shared.

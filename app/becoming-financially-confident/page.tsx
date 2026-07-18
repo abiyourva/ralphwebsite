@@ -37,6 +37,7 @@ export default function BfcTeaserPage() {
             buttonLabel="Notify Me"
             successLabel="You're on the list! ✓"
             endpoint="/api/bfc-teaser"
+            location="Becoming Financially Confident"
           />
         </div>
         <p className="bfc-teaser-disclaimer hero-in" style={{ animationDelay: "0.6s" }}>

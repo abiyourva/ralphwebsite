@@ -371,6 +371,7 @@ export default function DebtPayoffCalculator() {
             placeholder="Your email address"
             buttonLabel="Send It"
             successLabel="On its way! ✓"
+            location="Debt Payoff Calculator"
             endpoint="/api/debt-payoff"
           />
         </div>

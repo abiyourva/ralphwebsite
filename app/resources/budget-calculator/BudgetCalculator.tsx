@@ -264,6 +264,7 @@ export default function BudgetCalculator() {
             placeholder="Your email address"
             buttonLabel="Send It"
             successLabel="On its way! ✓"
+            location="Budget Calculator"
             endpoint="/api/budget-calculator"
           />
         </div>

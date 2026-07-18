@@ -204,7 +204,7 @@ export default function ResourcesPage() {
             tools, templates, and episodes.
           </p>
           <div className="rv d2">
-            <EmailCaptureForm placeholder="Your email address" buttonLabel="Join Free" />
+            <EmailCaptureForm placeholder="Your email address" buttonLabel="Join Free" location="Resources Page" />
           </div>
         </div>
       </section>
