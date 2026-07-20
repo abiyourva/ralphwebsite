@@ -48,4 +48,13 @@ export const articles: Article[] = [
     datePublished: "2026-07-11",
     readTime: "6 min read",
   },
+  {
+    slug: "tax-accountant-cost",
+    title: "How Much Does a Tax Accountant Cost? Pricing by Return Type",
+    description:
+      "Tax prep pricing isn't one number — it moves with your return. Here's what a simple W-2 return costs versus self-employment income, rentals, multiple states, and a business return.",
+    category: "Choosing an Accountant",
+    datePublished: "2026-07-20",
+    readTime: "6 min read",
+  },
 ];
