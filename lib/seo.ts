@@ -153,6 +153,18 @@ export function articleJsonLd({
   };
 }
 
+export function reviewJsonLd(items: { name: string; quote: string; date: string }[]) {
+  return items.map((item) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: { "@id": `${SITE_URL}/#ralph` },
+    reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+    author: { "@type": "Person", name: item.name },
+    reviewBody: item.quote,
+    datePublished: item.date,
+  }));
+}
+
 export function podcastSeriesJsonLd({
   name,
   description,

@@ -373,6 +373,37 @@ em { font-style: italic; }
   margin-bottom: 18px;
 }
 
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+
+.testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.testimonial-grid-single { grid-template-columns: 1fr; max-width: 720px; margin: 0 auto; }
+
+.testimonial-card { padding: 40px; position: relative; }
+.testimonial-quote-mark {
+  display: block;
+  font-family: var(--font-cormorant), serif;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.45;
+  margin-bottom: 4px;
+}
+.testimonial-card blockquote {
+  font-family: var(--font-cormorant), serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--h);
+  margin: 0 0 24px;
+}
+.testimonial-name { display: block; font-size: 14px; font-weight: 600; color: var(--h); }
+.testimonial-role { display: block; font-size: 13px; color: var(--muted2); margin-top: 2px; }
+
+@media (max-width: 700px) {
+  .testimonial-grid { grid-template-columns: 1fr; }
+}
+
 /* ── PRESS / TRUST BADGES ─────────────────────────────── */
 
 .press-badge-card {

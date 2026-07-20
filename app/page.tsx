@@ -5,7 +5,10 @@ import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
+import Testimonials from "@/components/Testimonials";
 import { APPEARANCES } from "@/lib/appearances";
+import { TESTIMONIALS } from "@/lib/testimonials";
+import { reviewJsonLd } from "@/lib/seo";
 import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
 import "./home.css";
 
@@ -28,9 +31,17 @@ const PRESS_MENTIONS: PressCarouselItem[] = [...APPEARANCES]
     verb: VERB_BY_TYPE[item.type],
   }));
 
+const REVIEW_JSON_LD = reviewJsonLd(
+  TESTIMONIALS.map((t) => ({ name: t.name, quote: t.quote, date: t.date }))
+);
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(REVIEW_JSON_LD) }}
+      />
       {/* ── ANNOUNCEMENT BAR ── */}
       <div className="home-announce-bar">
         <Link href="/cohost" className="hero-announce">
@@ -283,6 +294,20 @@ export default function HomePage() {
             <Link href="/about" className="btn btn-ghost rv d4">
               Read Ralph&apos;s Full Story →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section className="section bg-alt" aria-labelledby="testimonials-heading">
+        <div className="container-narrow" style={{ maxWidth: "980px" }}>
+          <span className="gold-rule-left gold-rule rv" />
+          <p className="eyebrow rv">What People Are Saying</p>
+          <h2 id="testimonials-heading" className="rv d1" style={{ marginBottom: "48px" }}>
+            Real words from real people.
+          </h2>
+          <div className="rv d2">
+            <Testimonials items={TESTIMONIALS} />
           </div>
         </div>
       </section>
