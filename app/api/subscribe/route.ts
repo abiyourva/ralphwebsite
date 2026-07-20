@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { checkBotId } from "botid/server";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
-import { verifyRecaptcha } from "@/lib/recaptcha";
 
 const KIT_TAG_ID = "20665717";
 
@@ -11,12 +10,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Access denied" }, { status: 403 });
   }
 
-  const { email, recaptchaToken } = await request.json();
+  const { email } = await request.json();
   if (typeof email !== "string" || !email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-  }
-  if (!(await verifyRecaptcha(recaptchaToken))) {
-    return NextResponse.json({ error: "reCAPTCHA verification failed" }, { status: 400 });
   }
 
   try {

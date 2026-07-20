@@ -2,9 +2,6 @@
 
 import { useState, type CSSProperties } from "react";
 import { track } from "@vercel/analytics";
-import RecaptchaCheckbox from "./RecaptchaCheckbox";
-
-const RECAPTCHA_ENABLED = !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 type EmailCaptureFormProps = {
   /** id on the <form>, e.g. for anchor-linking to it from elsewhere on the page. */
@@ -53,21 +50,16 @@ export default function EmailCaptureForm({
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email) return;
-    if (RECAPTCHA_ENABLED && !recaptchaToken) {
-      setError("Please check the box to confirm you're not a robot.");
-      return;
-    }
     setError(null);
     try {
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, recaptchaToken }),
+        body: JSON.stringify({ email }),
       });
       if (!res.ok) throw new Error("subscribe failed");
       setSubmitted(true);
@@ -100,7 +92,6 @@ export default function EmailCaptureForm({
           {submitted ? successLabel : buttonLabel}
         </button>
       </form>
-      {RECAPTCHA_ENABLED && !submitted && <RecaptchaCheckbox onChange={setRecaptchaToken} />}
       {error && (
         <p role="alert" style={{ color: "#C0392B", fontSize: "0.85rem", marginTop: "8px" }}>
           {error}

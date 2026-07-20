@@ -2,12 +2,11 @@ import { withBotId } from "botid/next/config";
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://www.google.com https://www.gstatic.com",
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.google.com",
-  "frame-src https://www.google.com",
+  "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
