@@ -10,6 +10,22 @@
   display: block;
   text-decoration: none;
   color: inherit;
+  overflow: hidden;
+}
+
+.article-card-thumb {
+  margin: -1px -1px 0;
+  line-height: 0;
+}
+
+.article-card-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-card-body {
+  padding: 32px;
 }
 
 .article-card-meta {
@@ -49,6 +65,22 @@
 }
 
 /* ── article pages ── */
+
+.article-hero-image {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border, rgba(26,45,79,0.12));
+  box-shadow: 0 12px 32px rgba(27,45,79,0.10);
+  margin: 8px 0 12px;
+}
+
+.article-hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 .article-prose {
   display: flex;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { articles } from "@/lib/articles";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import "./articles.css";
@@ -54,18 +55,30 @@ export default function ArticlesPage() {
               <Link
                 key={article.slug}
                 href={`/articles/${article.slug}`}
-                className="card card-pad card-hover article-card"
+                className="card card-hover article-card"
               >
-                <div className="article-card-meta">
-                  <span className="article-card-category">{article.category}</span>
-                  <span aria-hidden="true">·</span>
-                  <time dateTime={article.datePublished}>{formatDate(article.datePublished)}</time>
-                  <span aria-hidden="true">·</span>
-                  <span>{article.readTime}</span>
+                {article.image && (
+                  <div className="article-card-thumb">
+                    <Image
+                      src={article.image}
+                      alt=""
+                      width={1200}
+                      height={675}
+                    />
+                  </div>
+                )}
+                <div className="article-card-body">
+                  <div className="article-card-meta">
+                    <span className="article-card-category">{article.category}</span>
+                    <span aria-hidden="true">·</span>
+                    <time dateTime={article.datePublished}>{formatDate(article.datePublished)}</time>
+                    <span aria-hidden="true">·</span>
+                    <span>{article.readTime}</span>
+                  </div>
+                  <h2>{article.title}</h2>
+                  <p>{article.description}</p>
+                  <span className="article-card-read">Read the article →</span>
                 </div>
-                <h2>{article.title}</h2>
-                <p>{article.description}</p>
-                <span className="article-card-read">Read the article →</span>
               </Link>
             ))}
           </div>

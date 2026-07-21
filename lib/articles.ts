@@ -9,6 +9,7 @@ export type Article = {
   category: string;
   datePublished: string; // ISO date
   readTime: string;
+  image?: string;
 };
 
 export const articles: Article[] = [
@@ -20,6 +21,7 @@ export const articles: Article[] = [
     category: "Getting Out of Debt",
     datePublished: "2026-07-11",
     readTime: "6 min read",
+    image: "/images/articles/debt-snowball-vs-avalanche.png",
   },
   {
     slug: "do-content-creators-need-an-llc",
@@ -29,6 +31,7 @@ export const articles: Article[] = [
     category: "Creator Finances",
     datePublished: "2026-07-11",
     readTime: "6 min read",
+    image: "/images/articles/do-content-creators-need-an-llc.png",
   },
   {
     slug: "how-much-does-an-accountant-cost",
@@ -38,6 +41,7 @@ export const articles: Article[] = [
     category: "Choosing an Accountant",
     datePublished: "2026-07-11",
     readTime: "7 min read",
+    image: "/images/articles/how-much-does-an-accountant-cost.png",
   },
   {
     slug: "lpa-vs-cpa",
@@ -47,6 +51,7 @@ export const articles: Article[] = [
     category: "Choosing an Accountant",
     datePublished: "2026-07-11",
     readTime: "6 min read",
+    image: "/images/articles/lpa-vs-cpa.png",
   },
   {
     slug: "tax-accountant-cost",
@@ -56,5 +61,6 @@ export const articles: Article[] = [
     category: "Choosing an Accountant",
     datePublished: "2026-07-20",
     readTime: "6 min read",
+    image: "/images/articles/tax-accountant-cost.png",
   },
 ];

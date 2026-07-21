@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { articles } from "@/lib/articles";
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo";
 import "../articles.css";
@@ -80,6 +81,15 @@ export default function AccountantCostArticle() {
 
       <section className="section">
         <div className="container-narrow">
+          <div className="article-hero-image">
+            <Image
+              src={article.image!}
+              alt="An illustration of a calculator, a ledger, and a coin, representing the cost of hiring an accountant"
+              width={1200}
+              height={675}
+              priority
+            />
+          </div>
           <div className="article-prose">
             <p>
               Let&apos;s talk about the question people are almost embarrassed to ask out

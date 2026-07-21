@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { articles } from "@/lib/articles";
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo";
 import "../articles.css";
@@ -80,6 +81,15 @@ export default function LpaVsCpaArticle() {
 
       <section className="section">
         <div className="container-narrow">
+          <div className="article-hero-image">
+            <Image
+              src={article.image!}
+              alt="An illustration of two side-by-side credential badges, one labeled LPA and one labeled CPA, connected by an equals mark"
+              width={1200}
+              height={675}
+              priority
+            />
+          </div>
           <div className="article-prose">
             <p>
               I get this question all the time, and I love that people ask it. It means

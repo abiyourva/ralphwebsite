@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { articles } from "@/lib/articles";
 import { pageMetadata, articleJsonLd, breadcrumbJsonLd, faqPageJsonLd } from "@/lib/seo";
 import "../articles.css";
@@ -80,6 +81,15 @@ export default function SnowballAvalancheArticle() {
 
       <section className="section">
         <div className="container-narrow">
+          <div className="article-hero-image">
+            <Image
+              src={article.image!}
+              alt="An illustration of two payoff paths: a snowball of increasing size climbing a staircase of debts, with a quieter path tracing the highest-interest debts first"
+              width={1200}
+              height={675}
+              priority
+            />
+          </div>
           <div className="article-prose">
             <p>
               First, if you&apos;re carrying debt that keeps you up at night: I&apos;m not here
