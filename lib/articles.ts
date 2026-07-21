@@ -73,4 +73,14 @@ export const articles: Article[] = [
     readTime: "6 min read",
     image: "/images/articles/what-are-accountancy-fees.png",
   },
+  {
+    slug: "what-is-an-lpa",
+    title: "What Does \"LPA\" Mean? A Plain-English Guide to the Credential",
+    description:
+      "LPA stands for Licensed Public Accountant — a state-licensed credential most people have never heard of. Here's what it means, how it's earned, and how it's regulated.",
+    category: "Choosing an Accountant",
+    datePublished: "2026-07-21",
+    readTime: "5 min read",
+    image: "/images/articles/what-is-an-lpa.png",
+  },
 ];
