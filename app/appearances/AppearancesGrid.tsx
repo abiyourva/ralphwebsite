@@ -93,7 +93,7 @@ export default function AppearancesGrid({ items }: { items: Appearance[] }) {
           >
             <Image
               src={item.image}
-              alt={item.outlet}
+              alt={`${item.title} — ${item.outlet}`}
               fill
               sizes="(max-width: 640px) 45vw, (max-width: 1000px) 30vw, 220px"
               className="appearances-tile-img"
