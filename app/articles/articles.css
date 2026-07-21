@@ -73,16 +73,17 @@
 }
 
 .article-prose ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  position: relative;
+  padding-left: 24px;
 }
 
 .article-prose ul li::before {
   content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
   color: var(--gold);
   font-weight: 600;
-  flex-shrink: 0;
 }
 
 .article-prose em {
