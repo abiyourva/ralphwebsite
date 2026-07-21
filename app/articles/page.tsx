@@ -15,6 +15,10 @@ const BREADCRUMBS = breadcrumbJsonLd([
   { name: "Articles", path: "/articles" },
 ]);
 
+const SORTED_ARTICLES = [...articles].sort((a, b) =>
+  b.datePublished.localeCompare(a.datePublished)
+);
+
 function formatDate(iso: string) {
   return new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
     year: "numeric",
@@ -46,7 +50,7 @@ export default function ArticlesPage() {
       <section className="section">
         <div className="container-narrow">
           <div className="articles-list">
-            {articles.map((article) => (
+            {SORTED_ARTICLES.map((article) => (
               <Link
                 key={article.slug}
                 href={`/articles/${article.slug}`}
