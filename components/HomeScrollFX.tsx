@@ -33,6 +33,13 @@ export default function HomeScrollFX() {
     function revertAll() {
       if (reverted) return;
       reverted = true;
+      // Also cancel the in-flight gsap/lenis import: if this fires from the
+      // capture-phase click below, before that import has resolved, we'd
+      // otherwise still go on to create the pin (reparenting .hero) after
+      // the click — racing React's own DOM removal for the route change and
+      // reintroducing the exact removeChild crash this function exists to
+      // prevent.
+      cancelled = true;
       cancelAnimationFrame(rafId);
       lenisInstance?.destroy();
       gsapContext?.revert();
