@@ -63,4 +63,14 @@ export const articles: Article[] = [
     readTime: "6 min read",
     image: "/images/articles/tax-accountant-cost.png",
   },
+  {
+    slug: "what-are-accountancy-fees",
+    title: "What's Actually in Your Accounting Fee (and What Costs Extra)",
+    description:
+      "A quoted fee rarely covers everything. Here's what's typically included, what commonly gets billed separately, and the questions to ask before you agree to a price.",
+    category: "Choosing an Accountant",
+    datePublished: "2026-07-21",
+    readTime: "6 min read",
+    image: "/images/articles/what-are-accountancy-fees.png",
+  },
 ];
