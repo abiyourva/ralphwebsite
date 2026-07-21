@@ -153,11 +153,15 @@ export function articleJsonLd({
   };
 }
 
+// itemReviewed must be a type Google's Review rich result actually accepts —
+// Person isn't one of them ("Invalid object type for field itemReviewed" in
+// Search Console). Organization is, and is self-contained here rather than
+// an @id reference so it resolves regardless of which page the review sits on.
 export function reviewJsonLd(items: { name: string; quote: string; date: string }[]) {
   return items.map((item) => ({
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@id": `${SITE_URL}/#ralph` },
+    itemReviewed: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
     author: { "@type": "Person", name: item.name },
     reviewBody: item.quote,
