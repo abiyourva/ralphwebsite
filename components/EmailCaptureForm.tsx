@@ -2,6 +2,7 @@
 
 import { useState, type CSSProperties } from "react";
 import { track } from "@vercel/analytics";
+import Honeypot from "@/components/Honeypot";
 
 type EmailCaptureFormProps = {
   /** id on the <form>, e.g. for anchor-linking to it from elsewhere on the page. */
@@ -50,6 +51,7 @@ export default function EmailCaptureForm({
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — must stay empty
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -59,7 +61,7 @@ export default function EmailCaptureForm({
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
       if (!res.ok) throw new Error("subscribe failed");
       setSubmitted(true);
@@ -72,6 +74,7 @@ export default function EmailCaptureForm({
   return (
     <>
       <form id={id} className={className} style={formStyle} aria-label={formAriaLabel} onSubmit={handleSubmit}>
+        <Honeypot value={website} onChange={setWebsite} />
         <input
           type="email"
           className={inputClassName}

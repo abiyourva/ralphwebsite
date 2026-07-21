@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { checkBotId } from "botid/server";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
+import { isHoneypotFilled } from "@/lib/honeypot";
 
 const INQUIRY_TAG_IDS: Record<string, string> = {
   coaching: "20755178",
@@ -11,7 +13,16 @@ const INQUIRY_TAG_IDS: Record<string, string> = {
 };
 
 export async function POST(request: Request) {
+  const { isBot } = await checkBotId();
+  if (isBot) {
+    return NextResponse.json({ error: "Access denied" }, { status: 403 });
+  }
+
   const { inquiryType, fields } = await request.json();
+
+  if (isHoneypotFilled(fields)) {
+    return NextResponse.json({ ok: true });
+  }
 
   const tagId = INQUIRY_TAG_IDS[inquiryType] ?? INQUIRY_TAG_IDS.general;
   const email = typeof fields?.email === "string" ? fields.email : "";

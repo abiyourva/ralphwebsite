@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkBotId } from "botid/server";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
+import { isHoneypotFilled } from "@/lib/honeypot";
 
 const DEBT_PAYOFF_TAG_ID = "20985470";
 
@@ -10,7 +11,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Access denied" }, { status: 403 });
   }
 
-  const { email } = await request.json();
+  const body = await request.json();
+  if (isHoneypotFilled(body)) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const { email } = body;
   if (typeof email !== "string" || !email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }

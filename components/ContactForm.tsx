@@ -2,6 +2,7 @@
 
 import { useState, type CSSProperties, type ReactNode } from "react";
 import { track } from "@vercel/analytics";
+import Honeypot from "@/components/Honeypot";
 
 type ContactFormProps = {
   /** The form fields — inputs/textareas/selects must have a `name` attribute. */
@@ -58,6 +59,7 @@ export default function ContactForm({
 
   return (
     <form className={className} aria-label={ariaLabel} id={id} onSubmit={handleSubmit}>
+      <Honeypot />
       {children}
       <button
         type="submit"
