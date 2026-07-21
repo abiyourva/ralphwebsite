@@ -21,4 +21,13 @@ export const TESTIMONIALS: Testimonial[] = [
     date: "2026-07-16",
     featured: true,
   },
+  {
+    slug: "robin-wiest",
+    quote:
+      "We have known you about 25 years and you have done our taxes and been supportive of my 23-year-old business the entire way. We have no revolving debt and save, big time! Emergencies are no worry now. We tracked our spending and learned to focus on our future and be mindful. We do not make a lot of money, but you don't need a lot of money — you need to be smart with what you have. You are telling the truth when you say start with $20. It's a huge step in the right direction. So grateful for you, Ralph!",
+    name: "Robin Wiest",
+    role: "Small Business Owner, Client for 25+ Years",
+    date: "2026-07-21",
+    featured: true,
+  },
 ];
