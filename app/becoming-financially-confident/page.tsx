@@ -66,7 +66,7 @@ export default function BfcTeaserPage() {
         <div className="bfc-teaser-cohost hero-in" style={{ animationDelay: "0.78s" }}>
           <p>Want to connect with others on the journey right now?</p>
           <a
-            href="https://discord.gg/MPCpXJ5Yq"
+            href="https://discord.gg/PMbeszYkxf"
             target="_blank"
             rel="noopener"
             className="bfc-teaser-cohost-link"
