@@ -21,6 +21,7 @@ export interface Appearance {
 }
 
 export const APPEARANCES: Appearance[] = [
+  { slug: "aol-retirees-emergency-fund", image: "/images/appearances/aol.webp", title: "Here's How Much Retirees Should Keep in an Emergency Fund", outlet: "AOL", url: "https://www.aol.com/articles/heres-much-retirees-keep-emergency-123024000.html", type: "article", date: "2026-07-28", featured: true },
   { slug: "howtopodcast-e753", image: "/images/appearances/howtopodcast.webp", title: "How Podcasters Lose Money in Podcasting (E753)", outlet: "The How To Podcast Series", url: "https://podcasts.apple.com/us/podcast/the-how-to-podcast-series-podcast-co-hosts-practical/id1610039000?i=1000777538033", type: "podcast", date: "2026-07-20", featured: false },
   { slug: "aol-boomer-genz-retirement", image: "/images/appearances/aol-boomer-genz-retirement.webp", title: "How Boomer and Gen Z Couples Define Retirement 'Wealth'", outlet: "AOL", url: "https://www.aol.com/finance/boomer-gen-z-couples-define-113005700.html", type: "article", date: "2026-07-11", featured: true },
   { slug: "moneylion-grocery-prices", image: "/images/appearances/moneylion-grocery-prices.webp", title: "Grocery Prices 'Unfair,' Americans Say as Costs Rise — 6 Ways You Can Save Right Now", outlet: "MoneyLion", url: "https://moneylion.com/trending/money/grocery-prices-unfair-americans-costs-rise-save-right-now", type: "article", date: "2026-07-11", featured: true },
