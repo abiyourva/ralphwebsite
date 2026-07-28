@@ -377,6 +377,35 @@ em { font-style: italic; }
 
 /* ── TESTIMONIALS ──────────────────────────────────────── */
 
+.testimonial-carousel { position: relative; }
+
+.testimonial-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--h);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.testimonial-arrow:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+.testimonial-arrow:disabled { opacity: 0.3; cursor: default; box-shadow: none; }
+.testimonial-arrow.prev { left: -14px; }
+.testimonial-arrow.next { right: -14px; }
+
+@media (max-width: 860px) {
+  .testimonial-arrow { display: none; }
+}
+
 .testimonial-grid {
   display: flex;
   gap: 20px;
