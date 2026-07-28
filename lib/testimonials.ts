@@ -30,4 +30,13 @@ export const TESTIMONIALS: Testimonial[] = [
     date: "2026-07-21",
     featured: true,
   },
+  {
+    slug: "mark-lawley",
+    quote:
+      "Ralph and I initially connected when he helped me refine and clarify the direction of our podcast. From there, we worked together through a ten-week business coaching program, and he later used his accounting expertise to reorganize and strengthen the financial structure of our business. Since partnering with Ralph, I've gained significantly more clarity and implemented systems that keep us focused, organized, and on track. He is patient, thoughtful, and consistently takes the time to explain concepts in a way that is clear and actionable. Having started and run several businesses over the years, I can confidently say I wish I had someone like Ralph in my corner from the very beginning. If you are looking for a business coach or an accountant that will tell you straight, I highly recommend Ralph Estep, Jr.",
+    name: "Mark Lawley",
+    role: "Business Coaching & Accounting Client",
+    date: "2026-07-28",
+    featured: true,
+  },
 ];
