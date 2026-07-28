@@ -377,10 +377,27 @@ em { font-style: italic; }
 
 /* ── TESTIMONIALS ──────────────────────────────────────── */
 
-.testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.testimonial-grid-single { grid-template-columns: 1fr; max-width: 720px; margin: 0 auto; }
+.testimonial-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 4px;
+  padding: 4px 4px 12px;
+  margin: -4px -4px -12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.testimonial-grid-single { justify-content: center; }
 
-.testimonial-card { padding: 40px; position: relative; }
+.testimonial-card {
+  padding: 40px;
+  position: relative;
+  flex: 0 0 auto;
+  width: min(88vw, 420px);
+  scroll-snap-align: start;
+}
 .testimonial-quote-mark {
   display: block;
   font-family: var(--font-cormorant), serif;
@@ -403,7 +420,7 @@ em { font-style: italic; }
 .testimonial-role { display: block; font-size: 13px; color: var(--muted2); margin-top: 2px; }
 
 @media (max-width: 700px) {
-  .testimonial-grid { grid-template-columns: 1fr; }
+  .testimonial-card { width: 88vw; }
 }
 
 /* ── PRESS / TRUST BADGES ─────────────────────────────── */
