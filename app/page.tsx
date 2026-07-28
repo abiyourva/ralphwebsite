@@ -302,9 +302,9 @@ export default function HomePage() {
       <section className="section bg-alt" aria-labelledby="testimonials-heading">
         <div className="container-narrow" style={{ maxWidth: "980px" }}>
           <span className="gold-rule-left gold-rule rv" />
-          <p className="eyebrow rv">What People Are Saying</p>
+          <p className="eyebrow rv">The Proof</p>
           <h2 id="testimonials-heading" className="rv d1" style={{ marginBottom: "48px" }}>
-            Real words from real people.
+            It&rsquo;s going to be okay. Just ask them.
           </h2>
           <div className="rv d2">
             <Testimonials items={TESTIMONIALS} />
