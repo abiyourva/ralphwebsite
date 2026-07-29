@@ -83,4 +83,14 @@ export const articles: Article[] = [
     readTime: "5 min read",
     image: "/images/articles/what-is-an-lpa.png",
   },
+  {
+    slug: "personal-tax-accountant-cost",
+    title: "How Much Does a Personal Tax Accountant Cost?",
+    description:
+      "Personal tax prep pricing depends on your life, not a business ledger. Here's what actually drives the cost for individuals — dependents, retirement income, side gigs, and more.",
+    category: "Choosing an Accountant",
+    datePublished: "2026-07-29",
+    readTime: "6 min read",
+    image: "/images/articles/personal-tax-accountant-cost.png",
+  },
 ];
