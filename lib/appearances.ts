@@ -21,6 +21,7 @@ export interface Appearance {
 }
 
 export const APPEARANCES: Appearance[] = [
+  { slug: "marketing-against-the-grain", image: "/images/appearances/marketing-against-the-grain.webp", title: "Your Content Strategy Might Be Building the Wrong Thing", outlet: "Marketing Against the Grain", url: "https://marketingagainstthegrain.com/articles/your-content-strategy-might-be-building-the-wrong-thing", type: "article", date: "2026-07-29", featured: true },
   { slug: "aol-raise-most-boring", image: "/images/appearances/aol.webp", title: "Why the Smartest Thing You Can Do With a Raise Is the Most Boring", outlet: "AOL", url: "https://www.aol.com/articles/why-smartest-thing-raise-most-110009000.html", type: "article", date: "2026-07-28", featured: true },
   { slug: "aol-retirees-emergency-fund", image: "/images/appearances/aol.webp", title: "Here's How Much Retirees Should Keep in an Emergency Fund", outlet: "AOL", url: "https://www.aol.com/articles/heres-much-retirees-keep-emergency-123024000.html", type: "article", date: "2026-07-28", featured: true },
   { slug: "howtopodcast-e753", image: "/images/appearances/howtopodcast.webp", title: "How Podcasters Lose Money in Podcasting (E753)", outlet: "The How To Podcast Series", url: "https://podcasts.apple.com/us/podcast/the-how-to-podcast-series-podcast-co-hosts-practical/id1610039000?i=1000777538033", type: "podcast", date: "2026-07-20", featured: false },

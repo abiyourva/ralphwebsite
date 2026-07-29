@@ -138,6 +138,44 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FEATURED PRESS ── */}
+      <section className="section">
+        <div className="container story-grid">
+          <div className="story-photo rv">
+            <div className="story-photo-img featured-press-img">
+              <Image
+                src="/images/appearances/marketing-against-the-grain.webp"
+                alt="Ralph Estep Jr. featured in Marketing Against the Grain, HubSpot Media's marketing publication"
+                width={600}
+                height={400}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+            <div className="story-photo-frame" aria-hidden="true" />
+          </div>
+          <div>
+            <span className="gold-rule-left gold-rule rv" />
+            <p className="eyebrow rv">Featured In</p>
+            <h2 className="rv d1" style={{ marginBottom: "20px" }}>
+              Your Content Strategy Might Be Building the Wrong Thing
+            </h2>
+            <p className="rv d2" style={{ marginBottom: "34px" }}>
+              Ralph sat down with Marketing Against the Grain — HubSpot Media&apos;s
+              marketing publication — to talk about the difference between content
+              that performs and content that actually builds something worth having.
+            </p>
+            <a
+              href="https://marketingagainstthegrain.com/articles/your-content-strategy-might-be-building-the-wrong-thing"
+              target="_blank"
+              rel="noopener"
+              className="btn btn-gold rv d3"
+            >
+              Read the Feature →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── QUIZ CTA ── */}
       <section className="section bg-alt text-center" style={{ position: "relative", overflow: "hidden" }}>
         <div className="radial-soft radial-quiz" aria-hidden="true" />
