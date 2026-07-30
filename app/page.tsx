@@ -162,6 +162,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FEATURED ESSAY ── */}
+      <section className="section bg-navy text-center" style={{ position: "relative", overflow: "hidden" }}>
+        <div className="radial-soft radial-email" aria-hidden="true" />
+        <div className="container-narrow" style={{ position: "relative", maxWidth: "640px" }}>
+          <p className="eyebrow rv">A Perspective From Ralph</p>
+          <h2 className="rv d1" style={{ marginBottom: "16px" }}>Free Isn&apos;t Free</h2>
+          <p className="rv d2" style={{ marginBottom: "32px" }}>
+            An accountant&apos;s warning about the idea that&apos;s winning over a
+            generation, and why yelling about it won&apos;t work.
+          </p>
+          <Link href="/articles/free-isnt-free" className="btn btn-gold rv d3">
+            Read the Essay →
+          </Link>
+        </div>
+      </section>
+
       {/* ── QUIZ CTA ── */}
       <section className="section bg-alt text-center" style={{ position: "relative", overflow: "hidden" }}>
         <div className="radial-soft radial-quiz" aria-hidden="true" />

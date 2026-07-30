@@ -93,4 +93,14 @@ export const articles: Article[] = [
     readTime: "6 min read",
     image: "/images/articles/personal-tax-accountant-cost.png",
   },
+  {
+    slug: "free-isnt-free",
+    title: "Free Isn't Free",
+    description:
+      "An accountant's warning about the idea that's winning over a generation, and why yelling about it won't work.",
+    category: "Perspective",
+    datePublished: "2026-07-30",
+    readTime: "11 min read",
+    image: "/images/articles/free-isnt-free.png",
+  },
 ];

@@ -126,3 +126,57 @@
   font-size: 14px;
   color: var(--muted, #6b7280);
 }
+
+/* ── essay-style articles (part labels, dividers, pull quotes) ── */
+
+.article-part-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.article-part h2 { margin-top: 0; }
+
+.article-tear {
+  position: relative;
+  height: 18px;
+  margin: 4px 0 8px;
+  background-image: radial-gradient(circle at 10px 0, transparent 9px, var(--border, #e4dfd3) 9.5px, var(--border, #e4dfd3) 10px, transparent 10.5px);
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+  background-position: top;
+}
+.article-tear::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--border, #e4dfd3);
+}
+
+.article-pull {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.4;
+  color: var(--h);
+  border-left: 3px solid var(--gold);
+  padding: 2px 0 2px 22px;
+  margin: 8px 0;
+}
+
+.article-blockquote {
+  margin: 4px 0;
+  padding: 18px 22px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border, rgba(26,45,79,0.12));
+  border-radius: 4px;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 17px;
+}
