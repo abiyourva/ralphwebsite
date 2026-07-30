@@ -2,8 +2,21 @@ import Link from "next/link";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import BookNotifyForm from "./BookNotifyForm";
 import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { articles } from "@/lib/articles";
 import { BarChart3, Receipt, Mic2, Brain } from "lucide-react";
 import "./resources.css";
+
+const SORTED_ARTICLES = [...articles].sort((a, b) =>
+  b.datePublished.localeCompare(a.datePublished)
+);
+
+function formatArticleDate(iso: string) {
+  return new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
 export const metadata = pageMetadata({
   title: "Books & Resources — Ralph Estep Jr.",
@@ -152,6 +165,47 @@ export default function ResourcesPage() {
                 <BookNotifyForm book="cca" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ARTICLES ── */}
+      <section className="section">
+        <div className="container">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "space-between",
+              gap: "24px",
+              marginBottom: "48px",
+              flexWrap: "wrap",
+            }}
+          >
+            <div>
+              <span className="gold-rule-left gold-rule rv" />
+              <p className="eyebrow rv">Articles</p>
+              <h2 className="rv d1">Plain-English answers to real money questions.</h2>
+            </div>
+            <Link href="/articles" className="btn btn-ghost rv">
+              All Articles →
+            </Link>
+          </div>
+          <div className="grid-3">
+            {SORTED_ARTICLES.map((article, i) => (
+              <Link
+                key={article.slug}
+                href={`/articles/${article.slug}`}
+                className={`card card-hover resource-article-card rv${i > 0 ? ` d${i % 4}` : ""}`}
+              >
+                <p className="resource-article-meta">
+                  {article.category} · {formatArticleDate(article.datePublished)}
+                </p>
+                <h3>{article.title}</h3>
+                <p>{article.description}</p>
+                <span className="resource-article-link">Read the article →</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
