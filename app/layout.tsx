@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cormorant, dmSans } from "./fonts";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 import CookieBanner from "@/components/CookieBanner";
 import ThemeScript from "@/components/ThemeScript";
 import InteractionEffects from "@/components/InteractionEffects";
@@ -57,9 +56,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <ThemeScript />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome>
+          <main>{children}</main>
+        </SiteChrome>
         <HomeButton />
         <CookieBanner />
         <InteractionEffects />
