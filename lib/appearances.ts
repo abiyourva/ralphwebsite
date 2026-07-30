@@ -21,6 +21,7 @@ export interface Appearance {
 }
 
 export const APPEARANCES: Appearance[] = [
+  { slug: "aol-80k-upper-middle-class", image: "/images/appearances/aol.webp", title: "10 States Where $80K Gives an Upper-Middle-Class Lifestyle", outlet: "AOL", url: "https://www.aol.com/articles/10-states-where-80k-gives-113009000.html", type: "article", date: "2026-07-30", featured: true },
   { slug: "marketing-against-the-grain", image: "/images/appearances/marketing-against-the-grain.webp", title: "Your Content Strategy Might Be Building the Wrong Thing", outlet: "Marketing Against the Grain", url: "https://marketingagainstthegrain.com/articles/your-content-strategy-might-be-building-the-wrong-thing", type: "article", date: "2026-07-29", featured: true },
   { slug: "aol-raise-most-boring", image: "/images/appearances/aol.webp", title: "Why the Smartest Thing You Can Do With a Raise Is the Most Boring", outlet: "AOL", url: "https://www.aol.com/articles/why-smartest-thing-raise-most-110009000.html", type: "article", date: "2026-07-28", featured: true },
   { slug: "aol-retirees-emergency-fund", image: "/images/appearances/aol.webp", title: "Here's How Much Retirees Should Keep in an Emergency Fund", outlet: "AOL", url: "https://www.aol.com/articles/heres-much-retirees-keep-emergency-123024000.html", type: "article", date: "2026-07-28", featured: true },
