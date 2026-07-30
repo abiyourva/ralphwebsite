@@ -3,6 +3,7 @@ import Image from "next/image";
 import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
+import WelcomeVideo from "@/components/WelcomeVideo";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
 import Testimonials from "@/components/Testimonials";
@@ -92,17 +93,9 @@ export default function HomePage() {
 
           <div className="hero-photo-col scale-in" style={{ animationDelay: "0.35s" }}>
             <div className="hero-photo-frame" aria-hidden="true" />
-            <HeroParallax>
-              <Image
-                src="/images/ralph-headshot.png"
-                alt="Ralph Estep Jr., LPA"
-                width={1122}
-                height={1402}
-                priority
-                sizes="(max-width: 480px) 260px, (max-width: 860px) 320px, 38vw"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-              />
-            </HeroParallax>
+            <div className="hero-photo-wrap">
+              <WelcomeVideo />
+            </div>
             <div className="hero-photo-tag">
               <p>Ralph Estep Jr., LPA</p>
             </div>
