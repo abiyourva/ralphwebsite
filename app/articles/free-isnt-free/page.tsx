@@ -43,7 +43,7 @@ export default function FreeIsntFreeArticle() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
-      <header className="page-hero">
+      <header className="page-hero" style={{ paddingBottom: "32px" }}>
         <div className="page-hero-radial" aria-hidden="true" />
         <div className="container-narrow" style={{ position: "relative" }}>
           <span className="eyebrow">{article.category}</span>
@@ -57,7 +57,7 @@ export default function FreeIsntFreeArticle() {
         </div>
       </header>
 
-      <section className="section">
+      <section className="section" style={{ paddingTop: "0" }}>
         <div className="container-narrow">
           <div className="article-hero-image">
             <Image
