@@ -4,7 +4,7 @@ import CountUpStat from "@/components/CountUpStat";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import WelcomeVideo from "@/components/WelcomeVideo";
-import EventMarquee from "@/components/EventMarquee";
+import EventBadge from "@/components/EventBadge";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
 import Testimonials from "@/components/Testimonials";
@@ -44,7 +44,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(REVIEW_JSON_LD) }}
       />
-      <EventMarquee />
+      <EventBadge />
       {/* ── HERO ── */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="hero-radial" aria-hidden="true" />
