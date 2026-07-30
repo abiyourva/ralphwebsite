@@ -43,13 +43,6 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(REVIEW_JSON_LD) }}
       />
-      {/* ── ANNOUNCEMENT BAR ── */}
-      <div className="home-announce-bar">
-        <Link href="/cohost" className="hero-announce">
-          <Mic2 size={15} strokeWidth={2} aria-hidden="true" /> Now hiring a podcast co-host <span>Apply →</span>
-        </Link>
-      </div>
-
       {/* ── HERO ── */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="hero-radial" aria-hidden="true" />

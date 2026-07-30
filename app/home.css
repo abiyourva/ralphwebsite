@@ -22,27 +22,6 @@
   position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
-.home-announce-bar {
-  position: relative; z-index: 2;
-  background: var(--bg-page);
-  padding: 86px 24px 18px;
-  text-align: center;
-}
-.hero-announce {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 9px 18px;
-  border: 1px solid rgba(200,151,61,0.35);
-  border-radius: 999px;
-  background: rgba(200,151,61,0.08);
-  font-size: 13px; font-weight: 500; color: var(--h);
-  transition: border-color 0.2s, background 0.2s;
-}
-.hero-announce span { color: var(--gold); font-weight: 700; }
-.hero-announce:hover { border-color: rgba(200,151,61,0.6); background: rgba(200,151,61,0.13); }
-@media (max-width: 600px) {
-  .home-announce-bar { padding: 76px 20px 16px; }
-  .hero-announce { font-size: 12px; padding: 8px 14px; white-space: normal; }
-}
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr min(560px, 46vw);
