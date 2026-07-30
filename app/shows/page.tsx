@@ -222,6 +222,13 @@ export default function ShowsPage() {
             >
               Get Your Free Audit →
             </a>
+            <p className="show-sponsor-credit rv d5">
+              <strong>Title Sponsor</strong> of the{" "}
+              <a href="https://empoweredpodcasting.com/" target="_blank" rel="noopener">
+                Empowered Podcasting Conference
+              </a>{" "}
+              — Charlotte, NC · August 21&ndash;23, 2026
+            </p>
           </div>
         </div>
       </section>
