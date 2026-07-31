@@ -5,7 +5,7 @@ import "./shows.css";
 export const metadata = pageMetadata({
   title: "Shows & Content — Ralph Estep Jr.",
   description:
-    "Explore all four of Ralph Estep Jr.'s shows — Becoming Financially Confident, Financially Confident Christian, Truth Unveiled with Ralph, and The Content Creator's Accountant.",
+    "Four shows from Ralph Estep Jr.: Becoming Financially Confident, Financially Confident Christian, Truth Unveiled, and The Content Creator's Accountant.",
   path: "/shows",
 });
 

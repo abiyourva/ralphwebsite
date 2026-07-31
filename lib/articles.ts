@@ -17,7 +17,7 @@ export const articles: Article[] = [
     slug: "debt-snowball-vs-avalanche",
     title: "Debt Snowball vs. Avalanche: Which One Actually Gets You Debt-Free?",
     description:
-      "The math favors one method, your motivation favors the other. Here's how each works, which saves more interest, and how to pick the one you'll actually stick with.",
+      "The math favors one method, your motivation favors the other. Here's how each works and how to pick the one you'll actually stick with.",
     category: "Getting Out of Debt",
     datePublished: "2026-07-11",
     readTime: "6 min read",

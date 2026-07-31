@@ -188,6 +188,12 @@ export default function PersonalTaxAccountantCostArticle() {
               <Link href="/schedule/discovery" className="btn btn-navy">
                 Book a Free Discovery Call →
               </Link>
+              <p style={{ fontSize: "13px", marginTop: "14px" }}>
+                Already know you&apos;re ready?{" "}
+                <Link href="/schedule/tax" style={{ color: "var(--gold)", textDecoration: "underline" }}>
+                  Book your tax appointment directly →
+                </Link>
+              </p>
             </div>
           </div>
         </div>

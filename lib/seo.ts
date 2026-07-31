@@ -38,6 +38,26 @@ export function pageMetadata({
   };
 }
 
+// Describes a page that's an archive of dated third-party mentions (e.g.
+// /appearances) as a structured, dated list rather than an undifferentiated
+// pile of outbound links.
+export function itemListJsonLd(items: { name: string; url: string; datePublished: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        url: item.url,
+        datePublished: item.datePublished,
+      },
+    })),
+  };
+}
+
 export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",

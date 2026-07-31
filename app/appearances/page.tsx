@@ -1,4 +1,4 @@
-import { pageMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import { pageMetadata, breadcrumbJsonLd, itemListJsonLd } from "@/lib/seo";
 import { APPEARANCES } from "@/lib/appearances";
 import AppearancesGrid from "./AppearancesGrid";
 import SmoothScroll from "./SmoothScroll";
@@ -16,12 +16,20 @@ const BREADCRUMB_JSON_LD = breadcrumbJsonLd([
   { name: "Appearances", path: "/appearances" },
 ]);
 
+const ITEM_LIST_JSON_LD = itemListJsonLd(
+  APPEARANCES.map((item) => ({ name: item.title, url: item.url, datePublished: item.date }))
+);
+
 export default function AppearancesPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSON_LD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ITEM_LIST_JSON_LD) }}
       />
       <SmoothScroll />
       <header className="appearances-hero">
