@@ -33,8 +33,8 @@ export default function AppearancesPage() {
           </h1>
           <p className="hero-in" style={{ animationDelay: "0.38s" }}>
             The full archive of Ralph&apos;s podcast, video, and press appearances —
-            {" "}{APPEARANCES.length} and counting. Hover any tile for the episode
-            or headline, or click straight through to listen, watch, or read.
+            {" "}{APPEARANCES.length} and counting. Filter by type or sort below,
+            then click through to listen, watch, or read.
           </p>
         </div>
       </header>

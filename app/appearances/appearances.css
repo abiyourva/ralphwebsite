@@ -69,109 +69,94 @@
 
 .appearances-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.appearances-tile {
-  position: relative;
-  display: block;
-  aspect-ratio: 1 / 1;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-navy);
-  border: 1.5px solid var(--border);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s, border-color 0.4s;
-}
-.appearances-tile:hover,
-.appearances-tile:focus-visible {
-  transform: translateY(-4px);
-  border-color: rgba(200,151,61,0.6);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18), 0 0 0 1px rgba(200,151,61,0.15);
-}
-
-.appearances-tile-img { object-fit: cover; transition: transform 0.6s cubic-bezier(.2,.8,.2,1), filter 0.4s; }
-.appearances-tile:hover .appearances-tile-img,
-.appearances-tile:focus-visible .appearances-tile-img {
-  transform: scale(1.08);
-  filter: brightness(0.4);
-}
-
-.appearances-tile-overlay {
-  position: absolute;
-  inset: 0;
+.appearances-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(9,11,15,0.96) 0%, rgba(9,11,15,0.55) 55%, transparent 100%);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.appearances-tile:hover .appearances-tile-overlay,
-.appearances-tile:focus-visible .appearances-tile-overlay {
-  opacity: 1;
-  transform: translateY(0);
+  overflow: hidden;
+  text-decoration: none;
 }
 
-.appearances-tile-type {
+.appearances-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-navy);
+  overflow: hidden;
+}
+.appearances-card-img img {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+}
+.appearances-card:hover .appearances-card-img img {
+  transform: scale(1.05);
+}
+
+.appearances-card-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.appearances-card-type {
   display: flex;
   align-items: center;
   gap: 6px;
   color: var(--gold);
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
-.appearances-tile-title {
-  font-size: 12.5px;
+
+.appearances-card-title {
+  font-size: 17px;
   line-height: 1.4;
-  color: #FAFAF7;
-  font-weight: 500;
-  margin-bottom: 8px;
+  color: var(--h);
+  font-weight: 600;
+  margin: 0 0 16px;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
-.appearances-tile-footer {
+
+.appearances-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
 }
-.appearances-tile-date {
-  font-size: 10.5px;
+.appearances-card-date {
+  font-size: 12px;
   font-weight: 500;
-  color: rgba(250,250,247,0.55);
+  color: var(--muted2);
   white-space: nowrap;
 }
-.appearances-tile-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
+.appearances-card-link {
+  font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--gold);
   white-space: nowrap;
 }
 
 @media (max-width: 1100px) {
-  .appearances-grid { grid-template-columns: repeat(4, 1fr); }
+  .appearances-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
-  .appearances-grid { grid-template-columns: repeat(3, 1fr); }
   .appearances-hero { padding: 120px 24px 48px; }
   .appearances-wrap { padding: 0 24px 72px; }
 }
-@media (max-width: 560px) {
-  .appearances-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .appearances-tile-overlay { opacity: 1; transform: translateY(0); background: linear-gradient(to top, rgba(9,11,15,0.94) 0%, rgba(9,11,15,0.15) 70%, transparent 100%); }
-  .appearances-tile-img { filter: brightness(0.62); }
+@media (max-width: 640px) {
+  .appearances-grid { grid-template-columns: 1fr; gap: 18px; }
   .appearances-controls { flex-direction: column; align-items: stretch; }
 }

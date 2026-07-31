@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import PressTypeIcon, { type PressType } from "@/components/PressTypeIcon";
 import type { Appearance } from "@/lib/appearances";
 
@@ -21,6 +20,12 @@ const FILTER_OPTIONS: { value: FilterMode; label: string }[] = [
   { value: "video", label: "Video" },
   { value: "article", label: "Articles" },
 ];
+
+const VERB_BY_TYPE: Record<PressType, string> = {
+  article: "Read the article",
+  podcast: "Listen to the episode",
+  video: "Watch the episode",
+};
 
 const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
 function formatDate(iso: string) {
@@ -89,26 +94,25 @@ export default function AppearancesGrid({ items }: { items: Appearance[] }) {
             href={item.url}
             target="_blank"
             rel="noopener"
-            className={`appearances-tile rv${i > 0 ? ` d${i % 4}` : ""}`}
+            className={`card card-hover appearances-card rv${i > 0 ? ` d${i % 4}` : ""}`}
           >
-            <Image
-              src={item.image}
-              alt={`${item.title} — ${item.outlet}`}
-              fill
-              sizes="(max-width: 640px) 45vw, (max-width: 1000px) 30vw, 220px"
-              className="appearances-tile-img"
-            />
-            <div className="appearances-tile-overlay">
-              <div className="appearances-tile-type">
-                <PressTypeIcon type={item.type} size={14} />
+            <div className="appearances-card-img">
+              <Image
+                src={item.image}
+                alt={`${item.title} — ${item.outlet}`}
+                fill
+                sizes="(max-width: 640px) 90vw, (max-width: 1000px) 45vw, 380px"
+              />
+            </div>
+            <div className="appearances-card-body">
+              <div className="appearances-card-type">
+                <PressTypeIcon type={item.type} size={13} />
                 <span>{item.outlet}</span>
               </div>
-              <p className="appearances-tile-title">{item.title}</p>
-              <div className="appearances-tile-footer">
-                <span className="appearances-tile-date">{formatDate(item.date)}</span>
-                <span className="appearances-tile-link">
-                  Visit <ArrowUpRight size={13} strokeWidth={2} />
-                </span>
+              <h3 className="appearances-card-title">{item.title}</h3>
+              <div className="appearances-card-footer">
+                <span className="appearances-card-date">{formatDate(item.date)}</span>
+                <span className="appearances-card-link">{VERB_BY_TYPE[item.type]} →</span>
               </div>
             </div>
           </a>
