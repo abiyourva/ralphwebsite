@@ -1,6 +1,7 @@
 import Image from "next/image";
 import EmailCaptureForm from "@/components/EmailCaptureForm";
 import { pageMetadata } from "@/lib/seo";
+import { Mic2, Calendar, Handshake, Mic, FileText, Mail } from "lucide-react";
 import "./links.css";
 
 export const metadata = pageMetadata({
@@ -8,15 +9,16 @@ export const metadata = pageMetadata({
   description:
     "Everything Ralph Estep Jr. is doing right now — The Content Creator's Accountant, coaching, shows, articles, and more, all in one place.",
   path: "/links",
+  image: "/images/links-og.png",
 });
 
 const LINKS = [
-  { title: "The Content Creator's Accountant", href: "https://contentcreatorsaccountant.com/" },
-  { title: "Book a Free Discovery Call", href: "/schedule/discovery" },
-  { title: "Business Coaching", href: "/coaching" },
-  { title: "All Shows", href: "/shows" },
-  { title: "Articles & Insights", href: "/articles" },
-  { title: "Contact Ralph", href: "https://www.ralphestepjr.com/contact" },
+  { title: "The Content Creator's Accountant", href: "https://contentcreatorsaccountant.com/", icon: Mic2 },
+  { title: "Book a Free Discovery Call", href: "/schedule/discovery", icon: Calendar },
+  { title: "Business Coaching", href: "/coaching", icon: Handshake },
+  { title: "All Shows", href: "/shows", icon: Mic },
+  { title: "Articles & Insights", href: "/articles", icon: FileText },
+  { title: "Contact Ralph", href: "https://www.ralphestepjr.com/contact", icon: Mail },
 ];
 
 const SOCIALS = [
@@ -40,8 +42,9 @@ const SOCIALS = [
 export default function LinksPage() {
   return (
     <div className="links-page">
+      <div className="links-page-radial" aria-hidden="true" />
       <div className="links-card">
-        <div className="links-header">
+        <div className="links-header hero-in" style={{ animationDelay: "0.05s" }}>
           <div className="links-avatar">
             <Image src="/images/ralph-headshot.png" alt="Ralph Estep Jr." width={80} height={80} priority />
           </div>
@@ -49,36 +52,42 @@ export default function LinksPage() {
           <p>LPA · Business Coach · Podcaster</p>
         </div>
 
-        <div className="links-grid">
-          {LINKS.map((link) => {
+        <span className="gold-rule hero-in" style={{ animationDelay: "0.15s" }} />
+
+        <div className="links-list">
+          {LINKS.map((link, i) => {
             const external = link.href.startsWith("http");
+            const Icon = link.icon;
             return (
               <a
                 key={link.title}
                 href={link.href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener" : undefined}
-                className="links-item"
+                className="links-row hero-in"
+                style={{ animationDelay: `${0.2 + i * 0.06}s` }}
               >
-                <span className="links-item-title">{link.title}</span>
+                <span className="links-row-icon"><Icon size={17} strokeWidth={1.75} /></span>
+                <span className="links-row-title">{link.title}</span>
+                <span className="links-row-chevron" aria-hidden="true">→</span>
               </a>
             );
           })}
         </div>
 
-        <div className="links-email">
+        <div className="links-email hero-in" style={{ animationDelay: "0.6s" }}>
           <EmailCaptureForm
             className="email-form"
             formStyle={{ maxWidth: "320px", margin: "0 auto", flexDirection: "row" }}
-            inputStyle={{ padding: "7px 12px", fontSize: "12px", borderRadius: "8px 0 0 8px" }}
-            buttonStyle={{ padding: "7px 12px", fontSize: "10px", borderRadius: "0 8px 8px 0" }}
+            inputStyle={{ padding: "7px 12px", fontSize: "12px", borderRadius: "4px 0 0 4px" }}
+            buttonStyle={{ padding: "7px 12px", fontSize: "10px", borderRadius: "0 4px 4px 0" }}
             placeholder="Feedback, testimonial, or question?"
             buttonLabel="Send"
             location="Links Page"
           />
         </div>
 
-        <div className="links-socials">
+        <div className="links-socials hero-in" style={{ animationDelay: "0.68s" }}>
           {SOCIALS.map((social) => (
             <a
               key={social.label}
@@ -95,7 +104,7 @@ export default function LinksPage() {
           ))}
         </div>
 
-        <p className="links-footer">© 2026 Ralph Estep Jr.</p>
+        <p className="links-footer hero-in" style={{ animationDelay: "0.74s" }}>© 2026 Ralph Estep Jr.</p>
       </div>
     </div>
   );

@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 const COOKIE_STORAGE_KEY = "cookie-consent";
 
 // Floating "back to home" button, fixed bottom-right. Hidden on the
-// homepage itself since it would be redundant there. Shifts up while the
+// homepage itself (redundant there) and on /links (a deliberately
+// chrome-free, single-screen link-in-bio page). Shifts up while the
 // cookie banner is still showing so the two don't overlap.
 export default function HomeButton() {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ export default function HomeButton() {
     setLiftForCookieBanner(!window.localStorage.getItem(COOKIE_STORAGE_KEY));
   }, []);
 
-  if (pathname === "/") return null;
+  if (pathname === "/" || pathname === "/links") return null;
 
   return (
     <Link
