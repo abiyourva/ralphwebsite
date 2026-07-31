@@ -11,7 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import { APPEARANCES } from "@/lib/appearances";
 import { articles as ARTICLES } from "@/lib/articles";
 import { TESTIMONIALS } from "@/lib/testimonials";
-import { reviewJsonLd } from "@/lib/seo";
+import { reviewJsonLd, videoObjectJsonLd } from "@/lib/seo";
 import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
 import "./home.css";
 
@@ -59,12 +59,26 @@ const REVIEW_JSON_LD = reviewJsonLd(
   TESTIMONIALS.map((t) => ({ name: t.name, quote: t.quote, date: t.date }))
 );
 
+const VIDEO_JSON_LD = videoObjectJsonLd({
+  name: "Welcome — Ralph Estep Jr.",
+  description:
+    "Ralph Estep Jr., LPA, is a business coach, author, and podcaster helping everyday people build real financial confidence.",
+  embedUrl:
+    "https://embed.voomly.com/embed/assets/embed.html?videoId=WyfUo5G8iQzVmEZbx06c8MEKgFwyRT5gQ3shSWsL1JyoWnRkP&videoRatio=1.777778&type=v&skinColor=rgba(25%2C45%2C78%2C1)",
+  thumbnailUrl: "/images/ralph-headshot.png",
+  uploadDate: new Date().toISOString().slice(0, 10),
+});
+
 export default function HomePage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(REVIEW_JSON_LD) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(VIDEO_JSON_LD) }}
       />
       <EventBadge />
       {/* ── HERO ── */}

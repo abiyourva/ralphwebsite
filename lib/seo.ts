@@ -210,3 +210,28 @@ export function podcastSeriesJsonLd({
     author: { "@id": `${SITE_URL}/#ralph` },
   };
 }
+
+export function videoObjectJsonLd({
+  name,
+  description,
+  embedUrl,
+  thumbnailUrl,
+  uploadDate,
+}: {
+  name: string;
+  description: string;
+  embedUrl: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name,
+    description,
+    embedUrl,
+    thumbnailUrl: `${SITE_URL}${thumbnailUrl}`,
+    uploadDate,
+    publisher: { "@id": `${SITE_URL}/#ralph` },
+  };
+}
