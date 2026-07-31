@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { track } from "@vercel/analytics";
 import Honeypot from "@/components/Honeypot";
 
@@ -37,11 +37,18 @@ export default function ContactForm({
   inquiryType,
 }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
+  // See EmailCaptureForm.tsx for why the re-entrancy check needs a ref
+  // rather than the `submitting` state value.
+  const inFlightRef = useRef(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (inFlightRef.current || submitted) return;
+    inFlightRef.current = true;
     setError(false);
+    setSubmitting(true);
     const fields = Object.fromEntries(new FormData(e.currentTarget).entries());
     try {
       const res = await fetch("/api/contact", {
@@ -54,6 +61,9 @@ export default function ContactForm({
       track("Contact Form Submitted", { inquiryType });
     } catch {
       setError(true);
+    } finally {
+      inFlightRef.current = false;
+      setSubmitting(false);
     }
   }
 
@@ -65,7 +75,7 @@ export default function ContactForm({
         type="submit"
         className={submitClassName}
         style={submitted ? { ...submitStyle, background: "#2A6049" } : submitStyle}
-        disabled={submitted}
+        disabled={submitting || submitted}
       >
         {submitted ? successLabel : submitLabel}
       </button>

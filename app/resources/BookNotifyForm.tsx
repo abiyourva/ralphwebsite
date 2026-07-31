@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
+import Honeypot from "@/components/Honeypot";
 
 // Real notify flow for the book cards (previously an inert label): click
 // reveals an inline email field, submit posts to /api/book-notify, which
@@ -10,6 +11,7 @@ export default function BookNotifyForm({ book }: { book: "bfc" | "cca" }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [website, setWebsite] = useState(""); // honeypot — must stay empty
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function BookNotifyForm({ book }: { book: "bfc" | "cca" }) {
       const res = await fetch("/api/book-notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, book }),
+        body: JSON.stringify({ email, book, website }),
       });
       if (!res.ok) throw new Error("notify failed");
       setStatus("done");
@@ -49,6 +51,7 @@ export default function BookNotifyForm({ book }: { book: "bfc" | "cca" }) {
   return (
     <>
       <form className="book-notify-form" aria-label="Book launch notification signup" onSubmit={handleSubmit}>
+        <Honeypot value={website} onChange={setWebsite} />
         <input
           ref={inputRef}
           type="email"

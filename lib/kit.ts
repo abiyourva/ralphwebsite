@@ -116,7 +116,7 @@ export async function getKitSubscriberIdsForTag(tagId: string): Promise<Set<numb
   return ids;
 }
 
-export async function tagKitSubscriber(email: string, tagId: string) {
+async function attemptTagKitSubscriber(email: string, tagId: string) {
   const apiKey = getApiKey();
   const res = await fetch(`${KIT_API_BASE}/tags/${tagId}/subscribers`, {
     method: "POST",
@@ -131,4 +131,19 @@ export async function tagKitSubscriber(email: string, tagId: string) {
     throw new Error(`Kit tag subscriber failed: ${res.status} ${detail}`);
   }
   return detail;
+}
+
+// The tag call runs right after createOrUpdateKitSubscriber succeeds — if
+// the subscriber upsert lands but this call then hits a transient network
+// blip, the subscriber would otherwise sit in Kit permanently untagged with
+// no signal anything went wrong. One bounded retry after a short backoff
+// absorbs that class of failure without masking a real, persistent error
+// (which still throws after the second attempt, same as before).
+export async function tagKitSubscriber(email: string, tagId: string) {
+  try {
+    return await attemptTagKitSubscriber(email, tagId);
+  } catch {
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    return await attemptTagKitSubscriber(email, tagId);
+  }
 }

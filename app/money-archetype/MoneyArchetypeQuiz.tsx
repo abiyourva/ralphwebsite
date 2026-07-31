@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { HandHeart, HardHat, Sprout, type LucideIcon } from "lucide-react";
+import Honeypot from "@/components/Honeypot";
 
 type Screen = "welcome" | "quiz" | "results";
 type ArchetypeType = "believer" | "builder" | "steward";
@@ -251,6 +252,7 @@ export default function MoneyArchetypeQuiz() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — must stay empty
   const [archetype, setArchetype] = useState<ArchetypeType | null>(null);
   const [scorePercentages, setScorePercentages] = useState<Record<ArchetypeType, number> | null>(null);
   const [welcomeError, setWelcomeError] = useState<string | null>(null);
@@ -281,11 +283,11 @@ export default function MoneyArchetypeQuiz() {
     fetch("/api/quiz", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ stage: "started", name: trimmedName, email: trimmedEmail }),
+      body: JSON.stringify({ stage: "started", name: trimmedName, email: trimmedEmail, website }),
     }).catch((err) => console.error("Quiz lead capture failed:", err));
 
     setScreen("quiz");
-  }, [userName, userEmail]);
+  }, [userName, userEmail, website]);
 
   const handleSelectOption = useCallback((value: string) => {
     setAnswers((prev) => ({ ...prev, [currentQuestion]: value }));
@@ -313,10 +315,11 @@ export default function MoneyArchetypeQuiz() {
           name: userName.trim(),
           email: userEmail.trim(),
           archetype: result,
+          website,
         }),
       }).catch((err) => console.error("Quiz completion sync failed:", err));
     }
-  }, [currentAnswer, currentQuestion, answers, userName, userEmail]);
+  }, [currentAnswer, currentQuestion, answers, userName, userEmail, website]);
 
   const handleBack = useCallback(() => {
     if (currentQuestion > 0) {
@@ -386,6 +389,7 @@ export default function MoneyArchetypeQuiz() {
           </div>
 
           <div className="welcome-form">
+            <Honeypot value={website} onChange={setWebsite} />
             <p className="eyebrow">Get started</p>
             <h2>Enter your details</h2>
             <p className="welcome-form-sub">

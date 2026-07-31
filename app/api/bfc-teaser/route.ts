@@ -1,17 +1,22 @@
 import { NextResponse } from "next/server";
-import { checkBotId } from "botid/server";
+import { safeCheckBotId } from "@/lib/botid";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
 import { isHoneypotFilled } from "@/lib/honeypot";
 
 const BFC_TEASER_TAG_ID = "20756097";
 
 export async function POST(request: Request) {
-  const { isBot } = await checkBotId();
+  const { isBot } = await safeCheckBotId();
   if (isBot) {
     return NextResponse.json({ error: "Access denied" }, { status: 403 });
   }
 
-  const body = await request.json();
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
   if (isHoneypotFilled(body)) {
     return NextResponse.json({ ok: true });
   }

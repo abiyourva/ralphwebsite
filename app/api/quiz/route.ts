@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { safeCheckBotId } from "@/lib/botid";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
+import { isHoneypotFilled } from "@/lib/honeypot";
 
 const QUIZ_STARTED_TAG_ID = "20755271";
 
@@ -16,7 +18,23 @@ const ARCHETYPE_LABELS: Record<string, string> = {
 };
 
 export async function POST(request: Request) {
-  const { stage, name, email, archetype } = await request.json();
+  const { isBot } = await safeCheckBotId();
+  if (isBot) {
+    return NextResponse.json({ error: "Access denied" }, { status: 403 });
+  }
+
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  if (isHoneypotFilled(body)) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const { stage, name, email, archetype } = body;
 
   if (typeof email !== "string" || !email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });

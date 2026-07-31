@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
+import Honeypot from "@/components/Honeypot";
 
 const RECIPIENT = "ralph@ralphestepjr.com";
 const SUBJECT = "Podcast Co-Host Application";
@@ -85,9 +86,14 @@ export default function CohostApplicationForm() {
   const [errors, setErrors] = useState<Partial<Record<FieldKey, boolean>>>({});
   const [showError, setShowError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [copyLabel, setCopyLabel] = useState("Copy my answers");
+  const [website, setWebsite] = useState(""); // honeypot — must stay empty
   const bodyRef = useRef("");
   const fieldRefs = useRef<Partial<Record<FieldKey, HTMLDivElement | null>>>({});
+  // See components/EmailCaptureForm.tsx for why the re-entrancy check needs
+  // a ref rather than the `submitting` state value.
+  const inFlightRef = useRef(false);
 
   const set = useCallback(<K extends keyof State>(key: K, value: State[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -188,6 +194,7 @@ export default function CohostApplicationForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (inFlightRef.current || submitted) return;
     const firstBad = validate();
     if (firstBad) {
       setShowError(true);
@@ -195,6 +202,8 @@ export default function CohostApplicationForm() {
       return;
     }
     setShowError(false);
+    inFlightRef.current = true;
+    setSubmitting(true);
 
     const body = buildBody();
     bodyRef.current = body;
@@ -203,7 +212,12 @@ export default function CohostApplicationForm() {
       await fetch("/api/cohost", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: form.email, firstName: form.fullName.split(" ")[0], application: body }),
+        body: JSON.stringify({
+          email: form.email,
+          firstName: form.fullName.split(" ")[0],
+          application: body,
+          website,
+        }),
       });
     } catch (err) {
       console.error("Cohost application submit failed:", err);
@@ -213,6 +227,8 @@ export default function CohostApplicationForm() {
     const mailto = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
     setSubmitted(true);
+    inFlightRef.current = false;
+    setSubmitting(false);
     track("Cohost Application Submitted");
   }
 
@@ -306,6 +322,7 @@ export default function CohostApplicationForm() {
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
+          <Honeypot value={website} onChange={setWebsite} />
           {/* SECTION 1 */}
           <section className="cohost-section">
             <div className="cohost-sec-head">
@@ -690,7 +707,9 @@ export default function CohostApplicationForm() {
           </section>
 
           <div className="cohost-submit-card">
-            <button type="submit" className="cohost-submit-btn">Submit Application</button>
+            <button type="submit" className="cohost-submit-btn" disabled={submitting}>
+              {submitting ? "Submitting…" : "Submit Application"}
+            </button>
             {showError && (
               <div className="cohost-error-banner">
                 Please review the highlighted questions above — a few required answers are missing.

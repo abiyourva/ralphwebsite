@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { checkBotId } from "botid/server";
+import { safeCheckBotId } from "@/lib/botid";
 import { createOrUpdateKitSubscriber, tagKitSubscriber } from "@/lib/kit";
 import { isHoneypotFilled } from "@/lib/honeypot";
 
@@ -13,33 +13,40 @@ const INQUIRY_TAG_IDS: Record<string, string> = {
 };
 
 export async function POST(request: Request) {
-  const { isBot } = await checkBotId();
+  const { isBot } = await safeCheckBotId();
   if (isBot) {
     return NextResponse.json({ error: "Access denied" }, { status: 403 });
   }
 
-  const { inquiryType, fields } = await request.json();
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+  const { inquiryType, fields } = body as { inquiryType?: unknown; fields?: Record<string, unknown> };
 
   if (isHoneypotFilled(fields)) {
     return NextResponse.json({ ok: true });
   }
 
-  const tagId = INQUIRY_TAG_IDS[inquiryType] ?? INQUIRY_TAG_IDS.general;
+  const tagId = (typeof inquiryType === "string" ? INQUIRY_TAG_IDS[inquiryType] : undefined) ?? INQUIRY_TAG_IDS.general;
   const email = typeof fields?.email === "string" ? fields.email : "";
   if (!email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const firstName = fields.first_name || (typeof fields.name === "string" ? fields.name.split(" ")[0] : undefined);
+  const firstName = (typeof fields?.first_name === "string" ? fields.first_name : undefined)
+    ?? (typeof fields?.name === "string" ? fields.name.split(" ")[0] : undefined);
 
   try {
     await createOrUpdateKitSubscriber({
       email,
       firstName,
       fields: {
-        ...(fields.org ? { company: fields.org } : {}),
-        ...(fields.subject ? { inquiry_subject: fields.subject } : {}),
-        ...(fields.message ? { inquiry_message: fields.message } : {}),
+        ...(typeof fields?.org === "string" && fields.org ? { company: fields.org } : {}),
+        ...(typeof fields?.subject === "string" && fields.subject ? { inquiry_subject: fields.subject } : {}),
+        ...(typeof fields?.message === "string" && fields.message ? { inquiry_message: fields.message } : {}),
       },
     });
     await tagKitSubscriber(email, tagId);

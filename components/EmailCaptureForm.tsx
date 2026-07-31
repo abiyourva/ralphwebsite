@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { track } from "@vercel/analytics";
 import Honeypot from "@/components/Honeypot";
 
@@ -49,14 +49,23 @@ export default function EmailCaptureForm({
   location = "Unknown",
 }: EmailCaptureFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — must stay empty
+  // useState-driven guards read a stale closure on a truly synchronous
+  // double-click (React batches the setSubmitting(true) update, so a second
+  // click before re-render still sees submitting === false). A ref updates
+  // immediately and synchronously, so it's the actual re-entrancy gate;
+  // `submitting` state stays just for disabling the UI.
+  const inFlightRef = useRef(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email) return;
+    if (!email || inFlightRef.current || submitted) return;
+    inFlightRef.current = true;
     setError(null);
+    setSubmitting(true);
     try {
       const res = await fetch(endpoint, {
         method: "POST",
@@ -68,6 +77,9 @@ export default function EmailCaptureForm({
       track("Email Signup", { location });
     } catch {
       setError("Something went wrong — please try again.");
+    } finally {
+      inFlightRef.current = false;
+      setSubmitting(false);
     }
   }
 
@@ -84,13 +96,13 @@ export default function EmailCaptureForm({
           aria-label={inputAriaLabel}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          disabled={submitted}
+          disabled={submitting || submitted}
         />
         <button
           type="submit"
           className={buttonClassName}
           style={submitted ? { ...buttonStyle, background: "#2A6049" } : buttonStyle}
-          disabled={submitted}
+          disabled={submitting || submitted}
         >
           {submitted ? successLabel : buttonLabel}
         </button>
