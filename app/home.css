@@ -184,6 +184,19 @@
 .episode-card h3 { margin-bottom: 10px; line-height: 1.35; font-size: 19px; }
 .episode-card p { font-size: 14px; line-height: 1.65; }
 
+/* ── Latest Articles preview cards ── */
+.article-preview-card { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; }
+.article-preview-img { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg-navy); overflow: hidden; }
+.article-preview-img img { object-fit: cover; transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
+.article-preview-card:hover .article-preview-img img { transform: scale(1.05); }
+.article-preview-body { padding: 20px 22px 22px; }
+.article-preview-category {
+  color: var(--gold); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+}
+.article-preview-title { font-size: 17px; line-height: 1.4; color: var(--h); font-weight: 600; margin: 0 0 12px; }
+.article-preview-meta { font-size: 12px; font-weight: 500; color: var(--muted2); }
+
 /* ── Press carousel ── */
 .press-carousel { max-width: 560px; margin: 0 auto; }
 .press-carousel-viewport { display: flex; align-items: center; gap: 16px; }

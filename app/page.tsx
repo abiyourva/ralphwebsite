@@ -9,6 +9,7 @@ import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
 import Testimonials from "@/components/Testimonials";
 import { APPEARANCES } from "@/lib/appearances";
+import { articles as ARTICLES } from "@/lib/articles";
 import { TESTIMONIALS } from "@/lib/testimonials";
 import { reviewJsonLd } from "@/lib/seo";
 import { DollarSign, Handshake, Mic, Mic2, Calendar, Cross, PlayCircle } from "lucide-react";
@@ -22,6 +23,12 @@ const VERB_BY_TYPE = {
   video: "Watch the episode",
 } as const;
 
+const CTA_VERB_BY_TYPE = {
+  article: "Read the Feature",
+  podcast: "Listen to the Episode",
+  video: "Watch the Episode",
+} as const;
+
 const PRESS_MENTIONS: PressCarouselItem[] = [...APPEARANCES]
   .sort((a, b) => b.date.localeCompare(a.date))
   .slice(0, 12)
@@ -32,6 +39,21 @@ const PRESS_MENTIONS: PressCarouselItem[] = [...APPEARANCES]
     url: item.url,
     verb: VERB_BY_TYPE[item.type],
   }));
+
+const LATEST_APPEARANCE = [...APPEARANCES].sort((a, b) => b.date.localeCompare(a.date))[0];
+
+const LATEST_ARTICLES = [...ARTICLES]
+  .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
+  .slice(0, 3);
+
+const MONTH_YEAR_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+function formatMonthYear(iso: string) {
+  return MONTH_YEAR_FORMATTER.format(new Date(`${iso}T00:00:00Z`));
+}
+const SHORT_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+function formatShortDate(iso: string) {
+  return SHORT_DATE_FORMATTER.format(new Date(`${iso}T00:00:00Z`));
+}
 
 const REVIEW_JSON_LD = reviewJsonLd(
   TESTIMONIALS.map((t) => ({ name: t.name, quote: t.quote, date: t.date }))
@@ -126,76 +148,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED PRESS ── */}
-      <section className="section">
-        <div className="container story-grid">
-          <div className="story-photo rv">
-            <div className="story-photo-img featured-press-img">
-              <Image
-                src="/images/appearances/marketing-against-the-grain.webp"
-                alt="Ralph Estep Jr. featured in Marketing Against the Grain, HubSpot Media's marketing publication"
-                width={600}
-                height={400}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-            <div className="story-photo-frame" aria-hidden="true" />
-          </div>
-          <div>
-            <span className="gold-rule-left gold-rule rv" />
-            <p className="eyebrow rv">Featured In</p>
-            <h2 className="rv d1" style={{ marginBottom: "20px" }}>
-              Your Content Strategy Might Be Building the Wrong Thing
-            </h2>
-            <p className="rv d2" style={{ marginBottom: "34px" }}>
-              Ralph sat down with Marketing Against the Grain — HubSpot Media&apos;s
-              marketing publication — to talk about the difference between content
-              that performs and content that actually builds something worth having.
-            </p>
-            <a
-              href="https://marketingagainstthegrain.com/articles/your-content-strategy-might-be-building-the-wrong-thing"
-              target="_blank"
-              rel="noopener"
-              className="btn btn-gold rv d3"
-            >
-              Read the Feature →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FEATURED ESSAY ── */}
-      <section className="section bg-navy text-center" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="radial-soft radial-email" aria-hidden="true" />
-        <div className="container-narrow" style={{ position: "relative", maxWidth: "640px" }}>
-          <p className="eyebrow rv">A Perspective From Ralph</p>
-          <h2 className="rv d1" style={{ marginBottom: "16px" }}>Free Isn&apos;t Free</h2>
-          <p className="rv d2" style={{ marginBottom: "32px" }}>
-            An accountant&apos;s warning about the idea that&apos;s winning over a
-            generation, and why yelling about it won&apos;t work.
-          </p>
-          <Link href="/articles/free-isnt-free" className="btn btn-gold rv d3">
-            Read the Essay →
-          </Link>
-        </div>
-      </section>
-
-      {/* ── QUIZ CTA ── */}
-      <section className="section bg-alt text-center" style={{ position: "relative", overflow: "hidden" }}>
-        <div className="radial-soft radial-quiz" aria-hidden="true" />
-        <div className="container-narrow" style={{ position: "relative", maxWidth: "640px" }}>
-          <p className="eyebrow rv">Free Quiz</p>
-          <h2 className="rv d1">What&apos;s your Money Archetype?</h2>
-          <p className="rv d2" style={{ marginBottom: "34px" }}>
-            Take the free 2-minute quiz to discover how you&apos;re wired to relate to
-            wealth, work, and legacy — plus get a personalized 7-day email sequence.
-          </p>
-          <Link href="/money-archetype" className="btn btn-gold rv d3">
-            Take the Free Quiz →
-          </Link>
-        </div>
-      </section>
-
       {/* ── WHAT BRINGS YOU HERE ── */}
       <section id="coaching" className="section">
         <div className="container">
@@ -254,6 +206,43 @@ export default function HomePage() {
               Visit Saggio Management Group →
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* ── LATEST MEDIA APPEARANCE ── */}
+      <section className="section">
+        <div className="container story-grid">
+          <div className="story-photo rv">
+            <div className="story-photo-img featured-press-img">
+              <Image
+                src={LATEST_APPEARANCE.image}
+                alt={`${LATEST_APPEARANCE.title} — ${LATEST_APPEARANCE.outlet}`}
+                width={600}
+                height={400}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+            <div className="story-photo-frame" aria-hidden="true" />
+          </div>
+          <div>
+            <span className="gold-rule-left gold-rule rv" />
+            <p className="eyebrow rv">Latest Appearance</p>
+            <h2 className="rv d1" style={{ marginBottom: "20px" }}>
+              {LATEST_APPEARANCE.title}
+            </h2>
+            <p className="rv d2" style={{ marginBottom: "34px" }}>
+              Ralph&apos;s newest appearance — {LATEST_APPEARANCE.outlet},{" "}
+              {formatMonthYear(LATEST_APPEARANCE.date)}.
+            </p>
+            <a
+              href={LATEST_APPEARANCE.url}
+              target="_blank"
+              rel="noopener"
+              className="btn btn-gold rv d3"
+            >
+              {CTA_VERB_BY_TYPE[LATEST_APPEARANCE.type]} →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -417,6 +406,49 @@ export default function HomePage() {
               <h3>Listen Now</h3>
               <p>Faith-based personal finance for Christians who want to steward their resources well.</p>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LATEST ARTICLES ── */}
+      <section className="section">
+        <div className="container">
+          <div className="flex-between mb-4" style={{ alignItems: "baseline", flexWrap: "wrap", gap: "16px" }}>
+            <div>
+              <span className="gold-rule-left gold-rule rv" />
+              <p className="eyebrow rv">From the Blog</p>
+              <h2 className="rv d1">Latest articles</h2>
+            </div>
+            <Link href="/articles" className="btn btn-ghost rv">
+              All Articles →
+            </Link>
+          </div>
+          <div className="grid-3">
+            {LATEST_ARTICLES.map((article, i) => (
+              <Link
+                key={article.slug}
+                href={`/articles/${article.slug}`}
+                className={`card card-hover article-preview-card rv${i > 0 ? ` d${i}` : ""}`}
+              >
+                {article.image && (
+                  <div className="article-preview-img">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 340px"
+                    />
+                  </div>
+                )}
+                <div className="article-preview-body">
+                  <p className="article-preview-category">{article.category}</p>
+                  <h3 className="article-preview-title">{article.title}</h3>
+                  <p className="article-preview-meta">
+                    {formatShortDate(article.datePublished)} · {article.readTime}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
