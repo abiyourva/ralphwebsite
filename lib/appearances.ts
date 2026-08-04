@@ -21,6 +21,7 @@ export interface Appearance {
 }
 
 export const APPEARANCES: Appearance[] = [
+  { slug: "aol-5-money-moves-scratch", image: "/images/appearances/aol.webp", title: "Finance Experts: 5 Money Moves I'd Make if I Were Starting From Scratch", outlet: "AOL", url: "https://www.aol.com/articles/finance-experts-5-money-moves-140010000.html", type: "article", date: "2026-08-04", featured: true },
   { slug: "aol-5-hard-truths-retirement", image: "/images/appearances/aol.webp", title: "5 Hard Truths About Retirement You Need to Face Before Clocking Out on Your Career", outlet: "AOL", url: "https://www.aol.com/articles/5-hard-truths-retirement-face-100000000.html", type: "article", date: "2026-08-03", featured: true },
   { slug: "aol-80k-upper-middle-class", image: "/images/appearances/aol.webp", title: "10 States Where $80K Gives an Upper-Middle-Class Lifestyle", outlet: "AOL", url: "https://www.aol.com/articles/10-states-where-80k-gives-113009000.html", type: "article", date: "2026-07-30", featured: true },
   { slug: "marketing-against-the-grain", image: "/images/appearances/marketing-against-the-grain.webp", title: "Your Content Strategy Might Be Building the Wrong Thing", outlet: "Marketing Against the Grain", url: "https://marketingagainstthegrain.com/articles/your-content-strategy-might-be-building-the-wrong-thing", type: "article", date: "2026-07-29", featured: true },
