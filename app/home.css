@@ -110,19 +110,6 @@
 .hero-photo-tag { position: absolute; bottom: -46px; left: 0; right: 0; text-align: center; }
 .hero-photo-tag p { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted2); }
 
-/* ── LATEST-FROM-RALPH COUNTDOWN CARD ── */
-.home-countdown-compact .launch-countdown { margin-bottom: 0; }
-.home-countdown-compact .launch-countdown-label { color: var(--muted2); margin-bottom: 10px; }
-.home-countdown-compact .launch-countdown-cells { justify-content: flex-start; gap: 8px; }
-.home-countdown-compact .launch-countdown-cell {
-  min-width: 52px;
-  padding: 8px 6px 7px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-}
-.home-countdown-compact .launch-countdown-num { font-family: var(--font-cormorant), serif; font-size: 22px; color: var(--h); }
-.home-countdown-compact .launch-countdown-unit { font-size: 9px; }
-
 /* Quiz CTA + Email CTA radial backdrop */
 .radial-soft { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; background: radial-gradient(ellipse, rgba(200,151,61,0.1) 0%, transparent 70%); }
 .radial-quiz { width: 600px; height: 300px; }

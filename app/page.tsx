@@ -5,7 +5,6 @@ import EmailCaptureForm from "@/components/EmailCaptureForm";
 import HeroParallax from "@/components/HeroParallax";
 import WelcomeVideo from "@/components/WelcomeVideo";
 import EventBadge from "@/components/EventBadge";
-import LaunchCountdown from "@/components/LaunchCountdown";
 import PressCarousel, { type PressCarouselItem } from "@/components/PressCarousel";
 import Testimonials from "@/components/Testimonials";
 import { APPEARANCES } from "@/lib/appearances";
@@ -394,9 +393,7 @@ export default function HomePage() {
               <div className="episode-card-icon"><Mic2 size={22} strokeWidth={1.75} /></div>
               <p className="eyebrow" style={{ marginBottom: "8px" }}>Becoming Financially Confident</p>
               <h3>Coming Soon</h3>
-              <div className="home-countdown-compact">
-                <LaunchCountdown label="Launching in" />
-              </div>
+              <p>The next chapter of Ralph&apos;s show — practical, faith-rooted money guidance for everyone.</p>
             </Link>
             <a
               href="https://www.truthunveiledwithralph.com/"
